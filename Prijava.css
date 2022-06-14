@@ -1,0 +1,53 @@
+body {
+    text-align: center;
+    display: grid;
+    place-items: center;
+    background-image: linear-gradient(to left, #191654, #43c6ac);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+input {
+    font-size: large;
+    height: 30px;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid #191654;
+}
+
+input::placeholder {
+    color: rgb(151, 151, 151);
+}
+input:focus::placeholder {
+    color: transparent;
+}
+
+button {
+    font-size: large;
+    border-radius: 15px;
+    background-color: #191654;
+    color: white;
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+table tr td:nth-child(2) {
+    text-align: right;
+}
+
+table tr td:nth-child(1) {
+    text-align: left;
+}
+
+.buttons {
+    width: 100%;
+}
+
+.checkbox {
+    accent-color: #191654;
+}
