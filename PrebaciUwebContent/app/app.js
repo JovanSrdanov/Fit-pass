@@ -1,12 +1,14 @@
-const registration = { template: "<registration></registration>" };
-const login = { template: "<login></login>" };
+const registracija = { template: "<registracija></registracija>" };
+const prijava = { template: "<prijava></prijava>" };
+const pocetna = { template: "<pocetna></pocetna>" };
 
 const router = new VueRouter({
     mode: "hash",
     routes: [
-        { path: "/", component: login },
-        { path: "/registration", component: registration },
-        { path: "/login", component: login },
+        { path: "/", component: prijava },
+        { path: "/registracija", component: registracija },
+        { path: "/prijava", component: prijava },
+        { path: "/pocetna", component: pocetna },
     ],
 });
 var app = new Vue({

@@ -1,3 +1,12 @@
+body {
+    text-align: center;
+    display: grid;
+    place-items: center;
+    background-image: linear-gradient(to left, #191654, #43c6ac);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
 input {
     font-size: large;
     height: 30px;
