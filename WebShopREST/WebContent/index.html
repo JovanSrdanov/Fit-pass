@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FITPASS</title>
+        <link rel="icon" type="image/x-icon" href="Images/Logo.png" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="css/prijava.css" type="text/css" />
+        <link rel="stylesheet" href="css/index.css" type="text/css" />
+    </head>
+    <body>
+        <div id="firstPage" class="backgroundFirstPage">
+            <div id="nav" class="nav">
+                <ul>
+                    <li>
+                        <a style="float: left" href="#/pocetna"
+                            >Početna
+                        </a>
+                    </li>
+                      <li>
+                        <a style="float: left" href="#/pocetna"
+                            >Pretraga
+                        </a>
+                    </li>
+                    </li>
+                    <li>
+                        <a href="#/registracija">Registracija </a>
+                    </li>
+                    <li>
+                        <a href="#/prijava">Prijava</a>
+                    </li>
+                     <li>
+                        <a href="#/prijava">Profil</a>
+                    </li>
+                </ul>
+            </div>
+
+            <router-view></router-view>
+        </div>
+
+        <script src="js/vue.js"></script>
+        <script src="js/vue-router.js"></script>
+        <script src="js/axios.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/toast.js"></script>
+
+        <script src="jsRazno/prikazLozinke.js"></script>
+
+        <script src="app/registracija.js"></script>
+        <script src="app/prijava.js"></script>
+         <script src="app/pocetna.js"></script>
+
+        <script src="app/app.js"></script>
+    </body>
+</html>
