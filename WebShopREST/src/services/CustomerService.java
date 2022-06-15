@@ -53,10 +53,11 @@ public class CustomerService {
 	}
 	
 	@POST
-	@Path("/")
+	@Path("/reg/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Customer addNew(Customer customer) {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+		System.out.println(customer.getBirthDate());
 		return dao.addNew(customer);
 	}
 	

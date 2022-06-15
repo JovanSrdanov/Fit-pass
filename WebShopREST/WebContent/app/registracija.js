@@ -87,13 +87,24 @@ Vue.component("registracija", {
     methods: {
         RegisterCustomer: function () {
             axios
-                .post("rest/CustomerReg/", {
-                    userName: this.userName,
+                .post("rest/customers/reg", {
+                    /*username: this.userName,
                     password: this.password,
                     name: this.name,
                     surname: this.surname,
-                    date: this.dateOfBirth,
-                    gender: this.gender,
+                    birthDate: this.dateOfBirth,
+                    gender: this.gender,*/
+                    id: -1,
+                    username: "strale15",
+                    password: "cip11",
+                    name: "Pizdac2",
+                    surname: "Erakovic",
+                    gender: "male",
+                    birthDate: this.dateOfBirth,
+                    role: "customer",
+                    membershipId: -1,
+                    points: 69,
+                    deleted: false
                 })
                 .then((response) => {
                     alert("Successful customer registration!");
