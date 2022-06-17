@@ -12,6 +12,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.ws.rs.DELETE;
@@ -57,8 +61,8 @@ public class LoginService {
     }
 
     private String issueToken(String username) {
-        //Key key = keyGenerator.generateKey();
-        /*String jwtToken = Jwts.builder()
+        /*Key key = keyGenerator.generateKey();
+        String jwtToken = Jwts.builder()
                 .setSubject(username)
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
