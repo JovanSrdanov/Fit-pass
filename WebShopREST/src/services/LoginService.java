@@ -35,12 +35,9 @@ import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 @Consumes(MediaType.APPLICATION_JSON)
 public class LoginService {
 
-    @Inject
-    private KeyGenerator keyGenerator;
-
     @POST
     @Path("/token")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(APPLICATION_FORM_URLENCODED)
     public Response authenticateUser(@FormParam("username") String username,
                                      @FormParam("password") String password) {
         try {
@@ -60,14 +57,15 @@ public class LoginService {
     }
 
     private String issueToken(String username) {
-        Key key = keyGenerator.generateKey();
-        String jwtToken = Jwts.builder()
+        //Key key = keyGenerator.generateKey();
+        /*String jwtToken = Jwts.builder()
                 .setSubject(username)
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
                 .signWith(SignatureAlgorithm.HS512, key)
-                .compact();
+                .compact();*/
+        String jwtToken = username + "###69###";
         return jwtToken;
     }
 }
