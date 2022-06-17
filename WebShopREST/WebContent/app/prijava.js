@@ -39,6 +39,14 @@ Vue.component("prijava", {
                                       <input type="submit" value="Prijavi se" >
                                 
                 </form>
+                <button v-on:click="proba">Proba </button>
             </div>
         </div>`,
+    methods: {
+        proba: function () {
+            localStorage.removeItem("token");
+            let token = localStorage.getItem("token");
+            alert(token);
+        },
+    },
 });

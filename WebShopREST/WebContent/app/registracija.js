@@ -74,7 +74,9 @@ Vue.component("registracija", {
                  <br />
                  <br />
                 <input type="submit" value="Registruj se" v-on:click="RegisterCustomer" >
+              
             </form>
+          <button v-on:click="proba">Proba </button>
         </div>       
    `,
 
@@ -85,6 +87,11 @@ Vue.component("registracija", {
             .catch(function (error) {});
     },
     methods: {
+        proba: function () {
+            localStorage.setItem("token", "neki token");
+            alert(localStorage.getItem("token"));
+        },
+
         RegisterCustomer: function () {
             axios
                 .post("rest/customers/reg", {
@@ -104,7 +111,7 @@ Vue.component("registracija", {
                     role: "customer",
                     membershipId: -1,
                     points: 69,
-                    deleted: false
+                    deleted: false,
                 })
                 .then((response) => {
                     alert("Successful customer registration!");
