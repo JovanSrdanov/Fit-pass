@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.security.Key;
 
 import javax.annotation.Priority;
-import javax.crypto.KeyGenerator;
 import javax.inject.Inject;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -13,11 +12,13 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
+import io.jsonwebtoken.Jwts;
+
 @Provider
 @JWTTokenNeeded
 @Priority(Priorities.AUTHENTICATION)
 public class JWTTokenNeededFilter implements ContainerRequestFilter {
-
+	
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
 
@@ -31,10 +32,10 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
 	        try {
 	
 	            // Validate the token
-	            //Key key = keyGenerator.generateKey();
-	            //Jwts.parser().setSigningKey(key).parseClaimsJws(token); *********
-	            //logger.info("#### valid token : " + token); **********
-	            //Ovde treba neka validacija za token fak :(
+	        	SimpleKeyGenerator keyGenerator = new SimpleKeyGenerator();
+	            Key key = keyGenerator.generateKey();
+	            Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+	            //logger.info("#### valid token : " + token);
 	            System.out.println("Validan token: " + token);
 	            return;
 	
