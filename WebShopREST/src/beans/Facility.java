@@ -36,10 +36,10 @@ public class Facility {
 		super();
 	}
 	
-	public String getFacilityTypeId() {
+	public String getFacilityType() {
 		return facilityType;
 	}
-	public void setFacilityTypeId(String facilityType) {
+	public void setFacilityType(String facilityType) {
 		this.facilityType = facilityType;
 	}
 	public List<Integer> getFacilityActivityIds() {
