@@ -57,7 +57,8 @@ public class LoginService {
             String token = issueToken(username);
 
             // Return the token on the response
-            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+            //return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+            return Response.ok().entity("Bearer " + token).build();
 
         } catch (Exception e) {
             return Response.status(UNAUTHORIZED).build();
