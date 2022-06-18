@@ -61,12 +61,11 @@ Vue.component("prijava", {
                 })
                 .then((response) => {
                     alert("uspeo");
-                    alert("nije prazno valjda" + response.headers);
+                    console.log(response.headers.authorization);
                 })
                 .catch(function () {
                     alert("greska");
                 });
-            preventDefault();
         },
     },
 });
