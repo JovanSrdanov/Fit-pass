@@ -40,13 +40,10 @@ public class AuthServiceTest {
 
             jws = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
 			System.out.println(jws.getBody().getSubject());
-			
-			// we can safely trust the JWT
 		}
 		     
-		catch (JwtException ex) {       // (5)
+		catch (JwtException ex) {
 		    
-		    // we *cannot* use the JWT as intended by its creator
 		}
 		
         return Response.ok().entity(message == null ? "no message" : message).build();

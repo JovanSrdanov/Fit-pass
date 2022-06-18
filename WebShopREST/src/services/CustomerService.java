@@ -38,6 +38,7 @@ public class CustomerService {
 	
 	@GET
 	@Path("/")
+	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Customer> getAll() {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
