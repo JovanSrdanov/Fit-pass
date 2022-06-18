@@ -1,0 +1,67 @@
+body {
+    font-family: Helvetica;
+    background-image: linear-gradient(to left, #191654, #43c6ac);
+}
+
+.prostorZatabelu {
+    border-radius: 20px 0px 0px 20px;
+    overflow-y: scroll;
+    background-color: white;
+    width: 800px;
+    height: 500px;
+    padding: 15px !important;
+    border-style: solid;
+    border: 2px solid black;
+}
+tr {
+    cursor: pointer;
+}
+ul {
+    list-style-type: none;
+}
+img {
+    border-radius: 20px;
+}
+
+tbody > tr:nth-child(even) {
+    border-radius: 20px;
+    background-color: lightblue;
+}
+tbody > tr:nth-child(odd) {
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+table {
+    width: 100%;
+    margin: auto;
+    border-spacing: 0;
+}
+
+td:nth-child(odd) {
+    border-radius: 20px 0 0 20px;
+    padding: 10px 0px 10px 10px;
+}
+
+td:nth-child(even) {
+    border-radius: 0px 20px 20px 0px;
+    padding: 10px 10px 10px 0px;
+}
+
+tbody > tr:hover {
+    background-color: #43c6ac;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to top, #191654, #43c6ac);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 100px;
+}

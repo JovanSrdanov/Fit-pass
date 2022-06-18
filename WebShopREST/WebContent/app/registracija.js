@@ -1,7 +1,7 @@
 Vue.component("registracija", {
     data: function () {
         return {
-            userName: "",
+            username: "",
             password: "",
             name: "",
             surname: "",
@@ -15,13 +15,13 @@ Vue.component("registracija", {
     template: ` 
   <div class="centriraj">
             <h1>Registrujte se</h1>
-            <form action="#" method="post">
+        
                 <p>Korisničko ime:</p>
                 <input required
-                v-model="userName"
+                v-model="username"
                     type="text"
-                    name="userName"
-                    id="userName"
+                    name="username"
+                    id="username"
                     placeholder="Korisničko ime"
                 />
 
@@ -64,8 +64,8 @@ Vue.component("registracija", {
 
                 <p>Pol:</p>
                 <select name="gender" id="gender"  v-model="gender">
-                    <option  selected="selected" value="Muški">Muški</option>
-                    <option value="Ženski">Ženski</option>
+                    <option  selected="selected" value="male">Muški</option>
+                    <option value="female">Ženski</option>
                 </select>
 
                 <p>Datum rođenja:</p>
@@ -73,80 +73,66 @@ Vue.component("registracija", {
                  required/>
                  <br />
                  <br />
-                <input type="submit" value="Registruj se" v-on:click="RegisterCustomer" >
-              
-            </form>
-          <button v-on:click="proba">Proba </button>
+     <button v-on:click="RegisterCustomer">Registruj se </button>
+
         </div>       
    `,
 
-    mounted() {
-        axios
-            .get("rest/testlogin")
-            .then((response) => {})
-            .catch(function (error) {});
-    },
+    mounted() {},
     methods: {
-        proba: function () {
-            localStorage.setItem("token", "neki token");
-            alert(localStorage.getItem("token"));
-        },
-
         RegisterCustomer: function () {
             axios
-                .post("rest/customers/reg", {
-                    /*username: this.userName,
-                    password: this.password,
-                    name: this.name,
-                    surname: this.surname,
-                    birthDate: this.dateOfBirth,
-                    gender: this.gender,*/
-                    id: -1,
-                    username: "strale15",
-                    password: "cip11",
-                    name: "Pizdac2",
-                    surname: "Erakovic",
-                    gender: "male",
-                    birthDate: this.dateOfBirth,
-                    role: "customer",
-                    membershipId: -1,
-                    points: 69,
-                    deleted: false,
-                })
-                .then((response) => {
-                    alert("Successful customer registration!");
-                    if (this.role === "CUSTOMER") {
-                        axios
-                            .post("rest/login", {
-                                userName: this.userName,
-                                password: this.password,
-                            })
-                            .then((response) => {
-                                if (
-                                    response.data ==
-                                    "YOUR ACCOUNT DOES NOT EXIST IN THE SYSTEM, PLEASE REGISTER!"
-                                ) {
-                                    alert(
-                                        "Err: YOUR ACCOUNT DOES NOT EXIST IN THE SYSTEM, PLEASE REGISTER"
-                                    );
-                                } else {
-                                    alert("Successful user login!");
-                                    window.location.href = "/";
-                                }
-                            })
-                            .catch(() => {
-                                alert(
-                                    "Login for users is temporary unavailable"
-                                );
-                                window.location.href = "/";
-                            });
+                .post(
+                    "rest/customers/reg",
+                    {
+                        id: -1,
+                        username: this.username,
+                        password: this.password,
+                        name: this.name,
+                        surname: this.surname,
+                        gender: this.gender,
+                        birthDate: this.dateOfBirth,
+                        role: "customer",
+                        membershipId: -1,
+                        points: 0,
+                        deleted: false,
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
                     }
+                )
+                .then((response) => {
+                    const params = new URLSearchParams();
+                    params.append("username", this.username);
+                    params.append("password", this.password);
+                    axios
+                        .post("rest/login/token", params, {
+                            headers: {
+                                "Content-Type":
+                                    "application/x-www-form-urlencoded",
+                            },
+                        })
+                        .then((response) => {
+                            localStorage.setItem(
+                                "token",
+                                response.headers.authorization
+                            );
+                            window.location.href = "#/pocetna";
+                        })
+                        .catch(function (error) {
+                            if (error.response.status === 401) {
+                                console.log("unauthorised");
+                            }
+
+                            $("#poruka").show();
+                        });
                 })
-                .catch(() => {
+                .catch(function (error) {
                     alert(
-                        "Registration for customers is temporary unavailable!"
+                        "Vec postoji ovaj korisnik sa ovim korisnickim imenom"
                     );
-                    window.location.href = "/";
                 });
         },
     },

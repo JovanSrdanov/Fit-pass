@@ -5,10 +5,10 @@ const pocetna = { template: "<pocetna></pocetna>" };
 const router = new VueRouter({
     mode: "hash",
     routes: [
-        { path: "/", component: prijava },
+        { path: "/pocetna", component: pocetna },
+        { path: "/", component: pocetna },
         { path: "/registracija", component: registracija },
         { path: "/prijava", component: prijava },
-        { path: "/pocetna", component: pocetna },
     ],
 });
 var app = new Vue({

@@ -61,6 +61,8 @@ public class CustomerService {
 	public Response addNew(Customer customer) {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
 		
+		System.out.println(customer.getName());
+		
 		for(Customer cust : dao.getAll()) {
 			if(cust.getUsername().equals(customer.getUsername())) {
 				return Response.status(409).build();
