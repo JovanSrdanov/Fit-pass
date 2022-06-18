@@ -60,6 +60,14 @@ public class Location {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public void update(Location updatedLocation) {
+		this.id = updatedLocation.id;
+		this.isDeleted = updatedLocation.isDeleted;
+		this.latitude = updatedLocation.latitude;
+		this.longitude = updatedLocation.longitude;
+		this.address = updatedLocation.address;
+	}
 	
 	
 }

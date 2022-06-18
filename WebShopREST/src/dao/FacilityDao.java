@@ -3,12 +3,11 @@ package dao;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import beans.Facility;
-import beans.Facility;
+import dto.FacilityDto;
 
 public class FacilityDao {
 	private static HashMap<Integer, Facility> facilitys;
@@ -29,6 +28,16 @@ public class FacilityDao {
 	
 	public Collection<Facility> getAll() {
 		return facilitys.values();
+	}
+	
+	public Collection<FacilityDto> getAllTable() {
+		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
+		for(Facility facility : facilitys.values()) {
+			facilityTables.add(new FacilityDto(facility));
+		}
+		
+		return facilityTables;
+		
 	}
 	
 	public Facility getById(int id) {
