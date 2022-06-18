@@ -3,7 +3,21 @@ body {
     display: grid;
     place-items: center;
     background-image: linear-gradient(to left, #191654, #43c6ac);
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Helvetica;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to top, #191654, #43c6ac);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 100px;
 }
 
 input[type="submit"]:hover {
@@ -66,75 +80,73 @@ input[type="submit"]:hover {
     float: left;
 }
 
-
-
 .semipolar-spinner,
 .semipolar-spinner * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .semipolar-spinner {
-  height: 40px;
-  width: 40px;
-  position: relative;
+    height: 40px;
+    width: 40px;
+    position: relative;
 }
 
 .semipolar-spinner .ring {
-  border-radius: 50%;
-  position: absolute;
-  border: calc(40px * 0.05) solid transparent;
-  border-top-color: #43c6ac;
-  border-left-color: #43c6ac;
-  animation: semipolar-spinner-animation 2s infinite;
+    border-radius: 50%;
+    position: absolute;
+    border: calc(40px * 0.05) solid transparent;
+    border-top-color: #43c6ac;
+    border-left-color: #43c6ac;
+    animation: semipolar-spinner-animation 2s infinite;
 }
 
 .semipolar-spinner .ring:nth-child(1) {
-  height: calc(40px - 40px * 0.2 * 0);
-  width: calc(40px - 40px * 0.2 * 0);
-  top: calc(40px * 0.1 * 0);
-  left: calc(40px * 0.1 * 0);
-  animation-delay: calc(2000ms * 0.1 * 4);
-  z-index: 5;
+    height: calc(40px - 40px * 0.2 * 0);
+    width: calc(40px - 40px * 0.2 * 0);
+    top: calc(40px * 0.1 * 0);
+    left: calc(40px * 0.1 * 0);
+    animation-delay: calc(2000ms * 0.1 * 4);
+    z-index: 5;
 }
 
 .semipolar-spinner .ring:nth-child(2) {
-  height: calc(40px - 40px * 0.2 * 1);
-  width: calc(40px - 40px * 0.2 * 1);
-  top: calc(40px * 0.1 * 1);
-  left: calc(40px * 0.1 * 1);
-  animation-delay: calc(2000ms * 0.1 * 3);
-  z-index: 4;
+    height: calc(40px - 40px * 0.2 * 1);
+    width: calc(40px - 40px * 0.2 * 1);
+    top: calc(40px * 0.1 * 1);
+    left: calc(40px * 0.1 * 1);
+    animation-delay: calc(2000ms * 0.1 * 3);
+    z-index: 4;
 }
 
 .semipolar-spinner .ring:nth-child(3) {
-  height: calc(40px - 40px * 0.2 * 2);
-  width: calc(40px - 40px * 0.2 * 2);
-  top: calc(40px * 0.1 * 2);
-  left: calc(40px * 0.1 * 2);
-  animation-delay: calc(2000ms * 0.1 * 2);
-  z-index: 3;
+    height: calc(40px - 40px * 0.2 * 2);
+    width: calc(40px - 40px * 0.2 * 2);
+    top: calc(40px * 0.1 * 2);
+    left: calc(40px * 0.1 * 2);
+    animation-delay: calc(2000ms * 0.1 * 2);
+    z-index: 3;
 }
 
 .semipolar-spinner .ring:nth-child(4) {
-  height: calc(40px - 40px * 0.2 * 3);
-  width: calc(40px - 40px * 0.2 * 3);
-  top: calc(40px * 0.1 * 3);
-  left: calc(40px * 0.1 * 3);
-  animation-delay: calc(2000ms * 0.1 * 1);
-  z-index: 2;
+    height: calc(40px - 40px * 0.2 * 3);
+    width: calc(40px - 40px * 0.2 * 3);
+    top: calc(40px * 0.1 * 3);
+    left: calc(40px * 0.1 * 3);
+    animation-delay: calc(2000ms * 0.1 * 1);
+    z-index: 2;
 }
 
 .semipolar-spinner .ring:nth-child(5) {
-  height: calc(40px - 40px * 0.2 * 4);
-  width: calc(40px - 40px * 0.2 * 4);
-  top: calc(40px * 0.1 * 4);
-  left: calc(40px * 0.1 * 4);
-  animation-delay: calc(2000ms * 0.1 * 0);
-  z-index: 1;
+    height: calc(40px - 40px * 0.2 * 4);
+    width: calc(40px - 40px * 0.2 * 4);
+    top: calc(40px * 0.1 * 4);
+    left: calc(40px * 0.1 * 4);
+    animation-delay: calc(2000ms * 0.1 * 0);
+    z-index: 1;
 }
 
 @keyframes semipolar-spinner-animation {
-  50% {
-    transform: rotate(360deg) scale(0.7);
-  }
+    50% {
+        transform: rotate(360deg) scale(0.7);
+    }
 }
