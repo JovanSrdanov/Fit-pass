@@ -2,9 +2,9 @@ package services;
 
 import java.security.Key;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
-import javax.crypto.KeyGenerator;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -12,6 +12,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -38,7 +39,10 @@ import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LoginService {
-
+	
+	@Context
+    private UriInfo uriInfo;
+	
     @POST
     @Path("/token")
     @Consumes(APPLICATION_FORM_URLENCODED)
@@ -61,15 +65,19 @@ public class LoginService {
     }
 
     private String issueToken(String username) {
-        /*Key key = keyGenerator.generateKey();
+    	SimpleKeyGenerator keyGenerator = new SimpleKeyGenerator();
+        Key key = keyGenerator.generateKey();
         String jwtToken = Jwts.builder()
                 .setSubject(username)
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
                 .signWith(SignatureAlgorithm.HS512, key)
-                .compact();*/
-        String jwtToken = username + "###69###";
+                .compact();
         return jwtToken;
+    }
+    
+    private Date toDate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 }
