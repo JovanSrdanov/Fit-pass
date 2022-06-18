@@ -52,6 +52,9 @@ public class LoginService {
 
             // Authenticate the user using the credentials provided
             //authenticate(username, password);
+        	if(!username.equals("user") || !password.equals("pass")) {
+        		return Response.status(Response.Status.UNAUTHORIZED).build();
+        	}
 
             // Issue a token for the user
             String token = issueToken(username);
