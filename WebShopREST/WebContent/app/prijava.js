@@ -3,7 +3,6 @@ Vue.component("prijava", {
         return {
             username: "",
             password: "",
-            allFilled: "OK",
         };
     },
     template: `
@@ -42,7 +41,10 @@ Vue.component("prijava", {
                         <br />
                         <br />
                             
-                        <button v-on:click="Login">PREKO login FUNKCIJE</button>
+                        <button v-on:click="Login" >PREKO login FUNKCIJE</button>
+
+                        <p id="poruka" hidden >Ne postoji korisnik sa tom sifrom</p>
+                        
                
               
             </div>
@@ -60,15 +62,18 @@ Vue.component("prijava", {
                     },
                 })
                 .then((response) => {
-                    alert("uspeo");
                     localStorage.setItem(
                         "token",
                         response.headers.authorization
                     );
-                    console.log(response.headers.authorization);
+                    window.location.href = "#/pocetna";
                 })
-                .catch(function () {
-                    alert("NE POSTOJI KORISNIK");
+                .catch(function (error) {
+                    if (error.response.status === 401) {
+                        console.log("unauthorised");
+                    }
+
+                    $("#poruka").show();
                 });
         },
     },
