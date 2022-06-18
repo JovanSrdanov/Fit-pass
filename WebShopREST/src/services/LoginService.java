@@ -1,38 +1,30 @@
 package services;
 
+import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
+import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
+import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
+
 import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import javax.inject.Inject;
+import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import beans.Customer;
+import dao.CustomerDao;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.ServletContext;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-
-import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
-import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.Response.Status.NOT_FOUND;
-import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 
 
 @Path("/login")
@@ -43,6 +35,21 @@ public class LoginService {
 	@Context
     private UriInfo uriInfo;
 	
+	@Context
+	ServletContext ctx;
+	
+	public LoginService() {
+		
+	}
+	
+	@PostConstruct
+	public void init() {
+		if (ctx.getAttribute("CustomerDao") == null) {
+	    	//String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("CustomerDao", new CustomerDao());
+		}
+	}
+	
     @POST
     @Path("/token")
     @Consumes(APPLICATION_FORM_URLENCODED)
@@ -50,10 +57,22 @@ public class LoginService {
                                      @FormParam("password") String password) {
    
         try {
-         	System.out.println(username + " " + password);
+         	//System.out.println(username + " " + password);
             // Authenticate the user using the credentials provided
             //authenticate(username, password);
-        	if(!username.equals("user") || !password.equals("pass")) {
+        	/*if(!username.equals("user") || !password.equals("pass")) {
+        		return Response.status(Response.Status.UNAUTHORIZED).build();
+        	}*/
+        	CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+        	boolean naso = false;
+        	for(Customer cust : dao.getAll()) {
+        		if(cust.getUsername().equals(username) && cust.getPassword().equals(password)) {
+        			naso = true;
+        			break;
+        		}
+        	}
+        	
+        	if(!naso) {
         		return Response.status(Response.Status.UNAUTHORIZED).build();
         	}
 

@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import beans.Customer;
 import beans.Product;
@@ -38,7 +40,6 @@ public class CustomerService {
 	
 	@GET
 	@Path("/")
-	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Customer> getAll() {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
@@ -54,12 +55,19 @@ public class CustomerService {
 	}
 	
 	@POST
-	@Path("/reg/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Customer addNew(Customer customer) {
+	@Path("/reg")
+	//@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response addNew(Customer customer) {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
-		System.out.println(customer.getBirthDate());
-		return dao.addNew(customer);
+		
+		for(Customer cust : dao.getAll()) {
+			if(cust.getUsername().equals(customer.getUsername())) {
+				return Response.status(409).build();
+			}
+		}
+		dao.addNew(customer);
+		return Response.ok().build();
 	}
 	
 	@DELETE
