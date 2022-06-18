@@ -12,9 +12,10 @@ Vue.component("prijava", {
                 <h1>Prijavite se</h1>
 
              
-
+                
                     <p>Korisničko ime:</p>
                     <input
+                     v-model="username"
                         type="text"
                         name="username"
                         id="username"
@@ -22,49 +23,48 @@ Vue.component("prijava", {
                     />
                     <p>Lozinka:</p>
                     <input
+                    v-model="password"
                         type="password"
                         name="password"
                         id="password"
                         placeholder="Lozinka"
                     />
                     <br />                     
-                                    <input
-                                        class="checkbox"
-                                        type="checkbox"
-                                        id="showPassword"
-                                        onclick="myFunction() "
-                                    />
-                                
-                                    <label for="checkbox"> Prikaz lozinke </label>
-                                       <br />
-                                      <br />
-                                    <button v-on:click="Login">Prijavi se</button>
-                                
-                </form>
+                    <input
+                    
+                        class="checkbox"
+                        type="checkbox"
+                        id="showPassword"
+                        onclick="myFunction() "
+                    />
+                
+                    <label for="checkbox"> Prikaz lozinke </label>
+                        <br />
+                        <br />
+                            
+                        <button v-on:click="Login">PREKO login FUNKCIJE</button>
+               
               
             </div>
         </div>`,
 
     methods: {
         Login: function () {
+            const params = new URLSearchParams();
+            params.append("username", this.username);
+            params.append("password", this.password);
             axios
-                .post(
-                    "rest/login/token",
-                    { username: this.username, password: this.password },
-                    {
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                    }
-                )
+                .post("rest/login/token", params, {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                })
                 .then((response) => {
                     alert("uspeo");
-                    alert(response.data);
-                    alert(response.headers);
+                    console.log(response.headers.authorization);
                 })
-                .catch(function (error) {
+                .catch(function () {
                     alert("greska");
-                    alert(error.data);
                 });
         },
     },

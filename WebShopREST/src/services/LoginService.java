@@ -48,8 +48,9 @@ public class LoginService {
     @Consumes(APPLICATION_FORM_URLENCODED)
     public Response authenticateUser(@FormParam("username") String username,
                                      @FormParam("password") String password) {
+   
         try {
-
+         	System.out.println(username + " " + password);
             // Authenticate the user using the credentials provided
             //authenticate(username, password);
         	if(!username.equals("user") || !password.equals("pass")) {
@@ -64,6 +65,7 @@ public class LoginService {
             return Response.ok().entity("Bearer " + token).build();
 
         } catch (Exception e) {
+        	System.out.println(e);
             return Response.status(UNAUTHORIZED).build();
         }
     }
