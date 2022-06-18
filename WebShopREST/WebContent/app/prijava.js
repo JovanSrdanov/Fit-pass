@@ -1,7 +1,7 @@
 Vue.component("prijava", {
     data: function () {
         return {
-            userName: "",
+            username: "",
             password: "",
             allFilled: "OK",
         };
@@ -10,19 +10,21 @@ Vue.component("prijava", {
    <div class="centriraj">
             <div class="LoginDeo">
                 <h1>Prijavite se</h1>
-                <form action="Pocetna.html" method="post">
+
+             
+
                     <p>Korisničko ime:</p>
                     <input
                         type="text"
-                        name="korisnickoIme"
-                        id="korisnickoIme"
+                        name="username"
+                        id="username"
                         placeholder="Korisničko ime"
                     />
                     <p>Lozinka:</p>
                     <input
                         type="password"
-                        name="lozinka"
-                        id="lozinka"
+                        name="password"
+                        id="password"
                         placeholder="Lozinka"
                     />
                     <br />                     
@@ -36,17 +38,34 @@ Vue.component("prijava", {
                                     <label for="checkbox"> Prikaz lozinke </label>
                                        <br />
                                       <br />
-                                      <input type="submit" value="Prijavi se" >
+                                    <button v-on:click="Login">Prijavi se</button>
                                 
                 </form>
-                <button v-on:click="proba">Proba </button>
+              
             </div>
         </div>`,
+
     methods: {
-        proba: function () {
-            localStorage.removeItem("token");
-            let token = localStorage.getItem("token");
-            alert(token);
+        Login: function () {
+            axios
+                .post(
+                    "rest/login/token",
+                    { username: this.username, password: this.password },
+                    {
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                    }
+                )
+                .then((response) => {
+                    alert("uspeo");
+                    alert(response.data);
+                    alert(response.headers);
+                })
+                .catch(function (error) {
+                    alert("greska");
+                    alert(error.data);
+                });
         },
     },
 });
