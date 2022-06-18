@@ -48,9 +48,9 @@ public class LoginService {
     @Consumes(APPLICATION_FORM_URLENCODED)
     public Response authenticateUser(@FormParam("username") String username,
                                      @FormParam("password") String password) {
-    	System.out.println(username + " " + password);
+   
         try {
-
+         	System.out.println(username + " " + password);
             // Authenticate the user using the credentials provided
             //authenticate(username, password);
 

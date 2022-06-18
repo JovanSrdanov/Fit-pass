@@ -12,7 +12,7 @@ Vue.component("prijava", {
                 <h1>Prijavite se</h1>
 
              
-                <form >
+                
                     <p>Korisničko ime:</p>
                     <input
                      v-model="username"
@@ -41,11 +41,9 @@ Vue.component("prijava", {
                     <label for="checkbox"> Prikaz lozinke </label>
                         <br />
                         <br />
-                       
-                                   
-                                
+                            
                         <button v-on:click="Login">PREKO login FUNKCIJE</button>
-                </form>
+               
               
             </div>
         </div>`,
@@ -61,8 +59,9 @@ Vue.component("prijava", {
                         "Content-Type": "application/x-www-form-urlencoded",
                     },
                 })
-                .then(() => {
+                .then((response) => {
                     alert("uspeo");
+                    alert("nije prazno valjda" + response.headers);
                 })
                 .catch(function () {
                     alert("greska");
