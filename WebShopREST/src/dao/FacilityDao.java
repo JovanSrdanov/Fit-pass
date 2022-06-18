@@ -21,7 +21,7 @@ public class FacilityDao {
 		List<Integer> facilityActivityIds = new ArrayList<Integer>();
 		facilityActivityIds.add(1);
 		facilityActivityIds.add(2);
-		facilitys.put(1, new Facility(1, false,"Red Gym", 1, facilityActivityIds,
+		facilitys.put(1, new Facility(1, false,"Red Gym", "Teretana", facilityActivityIds,
 			true, 1, "slika.png", 69, LocalTime.now(), LocalTime.now()));
 		
 	}

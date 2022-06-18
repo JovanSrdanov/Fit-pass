@@ -8,7 +8,7 @@ public class Facility {
 	private int id;
 	private boolean isDeleted;
 	private String name;
-	private int facilityTypeId;
+	private String facilityType;
 	private List<Integer> facilityActivityIds;
 	private boolean status;
 	private int locationId;
@@ -17,13 +17,13 @@ public class Facility {
 	private LocalTime workStart;
 	private LocalTime workEnd;
 	
-	public Facility(int id, boolean isDeleted, String name, int facilityTypeId, List<Integer> facilityActivityIds,
+	public Facility(int id, boolean isDeleted, String name, String facilityType, List<Integer> facilityActivityIds,
 			boolean status, int locationId, String logo, int rating, LocalTime workStart, LocalTime workEnd) {
 		super();
 		this.id = id;
 		this.isDeleted = isDeleted;
 		this.name = name;
-		this.facilityTypeId = facilityTypeId;
+		this.facilityType = facilityType;
 		this.facilityActivityIds = facilityActivityIds;
 		this.status = status;
 		this.locationId = locationId;
@@ -36,11 +36,11 @@ public class Facility {
 		super();
 	}
 	
-	public int getFacilityTypeId() {
-		return facilityTypeId;
+	public String getFacilityTypeId() {
+		return facilityType;
 	}
-	public void setFacilityTypeId(int facilityTypeId) {
-		this.facilityTypeId = facilityTypeId;
+	public void setFacilityTypeId(String facilityType) {
+		this.facilityType = facilityType;
 	}
 	public List<Integer> getFacilityActivityIds() {
 		return facilityActivityIds;
@@ -106,7 +106,7 @@ public class Facility {
 		this.id = updatedFacility.id;
 		this.isDeleted = updatedFacility.isDeleted;
 		this.name = updatedFacility.name;
-		this.facilityTypeId = updatedFacility.facilityTypeId;
+		this.facilityType = updatedFacility.facilityType;
 		this.facilityActivityIds = updatedFacility.facilityActivityIds;
 		this.status = updatedFacility.status;
 		this.locationId = updatedFacility.locationId;

@@ -13,7 +13,6 @@ import dao.*;
 public class FacilityDto {
 	private Facility facility;
 	private Location location;
-	private FacilityType type;
 	private List<FacilityActivity> activitys;
 	
 	public FacilityDto() {
@@ -21,11 +20,10 @@ public class FacilityDto {
 	}
 
 	
-	public FacilityDto(Facility facility, Location location, FacilityType type, List<FacilityActivity> activitys) {
+	public FacilityDto(Facility facility, Location location, List<FacilityActivity> activitys) {
 		super();
 		this.facility = facility;
 		this.location = location;
-		this.type = type;
 		this.activitys = activitys;
 	}
 	
@@ -48,21 +46,9 @@ public class FacilityDto {
 		this.location = location;
 	}
 
-
-	public FacilityType getType() {
-		return type;
-	}
-
-
-	public void setType(FacilityType type) {
-		this.type = type;
-	}
-
-
 	public List<FacilityActivity> getActivitys() {
 		return activitys;
 	}
-
 
 	public void setActivitys(List<FacilityActivity> activitys) {
 		this.activitys = activitys;
@@ -82,6 +68,5 @@ public class FacilityDto {
 			activitys.add(facilityActivityDao.getById(id));
 		}
 		
-		this.type = null;
 	}
 }
