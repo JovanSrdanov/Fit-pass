@@ -31,6 +31,12 @@ public class FacilityActivity {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public void update(FacilityActivity updatedFacilityActivity) {
+		this.id = updatedFacilityActivity.id;
+		this.isDeleted = updatedFacilityActivity.isDeleted;
+		this.name = updatedFacilityActivity.name;
+		
+	}
 	
 	
 }

@@ -72,13 +72,13 @@ public class Facility {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	public Date getWorkStart() {
+	public LocalTime getWorkStart() {
 		return workStart;
 	}
 	public void setWorkStart(LocalTime workStart) {
 		this.workStart = workStart;
 	}
-	public Date getWorkEnd() {
+	public LocalTime getWorkEnd() {
 		return workEnd;
 	}
 	public void setWorkEnd(LocalTime workEnd) {
