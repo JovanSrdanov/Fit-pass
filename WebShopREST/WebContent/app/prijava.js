@@ -61,10 +61,14 @@ Vue.component("prijava", {
                 })
                 .then((response) => {
                     alert("uspeo");
+                    localStorage.setItem(
+                        "token",
+                        response.headers.authorization
+                    );
                     console.log(response.headers.authorization);
                 })
                 .catch(function () {
-                    alert("greska");
+                    alert("NE POSTOJI KORISNIK");
                 });
         },
     },
