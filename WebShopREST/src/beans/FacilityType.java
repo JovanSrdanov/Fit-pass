@@ -1,18 +1,15 @@
 package beans;
 
-import java.util.ArrayList;
-
 public class FacilityType {
 	private String id;
 	private boolean isDeleted;
 	private String type;
-	private ArrayList<Integer> activityIds;
-	public FacilityType(String id, boolean isDeleted, String type, ArrayList<Integer> activityIds) {
+	
+	public FacilityType(String id, boolean isDeleted, String type) {
 		super();
 		this.id = id;
 		this.isDeleted = isDeleted;
 		this.type = type;
-		this.activityIds = activityIds;
 	}
 	public FacilityType() {
 		super();
@@ -34,12 +31,6 @@ public class FacilityType {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public ArrayList<Integer> getActivityIds() {
-		return activityIds;
-	}
-	public void setActivityIds(ArrayList<Integer> activityIds) {
-		this.activityIds = activityIds;
 	}
 	
 }
