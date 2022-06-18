@@ -24,6 +24,9 @@ public class FacilityDao {
 		facilitys.put(1, new Facility(1, false,"Red Gym", "Teretana", facilityActivityIds,
 			true, 1, "slika.png", 69, LocalTime.now(), LocalTime.now()));
 		
+		facilitys.put(2, new Facility(2, false,"Red Gym2", "Teretanka", facilityActivityIds,
+				true, 1, "slika.png", 69, LocalTime.now(), LocalTime.now()));
+		
 	}
 	
 	public Collection<Facility> getAll() {
