@@ -119,6 +119,7 @@ Vue.component("registracija", {
                                 "token",
                                 response.headers.authorization
                             );
+                            this.$root.VarToken();
                             window.location.href = "#/pocetna";
                         })
                         .catch(function (error) {

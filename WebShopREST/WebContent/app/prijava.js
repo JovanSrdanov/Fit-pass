@@ -66,14 +66,10 @@ Vue.component("prijava", {
                         "token",
                         response.headers.authorization
                     );
-
+                    this.$root.VarToken();
                     window.location.href = "#/pocetna";
                 })
                 .catch(function (error) {
-                    if (error.response.status === 401) {
-                        console.log("unauthorised");
-                    }
-
                     $("#poruka").show();
                 });
         },

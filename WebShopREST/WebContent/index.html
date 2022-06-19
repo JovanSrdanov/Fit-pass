@@ -34,16 +34,32 @@
                     </li>
 
                     <li>
-                        <a href="#/registracija">Registracija </a>
+                        <a
+                            v-if="status=='loggedIn'"
+                            v-on:click="logout"
+                            href="#/"
+                            >Odjavi se</a
+                        >
                     </li>
                     <li>
-                        <a href="#/prijava">Prijava</a>
+                        <a v-if="status=='loggedIn'" href="#/"
+                            >{{loggedInUser.username}}</a
+                        >
                     </li>
                     <li>
-                        <a href="#/">Profil</a>
+                        <a v-if="status=='notLoggedIn'" href="#/registracija"
+                            >Registruj se</a
+                        >
+                    </li>
+                    <li>
+                        <a v-if="status=='notLoggedIn'" href="#/prijava"
+                            >Prijavi se</a
+                        >
                     </li>
                 </ul>
             </div>
+
+            <h1></h1>
 
             <router-view></router-view>
         </div>

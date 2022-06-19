@@ -20,23 +20,33 @@ var app = new Vue({
         loggedInUser: {},
     },
     mounted() {
-        alert("Pokreni stranicu " + localStorage.getItem("token"));
+        this.VarToken();
+    },
+    methods: {
+        VarToken: function () {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .get("rest/customers/info", yourConfig)
+                .then((response) => {
+                    this.loggedInUser = response.data;
+                    this.status = "loggedIn";
+                    this.typeUser = this.loggedInUser.role;
+                })
+                .catch((error) => {
+                    this.loggedInUser = {};
+                    this.status = "notLoggedIn";
+                    this.typeUser = "anonymous";
+                });
+        },
 
-        yourConfig = {
-            headers: {
-                Authorization: localStorage.getItem("token"),
-            },
-        };
-        axios
-            .get("rest/customers/info", yourConfig)
-            .then((response) => {
-                this.loggedInUser = response.data;
-                this.status = "loggedIn";
-                this.typeUser = this.loggedInUser.role;
-                alert(this.loggedInUser.name);
-            })
-            .catch(function (error) {
-                alert("niste ulogovani");
-            });
+        logout: function () {
+            localStorage.removeItem("token");
+            this.VarToken();
+            window.location.href = "#/pocetna";
+        },
     },
 });
