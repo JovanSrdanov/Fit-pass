@@ -41,7 +41,7 @@
       2
     ],
     "status": true,
-    "locationId": 2,
+    "locationId": 3,
     "logo": "FacilityLogo3.png",
     "rating": 5,
     "workStart": "11:00",
@@ -57,7 +57,7 @@
       2
     ],
     "status": true,
-    "locationId": 2,
+    "locationId": 4,
     "logo": "FacilityLogo4.png",
     "rating": 3,
     "workStart": "19:00",
@@ -73,7 +73,7 @@
       2
     ],
     "status": true,
-    "locationId": 2,
+    "locationId": 5,
     "logo": "FacilityLogo5.png",
     "rating": 2,
     "workStart": "09:45",

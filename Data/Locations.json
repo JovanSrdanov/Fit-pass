@@ -4,13 +4,37 @@
     "isDeleted": false,
     "latitude": "100",
     "longitude": "100",
-    "address": "Adresa gas"
+    "address": "Begoradska 34, Novi Sad, 21000"
   },
     "2": {
     "id": 2,
     "isDeleted": false,
     "latitude": "100",
     "longitude": "100",
-    "address": "Novosadska nije"
+    "address": "Novosadska 18, Beograd, 12300"
+  }
+  ,
+    "3": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "100",
+    "longitude": "100",
+    "address": "Frankopanova 72, Kikinda, 22000"
+  }
+  ,
+    "4": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "100",
+    "longitude": "100",
+    "address": "Markova 1, Subotica, 12000"
+  }
+  ,
+    "5": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "100",
+    "longitude": "100",
+    "address": "Marijina 12, Kraljevo, 45000"
   }
 }
