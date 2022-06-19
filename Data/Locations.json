@@ -5,5 +5,12 @@
     "latitude": "100",
     "longitude": "100",
     "address": "Adresa gas"
+  },
+    "2": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "100",
+    "longitude": "100",
+    "address": "Novosadska nije"
   }
 }

@@ -5,7 +5,7 @@ Vue.component("pocetna", {
             name: "",
             facilityType: "",
             locationString: "",
-            rating: 5,
+            rating: 1,
         };
     },
     template: `
@@ -92,7 +92,7 @@ Vue.component("pocetna", {
                                 <li>Tip: {{p.facility.facilityType}}</li>
                                 <li>Adresa: {{p.location.address}}</li>
                                 <li>Prosečna ocena: {{p.facility.rating}}</li>
-                                <li>Radno vreme: {{p.facility.workStart.hour}}:{{p.facility.workStart.minute}} - {{p.facility.workEnd.hour}}:{{p.facility.workEnd.minute}} </li>
+                                <li>Radno vreme: {{p.facility.workStart}} - {{p.facility.workEnd}} </li>
                             </ul>
                         </td>
                     </tr>
@@ -116,17 +116,23 @@ Vue.component("pocetna", {
         },
 
         Search() {
-            alert(
-                this.name +
-                    " sdds" +
-                    this.facilityType +
-                    " " +
-                    this.locationString +
-                    " " +
-                    this.rating
-            );
-
-            // neki axios ovde
+            const params = new URLSearchParams();
+            params.append("name", this.name);
+            params.append("facilityType", this.facilityType);
+            params.append("locationString", this.locationString);
+            params.append("rating", this.rating);
+            axios
+                .post("rest/facilitys/search", params, {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                })
+                .then((response) => {
+                    this.SportFacility = response.data;
+                })
+                .catch((error) => {
+                    alert("Greska u search metodi");
+                });
         },
     },
 });

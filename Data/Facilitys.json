@@ -2,8 +2,8 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "name": "Red Gym",
-    "facilityType": "Teretana",
+    "name": "Red Gym test",
+    "facilityType": "Teretana no",
     "facilityActivityIds": [
       1,
       2
@@ -11,7 +11,7 @@
     "status": true,
     "locationId": 1,
     "logo": "slika.png",
-    "rating": 69,
+    "rating": 2,
     "workStart": "09:00",
     "workEnd": "21:00"
   },
@@ -25,9 +25,9 @@
       2
     ],
     "status": true,
-    "locationId": 1,
+    "locationId": 2,
     "logo": "slika.png",
-    "rating": 69,
+    "rating": 4,
     "workStart": "09:00",
     "workEnd": "21:00"
   }
