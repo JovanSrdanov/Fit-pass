@@ -2,81 +2,81 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "name": "Red Gym test",
-    "facilityType": "Teretana no",
+    "name": "Nogavica",
+    "facilityType": "Fudbalski teren",
     "facilityActivityIds": [
       1,
       2
     ],
     "status": true,
     "locationId": 1,
-    "logo": "slika.png",
-    "rating": 2,
-    "workStart": "09:00",
-    "workEnd": "21:00"
+    "logo": "FacilityLogo1.png",
+    "rating": 4,
+    "workStart": "14:00",
+    "workEnd": "17:00"
   },
   "2": {
     "id": 2,
     "isDeleted": false,
-    "name": "Vezbaonica",
-    "facilityType": "Teretanka",
+    "name": "Plameni podijum",
+    "facilityType": "Kosarkaski teren",
     "facilityActivityIds": [
       1,
       2
     ],
     "status": true,
     "locationId": 2,
-    "logo": "slika.png",
-    "rating": 4,
+    "logo": "FacilityLogo2.png",
+    "rating": 1,
     "workStart": "09:00",
     "workEnd": "21:00"
   },
   "3": {
     "id": 3,
     "isDeleted": false,
-    "name": "Vezbaonica",
-    "facilityType": "Teretanka",
+    "name": "Udarac u prazno",
+    "facilityType": "Bejzbol teren",
     "facilityActivityIds": [
       1,
       2
     ],
     "status": true,
     "locationId": 2,
-    "logo": "slika.png",
-    "rating": 4,
-    "workStart": "09:00",
-    "workEnd": "21:00"
+    "logo": "FacilityLogo3.png",
+    "rating": 5,
+    "workStart": "11:00",
+    "workEnd": "22:00"
   },
   "4": {
     "id": 4,
     "isDeleted": false,
-    "name": "Vezbaonica",
-    "facilityType": "Teretanka",
+    "name": "AquaFresh",
+    "facilityType": "Bazen",
     "facilityActivityIds": [
       1,
       2
     ],
     "status": true,
     "locationId": 2,
-    "logo": "slika.png",
-    "rating": 4,
-    "workStart": "09:00",
+    "logo": "FacilityLogo4.png",
+    "rating": 3,
+    "workStart": "19:00",
     "workEnd": "21:00"
   },
   "5": {
     "id": 5,
     "isDeleted": false,
-    "name": "Vezbaonica",
-    "facilityType": "Teretanka",
+    "name": "GOLD'S GYM",
+    "facilityType": "Teretana",
     "facilityActivityIds": [
       1,
       2
     ],
     "status": true,
     "locationId": 2,
-    "logo": "slika.png",
-    "rating": 4,
-    "workStart": "09:00",
-    "workEnd": "21:00"
+    "logo": "FacilityLogo5.png",
+    "rating": 2,
+    "workStart": "09:45",
+    "workEnd": "21:30"
   }
 }
