@@ -116,4 +116,13 @@ public class CustomerDao {
 		this.customers.remove(id);
 		writeFile();
 	}
+
+	public Customer getByUsername(String username) {
+		for(Customer cust : customers.values()) {
+			if(cust.getUsername().equals(username)) {
+				return cust;
+			}
+		}
+		return null;
+	}
 }

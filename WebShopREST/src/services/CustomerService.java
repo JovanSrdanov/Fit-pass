@@ -1,6 +1,8 @@
 package services;
 
+import java.security.Key;
 import java.util.Collection;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
@@ -12,6 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -19,6 +22,10 @@ import beans.Customer;
 import beans.Product;
 import dao.CustomerDao;
 import dao.ProductDAO;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
 
 @Path("/customers")
 public class CustomerService {
@@ -75,6 +82,34 @@ public class CustomerService {
 	public void getProducts(@PathParam("id") int id) {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
 		dao.removeById(id);
+	}
+	
+	@GET
+	@Path("/info")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Customer getInfo(@Context HttpHeaders headers) {
+		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+		
+		List<String> authHeaders = headers.getRequestHeader(HttpHeaders.AUTHORIZATION);
+		String token = authHeaders.get(0).substring("Bearer".length()).trim();
+		
+		Jws<Claims> jws;
+		String username = "";
+
+		try {
+			SimpleKeyGenerator keyGenerator = new SimpleKeyGenerator();
+	        Key key = keyGenerator.generateKey();
+
+            jws = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+            username = jws.getBody().getSubject();
+		}
+		     
+		catch (JwtException ex) {
+		    
+		}
+		
+		return dao.getByUsername(username);
 	}
 
 }

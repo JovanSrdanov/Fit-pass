@@ -116,17 +116,20 @@ public class FacilityDao {
 			facilityTables.add(new FacilityDto(facility, contextPath));
 		}
 		
+		name = name.toLowerCase();
+		facilityType = facilityType.toLowerCase();
+		locationString = locationString.toLowerCase();
+		
 		ArrayList<FacilityDto> filteredFacilitys = new ArrayList<FacilityDto>();
 		for(FacilityDto facility : facilityTables) {
-			if(facility.getFacility().getName().contains(name) &&
-					facility.getFacility().getFacilityType().contains(facilityType) &&
-					facility.getLocation().getAddress().contains(locationString) &&
+			if(facility.getFacility().getName().toLowerCase().contains(name) &&
+					facility.getFacility().getFacilityType().toLowerCase().contains(facilityType) &&
+					facility.getLocation().getAddress().toLowerCase().contains(locationString) &&
 					facility.getFacility().getRating() >= Integer.parseInt(rating)) {
 				filteredFacilitys.add(facility);
 			}
 		}
-		
-		
+			
 		return filteredFacilitys;
 		
 	}
