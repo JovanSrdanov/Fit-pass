@@ -57,7 +57,6 @@ public class CustomerDao {
 	private void readFile() {
 		
 		File theFile = new File(path + "WebProjekat/Data/Customers.json");
-		System.out.println(theFile.getAbsolutePath());
 		
 		try {
 			FileReader reader = new FileReader(theFile);

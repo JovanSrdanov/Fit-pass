@@ -103,7 +103,6 @@ public class LocationDao {
 	private void readFile() {
 		
 		File theFile = new File(path + "WebProjekat/Data/Locations.json");
-		System.out.println(theFile.getAbsolutePath());
 		
 		try {
 			FileReader reader = new FileReader(theFile);

@@ -105,7 +105,6 @@ public class FacilityActivityDao {
 	private void readFile() {
 		
 		File theFile = new File(path + "WebProjekat/Data/FacilitysActivitys.json");
-		System.out.println(theFile.getAbsolutePath());
 		
 		try {
 			FileReader reader = new FileReader(theFile);
