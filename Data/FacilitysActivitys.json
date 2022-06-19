@@ -1,0 +1,12 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "name": "grupni treninzi"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "name": "pojedinacni treninzi"
+  }
+}

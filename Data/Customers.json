@@ -1,0 +1,28 @@
+{
+  "1": {
+    "membershipId": -1,
+    "points": 0,
+    "id": 1,
+    "isDeleted": false,
+    "username": "strale15",
+    "password": "cip11",
+    "name": "Strahinja",
+    "surname": "Erakovic",
+    "gender": "male",
+    "birthDate": "Jun 19, 2022, 5:27:57 PM",
+    "role": "customer"
+  },
+  "2": {
+    "membershipId": -1,
+    "points": 0,
+    "id": 2,
+    "isDeleted": false,
+    "username": "stralex152",
+    "password": "cipiripi11",
+    "name": "Strahinja",
+    "surname": "Erakovic",
+    "gender": "male",
+    "birthDate": "Jan 1, 2001, 1:00:00 AM",
+    "role": "customer"
+  }
+}

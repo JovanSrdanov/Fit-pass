@@ -1,0 +1,9 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "latitude": "100",
+    "longitude": "100",
+    "address": "Adresa gas"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "name": "Red Gym",
+    "facilityType": "Teretana",
+    "facilityActivityIds": [
+      1,
+      2
+    ],
+    "status": true,
+    "locationId": 1,
+    "logo": "slika.png",
+    "rating": 69,
+    "workStart": "09:00",
+    "workEnd": "21:00"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "name": "Vezbaonica",
+    "facilityType": "Teretanka",
+    "facilityActivityIds": [
+      1,
+      2
+    ],
+    "status": true,
+    "locationId": 1,
+    "logo": "slika.png",
+    "rating": 69,
+    "workStart": "09:00",
+    "workEnd": "21:00"
+  }
+}
