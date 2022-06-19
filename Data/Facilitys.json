@@ -2,8 +2,8 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "name": "Red Gym",
-    "facilityType": "Teretana",
+    "name": "Red Gym test",
+    "facilityType": "Teretana no",
     "facilityActivityIds": [
       1,
       2
