@@ -24,8 +24,16 @@ import dto.FacilityDto;
 public class FacilityDao {
 	private static HashMap<Integer, Facility> facilitys;
 	
+	private String path;
+	
 	public FacilityDao() {
 		//loadFacilitys();
+		//readFile();
+	}
+	
+	public FacilityDao(String path) {
+		String goodPath = path.split(".metadata")[0];
+		this.path = goodPath;
 		readFile();
 	}
 
@@ -43,7 +51,7 @@ public class FacilityDao {
 	}
 	
 	private void writeFile() {
-		File theFile = new File("C:/Faks/Output.txt");
+		File theFile = new File(path + "WebProjekat/Data/Facilitys.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -60,13 +68,7 @@ public class FacilityDao {
 	}
 	
 	private void readFile() {
-		String filePath = new File(".").getAbsolutePath();
-		System.out.println(filePath);
-		
-		
-		System.out.println(System.getProperty("user.dir"));
-		
-		File theFile = new File("C:/Faks/Output.txt");
+		File theFile = new File(path + "WebProjekat/Data/Facilitys.json");
 		
 		try {
 			FileReader reader = new FileReader(theFile);
@@ -88,11 +90,11 @@ public class FacilityDao {
 		return facilitys.values();
 	}
 	
-	public Collection<FacilityDto> getAllTable() {
+	public Collection<FacilityDto> getAllTable(String contextPath) {
 		readFile();
 		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
 		for(Facility facility : facilitys.values()) {
-			facilityTables.add(new FacilityDto(facility));
+			facilityTables.add(new FacilityDto(facility, contextPath));
 		}
 		
 		return facilityTables;

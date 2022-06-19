@@ -22,13 +22,11 @@ public class CustomerDao {
 	private String path;
 	
 	public CustomerDao() {
-		//loadCustomers();
-		//readFile();
 	}
 	
 	public CustomerDao(String path) {
-		//loadCustomers();
-		this.path = path;
+		String goodPath = path.split(".metadata")[0];
+		this.path = goodPath;
 		readFile();
 	}
 	
@@ -40,7 +38,7 @@ public class CustomerDao {
 	}
 	
 	private void writeFile() {
-		File theFile = new File(path + "/Data/Customers.json");
+		File theFile = new File(path + "WebProjekat/Data/Customers.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -58,7 +56,7 @@ public class CustomerDao {
 	
 	private void readFile() {
 		
-		File theFile = new File(path + "/Data/Customers.json");
+		File theFile = new File(path + "WebProjekat/Data/Customers.json");
 		System.out.println(theFile.getAbsolutePath());
 		
 		try {

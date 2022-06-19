@@ -55,14 +55,14 @@ public class FacilityDto {
 	}
 
 
-	public FacilityDto(Facility facility) {
+	public FacilityDto(Facility facility, String contextPath) {
 		super();
 		this.facility = facility;
 		
-		LocationDao locationDao = new LocationDao();
+		LocationDao locationDao = new LocationDao(contextPath);
 		this.location = locationDao.getById(facility.getLocationId());
 		
-		FacilityActivityDao facilityActivityDao = new FacilityActivityDao();
+		FacilityActivityDao facilityActivityDao = new FacilityActivityDao(contextPath);
 		this.activitys = new ArrayList<FacilityActivity>();
 		for(int id : facility.getFacilityActivityIds()) {
 			activitys.add(facilityActivityDao.getById(id));
