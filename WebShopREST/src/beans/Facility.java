@@ -1,7 +1,5 @@
 package beans;
 
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 public class Facility {
@@ -14,11 +12,11 @@ public class Facility {
 	private int locationId;
 	private String logo;
 	private int rating;
-	private LocalTime workStart;
-	private LocalTime workEnd;
+	private String workStart;
+	private String workEnd;
 	
 	public Facility(int id, boolean isDeleted, String name, String facilityType, List<Integer> facilityActivityIds,
-			boolean status, int locationId, String logo, int rating, LocalTime workStart, LocalTime workEnd) {
+			boolean status, int locationId, String logo, int rating, String workStart, String workEnd) {
 		super();
 		this.id = id;
 		this.isDeleted = isDeleted;
@@ -72,16 +70,16 @@ public class Facility {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	public LocalTime getWorkStart() {
+	public String getWorkStart() {
 		return workStart;
 	}
-	public void setWorkStart(LocalTime workStart) {
+	public void setWorkStart(String workStart) {
 		this.workStart = workStart;
 	}
-	public LocalTime getWorkEnd() {
+	public String getWorkEnd() {
 		return workEnd;
 	}
-	public void setWorkEnd(LocalTime workEnd) {
+	public void setWorkEnd(String workEnd) {
 		this.workEnd = workEnd;
 	}
 	public int getId() {

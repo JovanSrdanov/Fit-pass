@@ -1,18 +1,35 @@
 package dao;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import beans.Customer;
+import beans.Facility;
 import beans.Gender;
 import beans.Role;
 
 public class CustomerDao {
 	private static HashMap<Integer, Customer> customers;
+	private String path;
 	
 	public CustomerDao() {
-		loadCustomers();
+		//loadCustomers();
+		//readFile();
+	}
+	
+	public CustomerDao(String path) {
+		//loadCustomers();
+		this.path = path;
+		readFile();
 	}
 	
 	private void loadCustomers() {
@@ -22,7 +39,42 @@ public class CustomerDao {
 				Role.customer, false, 1, -1, 0));
 	}
 	
-	//const sa context path?
+	private void writeFile() {
+		File theFile = new File(path + "/Data/Customers.json");
+		
+		try {
+			FileWriter writer = new FileWriter(theFile);
+			Gson gson = new GsonBuilder()
+					  .setPrettyPrinting()
+					  .create();
+			gson.toJson(customers, writer);
+			writer.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error");
+		}	
+	}
+	
+	private void readFile() {
+		
+		File theFile = new File(path + "/Data/Customers.json");
+		System.out.println(theFile.getAbsolutePath());
+		
+		try {
+			FileReader reader = new FileReader(theFile);
+			Gson gson = new GsonBuilder()
+					  .setPrettyPrinting()
+					  .create();
+			Type type = new TypeToken<HashMap<Integer, Customer>>(){}.getType();
+			customers = gson.fromJson(reader, type);
+			reader.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error2");
+		}
+	}
 	
 	
 	public Collection<Customer> getAll() {
@@ -45,6 +97,7 @@ public class CustomerDao {
 		
 		newCustomer.setId(maxId);
 		customers.put(newCustomer.getId(), newCustomer);
+		writeFile();
 		return newCustomer;
 	}
 	
@@ -56,6 +109,7 @@ public class CustomerDao {
 		}
 		
 		customerToUpdate.update(updatedCustomer);
+		writeFile();
 		return customerToUpdate;
 	}
 	
@@ -63,5 +117,6 @@ public class CustomerDao {
 		
 		//treba logicko
 		this.customers.remove(id);
+		writeFile();
 	}
 }

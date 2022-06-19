@@ -33,8 +33,8 @@ public class CustomerService {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("CustomerDao") == null) {
-	    	//String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("CustomerDao", new CustomerDao());
+	    	String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("CustomerDao", new CustomerDao(contextPath));
 		}
 	}
 	
@@ -56,12 +56,9 @@ public class CustomerService {
 	
 	@POST
 	@Path("/reg")
-	//@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addNew(Customer customer) {
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
-		
-		System.out.println(customer.getName());
 		
 		for(Customer cust : dao.getAll()) {
 			if(cust.getUsername().equals(customer.getUsername())) {
