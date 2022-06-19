@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.ws.rs.FormParam;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -98,6 +101,33 @@ public class FacilityDao {
 		}
 		
 		return facilityTables;
+		
+	}
+	
+	public Collection<FacilityDto> getAllFilter(
+			String contextPath,
+			String name,
+			String facilityType,
+			String locationString,
+			String rating) {
+		readFile();
+		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
+		for(Facility facility : facilitys.values()) {
+			facilityTables.add(new FacilityDto(facility, contextPath));
+		}
+		
+		ArrayList<FacilityDto> filteredFacilitys = new ArrayList<FacilityDto>();
+		for(FacilityDto facility : facilityTables) {
+			if(facility.getFacility().getName().contains(name) &&
+					facility.getFacility().getFacilityType().contains(facilityType) &&
+					facility.getLocation().getAddress().contains(locationString) &&
+					facility.getFacility().getRating() >= Integer.parseInt(rating)) {
+				filteredFacilitys.add(facility);
+			}
+		}
+		
+		
+		return filteredFacilitys;
 		
 	}
 	
