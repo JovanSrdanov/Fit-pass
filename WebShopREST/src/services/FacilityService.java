@@ -4,7 +4,9 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -37,6 +39,17 @@ public class FacilityService {
 	public Collection<FacilityDto> getAll() {
 		FacilityDao dao = (FacilityDao) ctx.getAttribute("FacilityDao");
 		return dao.getAllTable(ctx.getRealPath(""));
+	}
+	
+	@POST
+	@Path("/search")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<FacilityDto> getAllFilter(@FormParam("name") String name,
+												@FormParam("facilityType") String facilityType,
+												@FormParam("locationString") String locationString,
+												@FormParam("rating") String rating) {
+		FacilityDao dao = (FacilityDao) ctx.getAttribute("FacilityDao");
+		return dao.getAllFilter(ctx.getRealPath(""), name, facilityType, locationString, rating);
 	}
 
 }
