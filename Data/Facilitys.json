@@ -30,5 +30,53 @@
     "rating": 4,
     "workStart": "09:00",
     "workEnd": "21:00"
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "name": "Vezbaonica",
+    "facilityType": "Teretanka",
+    "facilityActivityIds": [
+      1,
+      2
+    ],
+    "status": true,
+    "locationId": 2,
+    "logo": "slika.png",
+    "rating": 4,
+    "workStart": "09:00",
+    "workEnd": "21:00"
+  },
+  "4": {
+    "id": 4,
+    "isDeleted": false,
+    "name": "Vezbaonica",
+    "facilityType": "Teretanka",
+    "facilityActivityIds": [
+      1,
+      2
+    ],
+    "status": true,
+    "locationId": 2,
+    "logo": "slika.png",
+    "rating": 4,
+    "workStart": "09:00",
+    "workEnd": "21:00"
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "name": "Vezbaonica",
+    "facilityType": "Teretanka",
+    "facilityActivityIds": [
+      1,
+      2
+    ],
+    "status": true,
+    "locationId": 2,
+    "logo": "slika.png",
+    "rating": 4,
+    "workStart": "09:00",
+    "workEnd": "21:00"
   }
 }
