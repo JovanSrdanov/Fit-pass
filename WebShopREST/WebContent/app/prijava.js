@@ -41,7 +41,7 @@ Vue.component("prijava", {
                         <br />
                         <br />
                             
-                        <button v-on:click="Login" >PREKO login FUNKCIJE</button>
+                        <button v-on:click="Login" >Prijavite se</button>
 
                         <p id="poruka" hidden >Ne postoji korisnik sa tom sifrom</p>
                         

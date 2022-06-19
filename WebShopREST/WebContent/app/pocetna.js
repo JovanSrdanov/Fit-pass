@@ -2,14 +2,77 @@ Vue.component("pocetna", {
     data: function () {
         return {
             SportFacility: {},
+            name: "",
+            facilityType: "",
+            locationString: "",
+            rating: 5,
         };
     },
     template: `
-   <div class="centriraj">
-           
+   <div >
 
-        
-                <h1>Sportski objekti! </h1>
+             
+                <h1>Sportski objekti </h1>
+    <div class="pretragaFiltriranjeSortiranje">
+        <h2>Opcije</h2>
+        <div class="optionsWrapper" >
+            <p>Pretraga:</p>
+            
+                         <input
+                         v-model="name"
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Naziv objekta"
+                        />
+                        
+                            <br/>
+                            <br/>
+                         <input
+                         v-model="facilityType"
+                            type="text"
+                            name="facilityType"
+                            id="facilityType"
+                            placeholder="Tip objekta"
+                        />
+                            <br/>
+                            <br/>
+                         <input
+                         v-model="locationString"
+                            type="text"
+                            name="locationString"
+                            id="locationString"
+                            placeholder="Grad/Država"
+                        />
+                            <br/>
+                           
+                             <p>Prosečna ocena:
+                         <input
+                            min="1" max="5"
+                            v-model="rating"
+                            type="number"
+                            name="rating"
+                            id="rating"/>
+                         </p>
+                             
+                           
+                        <button v-on:click="Search" >Pretraži</button>  
+            
+        </div>
+
+
+         <br/>
+         <br/>
+         <br/>
+           <br/>
+         <br/>
+         <br/>
+        <p>Filtriranje: TBA</p>
+        <p>Sortiranje: TBA</p>
+
+</div>
+
+
  <div class="prostorZatabelu">
             <table>
                 <tbody>
@@ -19,17 +82,17 @@ Vue.component("pocetna", {
                               
                                 v-bind:src="getImgUrl(p.facility.logo)"
                                 alt="LOGO"
-                                height="150"
-                                width="350"
+                                height="200"
+                                width="200"
                             />
                         </td>
                         <td>
                             <ul>
-                                <li>{{p.facility.name}}</li>
+                                <li>Naziv: {{p.facility.name}}</li>
                                 <li>Tip: {{p.facility.facilityType}}</li>
-                                <li>{{p.location.address}}</li>
-                                <li>Prosečna ocena:{{p.facility.rating}}</li>
-                                <li>{{p.facility.workStart.hour}}:{{p.facility.workStart.minute}}</li>
+                                <li>Adresa: {{p.location.address}}</li>
+                                <li>Prosečna ocena: {{p.facility.rating}}</li>
+                                <li>Radno vreme: {{p.facility.workStart.hour}}:{{p.facility.workStart.minute}} - {{p.facility.workEnd.hour}}:{{p.facility.workEnd.minute}} </li>
                             </ul>
                         </td>
                     </tr>
@@ -37,6 +100,7 @@ Vue.component("pocetna", {
                 </tbody>
             </table>
         </div>
+        
                 
             
         </div>`,
@@ -49,6 +113,20 @@ Vue.component("pocetna", {
     methods: {
         getImgUrl(slika) {
             return "FacilityLogo/" + slika;
+        },
+
+        Search() {
+            alert(
+                this.name +
+                    " sdds" +
+                    this.facilityType +
+                    " " +
+                    this.locationString +
+                    " " +
+                    this.rating
+            );
+
+            // neki axios ovde
         },
     },
 });

@@ -1,53 +1,77 @@
-body {
-    font-family: Helvetica;
-    background-image: linear-gradient(to left, #191654, #43c6ac);
-}
-
 .prostorZatabelu {
+    position: absolute;
+    margin-left: auto;
+    margin-right: 100px;
+    left: 0;
+    right: 0;
+
     border-radius: 20px 0px 0px 20px;
     overflow-y: scroll;
-    background-color: white;
+    background-color: lightcyan;
     width: 800px;
-    height: 500px;
+    height: 700px;
     padding: 15px !important;
     border-style: solid;
     border: 2px solid black;
 }
-tr {
+.prostorZatabelu tr {
     cursor: pointer;
 }
-ul {
+.prostorZatabelu ul {
     list-style-type: none;
 }
-img {
-    border-radius: 20px;
-}
 
-tbody > tr:nth-child(even) {
+.prostorZatabelu tbody > tr:nth-child(even) {
     border-radius: 20px;
     background-color: lightblue;
 }
-tbody > tr:nth-child(odd) {
+.prostorZatabelu tbody > tr:nth-child(odd) {
     border-radius: 20px;
     background-color: lightgray;
 }
 
-table {
+.prostorZatabelu table {
     width: 100%;
     margin: auto;
     border-spacing: 0;
 }
 
-td:nth-child(odd) {
+.prostorZatabelu td:nth-child(odd) {
     border-radius: 20px 0 0 20px;
     padding: 10px 0px 10px 10px;
 }
 
-td:nth-child(even) {
+.prostorZatabelu td:nth-child(even) {
+    text-align: left;
+
     border-radius: 0px 20px 20px 0px;
     padding: 10px 10px 10px 0px;
 }
 
-tbody > tr:hover {
+.prostorZatabelu tbody > tr:hover {
     background-color: #43c6ac;
+}
+
+.pretragaFiltriranjeSortiranje {
+    color: white;
+    position: absolute;
+    margin-left: 100px;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 0px 20px 20px 0px;
+    background-color: #191654;
+    width: 500px;
+    height: 700px;
+    border-style: solid;
+    padding: 15px !important;
+    border: 2px solid black;
+}
+
+.optionsWrapper {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+    width: fit-content;
+    border-style: solid;
+    padding: 10px;
 }

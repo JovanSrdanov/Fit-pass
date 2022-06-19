@@ -6,9 +6,9 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <link rel="stylesheet" href="css/prijava.css" type="text/css" />
         <link rel="stylesheet" href="css/index.css" type="text/css" />
+        <link rel="stylesheet" href="css/spinner.css" type="text/css" />
+        <link rel="stylesheet" href="css/prijava.css" type="text/css" />
         <link rel="stylesheet" href="css/pocetnaTabela.css" type="text/css" />
     </head>
     <body>
@@ -16,33 +16,30 @@
             <div id="nav" class="nav">
                 <ul>
                     <li>
-                        <div style="float: left" class="semipolar-spinner" :style="spinnerStyle">
+                        <div
+                            style="float: left"
+                            class="semipolar-spinner"
+                            :style="spinnerStyle"
+                        >
                             <div class="ring"></div>
                             <div class="ring"></div>
                             <div class="ring"></div>
                             <div class="ring"></div>
                             <div class="ring"></div>
-                          </div>
+                        </div>
                     </li>
 
                     <li>
-                        <a style="float: left" href="#/pocetna"
-                            >Početna
-                        </a>
+                        <a style="float: left" href="#/pocetna">Početna </a>
                     </li>
-                      <li>
-                        <a style="float: left" href="#/pocetna"
-                            >Pretraga
-                        </a>
-                    </li>
-                    </li>
+
                     <li>
                         <a href="#/registracija">Registracija </a>
                     </li>
                     <li>
                         <a href="#/prijava">Prijava</a>
                     </li>
-                     <li>
+                    <li>
                         <a href="#/prijava">Profil</a>
                     </li>
                 </ul>
@@ -61,7 +58,7 @@
 
         <script src="app/registracija.js"></script>
         <script src="app/prijava.js"></script>
-         <script src="app/pocetna.js"></script>
+        <script src="app/pocetna.js"></script>
 
         <script src="app/app.js"></script>
     </body>
