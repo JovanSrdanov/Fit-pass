@@ -66,6 +66,7 @@ Vue.component("prijava", {
                         "token",
                         response.headers.authorization
                     );
+
                     window.location.href = "#/pocetna";
                 })
                 .catch(function (error) {

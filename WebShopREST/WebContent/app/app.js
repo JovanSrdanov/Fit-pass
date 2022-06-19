@@ -19,4 +19,24 @@ var app = new Vue({
         typeUser: "anonymous",
         loggedInUser: {},
     },
+    mounted() {
+        alert("Pokreni stranicu " + localStorage.getItem("token"));
+
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
+        axios
+            .get("rest/customers/info", yourConfig)
+            .then((response) => {
+                this.loggedInUser = response.data;
+                this.status = "loggedIn";
+                this.typeUser = this.loggedInUser.role;
+                alert(this.loggedInUser.name);
+            })
+            .catch(function (error) {
+                alert("niste ulogovani");
+            });
+    },
 });
