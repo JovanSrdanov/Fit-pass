@@ -5,7 +5,7 @@ Vue.component("pocetna", {
             name: "",
             facilityType: "",
             locationString: "",
-            rating: 0,
+            rating: 1,
         };
     },
     template: `
@@ -122,7 +122,7 @@ Vue.component("pocetna", {
             params.append("locationString", this.locationString);
             params.append("rating", this.rating);
             axios
-                .post("rest/facility/search", params, {
+                .post("rest/facilitys/search", params, {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
                     },
