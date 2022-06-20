@@ -5,11 +5,13 @@ Vue.component("registracija", {
             password: "",
             name: "",
             surname: "",
-            gender: "Muški",
+            gender: "male",
             dateOfBirth: "1900-01-01",
             role: "CUSTOMER",
             loggedInUser: {},
             userNameUnique: "OK",
+            allDataEntered: true,
+            userExist: false,
         };
     },
     template: ` 
@@ -75,12 +77,27 @@ Vue.component("registracija", {
                  <br />
      <button v-on:click="RegisterCustomer">Registruj se </button>
 
+                        <p v-if="!allDataEntered" >Niste uneli sve podatke</p>
+                        <p v-if="userExist" >Već postoji korisnik sa ovim korisničkim imenom</p>
+
         </div>       
    `,
 
     mounted() {},
     methods: {
         RegisterCustomer: function () {
+            this.allDataEntered = true;
+            this.userExist = false;
+            if (
+                this.username === "" ||
+                this.password === "" ||
+                this.name === "" ||
+                this.surname === ""
+            ) {
+                this.allDataEntered = false;
+                return;
+            }
+
             axios
                 .post(
                     "rest/customers/reg",
@@ -122,18 +139,14 @@ Vue.component("registracija", {
                             this.$root.VarToken();
                             window.location.href = "#/pocetna";
                         })
-                        .catch(function (error) {
+                        .catch((error) => {
                             if (error.response.status === 401) {
                                 console.log("unauthorised");
                             }
-
-                            $("#poruka").show();
                         });
                 })
-                .catch(function (error) {
-                    alert(
-                        "Vec postoji ovaj korisnik sa ovim korisnickim imenom"
-                    );
+                .catch((error) => {
+                    this.userExist = true;
                 });
         },
     },
