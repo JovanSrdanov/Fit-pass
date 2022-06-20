@@ -3,6 +3,8 @@ Vue.component("prijava", {
         return {
             username: "",
             password: "",
+            allDataEntered: true,
+            userExist: false,
         };
     },
     template: `
@@ -43,7 +45,8 @@ Vue.component("prijava", {
                             
                         <button v-on:click="Login" >Prijavite se</button>
 
-                        <p id="poruka" hidden >Ne postoji korisnik sa tom sifrom</p>
+                        <p v-if="!allDataEntered" >Niste uneli sve podatke</p>
+                        <p v-if="userExist" >Ne postoji korisnik sa tom sifrom</p>
                         
                
               
@@ -52,6 +55,13 @@ Vue.component("prijava", {
 
     methods: {
         Login: function () {
+            this.allDataEntered = true;
+            this.userExist = false;
+            if (this.username === "" || this.password === "") {
+                this.allDataEntered = false;
+                return;
+            }
+
             const params = new URLSearchParams();
             params.append("username", this.username);
             params.append("password", this.password);
@@ -69,8 +79,8 @@ Vue.component("prijava", {
                     this.$root.VarToken();
                     window.location.href = "#/pocetna";
                 })
-                .catch(function (error) {
-                    $("#poruka").show();
+                .catch((error) => {
+                    this.userExist = true;
                 });
         },
     },
