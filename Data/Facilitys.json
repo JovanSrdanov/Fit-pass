@@ -43,7 +43,7 @@
     "status": true,
     "locationId": 3,
     "logo": "FacilityLogo3.png",
-    "rating": 5,
+    "rating": 2,
     "workStart": "11:00",
     "workEnd": "22:00"
   },
@@ -60,8 +60,8 @@
     "locationId": 4,
     "logo": "FacilityLogo4.png",
     "rating": 3,
-    "workStart": "19:00",
-    "workEnd": "21:00"
+    "workStart": "02:00",
+    "workEnd": "14:00"
   },
   "5": {
     "id": 5,
@@ -75,8 +75,8 @@
     "status": true,
     "locationId": 5,
     "logo": "FacilityLogo5.png",
-    "rating": 2,
-    "workStart": "09:45",
-    "workEnd": "21:30"
+    "rating": 5,
+    "workStart": "02:30",
+    "workEnd": "10:30"
   }
 }

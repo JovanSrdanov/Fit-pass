@@ -100,8 +100,29 @@ public class FacilityDao {
 			facilityTables.add(new FacilityDto(facility, contextPath));
 		}
 		
-		return facilityTables;
+		return sortByWorkingHours(facilityTables);
 		
+	}
+	
+	public Collection<FacilityDto> sortByWorkingHours(ArrayList<FacilityDto> facilitys) {
+		ArrayList<FacilityDto> openFacilitys = new ArrayList<FacilityDto>();
+		ArrayList<FacilityDto> closedFacilitys = new ArrayList<FacilityDto>();
+		
+		for(FacilityDto facility : facilitys) {
+			LocalTime workStart = LocalTime.parse(facility.getFacility().getWorkStart() + ":00");
+			LocalTime workEnd = LocalTime.parse(facility.getFacility().getWorkEnd() + ":00");
+			LocalTime now = LocalTime.now().plusSeconds(5);
+			if(now.compareTo(workStart) > 0 && now.compareTo(workEnd) < 0) {
+				openFacilitys.add(facility);
+			}
+			else {
+				closedFacilitys.add(facility);
+			}
+		}
+		
+		ArrayList<FacilityDto> sortedFacilitys = new ArrayList<FacilityDto>(openFacilitys);
+		sortedFacilitys.addAll(closedFacilitys);
+		return sortedFacilitys;
 	}
 	
 	public Collection<FacilityDto> getAllFilter(
@@ -130,7 +151,7 @@ public class FacilityDao {
 			}
 		}
 			
-		return filteredFacilitys;
+		return sortByWorkingHours(filteredFacilitys);
 		
 	}
 	
