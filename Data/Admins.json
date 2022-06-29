@@ -1,0 +1,24 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "username": "admin1",
+    "password": "ftn",
+    "name": "James",
+    "surname": "Charles",
+    "gender": "male",
+    "birthDate": "Jun 19, 1999, 5:27:57 PM",
+    "role": "admin"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "username": "admin2",
+    "password": "ftn",
+    "name": "Kanye",
+    "surname": "West",
+    "gender": "male",
+    "birthDate": "Jan 1, 1986, 1:00:00 AM",
+    "role": "admin"
+  }
+}

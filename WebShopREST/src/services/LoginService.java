@@ -21,7 +21,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import beans.Admin;
 import beans.Customer;
+import dao.AdminDao;
 import dao.CustomerDao;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -45,8 +47,11 @@ public class LoginService {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("CustomerDao") == null) {
-	    	//String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("CustomerDao", new CustomerDao());
+		}
+		
+		if (ctx.getAttribute("AdminDao") == null) {
+			ctx.setAttribute("AdminDao", new AdminDao());
 		}
 	}
 	
@@ -63,23 +68,40 @@ public class LoginService {
         	/*if(!username.equals("user") || !password.equals("pass")) {
         		return Response.status(Response.Status.UNAUTHORIZED).build();
         	}*/
-        	CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+        	CustomerDao customerDao = (CustomerDao) ctx.getAttribute("CustomerDao");
+        	AdminDao adminDao = (AdminDao) ctx.getAttribute("AdminDao");
+        	
         	boolean naso = false;
-        	for(Customer cust : dao.getAll()) {
+        	String role = "";
+        	
+        	//provera customera
+        	for(Customer cust : customerDao.getAll()) {
         		if(cust.getUsername().equals(username) && cust.getPassword().equals(password)) {
         			naso = true;
+        			role = cust.getRole().toString();
         			break;
         		}
         	}
+        	
+        	//provera admina
+        	if(!naso) {
+	        	for(Admin admin : adminDao.getAll()) {
+	        		if(admin.getUsername().equals(username) && admin.getPassword().equals(password)) {
+	        			naso = true;
+	        			role = admin.getRole().toString();
+	        			break;
+	        		}
+	        	}
+        	}
+        	
+        	//********************
         	
         	if(!naso) {
         		return Response.status(Response.Status.UNAUTHORIZED).build();
         	}
 
-            // Issue a token for the user
-            String token = issueToken(username);
+            String token = issueToken(username, role);
 
-            // Return the token on the response
             return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
             //return Response.ok().entity("Bearer " + token).build();
 
@@ -89,11 +111,12 @@ public class LoginService {
         }
     }
 
-    private String issueToken(String username) {
+    private String issueToken(String username, String role) {
     	SimpleKeyGenerator keyGenerator = new SimpleKeyGenerator();
         Key key = keyGenerator.generateKey();
         String jwtToken = Jwts.builder()
                 .setSubject(username)
+                .claim("role", role)
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))

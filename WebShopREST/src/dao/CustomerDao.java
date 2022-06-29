@@ -31,12 +31,12 @@ public class CustomerDao {
 		readFile();
 	}*/
 	
-	private void loadCustomers() {
+	/*private void loadCustomers() {
 		//neki json load
 		customers = new HashMap<Integer, Customer>();
 		customers.put(1, new Customer("strale15", "cip11", "Strahinja", "Erakovic", Gender.male, new Date(),
 				Role.customer, false, 1, -1, 0));
-	}
+	}*/
 	
 	private void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/Customers.json");
