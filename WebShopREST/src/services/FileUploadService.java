@@ -1,16 +1,22 @@
 package services;
 
-import java.io.File;  
-import java.io.FileOutputStream;  
-import java.io.IOException;  
-import java.io.InputStream;  
-import javax.ws.rs.Consumes;  
-import javax.ws.rs.POST;  
-import javax.ws.rs.Path;  
-import javax.ws.rs.core.MediaType;  
-import javax.ws.rs.core.Response;  
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;  
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;  
+
+import main.Startup;
+
 @Path("/files")  
 public class FileUploadService {  
     @POST  
@@ -35,4 +41,11 @@ public class FileUploadService {
             String output = "File successfully uploaded to : " + fileLocation;  
             return Response.status(200).entity(output).build();  
         }  
+    
+    
+    @GET
+    @Path("/path")
+    public String getPath() {
+    	return Startup.path;
+    }
   } 
