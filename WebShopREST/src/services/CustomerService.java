@@ -40,8 +40,7 @@ public class CustomerService {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("CustomerDao") == null) {
-	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("CustomerDao", new CustomerDao(contextPath));
+			ctx.setAttribute("CustomerDao", new CustomerDao());
 		}
 	}
 	

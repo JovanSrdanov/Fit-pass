@@ -16,19 +16,20 @@ import beans.Customer;
 import beans.Facility;
 import beans.Gender;
 import beans.Role;
+import main.Startup;
 
 public class CustomerDao {
 	private static HashMap<Integer, Customer> customers;
-	private String path;
 	
 	public CustomerDao() {
+		readFile();
 	}
 	
-	public CustomerDao(String path) {
+	/*public CustomerDao(String path) {
 		String goodPath = path.split(".metadata")[0];
 		this.path = goodPath;
 		readFile();
-	}
+	}*/
 	
 	private void loadCustomers() {
 		//neki json load
@@ -38,7 +39,7 @@ public class CustomerDao {
 	}
 	
 	private void writeFile() {
-		File theFile = new File(path + "WebProjekat/Data/Customers.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/Customers.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -56,7 +57,7 @@ public class CustomerDao {
 	
 	private void readFile() {
 		
-		File theFile = new File(path + "WebProjekat/Data/Customers.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/Customers.json");
 		
 		try {
 			FileReader reader = new FileReader(theFile);
