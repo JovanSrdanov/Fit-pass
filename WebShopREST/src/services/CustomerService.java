@@ -20,6 +20,9 @@ import javax.ws.rs.core.Response;
 
 import beans.Customer;
 import beans.Product;
+import beans.Role;
+import beans.User;
+import dao.AdminDao;
 import dao.CustomerDao;
 import dao.ProductDAO;
 import io.jsonwebtoken.Claims;
@@ -40,8 +43,7 @@ public class CustomerService {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("CustomerDao") == null) {
-	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("CustomerDao", new CustomerDao(contextPath));
+			ctx.setAttribute("CustomerDao", new CustomerDao());
 		}
 	}
 	
@@ -88,14 +90,14 @@ public class CustomerService {
 	@Path("/info")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Customer getInfo(@Context HttpHeaders headers) {
-		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+	public User getInfo(@Context HttpHeaders headers) {
 		
 		List<String> authHeaders = headers.getRequestHeader(HttpHeaders.AUTHORIZATION);
 		String token = authHeaders.get(0).substring("Bearer".length()).trim();
 		
 		Jws<Claims> jws;
 		String username = "";
+		String role = "";
 
 		try {
 			SimpleKeyGenerator keyGenerator = new SimpleKeyGenerator();
@@ -103,13 +105,23 @@ public class CustomerService {
 
             jws = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
             username = jws.getBody().getSubject();
+            role = (String)jws.getBody().get("role");
 		}
 		     
 		catch (JwtException ex) {
 		    
 		}
 		
-		return dao.getByUsername(username);
+		if(role.equals(Role.customer.toString())) {
+			CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+			return (User)(dao.getByUsername(username));
+		}
+		if(role.equals(Role.admin.toString())) {
+			AdminDao dao = (AdminDao) ctx.getAttribute("AdminDao");
+			return (User)(dao.getByUsername(username));
+		}
+		
+		return null;
 	}
 
 }

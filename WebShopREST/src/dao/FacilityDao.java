@@ -23,24 +23,22 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Facility;
 import dto.FacilityDto;
+import main.Startup;
 
 public class FacilityDao {
 	private static HashMap<Integer, Facility> facilitys;
 	
-	private String path;
-	
 	public FacilityDao() {
-		//loadFacilitys();
-		//readFile();
+		readFile();
 	}
 	
-	public FacilityDao(String path) {
+	/*public FacilityDao(String path) {
 		String goodPath = path.split(".metadata")[0];
 		this.path = goodPath;
 		readFile();
-	}
+	}*/
 
-	private void loadFacilitys() {
+	/*private void loadFacilitys() {
 		facilitys = new HashMap<Integer, Facility>();
 		List<Integer> facilityActivityIds = new ArrayList<Integer>();
 		facilityActivityIds.add(1);
@@ -51,10 +49,10 @@ public class FacilityDao {
 		facilitys.put(2, new Facility(2, false,"Red Gym2", "Teretanka", facilityActivityIds,
 				true, 1, "slika.png", 69,"09:00", "21:00"));
 		
-	}
+	}*/
 	
 	private void writeFile() {
-		File theFile = new File(path + "WebProjekat/Data/Facilitys.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/Facilitys.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -71,7 +69,7 @@ public class FacilityDao {
 	}
 	
 	private void readFile() {
-		File theFile = new File(path + "WebProjekat/Data/Facilitys.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/Facilitys.json");
 		
 		try {
 			FileReader reader = new FileReader(theFile);
@@ -93,11 +91,11 @@ public class FacilityDao {
 		return facilitys.values();
 	}
 	
-	public Collection<FacilityDto> getAllTable(String contextPath) {
+	public Collection<FacilityDto> getAllTable() {
 		readFile();
 		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
 		for(Facility facility : facilitys.values()) {
-			facilityTables.add(new FacilityDto(facility, contextPath));
+			facilityTables.add(new FacilityDto(facility));
 		}
 		
 		return sortByWorkingHours(facilityTables);
@@ -134,7 +132,7 @@ public class FacilityDao {
 		readFile();
 		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
 		for(Facility facility : facilitys.values()) {
-			facilityTables.add(new FacilityDto(facility, contextPath));
+			facilityTables.add(new FacilityDto(facility));
 		}
 		
 		name = name.toLowerCase();

@@ -17,28 +17,28 @@ import beans.Customer;
 import beans.Gender;
 import beans.Location;
 import beans.Role;
+import main.Startup;
 
 public class LocationDao {
 	private static HashMap<Integer, Location> locations;
 	
-	private String path;
+	public LocationDao() {
+		readFile();
+	}
 	
-	public LocationDao(String path) {
+	/*public LocationDao(String path) {
 		String goodPath = path.split(".metadata")[0];
 		this.path = goodPath;
 		//loadLocations();
 		//writeFile();
 		readFile();
-	}
+	}*/
 	
-	public LocationDao() {
-	}
-	
-	private void loadLocations() {
+	/*private void loadLocations() {
 		//neki json load
 		locations = new HashMap<Integer, Location>();
 		locations.put(1, new Location(1, false, "100", "100", "Adresa gas"));
-	}
+	}*/
 	
 	public Collection<Location> getAll() {
 		return locations.values();
@@ -84,7 +84,7 @@ public class LocationDao {
 	}
 	
 	private void writeFile() {
-		File theFile = new File(path + "WebProjekat/Data/Locations.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/Locations.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -102,7 +102,7 @@ public class LocationDao {
 	
 	private void readFile() {
 		
-		File theFile = new File(path + "WebProjekat/Data/Locations.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/Locations.json");
 		
 		try {
 			FileReader reader = new FileReader(theFile);

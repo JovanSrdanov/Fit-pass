@@ -28,8 +28,7 @@ public class FacilityService {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("FacilityDao") == null) {
-	    	String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("FacilityDao", new FacilityDao(contextPath));
+			ctx.setAttribute("FacilityDao", new FacilityDao());
 		}
 	}
 	
@@ -38,7 +37,7 @@ public class FacilityService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<FacilityDto> getAll() {
 		FacilityDao dao = (FacilityDao) ctx.getAttribute("FacilityDao");
-		return dao.getAllTable(ctx.getRealPath(""));
+		return dao.getAllTable();
 	}
 	
 	@POST

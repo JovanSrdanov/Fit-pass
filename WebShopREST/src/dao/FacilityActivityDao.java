@@ -16,31 +16,27 @@ import beans.Customer;
 import beans.FacilityActivity;
 import beans.Gender;
 import beans.Role;
+import main.Startup;
 
 public class FacilityActivityDao {
 	private static HashMap<Integer, FacilityActivity> facilityActivitys;
 	
-	private String path;
-	
 	public FacilityActivityDao() {
-		//loadFacilityActivitys();
-	}
-	
-	public FacilityActivityDao(String path) {
-		String goodPath = path.split(".metadata")[0];
-		this.path = goodPath;
 		readFile();
 	}
 	
-	private void loadFacilityActivitys() {
+	/*public FacilityActivityDao(String path) {
+		String goodPath = path.split(".metadata")[0];
+		this.path = goodPath;
+		readFile();
+	}*/
+	
+	/*private void loadFacilityActivitys() {
 		//neki json load
 		facilityActivitys = new HashMap<Integer, FacilityActivity>();
 		facilityActivitys.put(1, new FacilityActivity(1, false, "grupni treninzi"));
 		facilityActivitys.put(2, new FacilityActivity(2, false, "pojedinacni treninzi"));
-	}
-	
-	//const sa context path?
-	
+	}*/	
 	
 	public Collection<FacilityActivity> getAll() {
 		return facilityActivitys.values();
@@ -86,7 +82,7 @@ public class FacilityActivityDao {
 	}
 	
 	private void writeFile() {
-		File theFile = new File(path + "WebProjekat/Data/FacilitysActivitys.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/FacilitysActivitys.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -104,7 +100,7 @@ public class FacilityActivityDao {
 	
 	private void readFile() {
 		
-		File theFile = new File(path + "WebProjekat/Data/FacilitysActivitys.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/FacilitysActivitys.json");
 		
 		try {
 			FileReader reader = new FileReader(theFile);

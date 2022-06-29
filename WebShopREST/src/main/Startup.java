@@ -14,14 +14,11 @@ public class Startup  extends Application{
 	public static String path;
 	
 	public Startup() {
-		System.out.println("****************************************************************"
-				+ "*************************************************************" 
-				+ "*************************************************************");
 	}
 	
 	@PostConstruct
 	public void init() {
 	    String contextPath = ctx.getRealPath("");
-	    path = contextPath;
+	    path = contextPath.split(".metadata")[0];
 	}
 }
