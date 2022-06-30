@@ -5,6 +5,8 @@ import java.util.Date;
 public class Customer extends User{
 	private int membershipId;
 	private int points;
+	private int customerTypeId;
+	
 	public Customer(int membershipId, int points) {
 		super();
 		this.membershipId = membershipId;
@@ -12,10 +14,11 @@ public class Customer extends User{
 	}
 	
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
-			Role role, boolean isDeleted, int id, int membershipId, int points) {
+			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId) {
 		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
 		this.membershipId = membershipId;
 		this.points = points;
+		this.customerTypeId = customerTypeId;
 	}
 
 	public Customer() {
@@ -34,6 +37,16 @@ public class Customer extends User{
 		this.points = points;
 	}
 	
+	
+	
+	public int getCustomerTypeId() {
+		return customerTypeId;
+	}
+
+	public void setCustomerTypeId(int customerTypeId) {
+		this.customerTypeId = customerTypeId;
+	}
+
 	public void update(Customer newCustomer) {
 		this.username = newCustomer.username;
 		this.password = newCustomer.password;
@@ -46,5 +59,6 @@ public class Customer extends User{
 		this.id = newCustomer.id;
 		this.membershipId = newCustomer.membershipId;
 		this.points = newCustomer.points;
+		this.customerTypeId = newCustomer.customerTypeId;
 	}
 }

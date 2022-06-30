@@ -59,6 +59,15 @@ public class CustomerType {
 	public void setPointsNeeded(int pointsNeeded) {
 		this.pointsNeeded = pointsNeeded;
 	}
+
+	public void update(CustomerType newCustomerType) {
+		this.type = newCustomerType.type;
+		this.id = newCustomerType.id;
+		this.isDeleted = newCustomerType.isDeleted;
+		this.discount = newCustomerType.discount;
+		this.pointsNeeded = newCustomerType.pointsNeeded;
+		
+	}
 	
 	
 }

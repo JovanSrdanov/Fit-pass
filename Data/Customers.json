@@ -2,6 +2,7 @@
   "1": {
     "membershipId": -1,
     "points": 0,
+	"customerTypeId": 1,
     "id": 1,
     "isDeleted": false,
     "username": "strale15",
@@ -15,6 +16,7 @@
   "2": {
     "membershipId": -1,
     "points": 0,
+	"customerTypeId": 2,
     "id": 2,
     "isDeleted": false,
     "username": "stralex152",
@@ -28,6 +30,7 @@
   "3": {
     "membershipId": -1,
     "points": 0,
+	"customerTypeId": 1,
     "id": 3,
     "isDeleted": false,
     "username": "joja",
