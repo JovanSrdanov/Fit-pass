@@ -1,12 +1,14 @@
 Vue.component("pocetna", {
     data: function () {
         return {
-            SportFacility: {},
+            OpenFacilitys: false,
+            SportFacility: null,
             name: "",
             facilityType: "",
             locationString: "",
             rating: 1,
             loggedInUser: {},
+            facilityTypeFilter: "",
         };
     },
     template: `
@@ -62,12 +64,20 @@ Vue.component("pocetna", {
 
 
             <div class="optionsWrapper" >
-                 <p>Filtriranje</p>
-                     <div style=" display: flex;
-                    align-items: center;">
+                 <p>Filtriranje:</p>
+                         <input
+                         v-model="facilityTypeFilter"
+                            type="text"
+                            name="facilityTypeFilter"
+                            id="facilityTypeFilter"
+                            placeholder="Tip objekta"
+                        />
 
-                    <input type="checkbox" id="OtvoreniObjekti" name="OtvoreniObjekti" >
-                    <label for="OtvoreniObjekti">OtvoreniObjekti</label><br>
+                     <div style=" display: flex;
+                    align-items: center; justify-content: center;"">
+
+                    <input type="checkbox" id="OtvoreniObjekti" name="OtvoreniObjekti"    v-model="OpenFacilitys">
+                    <label for="OtvoreniObjekti">Otvoreni objekti</label><br>
                     
                     </div>
                      </div>
@@ -81,7 +91,7 @@ Vue.component("pocetna", {
  <div class="prostorZatabelu">
             <table>
                 <tbody>
-                    <tr v-for="p in SportFacility" >
+                    <tr v-for="p in searchFilterSort" >
                         <td>
                             <img
                               
@@ -129,6 +139,19 @@ Vue.component("pocetna", {
             }
         });
     },
+    computed: {
+        searchFilterSort() {
+            if (!this.SportFacility) return null;
+            return this.SportFacility.filter((sp) => {
+                return (
+                    sp.facility.facilityType
+                        .toLowerCase()
+                        .indexOf(this.facilityTypeFilter.toLowerCase()) > -1
+                );
+            });
+        },
+    },
+
     methods: {
         getImgUrl(slika) {
             return "FacilityLogo/" + slika;
