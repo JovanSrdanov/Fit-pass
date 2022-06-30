@@ -1,0 +1,24 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "name": "Lud trening",
+    "workoutType": "solo",
+    "facilityId": "1",
+    "durationInMinutes": "60",
+    "trainerId": 0,
+    "description": "Trening desc",
+    "picture": "slika.png"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "name": "Lud trening2",
+    "workoutType": "personal",
+    "facilityId": "1",
+    "durationInMinutes": "120",
+    "trainerId": 1,
+    "description": "Trening desc2",
+    "picture": "slika.png"
+  }
+}

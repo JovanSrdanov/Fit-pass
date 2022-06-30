@@ -1,0 +1,31 @@
+{
+  "1": {
+	"workoutIds": [
+      1,
+      2
+    ],
+    "id": 1,
+    "isDeleted": false,
+    "username": "t",
+    "password": "t",
+    "name": "James",
+    "surname": "Charles",
+    "gender": "male",
+    "birthDate": "Jun 19, 1999, 5:27:57 PM",
+    "role": "trainer"
+  },
+  "2": {
+	"workoutIds": [
+      3
+    ],
+    "id": 2,
+    "isDeleted": false,
+    "username": "TRAIN",
+    "password": "TRAIN",
+    "name": "Kanye",
+    "surname": "West",
+    "gender": "male",
+    "birthDate": "Jan 1, 1986, 1:00:00 AM",
+    "role": "trainer"
+  }
+}

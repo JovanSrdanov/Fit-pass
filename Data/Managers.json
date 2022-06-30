@@ -1,0 +1,26 @@
+{
+  "1": {
+	"facilityId": 1,
+    "id": 1,
+    "isDeleted": false,
+    "username": "m",
+    "password": "m",
+    "name": "James",
+    "surname": "Charles",
+    "gender": "male",
+    "birthDate": "Jun 19, 1999, 5:27:57 PM",
+    "role": "manager"
+  },
+  "2": {
+	"facilityId": 3,
+    "id": 2,
+    "isDeleted": false,
+    "username": "MANAGER",
+    "password": "MANAGER",
+    "name": "Kanye",
+    "surname": "West",
+    "gender": "male",
+    "birthDate": "Jan 1, 1986, 1:00:00 AM",
+    "role": "manager"
+  }
+}
