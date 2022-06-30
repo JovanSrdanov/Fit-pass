@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +14,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
@@ -49,8 +51,15 @@ public class CustomerService {
 	
 	@GET
 	@Path("/")
+	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Customer> getAll() {
+	public Collection<Customer> getAll(@Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
 		return dao.getAll();
 	}
@@ -93,21 +102,13 @@ public class CustomerService {
 	public User getInfo(@Context HttpHeaders headers) {
 		
 		List<String> authHeaders = headers.getRequestHeader(HttpHeaders.AUTHORIZATION);
-		String token = authHeaders.get(0).substring("Bearer".length()).trim();
-		
-		Jws<Claims> jws;
 		String username = "";
 		String role = "";
 
 		try {
-			SimpleKeyGenerator keyGenerator = new SimpleKeyGenerator();
-	        Key key = keyGenerator.generateKey();
-
-            jws = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
-            username = jws.getBody().getSubject();
-            role = (String)jws.getBody().get("role");
-		}
-		     
+			username = JWTParser.parseUsername(authHeaders);
+			role = JWTParser.parseRole(authHeaders);
+		}		     
 		catch (JwtException ex) {
 		    
 		}
