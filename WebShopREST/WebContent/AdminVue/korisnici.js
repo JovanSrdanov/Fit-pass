@@ -27,7 +27,7 @@ Vue.component("korisnici", {
                 <td>{{u.password}}</td>
                 <td>{{u.name}}</td>
                 <td>{{u.surname}}</td>
-                <td>{{u.gender}}</td>
+                <td>{{translateGender(u.gender)}}</td>
                 <td>{{getDate(u.birthDate)}}</td>
                 <td>{{getRole(u.role)}}</td>
                 <td>{{getCustomerType(u)}}</td>
@@ -71,6 +71,10 @@ Vue.component("korisnici", {
         });
     },
     methods: {
+        translateGender: function (gender) {
+            if (gender == "male") return "Muški";
+            else return "Ženski";
+        },
         getCustomerType: function (user) {
             if (user.customerType === null) return this.getRole(user.role);
             else return this.translateType(user.customerType.type);
