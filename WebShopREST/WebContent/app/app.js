@@ -2,6 +2,7 @@ const registracija = { template: "<registracija></registracija>" };
 const prijava = { template: "<prijava></prijava>" };
 const pocetna = { template: "<pocetna></pocetna>" };
 const korisnici = { template: "<korisnici></korisnici>" };
+const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
 
 const router = new VueRouter({
     mode: "hash",
@@ -11,6 +12,7 @@ const router = new VueRouter({
         { path: "/registracija", component: registracija },
         { path: "/prijava", component: prijava },
         { path: "/korisnici", component: korisnici },
+        { path: "/pregledProfila/:username", component: pregledProfila },
     ],
 });
 var app = new Vue({
@@ -25,6 +27,9 @@ var app = new Vue({
         this.VarToken();
     },
     methods: {
+        goToProfile: function (username) {
+            router.push(`/pregledProfila/${username}`);
+        },
         VarToken: function () {
             yourConfig = {
                 headers: {

@@ -78,7 +78,7 @@
                     <li>
                         <a
                             v-if="status=='loggedIn'"
-                            v-bind:href="'#/'+ loggedInUser.username"
+                            v-on:click="goToProfile(loggedInUser.username)"
                         >
                             {{loggedInUser.username}}</a
                         >
@@ -110,6 +110,7 @@
         <script src="jsRazno/prikazLozinke.js"></script>
 
         <script src="app/registracija.js"></script>
+        <script src="app/pregledProfila.js"></script>
         <script src="app/prijava.js"></script>
         <script src="app/pocetna.js"></script>
 
