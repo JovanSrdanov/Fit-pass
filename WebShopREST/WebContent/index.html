@@ -10,7 +10,9 @@
         <link rel="stylesheet" href="css/index.css" type="text/css" />
         <link rel="stylesheet" href="css/spinner.css" type="text/css" />
         <link rel="stylesheet" href="css/pocetnaTabela.css" type="text/css" />
+        <link rel="stylesheet" href="css/korisnici.css" type="text/css" />
     </head>
+
     <body>
         <div id="firstPage" class="backgroundFirstPage">
             <div id="nav" class="nav">
@@ -69,15 +71,15 @@
                     </li>
 
                     <li>
-                        <a
-                            v-if="status=='loggedIn'"
-                            v-on:click="logout"
-                            href="#/"
+                        <a v-if="status=='loggedIn'" v-on:click="logout"
                             >Odjavi se</a
                         >
                     </li>
                     <li>
-                        <a v-if="status=='loggedIn'" href="#/">
+                        <a
+                            v-if="status=='loggedIn'"
+                            v-bind:href="'#/'+ loggedInUser.username"
+                        >
                             {{loggedInUser.username}}</a
                         >
                     </li>

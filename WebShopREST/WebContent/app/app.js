@@ -53,7 +53,7 @@ var app = new Vue({
             localStorage.removeItem("token");
             localStorage.removeItem("loggedInUser");
             this.VarToken();
-            window.location.href = "#/pocetna";
+            window.location.href = "#/prijava";
         },
     },
 });

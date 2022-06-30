@@ -10,47 +10,41 @@ Vue.component("korisnici", {
    <h1>Korisnici</h1>
     <div class="TabelaKorisnika">
             <table>
-              <td>Korisnicko ime</td>
-              <td>Sifra</td>
-              <td>Ime</td>
-              <td>Prezime</td>
-              <td>Pol</td>
-              <td>Datum rodjenja:</td>
-              <td>Uloga</td>
-              <td>Tip korisnika</td>
-              <td>Broj bodova</td>
-            <td>Obrisi</td>
+            <td>Korisničko ime</td>
+            <td>Šifra</td>
+            <td>Ime</td>
+            <td>Prezime</td>
+            <td>Pol</td>
+            <td>Datum rođenja</td>
+            <td>Uloga</td>
+            <td>Tip korisnika</td>
+            <td>Broj bodova</td>
+            <td>Obriši</td>
 
-                <tbody>
-                    <tr v-for="u in Users" >
-                    <td>{{u.username}}</td>
-                        <td>{{u.password}}</td>
-                        <td>{{u.name}}</td>
-                        <td>{{u.surname}}</td>
-                        <td>{{u.gender}}</td>
-                            <td>{{getDate(u.birthDate)}}</td>
-                            <td>{{u.role}}</td>
-                             <td>TBA</td>
-                             <td>{{u.points}}</td>
-                            <td><button >Obrisi</button></td>
-                           
-                             
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
+            <tbody>
+                <tr v-for="u in Users" >
+                <td>{{u.username}}</td>
+                <td>{{u.password}}</td>
+                <td>{{u.name}}</td>
+                <td>{{u.surname}}</td>
+                <td>{{u.gender}}</td>
+                <td>{{getDate(u.birthDate)}}</td>
+                <td>{{getRole(u.role)}}</td>
+                <td>{{getCustomerType(u)}}</td>
+                <td>{{u.points}}</td>
+                <td><button >Obriši</button></td>          
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
    
  </div>
   `,
 
     mounted() {
         ///
-        var a = JSON.parse(localStorage.getItem("loggedInUser"));
-        if (a === null || a.role != "admin") {
-            alert("Nemate pristup ovom sadržaju");
-            window.location.href = "#/pocetna";
-        }
+
         yourConfig = {
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -58,15 +52,47 @@ Vue.component("korisnici", {
         };
 
         ///
-        axios.get("rest/customers", yourConfig).then((response) => {
+        axios.get("rest/customers/all", yourConfig).then((response) => {
             this.Users = response.data;
         });
     },
     methods: {
+        getCustomerType: function (user) {
+            if (user.customerType === null) return this.getRole(user.role);
+            else return this.translateType(user.customerType.type);
+        },
+        translateType: function (type) {
+            switch (type) {
+                case "Bronze":
+                    return "Bronzani";
+                case "Silver":
+                    return "Srebrni";
+                case "Gold":
+                    return "Zlatni";
+
+                default:
+                    return type;
+            }
+        },
+
         getDate: function (milliseconds) {
             const d = new Date();
             d.setTime(milliseconds);
             return d.toLocaleDateString("sr-RS");
+        },
+        getRole: function (role) {
+            switch (role) {
+                case "customer":
+                    return "Kupac";
+                case "admin":
+                    return "Administrator";
+                case "manager":
+                    return "Menadžer";
+                case "trainer":
+                    return "Trener";
+                default:
+                    return role;
+            }
         },
     },
 });

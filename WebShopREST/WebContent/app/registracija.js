@@ -37,6 +37,9 @@ Vue.component("registracija", {
                 />
 
                 <br />
+                  <div style=" display: flex;
+                    align-items: center;
+                    justify-content: center;">
                 <input 
                 
                     class="checkbox"
@@ -46,8 +49,8 @@ Vue.component("registracija", {
                 />
 
                 <label for="checkbox"> Prikaz lozinke </label>
-
-                <br />
+</div>
+             
                 <p>Ime:</p>
 
                 <input 

@@ -30,7 +30,11 @@ Vue.component("prijava", {
                         id="password"
                         placeholder="Lozinka"
                     />
-                    <br />                     
+                    <br /> 
+                    
+                      <div style=" display: flex;
+                    align-items: center;
+                    justify-content: center;">
                     <input
                     
                         class="checkbox"
@@ -38,9 +42,11 @@ Vue.component("prijava", {
                         id="showPassword"
                         onclick="myFunction() "
                     />
-                
                     <label for="checkbox"> Prikaz lozinke </label>
-                        <br />
+</div>
+
+
+                        
                         <br />
                             
                         <button v-on:click="Login" >Prijavite se</button>

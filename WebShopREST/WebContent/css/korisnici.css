@@ -1,0 +1,49 @@
+.TabelaKorisnika {
+    position: absolute;
+    margin-left: auto;
+    margin-right: 100px;
+    left: 0;
+    right: 0;
+    border-radius: 20px 0px 0px 20px;
+    overflow-y: scroll;
+    background-color: lightcyan;
+    width: 1100px;
+    height: 700px;
+    padding: 15px !important;
+    border-style: solid;
+    border: 2px solid black;
+}
+
+.TabelaKorisnika button {
+    cursor: pointer;
+}
+
+.TabelaKorisnika td {
+    padding: 10px;
+}
+
+.TabelaKorisnika td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.TabelaKorisnika td:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.TabelaKorisnika tbody > tr:nth-child(even) {
+    background-color: lightblue;
+}
+.TabelaKorisnika tbody > tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.TabelaKorisnika table {
+    width: 100%;
+    margin: auto;
+    border-spacing: 0;
+}
+
+.TabelaKorisnika tbody > tr:hover {
+    background-color: #43c6ac;
+}

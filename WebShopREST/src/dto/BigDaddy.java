@@ -16,6 +16,17 @@ public class BigDaddy extends Customer{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public CustomerType getCustomerType() {
+		return customerType;
+	}
+
+
+	public void setCustomerType(CustomerType customerType) {
+		this.customerType = customerType;
+	}
+
 
 	public BigDaddy(int membershipId, int points) {
 		super(membershipId, points);
@@ -42,6 +53,7 @@ public class BigDaddy extends Customer{
 		if(user.getRole() == Role.customer) {
 			CustomerTypeDao customerTypeDao = new CustomerTypeDao();
 			this.customerType = customerTypeDao.getById(customerTypeId);
+			System.out.println(this.customerType.getType());
 			this.points = points;
 			this.customerTypeId = customerTypeId;
 		}

@@ -6,15 +6,15 @@ Vue.component("pocetna", {
             facilityType: "",
             locationString: "",
             rating: 1,
+            loggedInUser: {},
         };
     },
     template: `
    <div >
 
              
-                <h1>Sportski objekti </h1>
+                <h1>Sportski objekti</h1>
     <div class="pretragaFiltriranjeSortiranje">
-        <h2>Opcije</h2>
         <div class="optionsWrapper" >
             <p>Pretraga:</p>
             
@@ -61,15 +61,20 @@ Vue.component("pocetna", {
         </div>
 
 
-         <br/>
-         <br/>
-         <br/>
-           <br/>
-         <br/>
-         <br/>
-        <p>Filtriranje: TBA</p>
-        <p>Sortiranje: TBA</p>
+            <div class="optionsWrapper" >
+                 <p>Filtriranje</p>
+                     <div style=" display: flex;
+                    align-items: center;">
 
+                    <input type="checkbox" id="OtvoreniObjekti" name="OtvoreniObjekti" >
+                    <label for="OtvoreniObjekti">OtvoreniObjekti</label><br>
+                    
+                    </div>
+                     </div>
+
+             <div class="optionsWrapper" >
+             <p>Sortiranje: TBA</p>
+             </div>
 </div>
 
 
@@ -93,6 +98,10 @@ Vue.component("pocetna", {
                                 <li>Adresa: {{p.location.address}}</li>
                                 <li>Prosečna ocena: {{p.facility.rating}}</li>
                                 <li>Radno vreme: {{p.facility.workStart}} - {{p.facility.workEnd}} </li>
+                                <div v-if="loggedInUser.role=='admin'">
+                                <br/>
+                                <li><button >Obriši</button></li>  
+                                </div>  
                             </ul>
                         </td>
                     </tr>
@@ -108,6 +117,16 @@ Vue.component("pocetna", {
     mounted() {
         axios.get("rest/facilitys").then((response) => {
             this.SportFacility = response.data;
+            this.loggedInUser = JSON.parse(
+                localStorage.getItem("loggedInUser")
+            );
+            if (
+                this.loggedInUser === null ||
+                this.loggedInUser.role != "admin"
+            ) {
+                this.loggedInUser = {};
+                this.loggedInUser.role = null;
+            }
         });
     },
     methods: {

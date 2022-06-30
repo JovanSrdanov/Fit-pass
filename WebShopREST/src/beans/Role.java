@@ -2,7 +2,7 @@ package beans;
 
 public enum Role {
 	admin,
-	moderator,
+	manager,
 	trainer,
 	customer
 }
