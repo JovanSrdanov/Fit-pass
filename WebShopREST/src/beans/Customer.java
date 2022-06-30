@@ -3,9 +3,9 @@ package beans;
 import java.util.Date;
 
 public class Customer extends User{
-	private int membershipId;
-	private int points;
-	private int customerTypeId;
+	protected int membershipId;
+	protected int points;
+	protected int customerTypeId;
 	
 	public Customer(int membershipId, int points) {
 		super();

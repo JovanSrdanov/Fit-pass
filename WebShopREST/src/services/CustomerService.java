@@ -1,6 +1,7 @@
 package services;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,12 +22,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Customer;
+import beans.Manager;
 import beans.Product;
 import beans.Role;
 import beans.User;
 import dao.AdminDao;
 import dao.CustomerDao;
+import dao.ManagerDao;
 import dao.ProductDAO;
+import dto.BigDaddy;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -62,6 +66,32 @@ public class CustomerService {
 		
 		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
 		return dao.getAll();
+	}
+	
+	@GET
+	@Path("/all")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<BigDaddy> getAllUsers(@Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ArrayList<BigDaddy> bigDaddys = new ArrayList<BigDaddy>();
+		
+		CustomerDao customerDao = (CustomerDao) ctx.getAttribute("CustomerDao");
+		for(Customer cust : customerDao.getAll()) {
+			bigDaddys.add(new BigDaddy(cust, cust.getPoints(), cust.getCustomerTypeId()));
+		}
+		
+		ManagerDao managerDao = new ManagerDao();
+		for(Manager man : managerDao.getAll()) {
+			bigDaddys.add(new BigDaddy(man, 0, 0));
+		}
+		
+		return bigDaddys;
 	}
 	
 	@GET

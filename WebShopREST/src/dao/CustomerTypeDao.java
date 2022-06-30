@@ -35,7 +35,7 @@ private static HashMap<Integer, CustomerType> types;
 	}*/
 	
 	private void writeFile() {
-		File theFile = new File(Startup.path + "WebProjekat/Data/CustomerTypeTypes.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/CustomerTypes.json");
 		
 		try {
 			FileWriter writer = new FileWriter(theFile);
@@ -53,7 +53,7 @@ private static HashMap<Integer, CustomerType> types;
 	
 	private void readFile() {
 		
-		File theFile = new File(Startup.path + "WebProjekat/Data/CustomerTypeTypes.json");
+		File theFile = new File(Startup.path + "WebProjekat/Data/CustomerTypes.json");
 		
 		try {
 			FileReader reader = new FileReader(theFile);

@@ -1,0 +1,16 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "type": "Bronze",
+    "discount": 0.5,
+    "pointNeeded": 60
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "type": "Silver",
+    "discount": 0.7,
+    "pointNeeded": 100
+  }
+}
