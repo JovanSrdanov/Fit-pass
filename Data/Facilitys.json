@@ -44,8 +44,8 @@
     "locationId": 3,
     "logo": "FacilityLogo3.png",
     "rating": 2,
-    "workStart": "19:00",
-    "workEnd": "22:00"
+    "workStart": "21:00",
+    "workEnd": "18:05"
   },
   "4": {
     "id": 4,

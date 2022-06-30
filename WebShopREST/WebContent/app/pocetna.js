@@ -9,6 +9,13 @@ Vue.component("pocetna", {
             rating: 1,
             loggedInUser: {},
             facilityTypeFilter: "",
+            NazivSort: "noSort",
+            LokacijaSort: "noSort",
+            OcenaSort: "noSort",
+
+            NazivString: "Naziv ↕",
+            LokacijaString: "Lokacija ↕",
+            OcenaString: "Ocena ↕",
         };
     },
     template: `
@@ -83,12 +90,23 @@ Vue.component("pocetna", {
                      </div>
 
              <div class="optionsWrapper" >
-             <p>Sortiranje: TBA</p>
+             <p>Sortiranje</p>
+               <thead>
+                <th colspan="2"> 
+                <button  v-on:click="NazivSortFunction" >{{NazivString}}</button>
+                <button  v-on:click="LokacijaSortFunction"  >{{LokacijaString}} TBA </button>
+                <button   v-on:click="OcenaSortFunction" >{{OcenaString}}</button>
+           
+                </th>
+                </thead>
              </div>
 </div>
 
+              
 
  <div class="prostorZatabelu">
+            
+   
             <table>
                 <tbody>
                     <tr v-for="p in searchFilterSort" >
@@ -180,17 +198,84 @@ Vue.component("pocetna", {
                     return workDayStartTime < today && workDayEndTime > today;
                 });
             }
-            return tempSportFacilitys.filter((sp) => {
+            tempSportFacilitys = tempSportFacilitys.filter((sp) => {
                 return (
                     sp.facility.facilityType
                         .toLowerCase()
                         .indexOf(this.facilityTypeFilter.toLowerCase()) > -1
                 );
             });
+
+            if (this.NazivSort === "DSC") {
+                tempSportFacilitys = tempSportFacilitys.sort((a, b) => {
+                    return a.facility.name.localeCompare(b.facility.name);
+                });
+            }
+
+            if (this.NazivSort === "ASC") {
+                tempSportFacilitys = tempSportFacilitys.sort((a, b) => {
+                    return b.facility.name.localeCompare(a.facility.name);
+                });
+            }
+
+            if (this.OcenaSort === "DSC") {
+                tempSportFacilitys = tempSportFacilitys.sort((a, b) => {
+                    return a.facility.rating - b.facility.rating;
+                });
+            }
+
+            if (this.OcenaSort === "ASC") {
+                tempSportFacilitys = tempSportFacilitys.sort((a, b) => {
+                    return b.facility.rating - a.facility.rating;
+                });
+            }
+
+            return tempSportFacilitys;
         },
     },
 
     methods: {
+        NazivSortFunction() {
+            this.LokacijaSort = "noSort";
+            this.OcenaSort = "noSort";
+
+            this.LokacijaString = "Lokacija ↕";
+            this.OcenaString = "Ocena ↕";
+
+            if (this.NazivSort == "ASC") {
+                this.NazivString = "Naziv ↓";
+                this.NazivSort = "DSC";
+            } else {
+                this.NazivSort = "ASC";
+                this.NazivString = "Naziv ↑ ";
+            }
+        },
+        LokacijaSortFunction() {
+            this.NazivSort = "noSort";
+            this.NazivString = "Naziv ↕";
+            this.OcenaSort = "noSort";
+            this.OcenaString = "Ocena ↕";
+            if (this.LokacijaSort == "ASC") {
+                this.LokacijaSort = "DSC";
+                this.LokacijaString = "Lokacija ↓";
+            } else {
+                this.LokacijaSort = "ASC";
+                this.LokacijaString = "Lokacija ↑";
+            }
+        },
+        OcenaSortFunction() {
+            this.NazivSort = "noSort";
+            this.NazivString = "Naziv ↕";
+            this.LokacijaSort = "noSort";
+            this.LokacijaString = "Lokacija ↕";
+            if (this.OcenaSort == "ASC") {
+                this.OcenaSort = "DSC";
+                this.OcenaString = "Ocena ↓";
+            } else {
+                this.OcenaString = "Ocena ↑";
+                this.OcenaSort = "ASC";
+            }
+        },
         goToFacilityPage: function (facility) {
             window.location.href = "#/facility/" + facility.facility.id;
         },

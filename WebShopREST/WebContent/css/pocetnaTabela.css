@@ -14,9 +14,7 @@
     border-style: solid;
     border: 2px solid black;
 }
-.prostorZatabelu tr {
-    cursor: pointer;
-}
+
 .prostorZatabelu ul {
     list-style-type: none;
 }
@@ -53,13 +51,13 @@
 }
 
 .pretragaFiltriranjeSortiranje {
-    color: white;
+    color: Black;
     position: absolute;
     margin-left: 100px;
     margin-right: auto;
     text-align: center;
     border-radius: 0px 20px 20px 0px;
-    background-color: #191654;
+    background-color: lightcyan;
     width: 500px;
     height: 700px;
     border-style: solid;
@@ -71,8 +69,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-    border: 1px solid white;
     width: fit-content;
-    border-style: solid;
     padding: 10px;
 }
