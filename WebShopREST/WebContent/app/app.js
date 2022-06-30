@@ -1,6 +1,7 @@
 const registracija = { template: "<registracija></registracija>" };
 const prijava = { template: "<prijava></prijava>" };
 const pocetna = { template: "<pocetna></pocetna>" };
+const korisnici = { template: "<korisnici></korisnici>" };
 
 const router = new VueRouter({
     mode: "hash",
@@ -9,6 +10,7 @@ const router = new VueRouter({
         { path: "/", component: pocetna },
         { path: "/registracija", component: registracija },
         { path: "/prijava", component: prijava },
+        { path: "/korisnici", component: korisnici },
     ],
 });
 var app = new Vue({

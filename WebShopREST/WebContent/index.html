@@ -6,9 +6,9 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <link rel="stylesheet" href="css/index.css" type="text/css" />
         <link rel="stylesheet" href="css/spinner.css" type="text/css" />
-        <link rel="stylesheet" href="css/prijava.css" type="text/css" />
         <link rel="stylesheet" href="css/pocetnaTabela.css" type="text/css" />
     </head>
     <body>
@@ -31,6 +31,41 @@
 
                     <li>
                         <a style="float: left" href="#/pocetna">Početna </a>
+                    </li>
+
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='admin'"
+                            href="#/korisnici"
+                            >Korisnici</a
+                        >
+                    </li>
+
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='admin'"
+                            href="#/"
+                            >Sportski objekti</a
+                        >
+                    </li>
+
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='admin'"
+                            href="#/"
+                            >Promo kod</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='admin'"
+                            href="#/"
+                            >Komentari</a
+                        >
                     </li>
 
                     <li>
@@ -59,8 +94,6 @@
                 </ul>
             </div>
 
-            <h1></h1>
-
             <router-view></router-view>
         </div>
 
@@ -69,6 +102,8 @@
         <script src="js/axios.js"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/toast.js"></script>
+
+        <script src="AdminVue/korisnici.js"></script>
 
         <script src="jsRazno/prikazLozinke.js"></script>
 
