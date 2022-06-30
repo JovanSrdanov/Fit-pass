@@ -44,7 +44,7 @@ Vue.component("pocetna", {
                             type="text"
                             name="locationString"
                             id="locationString"
-                            placeholder="Grad/Država"
+                            placeholder="Grad/Ulica"
                         />
                             <br/>
                            
@@ -108,10 +108,14 @@ Vue.component("pocetna", {
                                 <li>Adresa: {{p.location.address}}</li>
                                 <li>Prosečna ocena: {{p.facility.rating}}</li>
                                 <li>Radno vreme: {{p.facility.workStart}} - {{p.facility.workEnd}} </li>
-                                <div v-if="loggedInUser.role=='admin'">
+                              
                                 <br/>
-                                <li><button >Obriši</button></li>  
-                                </div>  
+                                <li>
+                                    <button v-on:click="goToFacilityPage(p)" >Detaljnije</button>
+                                <button v-on:click="deleteFacility(p)" v-if="loggedInUser.role=='admin'">Obriši</button> 
+                                
+                                </li>  
+                             
                             </ul>
                         </td>
                     </tr>
@@ -141,8 +145,42 @@ Vue.component("pocetna", {
     },
     computed: {
         searchFilterSort() {
+            var today = new Date();
+
             if (!this.SportFacility) return null;
-            return this.SportFacility.filter((sp) => {
+
+            let tempSportFacilitys = this.SportFacility;
+
+            if (this.OpenFacilitys) {
+                tempSportFacilitys = tempSportFacilitys.filter((sp) => {
+                    var workDayStartTime = new Date();
+                    var workDayEndTime = new Date();
+
+                    if (
+                        parseInt(sp.facility.workStart.split(":")[0]) >
+                        parseInt(sp.facility.workEnd.split(":")[0])
+                    ) {
+                        workDayEndTime.setDate(workDayEndTime.getDate() + 1);
+                    }
+
+                    workDayStartTime.setHours(
+                        parseInt(sp.facility.workStart.split(":")[0])
+                    );
+                    workDayStartTime.setMinutes(
+                        parseInt(sp.facility.workStart.split(":")[1])
+                    );
+
+                    workDayEndTime.setHours(
+                        parseInt(sp.facility.workEnd.split(":")[0])
+                    );
+                    workDayEndTime.setMinutes(
+                        parseInt(sp.facility.workEnd.split(":")[1])
+                    );
+
+                    return workDayStartTime < today && workDayEndTime > today;
+                });
+            }
+            return tempSportFacilitys.filter((sp) => {
                 return (
                     sp.facility.facilityType
                         .toLowerCase()
@@ -153,6 +191,14 @@ Vue.component("pocetna", {
     },
 
     methods: {
+        goToFacilityPage: function (facility) {
+            window.location.href = "#/facility/" + facility.facility.id;
+        },
+
+        deleteFacility: function (facility) {
+            alert("Obrisan je sportski objekat " + facility.facility.name);
+            window.location.href = "#/pocetna";
+        },
         getImgUrl(slika) {
             return "FacilityLogo/" + slika;
         },

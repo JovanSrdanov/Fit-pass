@@ -83,7 +83,6 @@ Vue.component("prijava", {
                         response.headers.authorization
                     );
                     this.$root.VarToken();
-                    window.location.href = "#/pocetna";
                 })
                 .catch((error) => {
                     this.userExist = false;

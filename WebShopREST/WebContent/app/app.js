@@ -41,11 +41,13 @@ var app = new Vue({
                         "loggedInUser",
                         JSON.stringify(this.loggedInUser)
                     );
+                    window.location.href = "#/pocetna";
                 })
                 .catch((error) => {
                     this.loggedInUser = {};
                     this.status = "notLoggedIn";
                     this.typeUser = "anonymous";
+                    window.location.href = "#/pocetna";
                 });
         },
 
