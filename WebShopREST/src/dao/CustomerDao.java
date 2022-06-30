@@ -127,6 +127,7 @@ public class CustomerDao {
 	}
 	
 	public void removeById(int id) {
+		this.customers.get(id).setDeleted(true);
 		this.customers.remove(id);
 		writeFile();
 	}
