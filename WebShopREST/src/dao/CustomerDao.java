@@ -21,6 +21,8 @@ import main.Startup;
 public class CustomerDao {
 	private static HashMap<Integer, Customer> customers;
 	
+	private static HashMap<Integer, Customer> allCustomers;
+	
 	public CustomerDao() {
 		readFile();
 	}
@@ -46,7 +48,7 @@ public class CustomerDao {
 			Gson gson = new GsonBuilder()
 					  .setPrettyPrinting()
 					  .create();
-			gson.toJson(customers, writer);
+			gson.toJson(allCustomers, writer);
 			writer.close();
 		}
 		catch (Exception e) {
@@ -65,8 +67,10 @@ public class CustomerDao {
 					  .setPrettyPrinting()
 					  .create();
 			Type type = new TypeToken<HashMap<Integer, Customer>>(){}.getType();
-			customers = gson.fromJson(reader, type);
+			allCustomers = gson.fromJson(reader, type);
 			reader.close();
+			
+			filterDeleted();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -75,6 +79,17 @@ public class CustomerDao {
 	}
 	
 	
+	private void filterDeleted() {
+		customers = new HashMap<Integer, Customer>();
+		
+		for(Customer cust : allCustomers.values()) {
+			if(!cust.isDeleted()) {
+				customers.put(cust.getId(), cust);
+			}
+		}
+		
+	}
+
 	public Collection<Customer> getAll() {
 		return customers.values();
 	}
@@ -112,8 +127,7 @@ public class CustomerDao {
 	}
 	
 	public void removeById(int id) {
-		
-		//treba logicko
+		this.customers.get(id).setDeleted(true);
 		this.customers.remove(id);
 		writeFile();
 	}
