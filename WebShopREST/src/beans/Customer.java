@@ -48,17 +48,17 @@ public class Customer extends User{
 	}
 
 	public void update(Customer newCustomer) {
-		this.username = newCustomer.username;
+		//this.username = newCustomer.username;
 		this.password = newCustomer.password;
 		this.name = newCustomer.name;
 		this.surname = newCustomer.surname;
 		this.gender = newCustomer.gender;
 		this.birthDate = newCustomer.birthDate;
-		this.role = newCustomer.role;
-		this.isDeleted = newCustomer.isDeleted;
-		this.id = newCustomer.id;
-		this.membershipId = newCustomer.membershipId;
-		this.points = newCustomer.points;
-		this.customerTypeId = newCustomer.customerTypeId;
+		//this.role = newCustomer.role;
+		//this.isDeleted = newCustomer.isDeleted;
+		//this.id = newCustomer.id;
+		//this.membershipId = newCustomer.membershipId;
+		//this.points = newCustomer.points;
+		//this.customerTypeId = newCustomer.customerTypeId;
 	}
 }
