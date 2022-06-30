@@ -2,8 +2,8 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "username": "admin1",
-    "password": "ftn",
+    "username": "a",
+    "password": "a",
     "name": "James",
     "surname": "Charles",
     "gender": "male",
@@ -13,8 +13,8 @@
   "2": {
     "id": 2,
     "isDeleted": false,
-    "username": "admin2",
-    "password": "ftn",
+    "username": "ADMIN",
+    "password": "ADMIN",
     "name": "Kanye",
     "surname": "West",
     "gender": "male",

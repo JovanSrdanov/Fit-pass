@@ -37,6 +37,10 @@ var app = new Vue({
                     this.loggedInUser = response.data;
                     this.status = "loggedIn";
                     this.typeUser = this.loggedInUser.role;
+                    localStorage.setItem(
+                        "loggedInUser",
+                        JSON.stringify(this.loggedInUser)
+                    );
                 })
                 .catch((error) => {
                     this.loggedInUser = {};
@@ -47,6 +51,7 @@ var app = new Vue({
 
         logout: function () {
             localStorage.removeItem("token");
+            localStorage.removeItem("loggedInUser");
             this.VarToken();
             window.location.href = "#/pocetna";
         },
