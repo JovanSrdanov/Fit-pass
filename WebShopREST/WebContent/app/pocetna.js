@@ -19,11 +19,13 @@ Vue.component("pocetna", {
         };
     },
     template: `
-   <div >
+   <div  >
 
              
                 <h1>Sportski objekti</h1>
+             
     <div class="pretragaFiltriranjeSortiranje">
+   
         <div class="optionsWrapper" >
             <p>Pretraga:</p>
             
@@ -100,6 +102,7 @@ Vue.component("pocetna", {
                 </th>
                 </thead>
              </div>
+              
 </div>
 
               
@@ -136,28 +139,23 @@ Vue.component("pocetna", {
                              
                             </ul>
                         </td>
-                         <td>
-                            <img
-                              
-                                src="Images/FEJK_MAPA.jpg"
-                                alt="Mapa"
-                                height="200"
-                                width="200"
-                            />
-                        </td>
+                      
                     </tr>
 
                 </tbody>
             </table>
+ 
         </div>
-        
-                
+             
+                  
             
         </div>`,
 
     mounted() {
+        //////////////   <div  v-bind:id="'map'+p.facility.id" class="map"></div>
         axios.get("rest/facilitys").then((response) => {
             this.SportFacility = response.data;
+
             this.loggedInUser = JSON.parse(
                 localStorage.getItem("loggedInUser")
             );

@@ -2,39 +2,39 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "latitude": "100",
-    "longitude": "100",
+    "latitude": "45",
+    "longitude": "45",
     "address": "Begoradska 34, Novi Sad, 21000"
   },
     "2": {
     "id": 2,
     "isDeleted": false,
-    "latitude": "100",
-    "longitude": "100",
+    "latitude": "22",
+    "longitude": "22",
     "address": "Novosadska 18, Beograd, 12300"
   }
   ,
     "3": {
     "id": 2,
     "isDeleted": false,
-    "latitude": "100",
-    "longitude": "100",
+    "latitude": "12",
+    "longitude": "12",
     "address": "Frankopanova 72, Kikinda, 22000"
   }
   ,
     "4": {
     "id": 2,
     "isDeleted": false,
-    "latitude": "100",
-    "longitude": "100",
+    "latitude": "32",
+    "longitude": "32",
     "address": "Markova 1, Subotica, 12000"
   }
   ,
     "5": {
     "id": 2,
     "isDeleted": false,
-    "latitude": "100",
-    "longitude": "100",
+    "latitude": "24",
+    "longitude": "24",
     "address": "Marijina 12, Kraljevo, 45000"
   }
 }
