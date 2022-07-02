@@ -17,31 +17,36 @@ Vue.component("pregledProfila", {
     },
     template: `
   <div>
-                <h1>Pregled profila - {{username}}</h1>
+            <h1>Pregled profila - {{username}}</h1>
 
-                  <p>Korisničko ime:</p>
-                <input disabled
+            <p>Korisničko ime:</p>
+            <input
+                disabled
                 v-model="username"
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Korisničko ime"
-                />
- <p>Lozinka:</p>
-                <input :disabled=!changeCheck
-                  v-model="password"
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Lozinka"
-                />
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Korisničko ime"
+            />
+            <p>Lozinka:</p>
+            <input
+                :disabled="!changeCheck"
+                v-model="password"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Lozinka"
+            />
 
-                <br />
-                  <div style=" display: flex;
+            <br />
+            <div
+                style="
+                    display: flex;
                     align-items: center;
-                    justify-content: center;">
-                <input 
-               
+                    justify-content: center;
+                "
+            >
+                <input
                     class="checkbox"
                     type="checkbox"
                     id="showPassword"
@@ -49,48 +54,67 @@ Vue.component("pregledProfila", {
                 />
 
                 <label for="checkbox"> Prikaz lozinke </label>
-</div>
-             
-                <p>Ime:</p>
+            </div>
 
-                <input :disabled=!changeCheck
+            <p>Ime:</p>
+
+            <input
+                :disabled="!changeCheck"
                 v-model="name"
-                type="text" name="name" id="name" placeholder="Ime"  />
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Ime"
+            />
 
-                <p>Prezime:</p>
-                <input :disabled=!changeCheck
-                
+            <p>Prezime:</p>
+            <input
+                :disabled="!changeCheck"
                 v-model="surname"
-                    type="text"
-                    name="surname"
-                    id="surname"
-                    placeholder="Prezime"
-                />
+                type="text"
+                name="surname"
+                id="surname"
+                placeholder="Prezime"
+            />
 
-                <p>Pol:</p>
-                <select name="gender" id="gender"  v-model="gender" :disabled=!changeCheck>
-                    <option   value="male">Muški</option>
-                    <option value="female">Ženski</option>
-                </select>
+            <p>Pol:</p>
+            <select
+                name="gender"
+                id="gender"
+                v-model="gender"
+                :disabled="!changeCheck"
+            >
+                <option value="male">Muški</option>
+                <option value="female">Ženski</option>
+            </select>
 
-                <p>Datum rođenja:</p>
-                <input :disabled=!changeCheck type="date" v-model="birthDate"  name="birthDate" id="birthDate" 
-                 required/>
+            <p>Datum rođenja:</p>
+            <input
+                :disabled="!changeCheck"
+                type="date"
+                v-model="birthDate"
+                name="birthDate"
+                id="birthDate"
+                required
+            />
 
+            <br />
+            <br />
+            <button v-on:click="EnableUpdate" :hidden="changeCheck">
+                Izmeni
+            </button>
+            <button v-on:click="ConfrimUpdate" :hidden="!changeCheck">
+                Potvrdi izmenu
+            </button>
+            <button v-on:click="CancelUpdate" :hidden="!changeCheck">
+                Odustani od izmene
+            </button>
 
-
-                 <br />
-                 <br />
-     <button v-on:click="EnableUpdate" :hidden=changeCheck>Izmeni </button>
-      <button v-on:click="ConfrimUpdate" :hidden=!changeCheck>Potvrdi izmenu </button>
-    <button v-on:click="CancelUpdate" :hidden=!changeCheck>Odustani od izmene </button>
-
-                        <p v-if="!allDataEntered" >Niste uneli sve podatke</p>
-                        <p v-if="userExist" >Već postoji korisnik sa ovim korisničkim imenom</p>
-              
-
-             
-          </div>    
+            <p v-if="!allDataEntered">Niste uneli sve podatke</p>
+            <p v-if="userExist">
+                Već postoji korisnik sa ovim korisničkim imenom
+            </p>
+        </div>    
                 `,
 
     mounted() {

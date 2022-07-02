@@ -8,54 +8,50 @@ Vue.component("prijava", {
         };
     },
     template: `
-   <div class="centriraj">
+     <div class="centriraj">
             <div class="LoginDeo">
                 <h1>Prijavite se</h1>
 
-             
-                
-                    <p>Korisničko ime:</p>
-                    <input
-                     v-model="username"
-                        type="text"
-                        name="username"
-                        id="username"
-                        placeholder="Korisničko ime"
-                    />
-                    <p>Lozinka:</p>
-                    <input
+                <p>Korisničko ime:</p>
+                <input
+                    v-model="username"
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Korisničko ime"
+                />
+                <p>Lozinka:</p>
+                <input
                     v-model="password"
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Lozinka"
-                    />
-                    <br /> 
-                    
-                      <div style=" display: flex;
-                    align-items: center;
-                    justify-content: center;">
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Lozinka"
+                />
+                <br />
+
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    "
+                >
                     <input
-                    
                         class="checkbox"
                         type="checkbox"
                         id="showPassword"
                         onclick="myFunction() "
                     />
                     <label for="checkbox"> Prikaz lozinke </label>
-</div>
+                </div>
 
+                <br />
 
-                        
-                        <br />
-                            
-                        <button v-on:click="Login" >Prijavite se</button>
+                <button v-on:click="Login">Prijavite se</button>
 
-                        <p v-if="!allDataEntered" >Niste uneli sve podatke</p>
-                        <p v-if="!userExist" >Ne postoji korisnik sa tom sifrom</p>
-                        
-               
-              
+                <p v-if="!allDataEntered">Niste uneli sve podatke</p>
+                <p v-if="!userExist">Ne postoji korisnik sa tom sifrom</p>
             </div>
         </div>`,
 

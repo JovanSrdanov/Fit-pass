@@ -5,133 +5,112 @@ Vue.component("korisnici", {
         };
     },
     template: `
+        <div>
+            <h1>Korisnici</h1>
 
+            <div class="pretragaFiltriranjeSortiranje">
+                <div class="optionsWrapper">
+                    <p>Pretraga:</p>
 
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Ime"
+                    />
 
-     
- <div>
-   <h1>Korisnici</h1>
+                    <br />
+                    <br />
+                    <input
+                        type="text"
+                        name="facilityType"
+                        id="facilityType"
+                        placeholder="Prezime"
+                    />
+                    <br />
+                    <br />
+                    <input
+                        type="text"
+                        name="locationString"
+                        id="locationString"
+                        placeholder="Korisničko ime"
+                    />
+                    <br />
+                    <br />
 
-     <div class="pretragaFiltriranjeSortiranje">
-        <div class="optionsWrapper" >
-            <p>Pretraga:</p>
-            
-                         <input
-                   
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="Ime"
-                        />
-                        
-                            <br/>
-                            <br/>
-                         <input
-                     
-                            type="text"
-                            name="facilityType"
-                            id="facilityType"
-                            placeholder="Prezime"
-                        />
-                            <br/>
-                            <br/>
-                         <input
-                        
-                            type="text"
-                            name="locationString"
-                            id="locationString"
-                            placeholder="Korisničko ime"
-                        />
-                            <br/>
-                            <br/>
-                      
-                             
-                           
-                        <button  >Pretraži</button>  
-            
+                    <button>Pretraži</button>
+                </div>
+
+                <div class="optionsWrapper">
+                    <p>Filtriranje:</p>
+
+                    <label for="Uloga">Izabrati ulogu:</label>
+                    <select name="Uloga" id="Uloga">
+                        <option value="all">Svi</option>
+                        <option value="customer">Kupac</option>
+                        <option value="admin">Administrator</option>
+                        <option value="manager">Menadžer</option>
+                        <option value="trainer">Trener</option>
+                    </select>
+                    <br />
+                    <br />
+                    <label for="CustomerType">Izabrati tip kupca</label>
+                    <select name="CustomerType" id="CustomerType">
+                        <option value="all">Svi</option>
+                        <option value="gold">Zlatni</option>
+                        <option value="silver">Srebrni</option>
+                        <option value="bronze">Bronzani</option>
+                    </select>
+                </div>
+
+                <div class="optionsWrapper">
+                    <p>Sortiranje</p>
+                    <thead>
+                        <th colspan="2">
+                            <button>Ime</button>
+                            <button>Prezime</button>
+                            <br />
+                            <br />
+                            <button>Korisnicko ime</button>
+                            <button>Broj bodova</button>
+                        </th>
+                    </thead>
+                    <br />
+                    <p></p>
+                </div>
+                <button>Kreiraj novog menadžera ili trenera</button>
+            </div>
+
+            <div class="TabelaKorisnika">
+                <table>
+                    <td>Korisničko ime</td>
+                    <td>Šifra</td>
+                    <td>Ime</td>
+                    <td>Prezime</td>
+                    <td>Pol</td>
+                    <td>Datum rođenja</td>
+                    <td>Uloga</td>
+                    <td>Tip korisnika</td>
+                    <td>Broj bodova</td>
+                    <td>Obriši</td>
+
+                    <tbody>
+                        <tr v-for="u in Users">
+                            <td>{{u.username}}</td>
+                            <td>{{u.password}}</td>
+                            <td>{{u.name}}</td>
+                            <td>{{u.surname}}</td>
+                            <td>{{translateGender(u.gender)}}</td>
+                            <td>{{getDate(u.birthDate)}}</td>
+                            <td>{{getRole(u.role)}}</td>
+                            <td>{{getCustomerType(u)}}</td>
+                            <td>{{u.points}}</td>
+                            <td><button>Obriši</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-
-            <div class="optionsWrapper" >
-                 <p>Filtriranje:</p>
-                  
-                <label for="Uloga">Izabrati ulogu:</label>
-                <select name="Uloga" id="Uloga">
-                <option value="all">Svi</option>
-                <option value="customer">Kupac</option>
-                <option value="admin">Administrator</option>
-                <option value="manager">Menadžer</option>
-                <option value="trainer">Trener</option>
-                </select>
-                  <br/>
-                       <br/> 
-                <label for="CustomerType">Izabrati tip kupca</label>
-                <select name="CustomerType" id="CustomerType">
-                <option value="all">Svi</option>
-                <option value="gold">Zlatni</option>
-                <option value="silver">Srebrni</option>
-                <option value="bronze">Bronzani</option>
-             
-                </select>
-
-
-
-                    </div>
-
-
-             <div class="optionsWrapper" >
-             <p>Sortiranje</p>
-               <thead>
-                <th colspan="2"> 
-                <button  >Ime</button>
-                <button   >Prezime </button>
-                    <br/>
-                      <br/>
-                <button   >Korisnicko ime</button>
-                 <button   >Broj bodova</button>
-                </th>
-                </thead>
-                <br/>
-                <p>
-        
-                </p>
-            </div>
-            </div>
-
-
-   
-    <div class="TabelaKorisnika">
-            <table>
-            <td>Korisničko ime</td>
-            <td>Šifra</td>
-            <td>Ime</td>
-            <td>Prezime</td>
-            <td>Pol</td>
-            <td>Datum rođenja</td>
-            <td>Uloga</td>
-            <td>Tip korisnika</td>
-            <td>Broj bodova</td>
-            <td>Obriši</td>
-
-            <tbody>
-                <tr v-for="u in Users" >
-                <td>{{u.username}}</td>
-                <td>{{u.password}}</td>
-                <td>{{u.name}}</td>
-                <td>{{u.surname}}</td>
-                <td>{{translateGender(u.gender)}}</td>
-                <td>{{getDate(u.birthDate)}}</td>
-                <td>{{getRole(u.role)}}</td>
-                <td>{{getCustomerType(u)}}</td>
-                <td>{{u.points}}</td>
-                <td><button >Obriši</button></td>          
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-   
- </div>
   `,
 
     mounted() {

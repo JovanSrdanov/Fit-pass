@@ -17,31 +17,36 @@ Vue.component("registracija", {
     template: ` 
   <div class="centriraj">
             <h1>Registrujte se</h1>
-        
-                <p>Korisničko ime:</p>
-                <input required
+
+            <p>Korisničko ime:</p>
+            <input
+                required
                 v-model="username"
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Korisničko ime"
-                />
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Korisničko ime"
+            />
 
-                <p>Lozinka:</p>
-                <input required
-                  v-model="password"
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Lozinka"
-                />
+            <p>Lozinka:</p>
+            <input
+                required
+                v-model="password"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Lozinka"
+            />
 
-                <br />
-                  <div style=" display: flex;
+            <br />
+            <div
+                style="
+                    display: flex;
                     align-items: center;
-                    justify-content: center;">
-                <input 
-                
+                    justify-content: center;
+                "
+            >
+                <input
                     class="checkbox"
                     type="checkbox"
                     id="showPassword"
@@ -49,41 +54,53 @@ Vue.component("registracija", {
                 />
 
                 <label for="checkbox"> Prikaz lozinke </label>
-</div>
-             
-                <p>Ime:</p>
+            </div>
 
-                <input 
+            <p>Ime:</p>
+
+            <input
                 v-model="name"
-                type="text" name="name" id="name" placeholder="Ime" required />
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Ime"
+                required
+            />
 
-                <p>Prezime:</p>
-                <input
+            <p>Prezime:</p>
+            <input
                 required
                 v-model="surname"
-                    type="text"
-                    name="surname"
-                    id="surname"
-                    placeholder="Prezime"
-                />
+                type="text"
+                name="surname"
+                id="surname"
+                placeholder="Prezime"
+            />
 
-                <p>Pol:</p>
-                <select name="gender" id="gender"  v-model="gender">
-                    <option  selected="selected" value="male">Muški</option>
-                    <option value="female">Ženski</option>
-                </select>
+            <p>Pol:</p>
+            <select name="gender" id="gender" v-model="gender">
+                <option selected="selected" value="male">Muški</option>
+                <option value="female">Ženski</option>
+            </select>
 
-                <p>Datum rođenja:</p>
-                <input type="date" value="1900-01-01"  v-model="dateOfBirth"  name="dateOfBirth" id="dateOfBirth" 
-                 required/>
-                 <br />
-                 <br />
-     <button v-on:click="RegisterCustomer">Registruj se </button>
+            <p>Datum rođenja:</p>
+            <input
+                type="date"
+                value="1900-01-01"
+                v-model="dateOfBirth"
+                name="dateOfBirth"
+                id="dateOfBirth"
+                required
+            />
+            <br />
+            <br />
+            <button v-on:click="RegisterCustomer">Registruj se</button>
 
-                        <p v-if="!allDataEntered" >Niste uneli sve podatke</p>
-                        <p v-if="userExist" >Već postoji korisnik sa ovim korisničkim imenom</p>
-
-        </div>       
+            <p v-if="!allDataEntered">Niste uneli sve podatke</p>
+            <p v-if="userExist">
+                Već postoji korisnik sa ovim korisničkim imenom
+            </p>
+        </div>      
    `,
 
     mounted() {},

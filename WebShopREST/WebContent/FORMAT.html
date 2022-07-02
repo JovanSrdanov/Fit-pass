@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <h1>Sportski objekti</h1>
+
+            <div class="pretragaFiltriranjeSortiranje">
+                <div class="optionsWrapper">
+                    <p>Pretraga:</p>
+
+                    <input
+                        v-model="name"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Naziv objekta"
+                    />
+
+                    <br />
+                    <br />
+                    <input
+                        v-model="facilityType"
+                        type="text"
+                        name="facilityType"
+                        id="facilityType"
+                        placeholder="Tip objekta"
+                    />
+                    <br />
+                    <br />
+                    <input
+                        v-model="locationString"
+                        type="text"
+                        name="locationString"
+                        id="locationString"
+                        placeholder="Grad/Ulica"
+                    />
+                    <br />
+
+                    <p>
+                        Prosečna ocena:
+                        <input
+                            min="1"
+                            max="5"
+                            v-model="rating"
+                            type="number"
+                            name="rating"
+                            id="rating"
+                        />
+                    </p>
+
+                    <button v-on:click="Search">Pretraži</button>
+                </div>
+
+                <div class="optionsWrapper">
+                    <p>Filtriranje:</p>
+                    <input
+                        v-model="facilityTypeFilter"
+                        type="text"
+                        name="facilityTypeFilter"
+                        id="facilityTypeFilter"
+                        placeholder="Tip objekta"
+                    />
+
+                    <div
+                        style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        "
+                    >
+                        <input
+                            type="checkbox"
+                            id="OtvoreniObjekti"
+                            name="OtvoreniObjekti"
+                            v-model="OpenFacilitys"
+                        />
+                        <label for="OtvoreniObjekti">Otvoreni objekti</label
+                        ><br />
+                    </div>
+                </div>
+
+                <div class="optionsWrapper">
+                    <p>Sortiranje</p>
+                    <thead>
+                        <th colspan="2">
+                            <button v-on:click="NazivSortFunction">
+                                {{NazivString}}
+                            </button>
+                            <button v-on:click="LokacijaSortFunction">
+                                {{LokacijaString}} TBA
+                            </button>
+                            <button v-on:click="OcenaSortFunction">
+                                {{OcenaString}}
+                            </button>
+                        </th>
+                    </thead>
+                </div>
+            </div>
+            <div class="prostorZatabelu">
+                <table>
+                    <tbody>
+                        <tr v-for="p in searchFilterSort">
+                            <td>
+                                <img
+                                    v-bind:src="getImgUrl(p.facility.logo)"
+                                    alt="LOGO"
+                                    height="200"
+                                    width="200"
+                                />
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Naziv: {{p.facility.name}}</li>
+                                    <li>Tip: {{p.facility.facilityType}}</li>
+                                    <li>Adresa: {{p.location.address}}</li>
+                                    <li>
+                                        Prosečna ocena: {{p.facility.rating}}
+                                    </li>
+                                    <li>
+                                        Radno vreme: {{p.facility.workStart}} -
+                                        {{p.facility.workEnd}}
+                                    </li>
+
+                                    <br />
+                                    <li>
+                                        <button
+                                            v-on:click="goToFacilityPage(p)"
+                                        >
+                                            Detaljnije
+                                        </button>
+                                        <button
+                                            v-on:click="deleteFacility(p)"
+                                            v-if="loggedInUser.role=='admin'"
+                                        >
+                                            Obriši
+                                        </button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
