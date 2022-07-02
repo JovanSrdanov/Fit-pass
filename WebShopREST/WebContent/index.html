@@ -7,6 +7,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css"
+            type="text/css"
+        />
+        <style>
+            .map {
+                position: absolute;
+                height: 400px;
+                width: 400px;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+
         <link rel="stylesheet" href="css/index.css" type="text/css" />
         <link rel="stylesheet" href="css/spinner.css" type="text/css" />
         <link rel="stylesheet" href="css/pocetnaTabela.css" type="text/css" />
@@ -38,9 +52,36 @@
                     <li>
                         <a
                             style="float: left"
-                            v-if="loggedInUser.role=='admin'"
-                            href="#/korisnici"
-                            >Korisnici</a
+                            v-if="loggedInUser.role=='customer'"
+                            href="#/"
+                            >Treninzi</a
+                        >
+                    </li>
+
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='customer'"
+                            href="#/"
+                            >Članarina</a
+                        >
+                    </li>
+
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='trainer'"
+                            href="#/"
+                            >Treninzi</a
+                        >
+                    </li>
+
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='manager'"
+                            href="#/"
+                            >Moj sportski objekat</a
                         >
                     </li>
 
@@ -48,8 +89,8 @@
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='admin'"
-                            href="#/"
-                            >Sportski objekti</a
+                            href="#/korisnici"
+                            >Korisnici</a
                         >
                     </li>
 

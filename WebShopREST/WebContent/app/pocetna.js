@@ -119,7 +119,7 @@ Vue.component("pocetna", {
                                 width="200"
                             />
                         </td>
-                        <td>
+                        <td></td>
                             <ul>
                                 <li>Naziv: {{p.facility.name}}</li>
                                 <li>Tip: {{p.facility.facilityType}}</li>
@@ -135,6 +135,15 @@ Vue.component("pocetna", {
                                 </li>  
                              
                             </ul>
+                        </td>
+                         <td>
+                            <img
+                              
+                                src="Images/FEJK_MAPA.jpg"
+                                alt="Mapa"
+                                height="200"
+                                width="200"
+                            />
                         </td>
                     </tr>
 

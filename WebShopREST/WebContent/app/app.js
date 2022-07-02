@@ -6,13 +6,18 @@ const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
 
 const router = new VueRouter({
     mode: "hash",
+
     routes: [
-        { path: "/pocetna", component: pocetna },
-        { path: "/", component: pocetna },
-        { path: "/registracija", component: registracija },
-        { path: "/prijava", component: prijava },
-        { path: "/korisnici", component: korisnici },
-        { path: "/pregledProfila/:username", component: pregledProfila },
+        { path: "/", component: pocetna, props: true },
+        { path: "/pocetna", component: pocetna, props: true },
+        { path: "/registracija", component: registracija, props: true },
+        { path: "/prijava", component: prijava, props: true },
+        { path: "/korisnici", component: korisnici, props: true },
+        {
+            path: "/pregledProfila/:username",
+            component: pregledProfila,
+            props: true,
+        },
     ],
 });
 var app = new Vue({

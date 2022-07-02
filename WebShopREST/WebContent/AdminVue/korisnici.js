@@ -5,9 +5,101 @@ Vue.component("korisnici", {
         };
     },
     template: `
+
+
+
      
  <div>
    <h1>Korisnici</h1>
+
+     <div class="pretragaFiltriranjeSortiranje">
+        <div class="optionsWrapper" >
+            <p>Pretraga:</p>
+            
+                         <input
+                   
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Ime"
+                        />
+                        
+                            <br/>
+                            <br/>
+                         <input
+                     
+                            type="text"
+                            name="facilityType"
+                            id="facilityType"
+                            placeholder="Prezime"
+                        />
+                            <br/>
+                            <br/>
+                         <input
+                        
+                            type="text"
+                            name="locationString"
+                            id="locationString"
+                            placeholder="Korisničko ime"
+                        />
+                            <br/>
+                            <br/>
+                      
+                             
+                           
+                        <button  >Pretraži</button>  
+            
+        </div>
+
+
+            <div class="optionsWrapper" >
+                 <p>Filtriranje:</p>
+                  
+                <label for="Uloga">Izabrati ulogu:</label>
+                <select name="Uloga" id="Uloga">
+                <option value="all">Svi</option>
+                <option value="customer">Kupac</option>
+                <option value="admin">Administrator</option>
+                <option value="manager">Menadžer</option>
+                <option value="trainer">Trener</option>
+                </select>
+                  <br/>
+                       <br/> 
+                <label for="CustomerType">Izabrati tip kupca</label>
+                <select name="CustomerType" id="CustomerType">
+                <option value="all">Svi</option>
+                <option value="gold">Zlatni</option>
+                <option value="silver">Srebrni</option>
+                <option value="bronze">Bronzani</option>
+             
+                </select>
+
+
+
+                    </div>
+
+
+             <div class="optionsWrapper" >
+             <p>Sortiranje</p>
+               <thead>
+                <th colspan="2"> 
+                <button  >Ime</button>
+                <button   >Prezime </button>
+                    <br/>
+                      <br/>
+                <button   >Korisnicko ime</button>
+                 <button   >Broj bodova</button>
+                </th>
+                </thead>
+                <br/>
+                <p>
+        
+                </p>
+            </div>
+            </div>
+
+
+   
     <div class="TabelaKorisnika">
             <table>
             <td>Korisničko ime</td>
@@ -43,6 +135,19 @@ Vue.component("korisnici", {
   `,
 
     mounted() {
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
+
+        ///
+        axios.get("rest/customers/all", yourConfig).then((response) => {
+            this.Users = response.data;
+        });
+
+        let start = JSON.parse(localStorage.getItem("loggedInUser"));
+
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert(
                 "Nije vam dozvoljeno da vidite ovu stranicu jer niste ulogovani kao odgovarajuća uloga!"
@@ -58,17 +163,6 @@ Vue.component("korisnici", {
             window.location.href = "#/pocetna";
             return;
         }
-
-        yourConfig = {
-            headers: {
-                Authorization: localStorage.getItem("token"),
-            },
-        };
-
-        ///
-        axios.get("rest/customers/all", yourConfig).then((response) => {
-            this.Users = response.data;
-        });
     },
     methods: {
         translateGender: function (gender) {
