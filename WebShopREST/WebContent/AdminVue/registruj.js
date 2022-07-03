@@ -108,7 +108,25 @@ Vue.component("registruj", {
             </p>
         </div>      
   `,
-    mounted() {},
+    mounted() {
+        let start = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
+            alert(
+                "Nije vam dozvoljeno da vidite ovu stranicu jer niste ulogovani kao odgovarajuća uloga!"
+            );
+            window.location.href = "#/pocetna";
+            return;
+        }
+
+        if (JSON.parse(localStorage.getItem("loggedInUser")).role !== "admin") {
+            alert(
+                "Nije vam dozvoljeno da vidite ovu stranicu jer ste ulogovani kao uloga koja nije odgovarajuća!"
+            );
+            window.location.href = "#/pocetna";
+            return;
+        }
+    },
     methods: {
         RegisterCustomer: function () {
             this.allDataEntered = true;

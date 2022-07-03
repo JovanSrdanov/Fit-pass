@@ -11,7 +11,7 @@ Vue.component("pregledObjekta", {
     },
     template: `
   <div>
-            <h1>Pregled objekta - {{currentFacility.facility.name}} </h1>
+            <h1>{{currentFacility.facility.name}} </h1>
             
               <div class="infoAndTranings">
                
@@ -27,7 +27,11 @@ Vue.component("pregledObjekta", {
                             <tr><td>
                                 Radno vreme: {{currentFacility.facility.workStart}} -
                                 {{currentFacility.facility.workEnd}}</td>
-                            </tr>    
+                            </tr> 
+                                <tr><td>
+                                Objekat  {{convertStatus(currentFacility.facility.status)}}
+                               </td>
+                            </tr>     
                         </table>     
                         
                        
@@ -44,8 +48,8 @@ Vue.component("pregledObjekta", {
                   <img
                     v-bind:src="getImgUrl(currentFacility.facility.logo)"
                     alt="LOGO"
-                    height="300"
-                    width="300"
+                    height="500px"
+                    width="500px"
                 />
                 <div class="mapShow" id="mapShow"></div>
             </div>
@@ -108,6 +112,10 @@ Vue.component("pregledObjekta", {
         });
     },
     methods: {
+        convertStatus(status) {
+            if (status) return "radi";
+            else return "ne radi";
+        },
         getImgUrl(slika) {
             if (slika == "") return null;
             return "FacilityLogo/" + slika;
