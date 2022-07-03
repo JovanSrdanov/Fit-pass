@@ -113,6 +113,12 @@ Vue.component("pocetna", {
                         </th>
                     </thead>
                 </div>
+                  <button
+                        v-on:click="CreateNewObject"
+                        v-if="loggedInUser.role=='admin'"
+                    >
+                        Napravi objekat
+                    </button>
             </div>
             <div class="prostorZatabelu">
                 <table>
@@ -292,6 +298,10 @@ Vue.component("pocetna", {
                 this.OcenaString = "Ocena ↑";
                 this.OcenaSort = "ASC";
             }
+        },
+
+        CreateNewObject: function () {
+            window.location.href = "#/napraviObjekat";
         },
         goToFacilityPage: function (facility) {
             router.push(`/pregledObjekta/${facility.facility.id}`);

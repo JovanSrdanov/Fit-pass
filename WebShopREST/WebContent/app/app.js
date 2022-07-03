@@ -5,6 +5,7 @@ const korisnici = { template: "<korisnici></korisnici>" };
 const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
 const registruj = { template: "<registruj></registruj>" };
 const pregledObjekta = { template: "<pregledObjekta></pregledObjekta>" };
+const napraviObjekat = { template: "<napraviObjekat></napraviObjekat>" };
 
 const router = new VueRouter({
     mode: "hash",
@@ -17,6 +18,7 @@ const router = new VueRouter({
         { path: "/korisnici", component: korisnici, props: true },
         { path: "/registruj", component: registruj, props: true },
         { path: "/pregledObjekta/:id", component: pregledObjekta, props: true },
+        { path: "/napraviObjekat", component: napraviObjekat, props: true },
         {
             path: "/pregledProfila/:username",
             component: pregledProfila,
