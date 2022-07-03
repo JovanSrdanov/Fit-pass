@@ -264,7 +264,7 @@ Vue.component("pocetna", {
                 this.NazivSort = "DSC";
             } else {
                 this.NazivSort = "ASC";
-                this.NazivString = "Naziv ↑ ";
+                this.NazivString = "Naziv ↑";
             }
         },
         LokacijaSortFunction() {

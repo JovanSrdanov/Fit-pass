@@ -1,7 +1,7 @@
 {
   "1": {
     "membershipId": -1,
-    "points": 0,
+    "points": 1,
     "customerTypeId": 1,
     "id": 1,
     "isDeleted": false,
@@ -15,21 +15,21 @@
   },
   "2": {
     "membershipId": -1,
-    "points": 0,
+    "points": 110,
     "customerTypeId": 2,
     "id": 2,
     "isDeleted": false,
     "username": "stralex152",
     "password": "cipiripi11",
     "name": "Strahinja",
-    "surname": "šđčćž шђчћж\tљњ",
+    "surname": "Mjau",
     "gender": "male",
     "birthDate": "Jan 1, 2001, 1:00:00 AM",
     "role": "customer"
   },
   "3": {
     "membershipId": -1,
-    "points": 0,
+    "points": 20,
     "customerTypeId": 1,
     "id": 3,
     "isDeleted": false,
@@ -38,7 +38,7 @@
     "name": "Jovan",
     "surname": "Srdanov",
     "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "birthDate": "Jan 1, 1990, 1:00:00 AM",
     "role": "customer"
   }
 }
