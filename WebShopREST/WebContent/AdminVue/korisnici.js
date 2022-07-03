@@ -3,27 +3,22 @@ Vue.component("korisnici", {
         return {
             Users: {},
 
-            searchName:"",
-            searchSurname:"",
-            searchUsername:"",
+            searchName: "",
+            searchSurname: "",
+            searchUsername: "",
 
-            filterRole :"all",
-            filterTypeOfCustomer:"all",
+            filterRole: "all",
+            filterTypeOfCustomer: "all",
 
-            sortName:"noSort",
-            sortSurname:"noSort",
-            sortUsername:"noSort",
-            sortPoints:"noSort",
+            sortName: "noSort",
+            sortSurname: "noSort",
+            sortUsername: "noSort",
+            sortPoints: "noSort",
 
-
-            nameString:"Ime ↕",
-            surnameString:"Prezime ↕",
-            usernameString:"Korisničko ime ↕",
-            pointsString:"Broj bodova ↕"
-
-
-
-
+            nameString: "Ime ↕",
+            surnameString: "Prezime ↕",
+            usernameString: "Korisničko ime ↕",
+            pointsString: "Broj bodova ↕",
         };
     },
     template: `
@@ -101,9 +96,9 @@ Vue.component("korisnici", {
                         </th>
                     </thead>
                     <br />
-                    <p></p>
+                 
                 </div>
-                <button>Kreiraj novog menadžera ili trenera</button>
+                <button v-on:click="CreateManagerTrainer">Kreiraj novog menadžera ili trenera</button>
             </div>
 
             <div class="TabelaKorisnika">
@@ -137,7 +132,6 @@ Vue.component("korisnici", {
             </div>
         </div>
   `,
-    
 
     mounted() {
         yourConfig = {
@@ -170,31 +164,31 @@ Vue.component("korisnici", {
         }
     },
     computed: {
-        searchFilterSortUsers(){
-
-            if(!this.Users) return null;
+        searchFilterSortUsers() {
+            if (!this.Users) return null;
             tempSFSU = this.Users;
 
-            if(this.filterTypeOfCustomer!='all'){
-                tempSFSU = tempSFSU.filter((temp)=>{
-                    if(temp.customerType===null) return;
+            if (this.filterTypeOfCustomer != "all") {
+                tempSFSU = tempSFSU.filter((temp) => {
+                    if (temp.customerType === null) return;
                     return (
                         temp.customerType.type
                             .toLowerCase()
-                            .indexOf(this.filterTypeOfCustomer.toLowerCase()) > -1
+                            .indexOf(this.filterTypeOfCustomer.toLowerCase()) >
+                        -1
                     );
-    
-                })}
+                });
+            }
 
-            if(this.filterRole!='all'){
-            tempSFSU = tempSFSU.filter((temp)=>{
-                return (
-                    temp.role
-                        .toLowerCase()
-                        .indexOf(this.filterRole.toLowerCase()) > -1
-                );
-
-            })}
+            if (this.filterRole != "all") {
+                tempSFSU = tempSFSU.filter((temp) => {
+                    return (
+                        temp.role
+                            .toLowerCase()
+                            .indexOf(this.filterRole.toLowerCase()) > -1
+                    );
+                });
+            }
 
             if (this.sortName === "DSC") {
                 tempSFSU = tempSFSU.sort((a, b) => {
@@ -220,7 +214,6 @@ Vue.component("korisnici", {
                 });
             }
 
-            
             if (this.sortUsername === "DSC") {
                 tempSFSU = tempSFSU.sort((a, b) => {
                     return a.username.localeCompare(b.username);
@@ -244,109 +237,85 @@ Vue.component("korisnici", {
                     return b.points - a.points;
                 });
             }
-          
-        
-
-
 
             return tempSFSU;
-
-        }
+        },
     },
     methods: {
-        ImeSortFunction(){
-           
-            this.sortSurname="noSort"
-            this.sortUsername="noSort"
-            this.sortPoints="noSort"
-            
-            this.nameString= "Ime ↕";
-            this.surnameString= "Prezime ↕";
-            this.usernameString= "Korisničko ime ↕";
-            this.pointsString= "Broj bodova ↕";
+        CreateManagerTrainer: function () {
+            window.location.href = "#/registruj";
+        },
+        ImeSortFunction() {
+            this.sortSurname = "noSort";
+            this.sortUsername = "noSort";
+            this.sortPoints = "noSort";
 
-            if(this.sortName == "ASC" ){
-                this.sortName= "DSC";
+            this.nameString = "Ime ↕";
+            this.surnameString = "Prezime ↕";
+            this.usernameString = "Korisničko ime ↕";
+            this.pointsString = "Broj bodova ↕";
+
+            if (this.sortName == "ASC") {
+                this.sortName = "DSC";
                 this.nameString = "Ime  ↓";
-
-
-            }
-            else{
-                this.sortName= "ASC";
+            } else {
+                this.sortName = "ASC";
                 this.nameString = "Ime ↑";
-
             }
-
-
-
         },
-        PrezimeSortFunction(){
-            this.sortName="noSort"
-            this.sortUsername="noSort"
-            this.sortPoints="noSort"
-                 
-            this.nameString= "Ime ↕";
-            this.usernameString= "Korisničko ime ↕";
-            this.pointsString= "Broj bodova ↕";
+        PrezimeSortFunction() {
+            this.sortName = "noSort";
+            this.sortUsername = "noSort";
+            this.sortPoints = "noSort";
 
-            if(this.sortSurname == "ASC" ){
-                this.sortSurname= "DSC";
+            this.nameString = "Ime ↕";
+            this.usernameString = "Korisničko ime ↕";
+            this.pointsString = "Broj bodova ↕";
+
+            if (this.sortSurname == "ASC") {
+                this.sortSurname = "DSC";
                 this.surnameString = "Prezime  ↓";
-            }
-            else{
-                this.sortSurname= "ASC";
+            } else {
+                this.sortSurname = "ASC";
                 this.surnameString = "Prezime ↑";
-
             }
         },
-        KorisnickoImeSortFunction(){
-            this.sortName="noSort"
-            this.sortSurname="noSort"      
-            this.sortPoints="noSort"
-                 
-            this.nameString= "Ime ↕";
-            this.surnameString= "Prezime ↕";          
-            this.pointsString= "Broj bodova ↕";
+        KorisnickoImeSortFunction() {
+            this.sortName = "noSort";
+            this.sortSurname = "noSort";
+            this.sortPoints = "noSort";
 
-            if(this.sortUsername == "ASC" ){
-                this.sortUsername= "DSC";
+            this.nameString = "Ime ↕";
+            this.surnameString = "Prezime ↕";
+            this.pointsString = "Broj bodova ↕";
+
+            if (this.sortUsername == "ASC") {
+                this.sortUsername = "DSC";
                 this.usernameString = "Korisničko ime  ↓";
-            }
-            else{
-                this.sortUsername= "ASC";
+            } else {
+                this.sortUsername = "ASC";
                 this.usernameString = "Korisničko ime ↑";
-
             }
-
-
         },
-        BodoviSortFunction(){
-            this.sortName="noSort"
-            this.sortSurname="noSort"
-            this.sortUsername="noSort"
-         
-                 
-            this.nameString= "Ime ↕";
-            this.surnameString= "Prezime ↕";
-            this.usernameString= "Korisničko ime ↕";
+        BodoviSortFunction() {
+            this.sortName = "noSort";
+            this.sortSurname = "noSort";
+            this.sortUsername = "noSort";
 
-            if(this.sortPoints == "ASC" ){
-                this.sortPoints= "DSC";
+            this.nameString = "Ime ↕";
+            this.surnameString = "Prezime ↕";
+            this.usernameString = "Korisničko ime ↕";
+
+            if (this.sortPoints == "ASC") {
+                this.sortPoints = "DSC";
                 this.pointsString = "Broj bodova  ↓";
-            }
-            else{
-                this.sortPoints= "ASC";
+            } else {
+                this.sortPoints = "ASC";
                 this.pointsString = "Broj bodova ↑";
-
             }
-        
-
-
         },
 
-        searchUser:function () {
-          
-        },
+        searchUser: function () {},
         translateGender: function (gender) {
             if (gender == "male") return "Muški";
             else return "Ženski";

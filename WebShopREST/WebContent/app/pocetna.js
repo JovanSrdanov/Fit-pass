@@ -294,11 +294,10 @@ Vue.component("pocetna", {
             }
         },
         goToFacilityPage: function (facility) {
-            window.location.href = "#/facility/" + facility.facility.id;
+            router.push(`/pregledObjekta/${facility.facility.id}`);
         },
 
         deleteFacility: function (facility) {
-            alert("Obrisan je sportski objekat " + facility.facility.name);
             window.location.href = "#/pocetna";
         },
         getImgUrl(slika) {

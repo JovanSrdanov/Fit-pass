@@ -9,7 +9,7 @@
       2
     ],
     "status": true,
-    "locationId": 1,
+    "locationId": 2,
     "logo": "FacilityLogo1.png",
     "rating": 4,
     "workStart": "14:00",
@@ -25,7 +25,7 @@
       2
     ],
     "status": true,
-    "locationId": 2,
+    "locationId": 1,
     "logo": "FacilityLogo2.png",
     "rating": 1,
     "workStart": "09:00",

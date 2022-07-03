@@ -3,6 +3,8 @@ const prijava = { template: "<prijava></prijava>" };
 const pocetna = { template: "<pocetna></pocetna>" };
 const korisnici = { template: "<korisnici></korisnici>" };
 const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
+const registruj = { template: "<registruj></registruj>" };
+const pregledObjekta = { template: "<pregledObjekta></pregledObjekta>" };
 
 const router = new VueRouter({
     mode: "hash",
@@ -13,6 +15,8 @@ const router = new VueRouter({
         { path: "/registracija", component: registracija, props: true },
         { path: "/prijava", component: prijava, props: true },
         { path: "/korisnici", component: korisnici, props: true },
+        { path: "/registruj", component: registruj, props: true },
+        { path: "/pregledObjekta/:id", component: pregledObjekta, props: true },
         {
             path: "/pregledProfila/:username",
             component: pregledProfila,

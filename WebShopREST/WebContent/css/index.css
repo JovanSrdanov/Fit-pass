@@ -6,6 +6,9 @@ body {
     font-family: Helvetica;
     text-align: center;
 }
+ul {
+    list-style-type: none;
+}
 
 img {
     border-radius: 20px;
@@ -16,6 +19,10 @@ input[type="number"] {
 }
 input[type="checkbox"] {
     cursor: pointer;
+}
+select {
+    cursor: pointer;
+    font-size: large;
 }
 
 ::-webkit-scrollbar {
@@ -48,7 +55,7 @@ input:focus::placeholder {
 }
 
 button {
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 15px;
     background-color: #191654;
     color: white;
