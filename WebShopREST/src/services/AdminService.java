@@ -29,7 +29,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 
-@Path("/admins")
+@Path("/admin")
 public class AdminService {
 	
 	@Context

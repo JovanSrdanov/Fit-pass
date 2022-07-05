@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.ws.rs.FormParam;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,12 +23,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Customer;
 import beans.Facility;
 import dto.FacilityDto;
 import main.Startup;
 
 public class FacilityDao {
 	private static HashMap<Integer, Facility> facilitys;
+	
+	private static HashMap<Integer, Facility> allFacilitys;
 	
 	public FacilityDao() {
 		readFile();
@@ -59,7 +64,7 @@ public class FacilityDao {
 			Gson gson = new GsonBuilder()
 					  .setPrettyPrinting()
 					  .create();
-			gson.toJson(facilitys, writer);
+			gson.toJson(allFacilitys, writer);
 			writer.close();
 		}
 		catch (Exception e) {
@@ -77,8 +82,10 @@ public class FacilityDao {
 					  .setPrettyPrinting()
 					  .create();
 			Type type = new TypeToken<HashMap<Integer, Facility>>(){}.getType();
-			facilitys = gson.fromJson(reader, type);
+			allFacilitys = gson.fromJson(reader, type);
 			reader.close();
+			
+			filterDeleted();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -86,13 +93,24 @@ public class FacilityDao {
 		}
 	}
 	
+	private void filterDeleted() {
+		facilitys = new HashMap<Integer, Facility>();
+		
+		for(Facility facility : allFacilitys.values()) {
+			if(!facility.isDeleted()) {
+				facilitys.put(facility.getId(), facility);
+			}
+		}
+		
+	}
+	
 	public Collection<Facility> getAll() {
-		readFile();
+		//readFile();
 		return facilitys.values();
 	}
 	
 	public Collection<FacilityDto> getAllTable() {
-		readFile();
+		//readFile();
 		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
 		for(Facility facility : facilitys.values()) {
 			facilityTables.add(new FacilityDto(facility));
@@ -100,6 +118,18 @@ public class FacilityDao {
 		
 		return sortByWorkingHours(facilityTables);
 		
+	}
+	
+	public FacilityDto getAllInfoById(int id) {
+		FacilityDto facilityDto = null;
+		for(Facility facility : facilitys.values()) {
+			if(facility.getId() == id) {
+				facilityDto = new FacilityDto(facility);
+				return facilityDto;
+			}
+		}
+		
+		throw new WebApplicationException(Response.Status.NOT_FOUND);
 	}
 	
 	public Collection<FacilityDto> sortByWorkingHours(ArrayList<FacilityDto> facilitys) {
@@ -186,8 +216,7 @@ public class FacilityDao {
 	}
 	
 	public void removeById(int id) {
-		
-		//treba logicko
+		this.facilitys.get(id).setDeleted(true);
 		this.facilitys.remove(id);
 		writeFile();
 	}
