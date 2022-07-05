@@ -23,8 +23,12 @@ import javax.ws.rs.core.UriInfo;
 
 import beans.Admin;
 import beans.Customer;
+import beans.Manager;
+import beans.Trainer;
 import dao.AdminDao;
 import dao.CustomerDao;
+import dao.ManagerDao;
+import dao.TrainerDao;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -53,6 +57,14 @@ public class LoginService {
 		if (ctx.getAttribute("AdminDao") == null) {
 			ctx.setAttribute("AdminDao", new AdminDao());
 		}
+		
+		if (ctx.getAttribute("ManagerDao") == null) {
+			ctx.setAttribute("ManagerDao", new ManagerDao());
+		}
+		
+		if (ctx.getAttribute("TrainerDao") == null) {
+			ctx.setAttribute("TrainerDao", new TrainerDao());
+		}
 	}
 	
     @POST
@@ -70,6 +82,8 @@ public class LoginService {
         	}*/
         	CustomerDao customerDao = (CustomerDao) ctx.getAttribute("CustomerDao");
         	AdminDao adminDao = (AdminDao) ctx.getAttribute("AdminDao");
+        	ManagerDao managerDao = (ManagerDao) ctx.getAttribute("ManagerDao");
+        	TrainerDao trainerDao = (TrainerDao) ctx.getAttribute("TrainerDao");
         	
         	boolean naso = false;
         	String role = "";
@@ -89,6 +103,26 @@ public class LoginService {
 	        		if(admin.getUsername().equals(username) && admin.getPassword().equals(password)) {
 	        			naso = true;
 	        			role = admin.getRole().toString();
+	        			break;
+	        		}
+	        	}
+        	}
+        	
+        	if(!naso) {
+	        	for(Manager manager : managerDao.getAll()) {
+	        		if(manager.getUsername().equals(username) && manager.getPassword().equals(password)) {
+	        			naso = true;
+	        			role = manager.getRole().toString();
+	        			break;
+	        		}
+	        	}
+        	}
+        	
+        	if(!naso) {
+	        	for(Trainer trainer : trainerDao.getAll()) {
+	        		if(trainer.getUsername().equals(username) && trainer.getPassword().equals(password)) {
+	        			naso = true;
+	        			role = trainer.getRole().toString();
 	        			break;
 	        		}
 	        	}
