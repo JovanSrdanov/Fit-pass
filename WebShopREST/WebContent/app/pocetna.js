@@ -138,7 +138,7 @@ Vue.component("pocetna", {
                                 <ul>
                                     <li>Naziv: {{p.facility.name}}</li>
                                     <li>Tip: {{p.facility.facilityType}}</li>
-                                    <li>Adresa: {{p.location.address}}</li>
+                                    <li>Adresa: {{p.location.street}} {{p.location.streetNumber}}, {{p.location.city}} {{p.location.postCode}}</li>
                                     <li>
                                         Prosečna ocena: {{p.facility.rating}}
                                     </li>
