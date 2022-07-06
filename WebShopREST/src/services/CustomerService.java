@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -92,6 +93,45 @@ public class CustomerService {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		
+		ArrayList<BigDaddy> bigDaddys = (ArrayList<BigDaddy>) getAllUsers();
+		
+		return bigDaddys;
+	}
+	
+	@POST
+	@Path("/search")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<BigDaddy> getAllFilter(@FormParam("name") String name,
+											@FormParam("surname") String surname,
+											@FormParam("username") String username,
+											@Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ArrayList<BigDaddy> allBigDaddys = (ArrayList<BigDaddy>) getAllUsers();
+		
+		ArrayList<BigDaddy> filteredBigDaddys = new ArrayList<BigDaddy>();
+		
+		name = name.toLowerCase();
+		surname = surname.toLowerCase();
+		username = username.toLowerCase();
+		
+		for(BigDaddy curr : allBigDaddys) {
+			if(curr.getUsername().toLowerCase().contains(name) &&
+					curr.getSurname().toLowerCase().contains(surname) &&
+					curr.getUsername().toLowerCase().contains(username)) {
+				filteredBigDaddys.add(curr);
+			}
+		}
+		
+		return filteredBigDaddys;
+	}
+	
+	public Collection<BigDaddy> getAllUsers() {
 		ArrayList<BigDaddy> bigDaddys = new ArrayList<BigDaddy>();
 		
 		CustomerDao customerDao = (CustomerDao) ctx.getAttribute("CustomerDao");
