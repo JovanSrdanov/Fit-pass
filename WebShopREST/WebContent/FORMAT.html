@@ -7,35 +7,27 @@
         <title>Document</title>
     </head>
     <body>
-        <div class="centriraj">
-            <h1>Kreiraj novi promo kod</h1>
+        <div>
+            <p>Naziv:</p>
+            <input type="text" name="name" id="name" placeholder="Naziv" />
 
-            <p>Oznaka:</p>
-            <input type="text" name="code" id="code" placeholder="Oznaka" />
-            <p>Period važenja:</p>
+            <p>Tip objekta:</p>
             <input
-                type="date"
-                name="validDate"
-                id="validDate"
-                placeholder="Period važenja"
+                type="text"
+                name="facilityType"
+                id="facilityType"
+                placeholder="Tip objekta"
             />
-            <p>Broj korišćenja:</p>
-            <input min="1" type="number" name="usageCount" id="usageCount" />
-            <p>Procenat za koji umanjuje iznos:</p>
-            <input
-                min="1"
-                max="100"
-                type="number"
-                name="discountPercentage"
-                id="discountPercentage"
-            />
+            <p>Početak radnog vremena:</p>
+            <input type="time" name="workStart" id="workStart" />
+            <p>Kraj radnog vremena:</p>
+            <input type="time" name="workEnd" id="workEnd" />
             <p>
-                <button>Resetuj podatke</button>
                 <button>Kreiraj</button>
             </p>
-
+            <input type="file" name="logoFile" id="logoFile" />
+            <div class="mapShowCreate" id="mapShowCreate"></div>
             <p>Niste uneli sve podatke</p>
-            <p>Ne postoji korisnik sa tom sifrom</p>
         </div>
     </body>
 </html>
