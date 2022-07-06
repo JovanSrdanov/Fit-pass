@@ -58,5 +58,29 @@
     "gender": "female",
     "birthDate": "Jul 1, 1904, 1:00:00 AM",
     "role": "manager"
+  },
+  "6": {
+    "facilityId": -1,
+    "id": 6,
+    "isDeleted": false,
+    "username": "elon",
+    "password": "123",
+    "name": "Elon",
+    "surname": "Musk",
+    "gender": "male",
+    "birthDate": "Jul 1, 1905, 1:00:00 AM",
+    "role": "manager"
+  },
+  "7": {
+    "facilityId": -1,
+    "id": 7,
+    "isDeleted": false,
+    "username": "dragan",
+    "password": "123",
+    "name": "Dragan",
+    "surname": "Zarac",
+    "gender": "male",
+    "birthDate": "Jul 1, 1905, 1:00:00 AM",
+    "role": "manager"
   }
 }

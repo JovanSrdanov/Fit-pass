@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -76,6 +77,7 @@ private static HashMap<Integer, Manager> managers;
 		maxId++;
 		
 		newManager.setId(maxId);
+		newManager.setFacilityId(-1);
 		managers.put(newManager.getId(), newManager);
 		writeFile();
 		return newManager;
@@ -107,5 +109,17 @@ private static HashMap<Integer, Manager> managers;
 			}
 		}
 		return null;
+	}
+	
+	public Collection<Manager> getAvailable() {
+		ArrayList<Manager> availbleManager = new ArrayList<>();
+		
+		for(Manager manager : managers.values()) {
+			if(manager.getFacilityId() == -1) {
+				availbleManager.add(manager);
+			}
+		}
+		
+		return availbleManager;
 	}
 }
