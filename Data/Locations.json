@@ -4,14 +4,20 @@
     "isDeleted": false,
     "latitude": "45.380251",
     "longitude": "20.373097",
-    "address": "Begoradska 34, Novi Sad, 21000"
+	"street": "Begoradska",
+	"streetNumber": "34",
+	"city": "Novi Sad",
+	"postCode": "21000"
   },
     "2": {
     "id": 2,
     "isDeleted": false,
     "latitude": "22",
     "longitude": "22",
-    "address": "Novosadska 18, Beograd, 12300"
+	"street": "Novosadska",
+	"streetNumber": "18",
+	"city": "Beograd",
+	"postCode": "12300"
   }
   ,
     "3": {
@@ -19,7 +25,10 @@
     "isDeleted": false,
     "latitude": "12",
     "longitude": "12",
-    "address": "Frankopanova 72, Kikinda, 22000"
+	"street": "Jovana Jovanovica Zmaja",
+	"streetNumber": "72",
+	"city": "Kikinda",
+	"postCode": "23300"
   }
   ,
     "4": {
@@ -27,7 +36,10 @@
     "isDeleted": false,
     "latitude": "32",
     "longitude": "32",
-    "address": "Markova 1, Subotica, 12000"
+	"street": "Markova",
+	"streetNumber": "1",
+	"city": "Subotica",
+	"postCode": "12000"
   }
   ,
     "5": {
@@ -35,6 +47,9 @@
     "isDeleted": false,
     "latitude": "24",
     "longitude": "24",
-    "address": "Marijina 12, Kraljevo, 45000"
+	"street": "Marijina",
+	"streetNumber": "12",
+	"city": "Kraljevo",
+	"postCode": "45000"
   }
 }

@@ -186,7 +186,7 @@ public class FacilityDao {
 		for(FacilityDto facility : facilityTables) {
 			if(facility.getFacility().getName().toLowerCase().contains(name) &&
 					facility.getFacility().getFacilityType().toLowerCase().contains(facilityType) &&
-					facility.getLocation().getAddress().toLowerCase().contains(locationString) &&
+					facility.getLocation().getCity().toLowerCase().contains(locationString) &&
 					facility.getFacility().getRating() >= Integer.parseInt(rating)) {
 				filteredFacilitys.add(facility);
 			}
