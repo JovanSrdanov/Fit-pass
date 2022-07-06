@@ -31,6 +31,7 @@ import dao.AdminDao;
 import dao.CustomerDao;
 import dao.ManagerDao;
 import dao.ProductDAO;
+import dao.TrainerDao;
 import dto.BigDaddy;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -51,6 +52,15 @@ public class CustomerService {
 	public void init() {
 		if (ctx.getAttribute("CustomerDao") == null) {
 			ctx.setAttribute("CustomerDao", new CustomerDao());
+		}
+		if (ctx.getAttribute("AdminDao") == null) {
+			ctx.setAttribute("AdminDao", new AdminDao());
+		}
+		if (ctx.getAttribute("ManagerDao") == null) {
+			ctx.setAttribute("ManagerDao", new ManagerDao());
+		}
+		if (ctx.getAttribute("TrainerDao") == null) {
+			ctx.setAttribute("TrainerDao", new TrainerDao());
 		}
 	}
 	
@@ -152,6 +162,15 @@ public class CustomerService {
 			AdminDao dao = (AdminDao) ctx.getAttribute("AdminDao");
 			return (User)(dao.getByUsername(username));
 		}
+		if(role.equals(Role.trainer.toString())) {
+			TrainerDao dao = (TrainerDao) ctx.getAttribute("TrainerDao");
+			return (User)(dao.getByUsername(username));
+		}
+		if(role.equals(Role.manager.toString())) {
+			ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
+			return (User)(dao.getByUsername(username));
+		}
+		
 		
 		return null;
 	}

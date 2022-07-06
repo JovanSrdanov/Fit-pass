@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Customer;
 import beans.Trainer;
 import main.Startup;
 
@@ -112,6 +113,15 @@ public class TrainerDao {
 		//treba logicko
 		this.trainers.remove(id);
 		writeFile();
+	}
+	
+	public Trainer getByUsername(String username) {
+		for(Trainer train : trainers.values()) {
+			if(train.getUsername().equals(username)) {
+				return train;
+			}
+		}
+		return null;
 	}
 
 }
