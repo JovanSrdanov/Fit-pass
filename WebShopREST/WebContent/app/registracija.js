@@ -103,7 +103,15 @@ Vue.component("registracija", {
         </div>      
    `,
 
-    mounted() {},
+    mounted() {
+        if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {
+            alert(
+                "Ne može se izvršiti registracija dok ste prijavljeni. Odjavite se i pokušajte ponovo."
+            );
+            window.location.href = "#/pocetna";
+            return;
+        }
+    },
     methods: {
         RegisterCustomer: function () {
             this.allDataEntered = true;

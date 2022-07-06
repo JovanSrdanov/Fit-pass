@@ -54,6 +54,15 @@ Vue.component("prijava", {
                 <p v-if="!userExist">Ne postoji korisnik sa tom sifrom</p>
             </div>
         </div>`,
+    mounted() {
+        if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {
+            alert(
+                "Ne može se izvršiti prijavljivanje dok ste prijavljeni. Odjavite se i pokušajte ponovo."
+            );
+            window.location.href = "#/pocetna";
+            return;
+        }
+    },
 
     methods: {
         Login: function () {
