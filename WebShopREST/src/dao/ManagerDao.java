@@ -22,7 +22,7 @@ private static HashMap<Integer, Manager> managers;
 		readFile();
 	}
 	
-	private void writeFile() {
+	public void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/Managers.json");
 		
 		try {

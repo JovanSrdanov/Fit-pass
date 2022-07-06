@@ -28,6 +28,17 @@ public class Location {
 		this.postCode = postCode;
 	}
 
+	public Location(String latitude, String longitude, String street, String streetNumber, String city,
+			String postCode) {
+		super();
+		this.isDeleted = false;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.street = street;
+		this.streetNumber = streetNumber;
+		this.city = city;
+		this.postCode = postCode;
+	}
 
 	public int getId() {
 		return id;

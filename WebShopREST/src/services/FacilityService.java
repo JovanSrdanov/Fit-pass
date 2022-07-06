@@ -4,17 +4,28 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import beans.Facility;
+import beans.Location;
+import beans.Manager;
+import beans.Role;
 import dao.CustomerDao;
 import dao.FacilityDao;
+import dao.LocationDao;
+import dao.ManagerDao;
+import dto.CreateFacilityDto;
 import dto.FacilityDto;
 
 @Path("/facilitys")
@@ -59,5 +70,51 @@ public class FacilityService {
 		FacilityDao dao = (FacilityDao) ctx.getAttribute("FacilityDao");
 		return dao.getAllFilter(ctx.getRealPath(""), name, facilityType, locationString, rating);
 	}
-
+	
+	@POST
+	@Path("/new")
+	@JWTTokenNeeded
+	@Consumes(MediaType.APPLICATION_JSON)
+	public CreateFacilityDto createNew(CreateFacilityDto newFacilitDtoy, @Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		FacilityDao facilityDao = (FacilityDao) ctx.getAttribute("FacilityDao");
+		ManagerDao managerDao = new ManagerDao();
+		LocationDao locationDao = new LocationDao();
+		
+		//Location
+		Location newLocation = new Location(newFacilitDtoy.getLatitude(),
+											newFacilitDtoy.getLongitude(),
+											newFacilitDtoy.getStreet(),
+											newFacilitDtoy.getStreetNumber(),
+											newFacilitDtoy.getCity(),
+											newFacilitDtoy.getPostCode());
+		locationDao.addNew(newLocation);
+		
+		//Facility
+		Facility newFacility = new Facility(newFacilitDtoy.getName(), 
+											newFacilitDtoy.getFacilityType(), 
+											newFacilitDtoy.getWorkStart(),
+											newFacilitDtoy.getWorkEnd());
+		newFacility.setLocationId(newLocation.getId());
+		//slika
+		newFacility.setLogo("slika.png");
+		facilityDao.addNew(newFacility);
+		
+		//Manager
+		Manager facilityManager = managerDao.getById(newFacilitDtoy.getManagerId());
+		
+		if(facilityManager == null) {
+			throw new WebApplicationException(Response.Status.CONFLICT); 
+		}
+		
+		facilityManager.setFacilityId(newFacility.getId());
+		managerDao.writeFile();
+		
+		return newFacilitDtoy;
+	}
 }

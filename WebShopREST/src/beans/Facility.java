@@ -30,6 +30,16 @@ public class Facility {
 		this.workStart = workStart;
 		this.workEnd = workEnd;
 	}
+	
+	public Facility(String name, String facilityType, String workStart, String workEnd) {
+		super();
+		this.isDeleted = false;
+		this.name = name;
+		this.facilityType = facilityType;
+		this.workStart = workStart;
+		this.workEnd = workEnd;
+	}
+
 	public Facility() {
 		super();
 	}
