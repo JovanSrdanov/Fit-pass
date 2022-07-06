@@ -64,12 +64,8 @@ Vue.component("pregledObjekta", {
 
     mounted() {
         this.facilityID = this.$route.params.id;
-        axios.get("rest/facilitys").then((response) => {
-            this.SportFacilityList = response.data;
-
-            this.currentFacility = this.SportFacilityList.find(
-                (item) => item.facility.id == this.facilityID
-            );
+        axios.get("rest/facilitys/" + this.facilityID).then((response) => {
+            this.currentFacility = response.data;
 
             var Lon = this.currentFacility.location.longitude;
             var Lat = this.currentFacility.location.latitude;
