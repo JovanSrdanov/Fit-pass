@@ -1,6 +1,7 @@
 Vue.component("napraviObjekat", {
     data: function () {
         return {
+            selectedMenager: null,
             name: "",
             facilityType: "",
             workEnd: null,
@@ -21,7 +22,27 @@ Vue.component("napraviObjekat", {
         <h1>Napravi objekat</h1>
     
         <div>
+            
+            <div class="ChooseLocation">
+                   <p>Odabri lokacije:</p>
+                <div class="mapShowCreate" id="mapShowCreate"></div>
+                    <p>Gegrafska dužina i širina:</p>
+                    <p>{{lonShow}},{{latShow}}</p>
+                    <p>Ulica i broj: {{street}} {{streetNumber}}</p>
+                    <p>Grad i poštanski broj: {{city}} {{postCode}}</p>
+            </div>
+            <div>
+                <div class="ChooseManager">
+
+                </div>
+
+                 <div class="FastRegsitration">
+
+                </div>
+
+             </div> 
             <p>Naziv:</p>
+            
             <input type="text" name="name" id="name" placeholder="Naziv" />
 
             <p>Tip objekta:</p>
@@ -36,16 +57,21 @@ Vue.component("napraviObjekat", {
             <p>Kraj radnog vremena:</p>
             <input type="time" name="workEnd" id="workEnd" />
             <p>Izaberite logo:</p>
-            <input type="file" name="logoFile" id="logoFile" accept="image/*"/>
-            <div class="ChooseLocation">
-            <div class="mapShowCreate" id="mapShowCreate"></div>
-                <p>{{street}} {{streetNumber}}</p>
-                <p>{{city}} {{postCode}}</p>
-                <p>{{lonShow}},{{latShow}}</p>
-            </div>
+        
+            <input type="file" name="logoFile" id="logoFile" accept="image/*"  @change="handleFileUpload"  title=" GAS"/>
+
             <p>
                 <button>Kreiraj</button>
             </p>
+               <p>
+                    <img
+                    v-bind:src="logoFile"
+                    alt="LOGO"
+                    height="200px"
+                    width="200px"
+                    />
+                </p>
+          
             <p>{{allEntered}}</p>
         </div>
          
@@ -184,5 +210,15 @@ Vue.component("napraviObjekat", {
                 this.city = address_city.replace("City", "");
             });
         });
+    },
+    methods: {
+        handleFileUpload(e) {
+            const file = e.target.files[0];
+            this.logoFile = URL.createObjectURL(file);
+        },
+        getImgUrl(slika) {
+            if (slika === null) return "Images/Logo.png";
+            return "FacilityLogo/" + slika;
+        },
     },
 });
