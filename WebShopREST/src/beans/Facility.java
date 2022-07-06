@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Facility {
@@ -38,6 +39,7 @@ public class Facility {
 		this.facilityType = facilityType;
 		this.workStart = workStart;
 		this.workEnd = workEnd;
+		this.facilityActivityIds = new ArrayList<Integer>();
 	}
 
 	public Facility() {
