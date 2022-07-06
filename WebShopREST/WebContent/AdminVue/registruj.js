@@ -109,8 +109,6 @@ Vue.component("registruj", {
         </div>      
   `,
     mounted() {
-        let start = JSON.parse(localStorage.getItem("loggedInUser"));
-
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert(
                 "Nije vam dozvoljeno da vidite ovu stranicu jer niste ulogovani kao odgovarajuća uloga!"

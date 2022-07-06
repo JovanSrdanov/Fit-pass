@@ -27,6 +27,7 @@
         <link rel="stylesheet" href="css/pocetnaTabela.css" type="text/css" />
         <link rel="stylesheet" href="css/korisnici.css" type="text/css" />
         <link rel="stylesheet" href="css/pregledObjekta.css" type="text/css" />
+        <link rel="stylesheet" href="css/promoKod.css" type="text/css" />
     </head>
 
     <body>
@@ -100,7 +101,7 @@
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='admin'"
-                            href="#/"
+                            href="#/promoKod"
                             >Promo kod</a
                         >
                     </li>
@@ -108,7 +109,7 @@
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='admin'"
-                            href="#/"
+                            href="#/komentari"
                             >Komentari</a
                         >
                     </li>
@@ -151,6 +152,8 @@
         <script src="AdminVue/korisnici.js"></script>
         <script src="AdminVue/registruj.js"></script>
         <script src="AdminVue/napraviObjekat.js"></script>
+        <script src="AdminVue/promoKod.js"></script>
+        <script src="AdminVue/komentari.js"></script>
 
         <script src="jsRazno/prikazLozinke.js"></script>
 

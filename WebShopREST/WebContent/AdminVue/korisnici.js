@@ -134,18 +134,12 @@ Vue.component("korisnici", {
   `,
 
     mounted() {
+        //
         yourConfig = {
             headers: {
                 Authorization: localStorage.getItem("token"),
             },
         };
-
-        ///
-        axios.get("rest/customers/all", yourConfig).then((response) => {
-            this.Users = response.data;
-        });
-
-        let start = JSON.parse(localStorage.getItem("loggedInUser"));
 
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert(
@@ -162,6 +156,11 @@ Vue.component("korisnici", {
             window.location.href = "#/pocetna";
             return;
         }
+
+        ///
+        axios.get("rest/customers/all", yourConfig).then((response) => {
+            this.Users = response.data;
+        });
     },
     computed: {
         searchFilterSortUsers() {

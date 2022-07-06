@@ -1,26 +1,20 @@
-Vue.component("napraviObjekat", {
+Vue.component("komentari", {
     data: function () {
-        return {
-            username: "",
-            password: "",
-            name: "",
-            surname: "",
-            gender: "male",
-            dateOfBirth: "1900-01-01",
-            role: "manager",
-            loggedInUser: {},
-            userNameUnique: "OK",
-            allDataEntered: true,
-            userExist: false,
-        };
+        return {};
     },
     template: `
       <div>
-        <h1>Napravi objekat</h1>
+        <h1>Komentari</h1>
          
         </div>      
   `,
     mounted() {
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
+
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert(
                 "Nije vam dozvoljeno da vidite ovu stranicu jer niste ulogovani kao odgovarajuća uloga!"

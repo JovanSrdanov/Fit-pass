@@ -6,18 +6,22 @@ const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
 const registruj = { template: "<registruj></registruj>" };
 const pregledObjekta = { template: "<pregledObjekta></pregledObjekta>" };
 const napraviObjekat = { template: "<napraviObjekat></napraviObjekat>" };
+const promoKod = { template: "<promoKod></promoKod>" };
+const komentari = { template: "<komentari></komentari>" };
 
 const router = new VueRouter({
     mode: "hash",
 
     routes: [
         { path: "/", component: pocetna, props: true },
+        { path: "/komentari", component: komentari, props: true },
         { path: "/pocetna", component: pocetna, props: true },
         { path: "/registracija", component: registracija, props: true },
         { path: "/prijava", component: prijava, props: true },
         { path: "/korisnici", component: korisnici, props: true },
         { path: "/registruj", component: registruj, props: true },
         { path: "/pregledObjekta/:id", component: pregledObjekta, props: true },
+        { path: "/promoKod", component: promoKod, props: true },
         { path: "/napraviObjekat", component: napraviObjekat, props: true },
         {
             path: "/pregledProfila/:username",
