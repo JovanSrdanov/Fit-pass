@@ -14,13 +14,15 @@ Vue.component("pregledObjekta", {
             <h1>{{currentFacility.facility.name}} </h1>
             
               <div class="infoAndTranings">
-               
+                    <div class="objectInfo">
                         <table>               
                             <tr><td>{{currentFacility.facility.facilityType}}</td></tr>
                             <tr><td>
                             Menadžer: {{currentFacility.managerName}}  {{currentFacility.managerSurname}}
                            </td> </tr>  
-                            <tr><td>{{currentFacility.location.address}}</td></tr>
+                            <tr><td>{{currentFacility.location.street}} {{currentFacility.location.streetNumber}}</td></tr>
+                              <tr><td>{{currentFacility.location.city}} {{currentFacility.location.postCode}} </td></tr>
+                                <tr><td>({{currentFacility.location.longitude}}, {{currentFacility.location.latitude}}) </td></tr>
                             <tr><td>
                                 Prosečna ocena: {{currentFacility.facility.rating}}/5
                            </td> </tr>
@@ -29,11 +31,11 @@ Vue.component("pregledObjekta", {
                                 {{currentFacility.facility.workEnd}}</td>
                             </tr> 
                                 <tr><td>
-                                Objekat  {{convertStatus(currentFacility.facility.status)}}
+                                Objekat (radi/ne radi)
                                </td>
                             </tr>     
                         </table>     
-                        
+                    </div>    
                        
                     <div class="FacilityActivityTable">
                 

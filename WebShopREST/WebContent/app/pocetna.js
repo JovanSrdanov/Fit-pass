@@ -136,15 +136,17 @@ Vue.component("pocetna", {
                             </td>
                             <td>
                                 <ul>
-                                    <li>Naziv: {{p.facility.name}}</li>
-                                    <li>Tip: {{p.facility.facilityType}}</li>
-                                    <li>Adresa: {{p.location.street}} {{p.location.streetNumber}}, {{p.location.city}} {{p.location.postCode}}</li>
+                                    <li>{{p.facility.name}}</li>
+                                    <li>{{p.facility.facilityType}}</li>
+                                    <li>{{p.location.street}} {{p.location.streetNumber}}</li>
+                                    <li>{{p.location.city}} {{p.location.postCode}} </li>
+                                    <li>({{p.location.longitude}}, {{p.location.latitude}}) </li>
                                     <li>
                                         Prosečna ocena: {{p.facility.rating}}
                                     </li>
                                     <li>
                                         Radno vreme: {{p.facility.workStart}} -
-                                        {{p.facility.workEnd}}
+                                        {{p.facility.workEnd}}  ( Radi/Ne radi )
                                     </li>
 
                                     <br />

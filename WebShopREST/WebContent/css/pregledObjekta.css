@@ -14,10 +14,9 @@
 .infoAndTranings {
     font-size: large;
     max-height: 300px;
-    height: 150px;
+    height: fit-content;
     width: 1100px;
     border-radius: 20px 20px 20px 20px;
-    background-color: lightcyan;
     position: absolute;
     left: 0;
     right: 0;
@@ -26,9 +25,14 @@
     text-align: center;
 }
 
-.infoAndTranings table {
-    width: 100%;
-    height: 100%;
+.objectInfo {
+    background-color: lightcyan;
+    text-align: center;
+    margin-bottom: 15px;
+    border: 2px solid black;
+}
+.objectInfo table {
+    margin: auto;
 }
 
 .FacilityActivityTable {
