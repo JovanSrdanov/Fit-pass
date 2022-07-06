@@ -314,7 +314,26 @@ Vue.component("korisnici", {
             }
         },
 
-        searchUser: function () {},
+        searchUser: function () {
+            const params = new URLSearchParams();
+            params.append("name", this.searchName);
+            params.append("surname", this.searchSurname);
+            params.append("username", this.searchUsername);
+
+            axios
+                .post("rest/customers/search", params, {
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                })
+                .then((response) => {
+                    this.Users = response.data;
+                })
+                .catch((error) => {
+                    alert("Greska u search metodi");
+                });
+        },
         translateGender: function (gender) {
             if (gender == "male") return "Muški";
             else return "Ženski";

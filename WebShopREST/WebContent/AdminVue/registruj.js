@@ -139,31 +139,59 @@ Vue.component("registruj", {
                 return;
             }
 
-            //// strahinja
-            axios
-                .post(
-                    "rest/kurac",
-                    {
-                        username: this.username,
-                        password: this.password,
-                        name: this.name,
-                        surname: this.surname,
-                        gender: this.gender,
-                        birthDate: this.dateOfBirth,
-                        role: this.role,
-                    },
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
+            if (this.role === "manager") {
+                axios
+                    .post(
+                        "rest/manager/reg",
+                        {
+                            username: this.username,
+                            password: this.password,
+                            name: this.name,
+                            surname: this.surname,
+                            gender: this.gender,
+                            birthDate: this.dateOfBirth,
+                            role: this.role,
                         },
-                    }
-                )
-                .then((response) => {
-                    window.location.href = "#/pocetna";
-                })
-                .catch((error) => {
-                    this.userExist = true;
-                });
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: localStorage.getItem("token"),
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        window.location.href = "#/pocetna";
+                    })
+                    .catch((error) => {
+                        this.userExist = true;
+                    });
+            } else {
+                axios
+                    .post(
+                        "rest/trainer/reg",
+                        {
+                            username: this.username,
+                            password: this.password,
+                            name: this.name,
+                            surname: this.surname,
+                            gender: this.gender,
+                            birthDate: this.dateOfBirth,
+                            role: this.role,
+                        },
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: localStorage.getItem("token"),
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        window.location.href = "#/pocetna";
+                    })
+                    .catch((error) => {
+                        this.userExist = true;
+                    });
+            }
         },
     },
 });

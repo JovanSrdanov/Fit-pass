@@ -1,6 +1,6 @@
 {
   "1": {
-	"facilityId": 1,
+    "facilityId": 1,
     "id": 1,
     "isDeleted": false,
     "username": "m",
@@ -12,7 +12,7 @@
     "role": "manager"
   },
   "2": {
-	"facilityId": 3,
+    "facilityId": 3,
     "id": 2,
     "isDeleted": false,
     "username": "MANAGER",
@@ -21,6 +21,18 @@
     "surname": "West",
     "gender": "male",
     "birthDate": "Jan 1, 1986, 1:00:00 AM",
+    "role": "manager"
+  },
+  "3": {
+    "facilityId": 0,
+    "id": 3,
+    "isDeleted": false,
+    "username": "NOVIm",
+    "password": "123",
+    "name": "HEHE",
+    "surname": "OOO",
+    "gender": "female",
+    "birthDate": "Jul 1, 1904, 1:00:00 AM",
     "role": "manager"
   }
 }
