@@ -121,7 +121,7 @@ public class CustomerService {
 		username = username.toLowerCase();
 		
 		for(BigDaddy curr : allBigDaddys) {
-			if(curr.getUsername().toLowerCase().contains(name) &&
+			if(curr.getName().toLowerCase().contains(name) &&
 					curr.getSurname().toLowerCase().contains(surname) &&
 					curr.getUsername().toLowerCase().contains(username)) {
 				filteredBigDaddys.add(curr);
