@@ -110,6 +110,7 @@ public class CustomerDao {
 		
 		newCustomer.setId(maxId);
 		customers.put(newCustomer.getId(), newCustomer);
+		allCustomers.put(newCustomer.getId(), newCustomer);
 		writeFile();
 		return newCustomer;
 	}

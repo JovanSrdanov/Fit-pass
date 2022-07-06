@@ -98,6 +98,7 @@ private static HashMap<Integer, PromoCode> promoCodes;
 		
 		newPromoCode.setId(maxId);
 		promoCodes.put(newPromoCode.getId(), newPromoCode);
+		allPromoCodes.put(newPromoCode.getId(), newPromoCode);
 		writeFile();
 		return newPromoCode;
 	}

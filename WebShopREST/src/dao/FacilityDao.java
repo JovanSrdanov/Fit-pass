@@ -212,6 +212,7 @@ public class FacilityDao {
 		
 		newFacility.setId(maxId);
 		facilitys.put(newFacility.getId(), newFacility);
+		allFacilitys.put(newFacility.getId(), newFacility);
 		writeFile();
 		return newFacility;
 	}
