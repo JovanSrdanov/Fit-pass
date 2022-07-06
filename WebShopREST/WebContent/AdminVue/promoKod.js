@@ -1,7 +1,7 @@
 Vue.component("promoKod", {
     data: function () {
         return {
-            codes: {},
+            codes: null,
             code: "",
             validDate: null,
             usageCount: 1,
@@ -57,8 +57,8 @@ Vue.component("promoKod", {
                     <tbody>
                          
                         <tr v-for="c in codes">
-                            <td> {{c.code}}</td>
-                            <td>{{c.validDate}}</td>
+                            <td>{{c.code}}</td>
+                            <td>{{getDate(c.validDate)}}</td>
                             <td>{{c.usageCount}}</td>
                             <td>{{c.discountPercentage}}%</td>                                       
                             <td><button>Obriši</button></td>
@@ -96,11 +96,17 @@ Vue.component("promoKod", {
             window.location.href = "#/pocetna";
             return;
         }
-        axios.get("DOBAVISVEKODOVE").then((r) => {
-            this.codes - r.data;
+
+        axios.get("rest/promoCode", yourConfig).then((r) => {
+            this.codes = r.data;
         });
     },
     methods: {
+        getDate: function (milliseconds) {
+            const d = new Date();
+            d.setTime(milliseconds);
+            return d.toLocaleDateString("sr-RS");
+        },
         createPromoCode: function () {
             this.codeExists = "";
             this.enterAll = "";
@@ -123,7 +129,7 @@ Vue.component("promoKod", {
 
             axios
                 .post(
-                    "postaviKod",
+                    "rest/promoCode/new",
                     {
                         code: this.code,
                         validDate: this.validDate,
@@ -133,8 +139,8 @@ Vue.component("promoKod", {
                     yourConfig
                 )
                 .then((response) => {
-                    axios.get("DOBAVISVEKODOVE", yourConfig2).then((r) => {
-                        this.codes - r.data;
+                    axios.get("rest/promoCode", yourConfig2).then((r) => {
+                        this.codes = r.data;
                     });
                 })
                 .catch((error) => {
