@@ -85,7 +85,7 @@
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='manager'"
-                            href="#/"
+                            v-on:click="goToPersonalSP(loggedInUser.facilityId)"
                             >Moj sportski objekat</a
                         >
                     </li>

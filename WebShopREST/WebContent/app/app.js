@@ -45,6 +45,13 @@ var app = new Vue({
         goToProfile: function (username) {
             router.push(`/pregledProfila/${username}`);
         },
+        goToPersonalSP: function (id) {
+            if (id === -1) {
+                alert("Nemate još svoj objekat");
+                return;
+            }
+            router.push(`/pregledObjekta/${id}`);
+        },
         VarToken: function () {
             yourConfig = {
                 headers: {

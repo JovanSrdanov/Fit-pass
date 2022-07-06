@@ -1,21 +1,34 @@
 Vue.component("napraviObjekat", {
     data: function () {
         return {
+            usernameManager: "",
+            passwordManager: "",
+            nameManager: "",
+            surnameManager: "",
+            genderManager: "male",
+            dateOfBirthManager: "1900-01-01",
+
             availableManagers: null,
-            selectedManager: null,
-            name: "",
-            facilityType: "",
-            workEnd: null,
-            workStart: null,
+            selectedManager: {},
+
             logoFile: null,
 
+            name: "",
+            facilityType: "",
+            workEnd: "21:00",
+            workStart: "07:00",
             lonShow: 20.457273,
             latShow: 44.787197,
             street: "",
             streetNumber: "",
             city: "",
             postCode: "",
+
             allEntered: "",
+            existsSP: "",
+
+            allDataEnteredManager: true,
+            managerExist: false,
         };
     },
     template: `
@@ -25,6 +38,7 @@ Vue.component("napraviObjekat", {
         <div>
             
             <div class="ChooseLocation">
+
                    <p>Odabri lokacije:</p>
                 <div class="mapShowCreate" id="mapShowCreate"></div>
                     <p>Gegrafska dužina i širina:</p>
@@ -32,55 +46,138 @@ Vue.component("napraviObjekat", {
                     <p>Ulica i broj: {{street}} {{streetNumber}}</p>
                     <p>Grad i poštanski broj: {{city}} {{postCode}}</p>
             </div>
-            <div>
+
+            <div class="managerSide">
                 <div class="ChooseManager">
                     <table>
-                    <td>Ime</td>
-                    <td>Prezime</td>
-                    <td>Korisničko ime</td>
-                    <td>Obriši</td>
-                   
+                         <td>ID</td>
+                        <td>Ime</td>
+                        <td>Prezime</td>
+                        <td>Korisničko ime</td>
+                        <tbody>       
+                            <tr v-for="AM in availableManagers"  v-on:click="selectM(AM)"
+                            v-bind:class="{selectedManagerClass : selectedManager.id===AM.id}">
 
-                    <tbody>
-                         
-                        <tr v-for="c in codes">
-                            <td>{{c.code}}</td>
-                            <td>{{getDate(c.validDate)}}</td>
-                            <td>{{c.usageCount}}</td>
-                            <td>{{c.discountPercentage}}%</td>                                       
-                            <td><button>Obriši</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <td>{{AM.id}}</td>
+                                <td>{{AM.name}}</td>
+                                <td>{{AM.surname}}</td>
+                                <td>{{AM.username}}</td>                            
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="FastRegsitration">
+                            <p>Korisničko ime:</p>
+                        <input
+                            required
+                            v-model="usernameManager"
+                            type="text"
+                            name="usernameManager"
+                            id="usernameManager"
+                            placeholder="Korisničko ime"
+                        />
+
+                        <p>Lozinka:</p>
+                        <input
+                            required
+                            v-model="passwordManager"
+                            type="password"
+                            name="passwordManager"
+                            id="passwordManager"
+                            placeholder="Lozinka"
+                        />
+
+                        <br />
+                        <div
+                            style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            "
+                        >
+                            <input
+                                class="checkbox"
+                                type="checkbox"
+                                id="showPassword"
+                                onclick="myFunction() "
+                            />
+
+                            <label for="checkbox"> Prikaz lozinke </label>
+                        </div>
+
+                        <p>Ime:</p>
+
+                        <input
+                            v-model="nameManager"
+                            type="text"
+                            name="nameManager"
+                            id="nameManager"
+                            placeholder="Ime"
+                            required
+                        />
+
+                        <p>Prezime:</p>
+                        <input
+                            required
+                            v-model="surnameManager"
+                            type="text"
+                            name="surnameManager"
+                            id="surnameManager"
+                            placeholder="Prezime"
+                        />
+
+                        <p>Pol:</p>
+                        <select name="gender" id="gender" v-model="genderManager">
+                            <option selected="selected" value="male">Muški</option>
+                            <option value="female">Ženski</option>
+                        </select>
+
+                        <p>Datum rođenja:</p>
+                        <input
+                            type="date"
+                            value="1900-01-01"
+                            v-model="dateOfBirthManager"
+                            name="dateOfBirthManager"
+                            id="dateOfBirthManager"
+                           
+                        />
+                        <br />
+                         <br />
+                          <button v-on:click="RegisterManager">Registruj se</button>
+
+            <p v-if="!allDataEnteredManager">Niste uneli sve podatke za menadžera</p>
+            <p v-if="managerExist">
+                Već postoji menadžer sa ovim korisničkim imenom
+            </p>
 
                 </div>
 
-                 <div class="FastRegsitration">
+            </div>
 
-                </div>
-
-             </div> 
             <p>Naziv:</p>
             
-            <input type="text" name="name" id="name" placeholder="Naziv" />
+            <input type="text" name="name" id="name" placeholder="Naziv"    v-model="name"/>
 
             <p>Tip objekta:</p>
             <input
+              v-model="facilityType"
                 type="text"
                 name="facilityType"
                 id="facilityType"
                 placeholder="Tip objekta"
             />
             <p>Početak radnog vremena:</p>
-            <input type="time" name="workStart" id="workStart" />
+            <input type="time" name="workStart" id="workStart"    v-model="workStart"/>
             <p>Kraj radnog vremena:</p>
-            <input type="time" name="workEnd" id="workEnd" />
+            <input type="time" name="workEnd" id="workEnd"   v-model="workEnd" />
+
+              <p>Izabrani menadžer: {{selectedManager.name}} {{selectedManager.surname}} - {{selectedManager.username}}</p>
             <p>Izaberite logo:</p>
         
             <input type="file" name="logoFile" id="logoFile" accept="image/*"  @change="handleFileUpload"  title=" GAS"/>
 
             <p>
-                <button>Kreiraj</button>
+                <button v-on:click="CreateSportFacility">Kreiraj</button>
             </p>
                <p>
                     <img
@@ -118,7 +215,7 @@ Vue.component("napraviObjekat", {
             },
         };
 
-        axios.get("rest/manager/availale", yourConfig).then((response) => {
+        axios.get("rest/manager/available", yourConfig).then((response) => {
             this.availableManagers = response.data;
         });
 
@@ -240,6 +337,112 @@ Vue.component("napraviObjekat", {
         });
     },
     methods: {
+        CreateSportFacility: function () {
+            this.allEntered = "";
+            this.existsSP = "";
+            // uradi proveru za end i start
+            if (
+                this.name === "" ||
+                this.facilityType === "" ||
+                this.street === "" ||
+                this.streetNumber === "" ||
+                this.city === "" ||
+                this.postCode === "" ||
+                this.selectedManager === {}
+            ) {
+                this.allEntered = "Niste uneli sve podatke";
+                return;
+            }
+
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .post(
+                    "rest/facilitys/create",
+                    {
+                        name: this.name,
+                        facilityType: this.facilityType,
+                        workStart: this.workStart,
+                        workEnd: this.workEnd,
+
+                        street: this.street,
+                        streetNumber: this.streetNumber,
+                        city: this.city,
+                        postCode: this.postCode,
+                        latitude: this.latShow,
+                        longitude: this.lonShow,
+
+                        managerId: this.selectedManager.id,
+                    },
+                    yourConfig
+                )
+                .then((response) => {
+                    window.location.href = "#/pocetna";
+                })
+                .catch((error) => {
+                    this.existsSP = "Već postoji objekat sa ovakvim nazivom";
+                });
+        },
+
+        selectM: function (managaer) {
+            this.selectedManager = managaer;
+        },
+        RegisterManager: function () {
+            this.allDataEntered = true;
+            this.managerExist = false;
+            if (
+                this.usernameManager === "" ||
+                this.passwordManager === "" ||
+                this.nameManager === "" ||
+                this.surnameManager === ""
+            ) {
+                this.allDataEntered = false;
+                return;
+            }
+
+            axios
+                .post(
+                    "rest/manager/reg",
+                    {
+                        username: this.usernameManager,
+                        password: this.passwordManager,
+                        name: this.nameManager,
+                        surname: this.surnameManager,
+                        gender: this.genderManager,
+                        birthDate: this.dateOfBirthManager,
+                        role: "manager",
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: localStorage.getItem("token"),
+                        },
+                    }
+                )
+                .then((response) => {
+                    yourConfig = {
+                        headers: {
+                            Authorization: localStorage.getItem("token"),
+                        },
+                    };
+
+                    axios
+                        .get("rest/manager/available", yourConfig)
+                        .then((response) => {
+                            this.availableManagers = response.data;
+                            this.username == "";
+                            this.password == "";
+                            this.nameManager == "";
+                            this.surname == "";
+                        });
+                })
+                .catch((error) => {
+                    this.managerExist = true;
+                });
+        },
         handleFileUpload(e) {
             const file = e.target.files[0];
             this.logoFile = URL.createObjectURL(file);
