@@ -92,9 +92,17 @@ public class FacilityDto {
 	public FacilityDto(Facility facility, Manager manager) {
 		super();
 		this.facility = facility;
-		this.managerName = manager.getName();
-		this.managerSurname = manager.getSurname();
-		this.managerId = manager.getId();
+		
+		if(manager != null) {
+			this.managerName = manager.getName();
+			this.managerSurname = manager.getSurname();
+			this.managerId = manager.getId();
+		}
+		else {
+			this.managerName = "";
+			this.managerSurname = "";
+			this.managerId = -1;
+		}
 		
 		LocationDao locationDao = new LocationDao();
 		this.location = locationDao.getById(facility.getLocationId());
