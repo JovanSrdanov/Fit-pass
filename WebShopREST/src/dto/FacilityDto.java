@@ -15,7 +15,9 @@ public class FacilityDto {
 	private Facility facility;
 	private Location location;
 	private List<FacilityActivity> activitys;
-	private Manager manager;
+	private String managerName;
+	private String managerSurname;
+	private int managerId;
 	
 	public FacilityDto() {
 		
@@ -56,20 +58,43 @@ public class FacilityDto {
 		this.activitys = activitys;
 	}
 
-	public Manager getManager() {
-		return manager;
+
+	public String getManagerName() {
+		return managerName;
 	}
 
 
-	public void setManager(Manager manager) {
-		this.manager = manager;
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+
+	public String getManagerSurname() {
+		return managerSurname;
+	}
+
+
+	public void setManagerSurname(String managerSurname) {
+		this.managerSurname = managerSurname;
+	}
+
+
+	public int getManagerId() {
+		return managerId;
+	}
+
+
+	public void setManagerId(int managerId) {
+		this.managerId = managerId;
 	}
 
 
 	public FacilityDto(Facility facility, Manager manager) {
 		super();
 		this.facility = facility;
-		this.manager = manager;
+		this.managerName = manager.getName();
+		this.managerSurname = manager.getSurname();
+		this.managerId = manager.getId();
 		
 		LocationDao locationDao = new LocationDao();
 		this.location = locationDao.getById(facility.getLocationId());
