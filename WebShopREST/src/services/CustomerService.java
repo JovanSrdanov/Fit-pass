@@ -22,10 +22,12 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import beans.Admin;
 import beans.Customer;
 import beans.Manager;
 import beans.Product;
 import beans.Role;
+import beans.Trainer;
 import beans.User;
 import dao.AdminDao;
 import dao.CustomerDao;
@@ -100,6 +102,16 @@ public class CustomerService {
 		ManagerDao managerDao = new ManagerDao();
 		for(Manager man : managerDao.getAll()) {
 			bigDaddys.add(new BigDaddy(man, 0, 0));
+		}
+		
+		TrainerDao trainerDao = new TrainerDao();
+		for(Trainer train : trainerDao.getAll()) {
+			bigDaddys.add(new BigDaddy(train, 0, 0));
+		}
+		
+		AdminDao adminDao = new AdminDao();
+		for(Admin admin : adminDao.getAll()) {
+			bigDaddys.add(new BigDaddy(admin, 0, 0));
 		}
 		
 		return bigDaddys;
