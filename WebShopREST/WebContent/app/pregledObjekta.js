@@ -18,7 +18,7 @@ Vue.component("pregledObjekta", {
                         <table>               
                             <tr><td>{{currentFacility.facility.facilityType}}</td></tr>
                             <tr><td>
-                            Menadžer: MENJAJMENJAJ
+                            Menadžer: {{currentFacility.managerName}}  {{currentFacility.managerSurname}}
                            </td> </tr>  
                             <tr><td>{{currentFacility.location.address}}</td></tr>
                             <tr><td>

@@ -1,7 +1,8 @@
 Vue.component("napraviObjekat", {
     data: function () {
         return {
-            selectedMenager: null,
+            availableManagers: null,
+            selectedManager: null,
             name: "",
             facilityType: "",
             workEnd: null,
@@ -33,6 +34,24 @@ Vue.component("napraviObjekat", {
             </div>
             <div>
                 <div class="ChooseManager">
+                    <table>
+                    <td>Ime</td>
+                    <td>Prezime</td>
+                    <td>Korisničko ime</td>
+                    <td>Obriši</td>
+                   
+
+                    <tbody>
+                         
+                        <tr v-for="c in codes">
+                            <td>{{c.code}}</td>
+                            <td>{{getDate(c.validDate)}}</td>
+                            <td>{{c.usageCount}}</td>
+                            <td>{{c.discountPercentage}}%</td>                                       
+                            <td><button>Obriši</button></td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 </div>
 
@@ -93,6 +112,15 @@ Vue.component("napraviObjekat", {
             window.location.href = "#/pocetna";
             return;
         }
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
+
+        axios.get("rest/manager/availale", yourConfig).then((response) => {
+            this.availableManagers = response.data;
+        });
 
         var map = new ol.Map({
             target: "mapShowCreate",
