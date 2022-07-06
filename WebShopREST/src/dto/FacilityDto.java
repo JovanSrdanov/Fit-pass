@@ -7,6 +7,7 @@ import beans.Facility;
 import beans.FacilityActivity;
 import beans.FacilityType;
 import beans.Location;
+import beans.Manager;
 import dao.*;
 
 
@@ -14,6 +15,7 @@ public class FacilityDto {
 	private Facility facility;
 	private Location location;
 	private List<FacilityActivity> activitys;
+	private Manager manager;
 	
 	public FacilityDto() {
 		
@@ -54,10 +56,20 @@ public class FacilityDto {
 		this.activitys = activitys;
 	}
 
+	public Manager getManager() {
+		return manager;
+	}
 
-	public FacilityDto(Facility facility) {
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
+
+	public FacilityDto(Facility facility, Manager manager) {
 		super();
 		this.facility = facility;
+		this.manager = manager;
 		
 		LocationDao locationDao = new LocationDao();
 		this.location = locationDao.getById(facility.getLocationId());

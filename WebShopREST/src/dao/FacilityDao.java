@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Customer;
 import beans.Facility;
+import beans.Manager;
 import dto.FacilityDto;
 import main.Startup;
 
@@ -113,7 +114,7 @@ public class FacilityDao {
 		//readFile();
 		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
 		for(Facility facility : facilitys.values()) {
-			facilityTables.add(new FacilityDto(facility));
+			facilityTables.add(new FacilityDto(facility, null));
 		}
 		
 		return sortByWorkingHours(facilityTables);
@@ -124,12 +125,24 @@ public class FacilityDao {
 		FacilityDto facilityDto = null;
 		for(Facility facility : facilitys.values()) {
 			if(facility.getId() == id) {
-				facilityDto = new FacilityDto(facility);
+				Manager man = findManagerByFacilityId(id);
+				
+				facilityDto = new FacilityDto(facility, man);
 				return facilityDto;
 			}
 		}
 		
 		throw new WebApplicationException(Response.Status.NOT_FOUND);
+	}
+	
+	public Manager findManagerByFacilityId(int id) {
+		ManagerDao managerDao = new ManagerDao();
+		for(Manager man : managerDao.getAll()) {
+			if(man.getFacilityId() == id) {
+				return man;
+			}
+		}
+		return null;
 	}
 	
 	public Collection<FacilityDto> sortByWorkingHours(ArrayList<FacilityDto> facilitys) {
@@ -162,7 +175,7 @@ public class FacilityDao {
 		readFile();
 		ArrayList<FacilityDto> facilityTables = new ArrayList<FacilityDto>();
 		for(Facility facility : facilitys.values()) {
-			facilityTables.add(new FacilityDto(facility));
+			facilityTables.add(new FacilityDto(facility, null));
 		}
 		
 		name = name.toLowerCase();

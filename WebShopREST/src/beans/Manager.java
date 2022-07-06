@@ -33,6 +33,16 @@ public class Manager extends User{
 		this.id = newManager.id;
 		this.facilityId = newManager.facilityId;
 	}
+
+	public int getFacilityId() {
+		return facilityId;
+	}
+
+	public void setFacilityId(int facilityId) {
+		this.facilityId = facilityId;
+	}
+	
+	
 	
 	
 
