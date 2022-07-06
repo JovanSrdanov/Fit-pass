@@ -16,6 +16,8 @@ Vue.component("pocetna", {
             NazivString: "Naziv ↕",
             LokacijaString: "Lokacija ↕",
             OcenaString: "Ocena ↕",
+            locationLon: 0,
+            locationLat: 0,
         };
     },
     template: `
@@ -105,7 +107,7 @@ Vue.component("pocetna", {
                                 {{NazivString}}
                             </button>
                             <button v-on:click="LokacijaSortFunction">
-                                {{LokacijaString}} TBA
+                                {{LokacijaString}} 
                             </button>
                             <button v-on:click="OcenaSortFunction">
                                 {{OcenaString}}
@@ -183,6 +185,7 @@ Vue.component("pocetna", {
                 this.loggedInUser.role = null;
             }
         });
+        this.getLocation();
     },
     computed: {
         searchFilterSort() {
@@ -253,11 +256,78 @@ Vue.component("pocetna", {
                 });
             }
 
+            if (this.LokacijaSort === "DSC") {
+                tempSportFacilitys = tempSportFacilitys.sort((a, b) => {
+                    return (
+                        this.getDistanceFromLatLonInKm(
+                            a.location.latitude,
+                            a.location.longitude,
+                            this.locationLat,
+                            this.locationLon
+                        ) -
+                        this.getDistanceFromLatLonInKm(
+                            b.location.latitude,
+                            b.location.longitude,
+                            this.locationLat,
+                            this.locationLon
+                        )
+                    );
+                });
+            }
+
+            if (this.LokacijaSort === "ASC") {
+                tempSportFacilitys = tempSportFacilitys.sort((a, b) => {
+                    return (
+                        this.getDistanceFromLatLonInKm(
+                            b.location.latitude,
+                            b.location.longitude,
+                            this.locationLat,
+                            this.locationLon
+                        ) -
+                        this.getDistanceFromLatLonInKm(
+                            a.location.latitude,
+                            a.location.longitude,
+                            this.locationLat,
+                            this.locationLon
+                        )
+                    );
+                });
+            }
+
             return tempSportFacilitys;
         },
     },
 
     methods: {
+        getDistanceFromLatLonInKm: function (lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = this.deg2rad(lon2 - lon1);
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(this.deg2rad(lat1)) *
+                    Math.cos(this.deg2rad(lat2)) *
+                    Math.sin(dLon / 2) *
+                    Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        },
+
+        deg2rad: function (deg) {
+            return deg * (Math.PI / 180);
+        },
+
+        getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(this.showPosition);
+            }
+        },
+
+        showPosition(position) {
+            this.locationLat = position.coords.latitude;
+            this.locationLon = position.coords.longitude;
+        },
         NazivSortFunction() {
             this.LokacijaSort = "noSort";
             this.OcenaSort = "noSort";
