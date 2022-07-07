@@ -6,7 +6,7 @@ Vue.component("pocetna", {
             name: "",
             facilityType: "",
             locationString: "",
-            rating: 1,
+            rating: 0,
             loggedInUser: {},
             facilityTypeFilter: "",
             NazivSort: "noSort",
