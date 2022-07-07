@@ -41,7 +41,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 
-@Path("/customers")
+@Path("/customer")
 public class CustomerService {
 	
 	@Context

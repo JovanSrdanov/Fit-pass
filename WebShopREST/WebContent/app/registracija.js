@@ -128,7 +128,7 @@ Vue.component("registracija", {
 
             axios
                 .post(
-                    "rest/customers/reg",
+                    "rest/customer/reg",
                     {
                         id: -1,
                         username: this.username,

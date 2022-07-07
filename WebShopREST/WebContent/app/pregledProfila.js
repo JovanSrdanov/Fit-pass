@@ -7,7 +7,7 @@ Vue.component("pregledProfila", {
             surname: "",
             gender: null,
             birthDate: null,
-            role: "CUSTOMER",
+            role: "",
             loggedInUser: {},
             userNameUnique: "OK",
             allDataEntered: true,
@@ -145,6 +145,7 @@ Vue.component("pregledProfila", {
         this.name = user.name;
         this.surname = user.surname;
         this.gender = user.gender;
+        this.role = user.role;
         let d = new Date(user.birthDate);
         this.birthDate = d.toISOString().split("T")[0];
     },
@@ -195,7 +196,7 @@ Vue.component("pregledProfila", {
 
             axios
                 .put(
-                    "rest/customers/update",
+                    "rest/" + this.role + "/update",
                     {
                         username: this.username,
                         password: this.password,

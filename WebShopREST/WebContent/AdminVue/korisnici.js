@@ -158,7 +158,7 @@ Vue.component("korisnici", {
         }
 
         ///
-        axios.get("rest/customers/all", yourConfig).then((response) => {
+        axios.get("rest/customer/all", yourConfig).then((response) => {
             this.Users = response.data;
         });
     },
