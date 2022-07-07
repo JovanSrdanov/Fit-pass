@@ -4,7 +4,7 @@
     "isDeleted": false,
     "name": "Nogavica",
     "facilityType": "Fudbalski teren",
-    "facilityActivityIds": [
+    "workoutIds": [
       1,
       2
     ],
@@ -20,7 +20,7 @@
     "isDeleted": false,
     "name": "Plameni podijum",
     "facilityType": "Košarkaški teren",
-    "facilityActivityIds": [
+    "workoutIds": [
       1,
       2
     ],
@@ -36,7 +36,7 @@
     "isDeleted": false,
     "name": "Udarac u prazno",
     "facilityType": "Bejzbol teren",
-    "facilityActivityIds": [
+    "workoutIds": [
       1,
       2
     ],
@@ -52,7 +52,7 @@
     "isDeleted": false,
     "name": "AquaFresh",
     "facilityType": "Bazen",
-    "facilityActivityIds": [
+    "workoutIds": [
       1,
       2
     ],
@@ -68,7 +68,7 @@
     "isDeleted": false,
     "name": "GOLD\u0027S GYM",
     "facilityType": "Teretana",
-    "facilityActivityIds": [
+    "workoutIds": [
       1,
       2
     ],
@@ -84,7 +84,7 @@
     "isDeleted": false,
     "name": "KasnoUvece",
     "facilityType": "Spavanje",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 6,
     "logo": "slika.png",
@@ -97,7 +97,7 @@
     "isDeleted": false,
     "name": "Radi",
     "facilityType": "Pls",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 7,
     "logo": "FacilityLogo7.png",
@@ -110,7 +110,7 @@
     "isDeleted": false,
     "name": "Novi obj",
     "facilityType": "Gym",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 8,
     "logo": "FacilityLogo8.png",
@@ -123,7 +123,7 @@
     "isDeleted": false,
     "name": "Obj2",
     "facilityType": "Gym",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 9,
     "logo": "FacilityLogo9.png",
@@ -136,7 +136,7 @@
     "isDeleted": false,
     "name": "obj3",
     "facilityType": "Gym",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 10,
     "logo": "FacilityLogo10.png",
@@ -149,7 +149,7 @@
     "isDeleted": false,
     "name": "Objekat69",
     "facilityType": "Gym",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 11,
     "logo": "FacilityLogo11.png",
@@ -162,7 +162,7 @@
     "isDeleted": false,
     "name": "Obj707",
     "facilityType": "Gym",
-    "facilityActivityIds": [],
+    "workoutIds": [],
     "status": false,
     "locationId": 12,
     "logo": "FacilityLogo12.png",

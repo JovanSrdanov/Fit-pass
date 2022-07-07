@@ -8,7 +8,7 @@ public class Facility {
 	private boolean isDeleted;
 	private String name;
 	private String facilityType;
-	private List<Integer> facilityActivityIds;
+	private List<Integer> workoutIds;
 	private boolean status;
 	private int locationId;
 	private String logo;
@@ -16,14 +16,14 @@ public class Facility {
 	private String workStart;
 	private String workEnd;
 	
-	public Facility(int id, boolean isDeleted, String name, String facilityType, List<Integer> facilityActivityIds,
+	public Facility(int id, boolean isDeleted, String name, String facilityType, List<Integer> workoutIds,
 			boolean status, int locationId, String logo, int rating, String workStart, String workEnd) {
 		super();
 		this.id = id;
 		this.isDeleted = isDeleted;
 		this.name = name;
 		this.facilityType = facilityType;
-		this.facilityActivityIds = facilityActivityIds;
+		this.workoutIds = workoutIds;
 		this.status = status;
 		this.locationId = locationId;
 		this.logo = logo;
@@ -39,11 +39,12 @@ public class Facility {
 		this.facilityType = facilityType;
 		this.workStart = workStart;
 		this.workEnd = workEnd;
-		this.facilityActivityIds = new ArrayList<Integer>();
+		this.workoutIds = new ArrayList<Integer>();
 	}
 
 	public Facility() {
 		super();
+		//this.workoutIds = new ArrayList<Integer>();
 	}
 	
 	public String getFacilityType() {
@@ -52,11 +53,11 @@ public class Facility {
 	public void setFacilityType(String facilityType) {
 		this.facilityType = facilityType;
 	}
-	public List<Integer> getFacilityActivityIds() {
-		return facilityActivityIds;
+	public List<Integer> getWorkoutIds() {
+		return workoutIds;
 	}
-	public void setFacilityActivityIds(List<Integer> facilityActivityIds) {
-		this.facilityActivityIds = facilityActivityIds;
+	public void setFacilityActivityIds(List<Integer> workoutIds) {
+		this.workoutIds = workoutIds;
 	}
 	public boolean isStatus() {
 		return status;
@@ -117,7 +118,7 @@ public class Facility {
 		this.isDeleted = updatedFacility.isDeleted;
 		this.name = updatedFacility.name;
 		this.facilityType = updatedFacility.facilityType;
-		this.facilityActivityIds = updatedFacility.facilityActivityIds;
+		this.workoutIds = updatedFacility.workoutIds;
 		this.status = updatedFacility.status;
 		this.locationId = updatedFacility.locationId;
 		this.logo = updatedFacility.logo;

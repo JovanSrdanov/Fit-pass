@@ -113,4 +113,16 @@ private static HashMap<Integer, Workout> workouts;
 		this.workouts.remove(id);
 		writeFile();
 	}
+
+	public int getNextId() {
+		Integer maxId = -1;
+		for (int id : workouts.keySet()) {
+			int idNum = id;
+			if (idNum > maxId) {
+				maxId = idNum;
+			}
+		}
+		maxId++;
+		return maxId;
+	}
 }

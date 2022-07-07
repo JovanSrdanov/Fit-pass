@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Facility;
-import beans.FacilityActivity;
-import beans.FacilityType;
+import beans.Workout;
 import beans.Location;
 import beans.Manager;
 import dao.*;
@@ -14,7 +13,7 @@ import dao.*;
 public class FacilityDto {
 	private Facility facility;
 	private Location location;
-	private List<FacilityActivity> activitys;
+	private List<Workout> activitys;
 	private String managerName;
 	private String managerSurname;
 	private int managerId;
@@ -24,7 +23,7 @@ public class FacilityDto {
 	}
 
 	
-	public FacilityDto(Facility facility, Location location, List<FacilityActivity> activitys) {
+	public FacilityDto(Facility facility, Location location, List<Workout> activitys) {
 		super();
 		this.facility = facility;
 		this.location = location;
@@ -50,11 +49,11 @@ public class FacilityDto {
 		this.location = location;
 	}
 
-	public List<FacilityActivity> getActivitys() {
+	public List<Workout> getActivitys() {
 		return activitys;
 	}
 
-	public void setActivitys(List<FacilityActivity> activitys) {
+	public void setActivitys(List<Workout> activitys) {
 		this.activitys = activitys;
 	}
 
@@ -107,10 +106,10 @@ public class FacilityDto {
 		LocationDao locationDao = new LocationDao();
 		this.location = locationDao.getById(facility.getLocationId());
 		
-		FacilityActivityDao facilityActivityDao = new FacilityActivityDao();
-		this.activitys = new ArrayList<FacilityActivity>();
-		for(int id : facility.getFacilityActivityIds()) {
-			activitys.add(facilityActivityDao.getById(id));
+		WorkoutDao workoutDao = new WorkoutDao();
+		this.activitys = new ArrayList<Workout>();
+		for(int id : facility.getWorkoutIds()) {
+			activitys.add(workoutDao.getById(id));
 		}
 		
 	}

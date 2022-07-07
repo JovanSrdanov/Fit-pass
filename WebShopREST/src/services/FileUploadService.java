@@ -20,6 +20,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import beans.Role;
 import dao.FacilityDao;
+import dao.WorkoutDao;
 import main.Startup;
 
 @Path("/files")  
@@ -41,6 +42,40 @@ public class FileUploadService {
 		FacilityDao facilityDao = new FacilityDao();
 		int nextId = facilityDao.getNextId();
 		String fileLocation = Startup.path + "WebProjekat/WebShopREST/WebContent/FacilityLogo/FacilityLogo" + nextId + ".png";
+        //String fileLocation = "D://" + fileDetail.getFileName();
+        //saving file  
+        try {  
+            FileOutputStream out = new FileOutputStream(new File(fileLocation));  
+            int read = 0;  
+            byte[] bytes = new byte[1024];  
+            out = new FileOutputStream(new File(fileLocation));  
+            while ((read = uploadedInputStream.read(bytes)) != -1) {  
+                out.write(bytes, 0, read);  
+            }  
+            out.flush();  
+            out.close();  
+        } catch (IOException e) {e.printStackTrace();}  
+        String output = "File successfully uploaded to : " + fileLocation;  
+        return Response.status(200).entity(output).build();  
+    } 
+    
+    @POST  
+    @Path("/workoutPicture") 
+    @JWTTokenNeeded
+    @Consumes(MediaType.MULTIPART_FORM_DATA)  
+    public Response uploadWorkoutPicture(  
+            @FormDataParam("file") InputStream uploadedInputStream,  
+            @FormDataParam("file") FormDataContentDisposition fileDetail,
+            @Context HttpHeaders headers) { 
+    		
+    	String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.manager.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+    		
+		WorkoutDao workoutDao = new WorkoutDao();
+		int nextId = workoutDao.getNextId();
+		String fileLocation = Startup.path + "WebProjekat/WebShopREST/WebContent/ActivityPictures/WorkoutLogo" + nextId + ".png";
         //String fileLocation = "D://" + fileDetail.getFileName();
         //saving file  
         try {  

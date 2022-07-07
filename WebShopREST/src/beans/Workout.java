@@ -11,8 +11,6 @@ public class Workout {
 	private String description;
 	private String picture;
 	
-	
-	
 	public Workout(int id, boolean isDeleted, String naziv, WorkoutType workoutType, int facilityId,
 			int durationInMinutes, int trainerId, String description, String picture) {
 		super();
