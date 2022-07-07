@@ -68,5 +68,55 @@
     "streetNumber": "10",
     "city": "Zrenjanin ",
     "postCode": "23101"
+  },
+  "8": {
+    "id": 8,
+    "isDeleted": false,
+    "latitude": "44.7873525",
+    "longitude": "20.4750088",
+    "street": "Прешернова",
+    "streetNumber": "10",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "9": {
+    "id": 9,
+    "isDeleted": false,
+    "latitude": "44.78217955",
+    "longitude": "20.49977825",
+    "street": "Glasinacka",
+    "streetNumber": "7",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "10": {
+    "id": 10,
+    "isDeleted": false,
+    "latitude": "44.78881405",
+    "longitude": "20.47919815257473",
+    "street": "Војислава Нановића",
+    "streetNumber": "2",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "11": {
+    "id": 11,
+    "isDeleted": false,
+    "latitude": "44.7799288",
+    "longitude": "20.49680135",
+    "street": "Цриквеничка",
+    "streetNumber": "3",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "12": {
+    "id": 12,
+    "isDeleted": false,
+    "latitude": "44.7769193",
+    "longitude": "20.507910301844788",
+    "street": "Сињска",
+    "streetNumber": "13V",
+    "city": "Belgrade",
+    "postCode": "11040"
   }
 }

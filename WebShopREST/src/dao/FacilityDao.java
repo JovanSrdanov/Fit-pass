@@ -57,7 +57,7 @@ public class FacilityDao {
 		
 	}*/
 	
-	private void writeFile() {
+	public void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/Facilitys.json");
 		
 		try {

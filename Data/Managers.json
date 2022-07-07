@@ -84,7 +84,7 @@
     "role": "manager"
   },
   "8": {
-    "facilityId": -1,
+    "facilityId": 8,
     "id": 8,
     "isDeleted": false,
     "username": "da",
@@ -96,7 +96,7 @@
     "role": "manager"
   },
   "9": {
-    "facilityId": -1,
+    "facilityId": 9,
     "id": 9,
     "isDeleted": false,
     "username": "cce2",
@@ -108,7 +108,7 @@
     "role": "manager"
   },
   "10": {
-    "facilityId": -1,
+    "facilityId": 10,
     "id": 10,
     "isDeleted": false,
     "username": "kuku",
@@ -120,7 +120,7 @@
     "role": "manager"
   },
   "11": {
-    "facilityId": -1,
+    "facilityId": 11,
     "id": 11,
     "isDeleted": false,
     "username": "novi",
@@ -132,7 +132,7 @@
     "role": "manager"
   },
   "12": {
-    "facilityId": -1,
+    "facilityId": 12,
     "id": 12,
     "isDeleted": false,
     "username": "dfsf",

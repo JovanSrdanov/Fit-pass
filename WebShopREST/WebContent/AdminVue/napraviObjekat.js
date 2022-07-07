@@ -399,7 +399,7 @@ Vue.component("napraviObjekat", {
                             yourConfig
                         )
                         .then((response) => {
-                            window.location.href = "#/pocetna";
+                            setTimeout(function(){ window.location.href = "#/pocetna"; }, 2500);
                         })
                         .catch((error) => {
                             this.existsSP =

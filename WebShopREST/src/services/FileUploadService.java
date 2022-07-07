@@ -40,7 +40,7 @@ public class FileUploadService {
     		
 		FacilityDao facilityDao = new FacilityDao();
 		int nextId = facilityDao.getNextId();
-		String fileLocation = Startup.path + "WebProjekat/WebShopREST/WebContent/FacilityLogo/facilityLogo" + nextId + ".png";
+		String fileLocation = Startup.path + "WebProjekat/WebShopREST/WebContent/FacilityLogo/FacilityLogo" + nextId + ".png";
         //String fileLocation = "D://" + fileDetail.getFileName();
         //saving file  
         try {  
