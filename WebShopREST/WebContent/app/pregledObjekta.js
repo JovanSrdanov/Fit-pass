@@ -127,7 +127,9 @@ Vue.component("pregledObjekta", {
         });
     },
     methods: {
-        ViewCustomersAndTrainers: function () {},
+        ViewCustomersAndTrainers: function () {
+            router.push(`/pregledObjekta/${this.facilityID}/treneriIkupci`);
+        },
         AddNewActivity: function () {
             router.push(`/pregledObjekta/${this.facilityID}/dodajAktivnost`);
         },

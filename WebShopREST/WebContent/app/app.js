@@ -1,14 +1,22 @@
 const registracija = { template: "<registracija></registracija>" };
 const prijava = { template: "<prijava></prijava>" };
 const pocetna = { template: "<pocetna></pocetna>" };
-const korisnici = { template: "<korisnici></korisnici>" };
-const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
-const registruj = { template: "<registruj></registruj>" };
 const pregledObjekta = { template: "<pregledObjekta></pregledObjekta>" };
+
+const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
+
+const korisnici = { template: "<korisnici></korisnici>" };
+const registruj = { template: "<registruj></registruj>" };
 const napraviObjekat = { template: "<napraviObjekat></napraviObjekat>" };
 const promoKod = { template: "<promoKod></promoKod>" };
 const komentari = { template: "<komentari></komentari>" };
+
 const dodajAktivnost = { template: "<dodajAktivnost></dodajAktivnost>" };
+const treneriIkupci = { template: "<treneriIkupci></treneriIkupci>" };
+const izmeniAktivnost = { template: "<izmeniAktivnost></izmeniAktivnost>" };
+const zakazaneAktivnostiUObjektu = {
+    template: "<zakazaneAktivnostiUObjektu></zakazaneAktivnostiUObjektu>",
+};
 
 const router = new VueRouter({
     mode: "hash",
@@ -23,6 +31,22 @@ const router = new VueRouter({
         { path: "/registruj", component: registruj, props: true },
         { path: "/pregledObjekta/:id", component: pregledObjekta, props: true },
         { path: "/promoKod", component: promoKod, props: true },
+        {
+            path: "/pregledObjekta/:id/zakazaneAktivnostiUObjektu",
+            component: treneriIkupci,
+            props: true,
+        },
+        {
+            path: "/pregledObjekta/:id/izmeniAktivnost/:activityId",
+            component: treneriIkupci,
+            props: true,
+        },
+
+        {
+            path: "/pregledObjekta/:id/treneriIkupci",
+            component: treneriIkupci,
+            props: true,
+        },
         {
             path: "/pregledObjekta/:id/dodajAktivnost",
             component: dodajAktivnost,
@@ -56,6 +80,7 @@ var app = new Vue({
                 alert("Nemate još svoj objekat");
                 return;
             }
+
             router.push(`/pregledObjekta/${id}`);
         },
         VarToken: function () {
