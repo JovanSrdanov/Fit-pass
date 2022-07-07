@@ -128,5 +128,13 @@ public class Facility {
 		
 	}
 	
+	public void addWorkout(int workoutId) {
+		if(this.workoutIds == null) {
+			this.workoutIds = new ArrayList<Integer>();
+		}
+		
+		this.workoutIds.add(workoutId);
+	}
+	
 	
 }

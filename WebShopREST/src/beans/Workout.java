@@ -104,11 +104,11 @@ public class Workout {
 	}
 
 	public void update(Workout newWorkout) {
-		this.id = newWorkout.id;
-		this.isDeleted = newWorkout.isDeleted;
+		//this.id = newWorkout.id;
+		//this.isDeleted = newWorkout.isDeleted;
 		this.name = newWorkout.name;
 		this.workoutType = newWorkout.workoutType;
-		this.facilityId = newWorkout.facilityId;
+		//this.facilityId = newWorkout.facilityId;
 		this.durationInMinutes = newWorkout.durationInMinutes;
 		this.trainerId = newWorkout.trainerId;
 		this.description = newWorkout.description;
