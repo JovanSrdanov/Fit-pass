@@ -234,4 +234,16 @@ public class FacilityDao {
 		this.facilitys.remove(id);
 		writeFile();
 	}
+	
+	public int getNextId() {
+		Integer maxId = -1;
+		for (int id : facilitys.keySet()) {
+			int idNum = id;
+			if (idNum > maxId) {
+				maxId = idNum;
+			}
+		}
+		maxId++;
+		return maxId;
+	}
 }

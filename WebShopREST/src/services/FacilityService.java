@@ -102,8 +102,8 @@ public class FacilityService {
 											newFacilitDtoy.getWorkEnd());
 		newFacility.setLocationId(newLocation.getId());
 		//slika
-		newFacility.setLogo("slika.png");
 		facilityDao.addNew(newFacility);
+		newFacility.setLogo("facilityLogo" + newFacility.getId() + ".png");
 		
 		//Manager
 		Manager facilityManager = managerDao.getById(newFacilitDtoy.getManagerId());
