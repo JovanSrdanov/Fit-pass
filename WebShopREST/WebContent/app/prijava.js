@@ -55,6 +55,7 @@ Vue.component("prijava", {
             </div>
         </div>`,
     mounted() {
+        this.$root.VarToken();
         if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {
             alert(
                 "Ne može se izvršiti prijavljivanje dok ste prijavljeni. Odjavite se i pokušajte ponovo."
