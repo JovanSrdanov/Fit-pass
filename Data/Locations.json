@@ -4,52 +4,69 @@
     "isDeleted": false,
     "latitude": "45.380251",
     "longitude": "20.373097",
-	"street": "Begoradska",
-	"streetNumber": "34",
-	"city": "Novi Sad",
-	"postCode": "21000"
+    "street": "Begoradska",
+    "streetNumber": "34",
+    "city": "Novi Sad",
+    "postCode": "21000"
   },
-    "2": {
+  "2": {
     "id": 2,
     "isDeleted": false,
     "latitude": "22",
     "longitude": "22",
-	"street": "Novosadska",
-	"streetNumber": "18",
-	"city": "Beograd",
-	"postCode": "12300"
-  }
-  ,
-    "3": {
+    "street": "Novosadska",
+    "streetNumber": "18",
+    "city": "Beograd",
+    "postCode": "12300"
+  },
+  "3": {
     "id": 2,
     "isDeleted": false,
     "latitude": "12",
     "longitude": "12",
-	"street": "Jovana Jovanovica Zmaja",
-	"streetNumber": "72",
-	"city": "Kikinda",
-	"postCode": "23300"
-  }
-  ,
-    "4": {
+    "street": "Jovana Jovanovica Zmaja",
+    "streetNumber": "72",
+    "city": "Kikinda",
+    "postCode": "23300"
+  },
+  "4": {
     "id": 2,
     "isDeleted": false,
     "latitude": "32",
     "longitude": "32",
-	"street": "Markova",
-	"streetNumber": "1",
-	"city": "Subotica",
-	"postCode": "12000"
-  }
-  ,
-    "5": {
+    "street": "Markova",
+    "streetNumber": "1",
+    "city": "Subotica",
+    "postCode": "12000"
+  },
+  "5": {
     "id": 2,
     "isDeleted": false,
     "latitude": "24",
     "longitude": "24",
-	"street": "Marijina",
-	"streetNumber": "12",
-	"city": "Kraljevo",
-	"postCode": "45000"
+    "street": "Marijina",
+    "streetNumber": "12",
+    "city": "Kraljevo",
+    "postCode": "45000"
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "latitude": "44.77675465",
+    "longitude": "20.46682206023573",
+    "street": "Rajka Mitica",
+    "streetNumber": "30",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "latitude": "45.3828799",
+    "longitude": "20.382168",
+    "street": "Brigadira Ristica",
+    "streetNumber": "10",
+    "city": "Zrenjanin ",
+    "postCode": "23101"
   }
 }

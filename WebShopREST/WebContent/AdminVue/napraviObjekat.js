@@ -11,6 +11,7 @@ Vue.component("napraviObjekat", {
             availableManagers: null,
             selectedManager: {},
 
+            logoSend: null,
             logoFile: null,
 
             name: "",
@@ -171,13 +172,14 @@ Vue.component("napraviObjekat", {
             <p>Kraj radnog vremena:</p>
             <input type="time" name="workEnd" id="workEnd"   v-model="workEnd" />
 
-              <p>Izabrani menadžer: {{selectedManager.name}} {{selectedManager.surname}} - {{selectedManager.username}}</p>
+            <p>Izabrani menadžer: {{selectedManager.name}} {{selectedManager.surname}} - {{selectedManager.username}}</p>
             <p>Izaberite logo:</p>
         
             <input type="file" name="logoFile" id="logoFile" accept="image/*"  @change="handleFileUpload"  title=" GAS"/>
 
             <p>
                 <button v-on:click="CreateSportFacility">Kreiraj</button>
+           
             </p>
                <p>
                     <img
@@ -341,7 +343,12 @@ Vue.component("napraviObjekat", {
             this.allEntered = "";
             this.existsSP = "";
             // uradi proveru za end i start
+            // uradi proveru za end i start
+            // uradi proveru za end i start
+            // uradi proveru za end i start
+
             if (
+                this.logoSend === null ||
                 this.name === "" ||
                 this.facilityType === "" ||
                 this.street === "" ||
@@ -357,33 +364,50 @@ Vue.component("napraviObjekat", {
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
+                    "Content-Type": "application/json",
                 },
             };
+            const formData = new FormData();
+            formData.append("file", this.logoSend);
             axios
-                .post(
-                    "rest/facilitys/create",
-                    {
-                        name: this.name,
-                        facilityType: this.facilityType,
-                        workStart: this.workStart,
-                        workEnd: this.workEnd,
-
-                        street: this.street,
-                        streetNumber: this.streetNumber,
-                        city: this.city,
-                        postCode: this.postCode,
-                        latitude: this.latShow,
-                        longitude: this.lonShow,
-
-                        managerId: this.selectedManager.id,
+                .post("rest/files/upload", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: localStorage.getItem("token"),
                     },
-                    yourConfig
-                )
-                .then((response) => {
-                    window.location.href = "#/pocetna";
+                })
+                .then(() => {
+                    alert("USPEO");
+                    axios
+                        .post(
+                            "rest/facilitys/new",
+                            {
+                                name: this.name,
+                                facilityType: this.facilityType,
+                                workStart: this.workStart,
+                                workEnd: this.workEnd,
+
+                                street: this.street,
+                                streetNumber: this.streetNumber,
+                                city: this.city,
+                                postCode: this.postCode,
+                                latitude: this.latShow,
+                                longitude: this.lonShow,
+
+                                managerId: this.selectedManager.id,
+                            },
+                            yourConfig
+                        )
+                        .then((response) => {
+                            window.location.href = "#/pocetna";
+                        })
+                        .catch((error) => {
+                            this.existsSP =
+                                "Već postoji objekat sa ovakvim nazivom";
+                        });
                 })
                 .catch((error) => {
-                    this.existsSP = "Već postoji objekat sa ovakvim nazivom";
+                    alert("NIJE USPEO");
                 });
         },
 
@@ -443,8 +467,10 @@ Vue.component("napraviObjekat", {
                     this.managerExist = true;
                 });
         },
+
         handleFileUpload(e) {
             const file = e.target.files[0];
+            this.logoSend = file;
             this.logoFile = URL.createObjectURL(file);
         },
         getImgUrl(slika) {

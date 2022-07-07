@@ -66,7 +66,7 @@
   "5": {
     "id": 5,
     "isDeleted": false,
-    "name": "GOLD'S GYM",
+    "name": "GOLD\u0027S GYM",
     "facilityType": "Teretana",
     "facilityActivityIds": [
       1,
@@ -78,5 +78,30 @@
     "rating": 5,
     "workStart": "02:30",
     "workEnd": "10:30"
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "name": "KasnoUvece",
+    "facilityType": "Spavanje",
+    "facilityActivityIds": [],
+    "status": false,
+    "locationId": 6,
+    "logo": "slika.png",
+    "rating": 0,
+    "workStart": "07:01",
+    "workEnd": "21:01"
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "name": "Radi",
+    "facilityType": "Pls",
+    "facilityActivityIds": [],
+    "status": false,
+    "locationId": 7,
+    "rating": 0,
+    "workStart": "08:00",
+    "workEnd": "22:00"
   }
 }

@@ -60,7 +60,7 @@
     "role": "manager"
   },
   "6": {
-    "facilityId": -1,
+    "facilityId": 7,
     "id": 6,
     "isDeleted": false,
     "username": "elon",
@@ -72,7 +72,7 @@
     "role": "manager"
   },
   "7": {
-    "facilityId": -1,
+    "facilityId": 6,
     "id": 7,
     "isDeleted": false,
     "username": "dragan",
