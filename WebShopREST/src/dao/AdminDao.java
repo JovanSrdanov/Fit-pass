@@ -101,9 +101,9 @@ public class AdminDao {
 	}
 
 	public Admin getByUsername(String username) {
-		for(Admin cust : admins.values()) {
-			if(cust.getUsername().equals(username)) {
-				return cust;
+		for(Admin admin : admins.values()) {
+			if(admin.getUsername().equals(username)) {
+				return admin;
 			}
 		}
 		return null;
