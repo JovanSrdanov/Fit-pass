@@ -1,6 +1,7 @@
 Vue.component("pregledObjekta", {
     data: function () {
         return {
+            myFacility: false,
             facilityID: null,
             currentFacility: {
                 facility: { name: "", logo: "", workStart: "", workEnd: "" },
@@ -30,7 +31,11 @@ Vue.component("pregledObjekta", {
                                 Radno vreme: {{currentFacility.facility.workStart}} -
                                 {{currentFacility.facility.workEnd}}   {{checkStatus(currentFacility.facility.workStart,currentFacility.facility.workEnd)}}
                             </td></tr> 
-                                 
+                            <tr v-if="myFacility"><td>  
+                                <button v-on:click="ViewCustomersAndTrainers">Treneri i kupci</button> 
+                                <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
+                                <button v-on:click="SeeHistoryOfTrainings" >Pregled zakazanih treninga</button>                          
+                            </td></tr> 
                         </table>     
                     </div>    
                        
@@ -63,6 +68,21 @@ Vue.component("pregledObjekta", {
 
     mounted() {
         this.facilityID = this.$route.params.id;
+
+        if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {
+            if (
+                JSON.parse(localStorage.getItem("loggedInUser")).role ===
+                "manager"
+            ) {
+                if (
+                    JSON.parse(localStorage.getItem("loggedInUser"))
+                        .facilityId == this.facilityID
+                ) {
+                    this.myFacility = true;
+                }
+            }
+        }
+
         axios.get("rest/facilitys/" + this.facilityID).then((response) => {
             this.currentFacility = response.data;
 
@@ -107,6 +127,11 @@ Vue.component("pregledObjekta", {
         });
     },
     methods: {
+        ViewCustomersAndTrainers: function () {},
+        AddNewActivity: function () {
+            router.push(`/pregledObjekta/${this.facilityID}/dodajAktivnost`);
+        },
+        SeeHistoryOfTrainings: function () {},
         checkStatus(start, end) {
             var today = new Date();
 

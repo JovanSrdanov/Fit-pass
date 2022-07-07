@@ -4,8 +4,8 @@
     "isDeleted": false,
     "name": "Lud trening",
     "workoutType": "solo",
-    "facilityId": "1",
-    "durationInMinutes": "60",
+    "facilityId": 1,
+    "durationInMinutes": 60,
     "trainerId": 0,
     "description": "Trening desc",
     "picture": "slika.png"
@@ -15,10 +15,40 @@
     "isDeleted": false,
     "name": "Lud trening2",
     "workoutType": "personal",
-    "facilityId": "1",
-    "durationInMinutes": "120",
+    "facilityId": 1,
+    "durationInMinutes": 120,
     "trainerId": 1,
     "description": "Trening desc2",
     "picture": "slika.png"
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "name": "sadasdas",
+    "workoutType": "solo",
+    "facilityId": 1,
+    "durationInMinutes": 12312,
+    "trainerId": -1,
+    "description": "21312312"
+  },
+  "4": {
+    "id": 4,
+    "isDeleted": false,
+    "name": "NoviTest",
+    "workoutType": "solo",
+    "facilityId": 1,
+    "durationInMinutes": 11,
+    "trainerId": -1,
+    "description": "VAuTest"
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "name": "asdasdas",
+    "workoutType": "group",
+    "facilityId": 1,
+    "durationInMinutes": 12,
+    "trainerId": 2,
+    "description": "dasdas"
   }
 }

@@ -6,7 +6,10 @@
     "facilityType": "Fudbalski teren",
     "workoutIds": [
       1,
-      2
+      2,
+      1,
+      1,
+      1
     ],
     "status": true,
     "locationId": 2,

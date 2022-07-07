@@ -104,7 +104,6 @@ Vue.component("registracija", {
    `,
 
     mounted() {
-        this.$root.VarToken();
         if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {
             alert(
                 "Ne može se izvršiti registracija dok ste prijavljeni. Odjavite se i pokušajte ponovo."

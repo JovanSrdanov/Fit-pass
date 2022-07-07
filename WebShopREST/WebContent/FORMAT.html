@@ -11,23 +11,39 @@
             <p>Naziv:</p>
             <input type="text" name="name" id="name" placeholder="Naziv" />
 
-            <p>Tip objekta:</p>
+            <p>Tip aktivnosti</p>
+            <select name="workoutType" id="workoutType" v-model="workoutType">
+                <option selected="selected" value="personal">
+                    Personalni trening
+                </option>
+                <option value="group">Grupni trening</option>
+                <option value="solo">Aktivnost bez trenera</option>
+            </select>
+
+            <p>Trajanje u minutima</p>
+            <input
+                min="1"
+                max="180"
+                v-model="durationInMinutes"
+                type="number"
+                name="durationInMinutes"
+                id="durationInMinutes"
+            />
+            <p>Opis:</p>
             <input
                 type="text"
-                name="facilityType"
-                id="facilityType"
-                placeholder="Tip objekta"
+                name="description"
+                id="description"
+                placeholder="Opis"
             />
-            <p>Početak radnog vremena:</p>
-            <input type="time" name="workStart" id="workStart" />
-            <p>Kraj radnog vremena:</p>
-            <input type="time" name="workEnd" id="workEnd" />
-            <p>
-                <button>Kreiraj</button>
-            </p>
-            <input type="file" name="logoFile" id="logoFile" />
-            <div class="mapShowCreate" id="mapShowCreate"></div>
-            <p>Niste uneli sve podatke</p>
+            <p>Slika aktivnosti:</p>
+            <input
+                type="file"
+                name="picture"
+                id="picture"
+                accept="image/*"
+                @change="handleFileUpload"
+            />
         </div>
     </body>
 </html>
