@@ -22,6 +22,7 @@ import javax.ws.rs.core.Response;
 import beans.Admin;
 import beans.Admin;
 import beans.Product;
+import beans.Role;
 import dao.AdminDao;
 import dao.AdminDao;
 import dao.ProductDAO;
@@ -65,6 +66,7 @@ public class AdminService {
 		
 		AdminDao dao = (AdminDao) ctx.getAttribute("AdminDao");
 		int id = dao.getByUsername(username).getId();
+		updatedAdmin.setRole(Role.admin);
 		return dao.update(id, updatedAdmin);
 	}
 
