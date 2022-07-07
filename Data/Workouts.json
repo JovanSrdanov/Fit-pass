@@ -6,7 +6,7 @@
     "workoutType": "solo",
     "facilityId": 1,
     "durationInMinutes": 60,
-    "trainerId": 0,
+    "trainerId": -1,
     "description": "Trening desc",
     "picture": "slika.png"
   },
@@ -28,7 +28,7 @@
     "workoutType": "solo",
     "facilityId": 1,
     "durationInMinutes": 12312,
-    "trainerId": -1,
+    "trainerId": 1,
     "description": "21312312"
   },
   "4": {
@@ -36,7 +36,7 @@
     "isDeleted": false,
     "name": "NoviTest",
     "workoutType": "solo",
-    "facilityId": 1,
+    "facilityId": 2,
     "durationInMinutes": 11,
     "trainerId": -1,
     "description": "VAuTest"
@@ -50,5 +50,27 @@
     "durationInMinutes": 12,
     "trainerId": 2,
     "description": "dasdas"
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "name": "AutoprevozKikinda",
+    "workoutType": "personal",
+    "facilityId": 1,
+    "durationInMinutes": 1,
+    "trainerId": 3,
+    "description": "brz trening",
+    "picture": "WorkoutLogo6.png"
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "name": "Bez treninga",
+    "workoutType": "solo",
+    "facilityId": 1,
+    "durationInMinutes": 0,
+    "trainerId": -1,
+    "description": "nema trenera nema treninga jbg",
+    "picture": "WorkoutLogo7.png"
   }
 }

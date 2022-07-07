@@ -24,6 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Admin;
+import beans.Customer;
 import beans.Workout;
 import beans.Workout;
 import beans.Manager;
@@ -32,6 +33,7 @@ import beans.Role;
 import beans.Trainer;
 import beans.User;
 import dao.AdminDao;
+import dao.CustomerDao;
 import dao.WorkoutDao;
 import dao.FacilityDao;
 import dao.WorkoutDao;
@@ -40,6 +42,7 @@ import dao.ProductDAO;
 import dao.TrainerDao;
 import dao.WorkoutDao;
 import dto.BigDaddy;
+import dto.WorkoutDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -64,8 +67,20 @@ public class WorkoutService {
 	
 	@PUT
 	@Path("/new/{id}")
+	@JWTTokenNeeded
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addNew(@PathParam("id") int id ,Workout workout) {
+	public Response addNew(@PathParam("id") int id ,Workout workout, @Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		ManagerDao managerDao = new ManagerDao();
+		int managersFacilityId = managerDao.getByUsername(username).getFacilityId();
+		
+		if(!role.equals(Role.manager.toString()) || managersFacilityId != id) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
 		WorkoutDao dao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
 		
 		for(Workout cust : dao.getAll()) {
@@ -76,9 +91,11 @@ public class WorkoutService {
 		workout.setDeleted(false);
 		workout.setFacilityId(id);
 		dao.addNew(workout);
+		workout.setPicture("WorkoutLogo" + workout.getId() + ".png");
+		dao.writeFile();
 		
 		FacilityDao facilityDao = new FacilityDao();
-		facilityDao.getById(id).addWorkout(id);
+		facilityDao.getById(id).addWorkout(workout.getId());
 		facilityDao.writeFile();
 		
 		return Response.ok().build();
@@ -106,5 +123,36 @@ public class WorkoutService {
 		WorkoutDao dao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
 		//int id = dao.getById(updatedWorkout.getId()).getId();
 		return dao.update(updatedWorkout.getId(), updatedWorkout);
+	}
+	
+	@GET
+	@Path("/inFacility/{id}")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutDto> getVisitedFacilitysById(@PathParam("id") int id, @Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		ManagerDao managerDao = new ManagerDao();
+		int managersFacilityId = managerDao.getByUsername(username).getFacilityId();
+		
+		if(!role.equals(Role.manager.toString()) || managersFacilityId != id) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ArrayList<WorkoutDto> workoutsInFacility = new ArrayList<WorkoutDto>(); 
+		
+		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
+		TrainerDao trainerDao = new TrainerDao();
+		
+		for(Workout workout : workoutDao.getAll()) {
+			if(workout.getFacilityId() == id) {
+				Trainer trainer = trainerDao.getById(workout.getTrainerId());
+				workoutsInFacility.add(new WorkoutDto(workout, trainer));
+			}
+		}
+		
+		return workoutsInFacility;
 	}
 }

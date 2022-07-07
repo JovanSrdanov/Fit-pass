@@ -34,7 +34,7 @@ private static HashMap<Integer, Workout> workouts;
 				Role.customer, false, 1, -1, 0));
 	}*/
 	
-	private void writeFile() {
+	public void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/Workouts.json");
 		
 		try {

@@ -11,7 +11,11 @@
     "surname": "STRALE15",
     "gender": "female",
     "birthDate": "Feb 24, 2021, 1:00:00 AM",
-    "role": "customer"
+    "role": "customer",
+	"visitedFacilityIds": [
+		1,
+		2
+	]
   },
   "2": {
     "membershipId": -1,
@@ -25,7 +29,10 @@
     "surname": "Mjau",
     "gender": "male",
     "birthDate": "Jan 1, 2001, 1:00:00 AM",
-    "role": "customer"
+    "role": "customer",
+	"visitedFacilityIds": [
+		1
+	]
   },
   "3": {
     "membershipId": -1,
@@ -39,6 +46,9 @@
     "surname": "Srdanov",
     "gender": "male",
     "birthDate": "Jan 1, 1990, 1:00:00 AM",
-    "role": "customer"
+    "role": "customer",
+	"visitedFacilityIds": [
+		2
+	]
   }
 }

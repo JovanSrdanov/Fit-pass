@@ -240,5 +240,37 @@ public class CustomerService {
 		return dao.update(id, updatedCustomer);
 	}
 	
+	@GET
+	@Path("/visited/{id}")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Customer> getVisitedFacilitysById(@PathParam("id") int id, @Context HttpHeaders headers) {
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		ManagerDao managerDao = new ManagerDao();
+		int managersFacilityId = managerDao.getByUsername(username).getFacilityId();
+		
+		if(!role.equals(Role.manager.toString()) || managersFacilityId != id) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ArrayList<Customer> visitedCustomers = new ArrayList<Customer>(); 
+		
+		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+		
+		for(Customer cust : dao.getAll()) {
+			for(int visitedFacilityId : cust.getVisitedFacilityIds()) {
+				if(visitedFacilityId == id) {
+					visitedCustomers.add(cust);
+					break;
+				}
+			}
+		}
+		
+		return visitedCustomers;
+	}
+	
 
 }
