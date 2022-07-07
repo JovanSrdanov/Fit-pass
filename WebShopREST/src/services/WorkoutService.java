@@ -73,6 +73,8 @@ public class WorkoutService {
 				return Response.status(409).build();
 			}
 		}
+		workout.setDeleted(false);
+		workout.setFacilityId(id);
 		dao.addNew(workout);
 		
 		FacilityDao facilityDao = new FacilityDao();
