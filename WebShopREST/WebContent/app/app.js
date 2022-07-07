@@ -59,7 +59,7 @@ var app = new Vue({
                 },
             };
             axios
-                .get("rest/customers/info", yourConfig)
+                .get("rest/customer/info", yourConfig)
                 .then((response) => {
                     this.loggedInUser = response.data;
                     this.status = "loggedIn";
