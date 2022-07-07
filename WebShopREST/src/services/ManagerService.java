@@ -10,6 +10,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,12 +20,12 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import beans.Admin;
+import beans.Manager;
 import beans.Manager;
 import beans.Manager;
 import beans.Product;
 import beans.Role;
-import dao.AdminDao;
+import dao.ManagerDao;
 import dao.ManagerDao;
 import dao.ManagerDao;
 import dao.ProductDAO;
@@ -93,5 +94,19 @@ public class ManagerService {
 		
 		ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
 		return dao.getAvailable();
+	}
+	
+	@PUT
+	@Path("/update")
+	@JWTTokenNeeded
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Manager update(Manager updatedManager, @Context HttpHeaders headers) {
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
+		int id = dao.getByUsername(username).getId();
+		updatedManager.setRole(Role.manager);
+		return dao.update(id, updatedManager);
 	}
 }

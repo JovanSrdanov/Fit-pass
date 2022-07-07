@@ -16,15 +16,15 @@ public class Admin extends User{
 	}
 	
 	public void update(Admin newAdmin) {
-		this.username = newAdmin.username;
+		//this.username = newAdmin.username;
 		this.password = newAdmin.password;
 		this.name = newAdmin.name;
 		this.surname = newAdmin.surname;
 		this.gender = newAdmin.gender;
 		this.birthDate = newAdmin.birthDate;
-		this.role = newAdmin.role;
-		this.isDeleted = newAdmin.isDeleted;
-		this.id = newAdmin.id;
+		//this.role = newAdmin.role;
+		//this.isDeleted = newAdmin.isDeleted;
+		//this.id = newAdmin.id;
 	}
 
 }
