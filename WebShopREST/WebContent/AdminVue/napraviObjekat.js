@@ -377,7 +377,6 @@ Vue.component("napraviObjekat", {
                     },
                 })
                 .then(() => {
-                    alert("USPEO");
                     axios
                         .post(
                             "rest/facilitys/new",
@@ -399,7 +398,9 @@ Vue.component("napraviObjekat", {
                             yourConfig
                         )
                         .then((response) => {
-                            setTimeout(function(){ window.location.href = "#/pocetna"; }, 2500);
+                            setTimeout(function () {
+                                window.location.href = "#/pocetna";
+                            }, 2500);
                         })
                         .catch((error) => {
                             this.existsSP =

@@ -3,7 +3,7 @@ Vue.component("pregledObjekta", {
         return {
             facilityID: null,
             currentFacility: {
-                facility: { name: "", logo: "" },
+                facility: { name: "", logo: "", workStart: "", workEnd: "" },
                 location: { address: "" },
             },
             SportFacilityList: {},
@@ -28,12 +28,9 @@ Vue.component("pregledObjekta", {
                            </td> </tr>
                             <tr><td>
                                 Radno vreme: {{currentFacility.facility.workStart}} -
-                                {{currentFacility.facility.workEnd}}</td>
-                            </tr> 
-                                <tr><td>
-                                Objekat (radi/ne radi)
-                               </td>
-                            </tr>     
+                                {{currentFacility.facility.workEnd}}   {{checkStatus(currentFacility.facility.workStart,currentFacility.facility.workEnd)}}
+                            </td></tr> 
+                                 
                         </table>     
                     </div>    
                        
@@ -110,6 +107,28 @@ Vue.component("pregledObjekta", {
         });
     },
     methods: {
+        checkStatus(start, end) {
+            var today = new Date();
+
+            var workDayStartTime = new Date();
+            var workDayEndTime = new Date();
+
+            if (parseInt(start.split(":")[0]) > parseInt(end.split(":")[0])) {
+                workDayEndTime.setDate(workDayEndTime.getDate() + 1);
+            }
+
+            workDayStartTime.setHours(parseInt(start.split(":")[0]));
+            workDayStartTime.setMinutes(parseInt(start.split(":")[1]));
+
+            workDayEndTime.setHours(parseInt(end.split(":")[0]));
+            workDayEndTime.setMinutes(parseInt(end.split(":")[1]));
+
+            if (workDayStartTime < today && workDayEndTime > today) {
+                return "(Radi)";
+            } else {
+                return "(Ne radi)";
+            }
+        },
         convertStatus(status) {
             if (status) return "radi";
             else return "ne radi";

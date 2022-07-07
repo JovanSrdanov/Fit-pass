@@ -59,7 +59,7 @@ Vue.component("pocetna", {
                     <p>
                         Prosečna ocena:
                         <input
-                            min="1"
+                            min="0"
                             max="5"
                             v-model="rating"
                             type="number"
@@ -142,11 +142,11 @@ Vue.component("pocetna", {
                                     <li>{{p.location.city}} {{p.location.postCode}} </li>
                                     <li>({{p.location.longitude}}, {{p.location.latitude}}) </li>
                                     <li>
-                                        Prosečna ocena: {{p.facility.rating}}
+                                        Prosečna ocena: {{p.facility.rating}}/5
                                     </li>
                                     <li>
                                         Radno vreme: {{p.facility.workStart}} -
-                                        {{p.facility.workEnd}}  ( Radi/Ne radi )
+                                        {{p.facility.workEnd}} {{checkStatus(p.facility.workStart,p.facility.workEnd)}}
                                     </li>
 
                                     <br />
@@ -301,6 +301,28 @@ Vue.component("pocetna", {
     },
 
     methods: {
+        checkStatus(start, end) {
+            var today = new Date();
+
+            var workDayStartTime = new Date();
+            var workDayEndTime = new Date();
+
+            if (parseInt(start.split(":")[0]) > parseInt(end.split(":")[0])) {
+                workDayEndTime.setDate(workDayEndTime.getDate() + 1);
+            }
+
+            workDayStartTime.setHours(parseInt(start.split(":")[0]));
+            workDayStartTime.setMinutes(parseInt(start.split(":")[1]));
+
+            workDayEndTime.setHours(parseInt(end.split(":")[0]));
+            workDayEndTime.setMinutes(parseInt(end.split(":")[1]));
+
+            if (workDayStartTime < today && workDayEndTime > today) {
+                return "(Radi)";
+            } else {
+                return "(Ne radi)";
+            }
+        },
         getDistanceFromLatLonInKm: function (lat1, lon1, lat2, lon2) {
             var R = 6371; // Radius of the earth in km
             var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
