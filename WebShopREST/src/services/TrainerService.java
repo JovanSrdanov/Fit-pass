@@ -10,6 +10,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -18,12 +19,12 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import beans.Admin;
+import beans.Trainer;
 import beans.Trainer;
 import beans.Trainer;
 import beans.Product;
 import beans.Role;
-import dao.AdminDao;
+import dao.TrainerDao;
 import dao.TrainerDao;
 import dao.TrainerDao;
 import dao.ProductDAO;
@@ -78,6 +79,20 @@ public class TrainerService {
 		}
 		dao.addNew(trainer);
 		return Response.ok().build();
+	}
+	
+	@PUT
+	@Path("/update")
+	@JWTTokenNeeded
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Trainer update(Trainer updatedTrainer, @Context HttpHeaders headers) {
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		TrainerDao dao = (TrainerDao) ctx.getAttribute("TrainerDao");
+		int id = dao.getByUsername(username).getId();
+		updatedTrainer.setRole(Role.trainer);
+		return dao.update(id, updatedTrainer);
 	}
 
 }

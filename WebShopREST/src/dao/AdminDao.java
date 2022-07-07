@@ -82,15 +82,15 @@ public class AdminDao {
 	}
 	
 	public Admin update(int id, Admin updatedAdmin) {
-		Admin customerToUpdate = this.getById(id);
+		Admin adminToUpdate = this.getById(id);
 		
-		if(customerToUpdate == null) {
+		if(adminToUpdate == null) {
 			return this.addNew(updatedAdmin);
 		}
 		
-		customerToUpdate.update(updatedAdmin);
+		adminToUpdate.update(updatedAdmin);
 		writeFile();
-		return customerToUpdate;
+		return adminToUpdate;
 	}
 	
 	public void removeById(int id) {

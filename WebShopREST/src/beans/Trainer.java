@@ -27,15 +27,15 @@ public class Trainer extends User{
 
 	public void update(Trainer newTrainer) {
 		// TODO Auto-generated method stub
-		this.username = newTrainer.username;
+		//this.username = newTrainer.username;
 		this.password = newTrainer.password;
 		this.name = newTrainer.name;
 		this.surname = newTrainer.surname;
 		this.gender = newTrainer.gender;
 		this.birthDate = newTrainer.birthDate;
-		this.role = newTrainer.role;
-		this.isDeleted = newTrainer.isDeleted;
-		this.id = newTrainer.id;
+		//this.role = newTrainer.role;
+		//this.isDeleted = newTrainer.isDeleted;
+		//this.id = newTrainer.id;
 	}
 	
 	
