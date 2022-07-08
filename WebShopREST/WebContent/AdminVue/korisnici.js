@@ -22,114 +22,124 @@ Vue.component("korisnici", {
         };
     },
     template: `
-        <div>
+         <div class="WholeScreen">
             <h1>Korisnici</h1>
+            <table class="tableForKorisnici">
+                <td>
+                    <div class="SearchSortFilterWrapper">
+                        <p>Pretraga:</p>
 
-            <div class="pretragaFiltriranjeSortiranje">
-                <div class="optionsWrapper">
-                    <p>Pretraga:</p>
+                        <input
+                            v-model="searchName"
+                            type="text"
+                            name="searchName"
+                            id="searchName"
+                            placeholder="Ime"
+                        />
 
-                    <input
-                    v-model="searchName"
-                        type="text"
-                        name="searchName"
-                        id="searchName"
-                        placeholder="Ime"
-                    />
+                        <br />
+                        <br />
+                        <input
+                            v-model="searchSurname"
+                            type="text"
+                            name="searchSurname"
+                            id="searchSurname"
+                            placeholder="Prezime"
+                        />
+                        <br />
+                        <br />
+                        <input
+                            v-model="searchUsername"
+                            type="text"
+                            name="searchUsername"
+                            id="searchUsername"
+                            placeholder="Korisničko ime"
+                        />
+                        <br />
+                        <br />
 
-                    <br />
-                    <br />
-                    <input
-                    v-model="searchSurname"
-                        type="text"
-                        name="searchSurname"
-                        id="searchSurname"
-                        placeholder="Prezime"
-                    />
-                    <br />
-                    <br />
-                    <input
-                    v-model="searchUsername"
-                        type="text"
-                        name="searchUsername"
-                        id="searchUsername"
-                        placeholder="Korisničko ime"
-                    />
-                    <br />
-                    <br />
+                        <button v-on:click="searchUser">Pretraži</button>
 
-                    <button v-on:click="searchUser">Pretraži</button>
-                </div>
+                        <p>Filtriranje:</p>
 
-                <div class="optionsWrapper">
-                    <p>Filtriranje:</p>
+                        <label for="Uloga">Izabrati ulogu:</label>
+                        <select name="Uloga" id="Uloga" v-model="filterRole">
+                            <option value="all">Svi</option>
+                            <option value="customer">Kupac</option>
+                            <option value="admin">Administrator</option>
+                            <option value="manager">Menadžer</option>
+                            <option value="trainer">Trener</option>
+                        </select>
+                        <br />
+                        <br />
+                        <label for="CustomerType">Izabrati tip kupca</label>
+                        <select
+                            name="CustomerType"
+                            id="CustomerType"
+                            v-model="filterTypeOfCustomer"
+                        >
+                            <option value="all">Svi</option>
+                            <option value="Gold">Zlatni</option>
+                            <option value="Silver">Srebrni</option>
+                            <option value="Bronze">Bronzani</option>
+                        </select>
 
-                    <label for="Uloga">Izabrati ulogu:</label>
-                    <select name="Uloga" id="Uloga"  v-model="filterRole">
-                        <option value="all">Svi</option>
-                        <option value="customer">Kupac</option>
-                        <option value="admin">Administrator</option>
-                        <option value="manager">Menadžer</option>
-                        <option value="trainer">Trener</option>
-                    </select>
-                    <br />
-                    <br />
-                    <label for="CustomerType">Izabrati tip kupca</label>
-                    <select name="CustomerType" id="CustomerType" v-model="filterTypeOfCustomer">
-                        <option value="all">Svi</option>
-                        <option value="Gold">Zlatni</option>
-                        <option value="Silver">Srebrni</option>
-                        <option value="Bronze">Bronzani</option>
-                    </select>
-                </div>
+                        <p>Sortiranje:</p>
+                        <p>
+                            <button v-on:click="ImeSortFunction">
+                                {{nameString}}
+                            </button>
+                            <button v-on:click="PrezimeSortFunction">
+                                {{surnameString}}
+                            </button>
+                        </p>
 
-                <div class="optionsWrapper">
-                    <p>Sortiranje:</p>
-                    <thead>
-                        <th colspan="2">
-                            <button v-on:click="ImeSortFunction">{{nameString}}</button>
-                            <button v-on:click="PrezimeSortFunction">{{surnameString}}</button>
-                            <br />
-                            <br />
-                            <button v-on:click="KorisnickoImeSortFunction">{{usernameString}}</button>
-                            <button v-on:click="BodoviSortFunction">{{pointsString}}</button>
-                        </th>
-                    </thead>
-                    <br />
-                 
-                </div>
-                <button v-on:click="CreateManagerTrainer">Kreiraj novog menadžera ili trenera</button>
-            </div>
+                        <p>
+                            <button v-on:click="KorisnickoImeSortFunction">
+                                {{usernameString}}
+                            </button>
+                            <button v-on:click="BodoviSortFunction">
+                                {{pointsString}}
+                            </button>
+                        </p>
 
-            <div class="TabelaKorisnika">
-                <table>
-                    <td>Korisničko ime</td>
-                    <td>Šifra</td>
-                    <td>Ime</td>
-                    <td>Prezime</td>
-                    <td>Pol</td>
-                    <td>Datum rođenja</td>
-                    <td>Uloga</td>
-                    <td>Tip korisnika</td>
-                    <td>Broj bodova</td>
-                    <td>Obriši</td>
+                        <button v-on:click="CreateManagerTrainer">
+                            Registruj novog menadžera ili trenera
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div class="TabelaKorisnika">
+                        <table>
+                            <th>Korisničko ime</th>
+                            <th>Šifra</th>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Pol</th>
+                            <th>Datum rođenja</th>
+                            <th>Uloga</th>
+                            <th>Tip korisnika</th>
+                            <th>Broj bodova</th>
+                            <th>Obriši</th>
 
-                    <tbody>
-                        <tr v-for="u in searchFilterSortUsers">
-                            <td>{{u.username}}</td>
-                            <td>{{u.password}}</td>
-                            <td>{{u.name}}</td>
-                            <td>{{u.surname}}</td>
-                            <td>{{translateGender(u.gender)}}</td>
-                            <td>{{getDate(u.birthDate)}}</td>
-                            <td>{{getRole(u.role)}}</td>
-                            <td>{{getCustomerType(u)}}</td>
-                            <td>{{customPoints(u.points)}}</td>
-                            <td><button>Obriši</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            <tbody>
+                                <tr v-for="u in searchFilterSortUsers">
+                                    <td>{{u.username}}</td>
+                                    <td>{{u.password}}</td>
+                                    <td>{{u.name}}</td>
+                                    <td>{{u.surname}}</td>
+                                    <td>{{translateGender(u.gender)}}</td>
+                                    <td>{{getDate(u.birthDate)}}</td>
+                                    <td>{{getRole(u.role)}}</td>
+                                    <td>{{getCustomerType(u)}}</td>
+                                    <td>{{customPoints(u.points)}}</td>
+                                    <td><button>Obriši</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </table>
         </div>
   `,
 

@@ -1,10 +1,10 @@
 .facilityOrActivityTableStyle {
     height: 700px;
-    width: fit-content;
+    width: 910px;
     overflow-y: scroll;
     background-color: lightblue;
     margin: auto;
-    border: 3px solid #43c6ac;
+    border: 3px solid white;
     padding: 20px;
 }
 .facilityOrActivityTableStyle table {
@@ -17,7 +17,7 @@
 
 .facilityOrActivityTableStyle tbody > tr:nth-child(even) {
     border-radius: 20px;
-    background-color: lightcyan;
+    background-color: #adffff;
 }
 .facilityOrActivityTableStyle tbody > tr:nth-child(odd) {
     border-radius: 20px;

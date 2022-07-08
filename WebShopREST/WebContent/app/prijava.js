@@ -8,11 +8,11 @@ Vue.component("prijava", {
         };
     },
     template: `
-     <div class="centriraj">
-            <div class="LoginDeo">
+     <div>
+        
                 <h1>Prijavite se</h1>
 
-                <p>Korisničko ime:</p>
+                <p class="white">Korisničko ime:</p>
                 <input
                     v-model="username"
                     type="text"
@@ -20,7 +20,7 @@ Vue.component("prijava", {
                     id="username"
                     placeholder="Korisničko ime"
                 />
-                <p>Lozinka:</p>
+                <p class="white">Lozinka:</p>
                 <input
                     v-model="password"
                     type="password"
@@ -30,7 +30,7 @@ Vue.component("prijava", {
                 />
                 <br />
 
-                <div
+                <p class="white"
                     style="
                         display: flex;
                         align-items: center;
@@ -43,16 +43,16 @@ Vue.component("prijava", {
                         id="showPassword"
                         onclick="myFunction() "
                     />
-                    <label for="checkbox"> Prikaz lozinke </label>
-                </div>
+                    <label class="white" for="checkbox"> Prikaz lozinke </label>
+                </p>
 
                 <br />
 
                 <button v-on:click="Login">Prijavite se</button>
 
-                <p v-if="!allDataEntered">Niste uneli sve podatke</p>
-                <p v-if="!userExist">Ne postoji korisnik sa tom sifrom</p>
-            </div>
+                <p class="white" v-if="!allDataEntered">Niste uneli sve podatke</p>
+                <p class="white" v-if="!userExist">Ne postoji korisnik sa tom sifrom</p>
+           
         </div>`,
     mounted() {
         if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {

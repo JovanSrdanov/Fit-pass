@@ -1,17 +1,22 @@
 .TabelaKorisnika {
-    position: absolute;
-    margin-left: auto;
-    margin-right: 100px;
-    left: 0;
-    right: 0;
-    border-radius: 20px 0px 0px 20px;
-    overflow-y: scroll;
-    background-color: lightcyan;
-    width: 1100px;
     height: 700px;
-    padding: 15px !important;
-    border-style: solid;
-    border: 2px solid black;
+    width: 910px;
+    overflow-y: scroll;
+    background-color: lightblue;
+    margin: auto;
+    border: 3px solid white;
+    padding: 20px;
+    width: 1200px;
+    height: 700px;
+    padding: 0px 20px 20px 20px;
+}
+
+.tableForKorisnici {
+    width: 100%;
+    height: 700px;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
 }
 
 .TabelaKorisnika button {
@@ -21,6 +26,14 @@
 .TabelaKorisnika td {
     padding: 10px;
     width: 10%;
+}
+.TabelaKorisnika th {
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: lightblue;
 }
 
 .TabelaKorisnika td:first-child {
@@ -33,10 +46,12 @@
 }
 
 .TabelaKorisnika tbody > tr:nth-child(even) {
-    background-color: lightblue;
+    border-radius: 20px;
+    background-color: #adffff;
 }
 .TabelaKorisnika tbody > tr:nth-child(odd) {
-    background-color: lightgray;
+    border-radius: 20px;
+    background-color: lightskyblue;
 }
 
 .TabelaKorisnika table {
@@ -47,5 +62,6 @@
 }
 
 .TabelaKorisnika tbody > tr:hover {
-    background-color: #43c6ac;
+    background-color: grey;
+    box-shadow: 1px 1px 8px grey;
 }

@@ -48,22 +48,25 @@ Vue.component("pregledObjekta", {
                                     <img
                                         v-bind:src="getWorkoutImgUrl(A.workout.picture)"
                                         alt="LOGO"
-                                        height="200"
-                                        width="200"
+                                        height="250"
+                                        width="250"
                                     />
                                 </td>
-                                <td>
-                                    <ul>
-                                        <li>{{A.workout.name}}</li>
-                                        <li>{{A.workout.workoutType}}</li>
-                                        <li>{{A.workout.durationInMinutes}}</li>
-                                        <li>{{IfTrainer(A.trainer)}}</li>                                          
-                                        <li v-if="myFacility"> <button v-on:click="editAcitivity(A.workout.id)">Izmeni</button><li>                               
-                                    </ul>
+                                <td  width="350">
+                                
+                                        <p> <strong>{{A.workout.name}} </strong></p>
+                                        <p>{{A.workout.workoutType}}</p>
+                                        <p>{{A.workout.durationInMinutes}}</p>
+                                        <p>DOPLATA ZA TRENING DODATI</p>
+                                        <p>{{IfTrainer(A.trainer)}}</p>                                          
+                                        <p v-if="myFacility"> <button v-on:click="editAcitivity(A.workout.id)">Izmeni</button><p>                               
+                                  
 
 
                                 </td>
-                                <td>Opis: {{A.workout.description}}</td>
+                                <td  width="250">
+                          
+                               {{A.workout.description}}</td>
                             </tr>
                         </tbody> 
                     </table>    

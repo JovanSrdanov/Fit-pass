@@ -15,12 +15,12 @@ Vue.component("registruj", {
         };
     },
     template: `
-      <div class="centriraj">
+      <div >
             <h1>Registruj novog menadžera ili trenera</h1>
 
-            <p>Korisničko ime:</p>
+            <p class="white">Korisničko ime:</p>
             <input
-                required
+                
                 v-model="username"
                 type="text"
                 name="username"
@@ -28,9 +28,9 @@ Vue.component("registruj", {
                 placeholder="Korisničko ime"
             />
 
-            <p>Lozinka:</p>
+            <p class="white">Lozinka:</p>
             <input
-                required
+                
                 v-model="password"
                 type="password"
                 name="password"
@@ -38,8 +38,8 @@ Vue.component("registruj", {
                 placeholder="Lozinka"
             />
 
-            <br />
-            <div
+        
+            <p
                 style="
                     display: flex;
                     align-items: center;
@@ -53,10 +53,10 @@ Vue.component("registruj", {
                     onclick="myFunction() "
                 />
 
-                <label for="checkbox"> Prikaz lozinke </label>
-            </div>
+                <label class="white" for="checkbox"> Prikaz lozinke </label>
+            </p>
 
-            <p>Ime:</p>
+            <p class="white">Ime:</p>
 
             <input
                 v-model="name"
@@ -64,12 +64,12 @@ Vue.component("registruj", {
                 name="name"
                 id="name"
                 placeholder="Ime"
-                required
+                
             />
 
-            <p>Prezime:</p>
+            <p class="white">Prezime:</p>
             <input
-                required
+                
                 v-model="surname"
                 type="text"
                 name="surname"
@@ -77,22 +77,22 @@ Vue.component("registruj", {
                 placeholder="Prezime"
             />
 
-            <p>Pol:</p>
+            <p class="white">Pol:</p>
             <select name="gender" id="gender" v-model="gender">
                 <option selected="selected" value="male">Muški</option>
                 <option value="female">Ženski</option>
             </select>
 
-            <p>Datum rođenja:</p>
+            <p class="white">Datum rođenja:</p>
             <input
                 type="date"
                 value="1900-01-01"
                 v-model="dateOfBirth"
                 name="dateOfBirth"
                 id="dateOfBirth"
-                required
+                
             />
-               <p>Uloga:</p>
+               <p class="white">Uloga:</p>
             <select name="role" id="role" v-model="role">
                 <option selected="selected" value="manager">Menadžer</option>
                 <option value="trainer">Trener</option>
@@ -102,8 +102,8 @@ Vue.component("registruj", {
 
             <button v-on:click="RegisterCustomer">Registruj se</button>
 
-            <p v-if="!allDataEntered">Niste uneli sve podatke</p>
-            <p v-if="userExist">
+            <p class="white" v-if="!allDataEntered">Niste uneli sve podatke</p>
+            <p class="white" v-if="userExist">
                 Već postoji korisnik sa ovim korisničkim imenom
             </p>
         </div>      
