@@ -11,13 +11,13 @@
 }
 
 .SearchSortFilterWrapper {
-    height: 700px;
-    width: 550px;
+    height: fit-content;
+    width: 450px;
     color: Black;
     text-align: center;
     vertical-align: middle;
     background-color: lightblue;
-    border: 3px solid #43c6ac;
+    border: 3px solid white;
     margin: auto;
     padding: 20px;
 }

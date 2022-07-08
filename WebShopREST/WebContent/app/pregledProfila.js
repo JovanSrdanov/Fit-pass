@@ -19,7 +19,7 @@ Vue.component("pregledProfila", {
   <div>
             <h1>Pregled profila - {{username}}</h1>
 
-            <p>Korisničko ime:</p>
+            <p class="white">Korisničko ime:</p>
             <input
                 disabled
                 v-model="username"
@@ -28,7 +28,7 @@ Vue.component("pregledProfila", {
                 id="username"
                 placeholder="Korisničko ime"
             />
-            <p>Lozinka:</p>
+            <p class="white">Lozinka:</p>
             <input
                 :disabled="!changeCheck"
                 v-model="password"
@@ -38,8 +38,8 @@ Vue.component("pregledProfila", {
                 placeholder="Lozinka"
             />
 
-            <br />
-            <div
+           
+            <p
                 style="
                     display: flex;
                     align-items: center;
@@ -54,9 +54,9 @@ Vue.component("pregledProfila", {
                 />
 
                 <label for="checkbox"> Prikaz lozinke </label>
-            </div>
+            </p>
 
-            <p>Ime:</p>
+            <p class="white">Ime:</p>
 
             <input
                 :disabled="!changeCheck"
@@ -67,7 +67,7 @@ Vue.component("pregledProfila", {
                 placeholder="Ime"
             />
 
-            <p>Prezime:</p>
+            <p class="white">Prezime:</p>
             <input
                 :disabled="!changeCheck"
                 v-model="surname"
@@ -77,7 +77,7 @@ Vue.component("pregledProfila", {
                 placeholder="Prezime"
             />
 
-            <p>Pol:</p>
+            <p class="white">Pol:</p>
             <select
                 name="gender"
                 id="gender"
@@ -88,7 +88,7 @@ Vue.component("pregledProfila", {
                 <option value="female">Ženski</option>
             </select>
 
-            <p>Datum rođenja:</p>
+            <p class="white">Datum rođenja:</p>
             <input
                 :disabled="!changeCheck"
                 type="date"

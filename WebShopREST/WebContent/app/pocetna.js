@@ -20,8 +20,9 @@ Vue.component("pocetna", {
             locationLat: 0,
         };
     },
-    template: `  <div class="WholeScreen">
-            <h1>Sportski objekti</h1>
+    template: ` 
+     <div class="WholeScreen">
+            <h1 >Sportski objekti</h1>
             <table class="tableForPocetna">
                 <td>
                     <div class="SearchSortFilterWrapper">
@@ -133,7 +134,7 @@ Vue.component("pocetna", {
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>{{p.facility.name}}</li>
+                                            <li><strong>{{p.facility.name}}</strong></li>
                                             <li>{{p.facility.facilityType}}</li>
                                             <li>
                                                 {{p.location.street}}
@@ -332,9 +333,9 @@ Vue.component("pocetna", {
             workDayEndTime.setMinutes(parseInt(end.split(":")[1]));
 
             if (workDayStartTime < today && workDayEndTime > today) {
-                return "(Radi)";
+                return "(Radi trenutno)";
             } else {
-                return "(Ne radi)";
+                return "(Ne radi trenutno)";
             }
         },
         getDistanceFromLatLonInKm: function (lat1, lon1, lat2, lon2) {
