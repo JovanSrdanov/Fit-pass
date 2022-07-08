@@ -1,7 +1,7 @@
 textarea {
     resize: none !important;
     font-size: large !important;
-    font-family: Helvetica !important;
+    font-family: "Roboto", sans-serif;
 }
 
 tbody tr.selectedTrainerClass {

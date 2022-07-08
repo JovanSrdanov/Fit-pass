@@ -55,10 +55,16 @@ Vue.component("pregledObjekta", {
                                 <td>
                                     <ul>
                                         <li>{{A.workout.name}}</li>
+                                        <li>{{A.workout.workoutType}}</li>
+                                        <li>{{A.workout.durationInMinutes}}</li>
+                                        <li>{{IfTrainer(A.trainer)}}</li>
+
+                                   
                                      
                               
                                     </ul>
                                 </td>
+                                <td>Opis: {{A.workout.description}}</td>
                             </tr>
                         </tbody> 
                     </table>    
@@ -151,6 +157,11 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        IfTrainer: function (trainer) {
+            if (!trainer) return "Nema trenera";
+            return trainer.name + trainer.surname;
+        },
+
         ViewCustomersAndTrainers: function () {
             router.push(`/pregledObjekta/${this.facilityID}/treneriIkupci`);
         },

@@ -44,4 +44,46 @@
     height: 800px;
     border-style: solid;
     border: 2px solid black;
+    overflow-y: scroll;
+}
+
+.FacilityActivityTable ul {
+    list-style-type: none;
+}
+
+.prostorFacilityActivityTableZatabelu tbody > tr:nth-child(even) {
+    border-radius: 20px;
+    background-color: lightblue;
+}
+.FacilityActivityTable tbody > tr:nth-child(odd) {
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+.FacilityActivityTable table {
+    width: 100%;
+    margin: auto;
+    border-spacing: 0;
+}
+
+.FacilityActivityTable td {
+    padding: 10px;
+}
+
+.SPInfo {
+    text-align: left;
+    width: 400px;
+}
+
+.FacilityActivityTable td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.FacilityActivityTable td:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.FacilityActivityTable tbody > tr:hover {
+    background-color: #43c6ac;
 }

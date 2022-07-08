@@ -15,7 +15,7 @@
     border: calc(40px * 0.05) solid transparent;
     border-top-color: #43c6ac;
     border-left-color: #43c6ac;
-    animation: semipolar-spinner-animation 2s infinite;
+    animation: semipolar-spinner-animation 1s infinite;
 }
 
 .semipolar-spinner .ring:nth-child(1) {
