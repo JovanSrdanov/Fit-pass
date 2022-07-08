@@ -1,0 +1,24 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "code": "HGH123789",
+    "startDate": "Jul 5, 2022, 1:00:00 AM",
+    "endDate": "Jul 30, 2022, 1:00:00 AM",
+	"price": 2500,
+	"customerId": 1,
+	"isActive": true,
+	"numberOfTrainings": 2
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "code": "HGH123789",
+    "startDate": "Jul 5, 2022, 1:00:00 AM",
+    "endDate": "Jul 30, 2022, 1:00:00 AM",
+	"price": 2500,
+	"customerId": 2,
+	"isActive": true,
+	"numberOfTrainings": 2
+  }
+}

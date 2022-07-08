@@ -1,0 +1,16 @@
+{
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "code": "HGH123789",
+    "priceMultiplicator": 0.7,
+    "durationDays": 60
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "code": "HJJ123789",
+    "priceMultiplicator": 0.9,
+    "durationDays": 7
+  }
+}

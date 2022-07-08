@@ -8,6 +8,7 @@ public class Customer extends User{
 	protected int points;
 	protected int customerTypeId;
 	protected List<Integer> visitedFacilityIds;
+	protected List<Integer> workoutHistoryIds;
 	
 	public Customer(int membershipId, int points) {
 		super();
@@ -15,12 +16,13 @@ public class Customer extends User{
 		this.points = points;
 	}
 
-	public Customer(int membershipId, int points, int customerTypeId, List<Integer> visitedFacilityIds) {
+	public Customer(int membershipId, int points, int customerTypeId, List<Integer> visitedFacilityIds, List<Integer> workoutHistoryIds) {
 		super();
 		this.membershipId = membershipId;
 		this.points = points;
 		this.customerTypeId = customerTypeId;
 		this.visitedFacilityIds = visitedFacilityIds;
+		this.workoutHistoryIds = workoutHistoryIds;
 	}
 	
 
@@ -31,7 +33,23 @@ public class Customer extends User{
 		this.customerTypeId = customerTypeId;
 	}
 	
-	
+
+	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
+			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId,
+			List<Integer> visitedFacilityIds, List<Integer> workoutHistoryIds) {
+		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
+		this.membershipId = membershipId;
+		this.points = points;
+		this.customerTypeId = customerTypeId;
+		this.visitedFacilityIds = visitedFacilityIds;
+		this.workoutHistoryIds = workoutHistoryIds;
+	}
+	/*
+	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
+			Role role, boolean isDeleted, int id) {
+		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
+		// TODO Auto-generated constructor stub
+	}*/
 
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
 			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId) {
@@ -39,6 +57,16 @@ public class Customer extends User{
 		this.membershipId = membershipId;
 		this.points = points;
 		this.customerTypeId = customerTypeId;
+	}
+	
+	
+
+	public List<Integer> getWorkoutHistoryIds() {
+		return workoutHistoryIds;
+	}
+
+	public void setWorkoutHistoryIds(List<Integer> workoutHistoryIds) {
+		this.workoutHistoryIds = workoutHistoryIds;
 	}
 
 	public Customer() {

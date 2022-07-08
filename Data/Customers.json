@@ -7,11 +7,14 @@
       1,
       2
     ],
+	"workoutHistoryIds": [
+		1
+	],
     "id": 1,
     "isDeleted": false,
     "username": "strale15",
     "password": "s",
-    "name": "STRALE15",
+    "name": "guza a?, da",
     "surname": "STRALE15",
     "gender": "female",
     "birthDate": "Feb 24, 2021, 1:00:00 AM",
@@ -24,6 +27,7 @@
     "visitedFacilityIds": [
       1
     ],
+	"workoutHistoryIds": [],
     "id": 2,
     "isDeleted": false,
     "username": "stralex152",
@@ -41,6 +45,7 @@
     "visitedFacilityIds": [
       2
     ],
+	"workoutHistoryIds": [],
     "id": 3,
     "isDeleted": false,
     "username": "joja",
@@ -56,6 +61,7 @@
     "points": 0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],
+	"workoutHistoryIds": [],
     "id": 4,
     "isDeleted": false,
     "username": "ValaNije",
@@ -71,6 +77,7 @@
     "points": 0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],
+	"workoutHistoryIds": [],
     "id": 5,
     "isDeleted": false,
     "username": "Nope",
