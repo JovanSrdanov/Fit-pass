@@ -33,12 +33,12 @@ const router = new VueRouter({
         { path: "/promoKod", component: promoKod, props: true },
         {
             path: "/pregledObjekta/:id/zakazaneAktivnostiUObjektu",
-            component: treneriIkupci,
+            component: zakazaneAktivnostiUObjektu,
             props: true,
         },
         {
             path: "/pregledObjekta/:id/izmeniAktivnost/:activityId",
-            component: treneriIkupci,
+            component: izmeniAktivnost,
             props: true,
         },
 

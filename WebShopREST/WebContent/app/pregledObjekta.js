@@ -40,7 +40,7 @@ Vue.component("pregledObjekta", {
                         </table>     
                     </div>    
                        
-                    <div class="FacilityActivityTable">
+                    <div class="facilityOrActivityTableStyle">
                     <table>
                         <tbody>
                             <tr v-for="A in allActivitys">
@@ -57,12 +57,11 @@ Vue.component("pregledObjekta", {
                                         <li>{{A.workout.name}}</li>
                                         <li>{{A.workout.workoutType}}</li>
                                         <li>{{A.workout.durationInMinutes}}</li>
-                                        <li>{{IfTrainer(A.trainer)}}</li>
-
-                                   
-                                     
-                              
+                                        <li>{{IfTrainer(A.trainer)}}</li>                                          
+                                        <li v-if="myFacility"> <button v-on:click="editAcitivity(A.workout.id)">Izmeni</button><li>                               
                                     </ul>
+
+
                                 </td>
                                 <td>Opis: {{A.workout.description}}</td>
                             </tr>
@@ -80,7 +79,7 @@ Vue.component("pregledObjekta", {
                     height="500px"
                     width="500px"
                 />
-                <div class="mapShow" id="mapShow"></div>
+                <div class="mapClass" id="mapShow"></div>
             </div>           
         </div>    
                 `,
@@ -157,6 +156,11 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        editAcitivity: function (id) {
+            router.push(
+                `/pregledObjekta/${this.facilityID}/izmeniAktivnost/${id}`
+            );
+        },
         IfTrainer: function (trainer) {
             if (!trainer) return "Nema trenera";
             return trainer.name + trainer.surname;

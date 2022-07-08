@@ -1,0 +1,43 @@
+.facilityOrActivityTableStyle {
+    height: 700px;
+    width: fit-content;
+    overflow-y: scroll;
+    background-color: lightblue;
+    margin: auto;
+    border: 3px solid #43c6ac;
+    padding: 20px;
+}
+.facilityOrActivityTableStyle table {
+    border-spacing: 0;
+}
+
+.facilityOrActivityTableStyle ul {
+    width: 550px;
+}
+
+.facilityOrActivityTableStyle tbody > tr:nth-child(even) {
+    border-radius: 20px;
+    background-color: lightcyan;
+}
+.facilityOrActivityTableStyle tbody > tr:nth-child(odd) {
+    border-radius: 20px;
+    background-color: lightskyblue;
+}
+
+.facilityOrActivityTableStyle td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.facilityOrActivityTableStyle td:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.facilityOrActivityTableStyle tbody > tr:hover {
+    background-color: grey;
+    box-shadow: 1px 1px 8px grey;
+}
+
+.facilityOrActivityTableStyle td {
+    padding: 10px;
+}

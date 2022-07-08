@@ -41,7 +41,7 @@ Vue.component("napraviObjekat", {
             <div class="ChooseLocation">
 
                    <p>Odabri lokacije:</p>
-                <div class="mapShowCreate" id="mapShowCreate"></div>
+                    <div class="mapClass" id="mapShowCreate"></div>
                     <p>Gegrafska dužina i širina:</p>
                     <p>{{lonShow}},{{latShow}}</p>
                     <p>Ulica i broj: {{street}} {{streetNumber}}</p>
@@ -184,7 +184,6 @@ Vue.component("napraviObjekat", {
                <p>
                     <img
                     v-bind:src="logoFile"
-                    alt="LOGO"
                     height="200px"
                     width="200px"
                     />

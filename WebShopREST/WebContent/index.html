@@ -13,17 +13,18 @@
             type="text/css"
         />
         <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
-        <style>
-            .map {
-                height: 200px;
-                width: 200px;
-
-                border: 2px solid black;
-            }
-        </style>
 
         <link rel="stylesheet" href="css/index.css" type="text/css" />
         <link rel="stylesheet" href="css/spinner.css" type="text/css" />
+        <link rel="stylesheet" href="css/navBar.css" type="text/css" />
+        <link rel="stylesheet" href="css/pocetna.css" type="text/css" />
+        <link
+            rel="stylesheet"
+            href="css/facilityOrActivityTableStyle.css"
+            type="text/css"
+        />
+        <link rel="stylesheet" href="css/userTableStyle.css" type="text/css" />
+
         <link rel="stylesheet" href="css/pocetnaTabela.css" type="text/css" />
         <link rel="stylesheet" href="css/korisnici.css" type="text/css" />
         <link rel="stylesheet" href="css/pregledObjekta.css" type="text/css" />
@@ -41,23 +42,9 @@
     </head>
 
     <body>
-        <div id="firstPage" class="backgroundFirstPage">
+        <div id="firstPage">
             <div id="nav" class="nav">
                 <ul>
-                    <li>
-                        <div
-                            style="float: left"
-                            class="semipolar-spinner"
-                            :style="spinnerStyle"
-                        >
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                        </div>
-                    </li>
-
                     <li>
                         <a style="float: left" href="#/pocetna">Početna </a>
                     </li>

@@ -20,156 +20,170 @@ Vue.component("pocetna", {
             locationLat: 0,
         };
     },
-    template: `
-      <div>
+    template: `  <div class="WholeScreen">
             <h1>Sportski objekti</h1>
+            <table class="tableForPocetna">
+                <td>
+                    <div class="SearchSortFilterWrapper">
+                        <p>Pretraga:</p>
 
-            <div class="pretragaFiltriranjeSortiranje">
-                <div class="optionsWrapper">
-                    <p>Pretraga:</p>
-
-                    <input
-                        v-model="name"
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Naziv objekta"
-                    />
-
-                    <br />
-                    <br />
-                    <input
-                        v-model="facilityType"
-                        type="text"
-                        name="facilityType"
-                        id="facilityType"
-                        placeholder="Tip objekta"
-                    />
-                    <br />
-                    <br />
-                    <input
-                        v-model="locationString"
-                        type="text"
-                        name="locationString"
-                        id="locationString"
-                        placeholder="Grad/Ulica"
-                    />
-                    <br />
-
-                    <p>
-                        Prosečna ocena:
                         <input
-                            min="0"
-                            max="5"
-                            v-model="rating"
-                            type="number"
-                            name="rating"
-                            id="rating"
+                            v-model="name"
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Naziv objekta"
                         />
-                    </p>
 
-                    <button v-on:click="Search">Pretraži</button>
-                </div>
-
-                <div class="optionsWrapper">
-                    <p>Filtriranje:</p>
-                    <input
-                        v-model="facilityTypeFilter"
-                        type="text"
-                        name="facilityTypeFilter"
-                        id="facilityTypeFilter"
-                        placeholder="Tip objekta"
-                    />
-
-                    <div
-                        style="
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        "
-                    >
+                        <br />
+                        <br />
                         <input
-                            type="checkbox"
-                            id="OtvoreniObjekti"
-                            name="OtvoreniObjekti"
-                            v-model="OpenFacilitys"
+                            v-model="facilityType"
+                            type="text"
+                            name="facilityType"
+                            id="facilityType"
+                            placeholder="Tip objekta"
                         />
-                        <label for="OtvoreniObjekti">Otvoreni objekti</label
-                        ><br />
-                    </div>
-                </div>
+                        <br />
+                        <br />
+                        <input
+                            v-model="locationString"
+                            type="text"
+                            name="locationString"
+                            id="locationString"
+                            placeholder="Grad/Ulica"
+                        />
+                        <br />
 
-                <div class="optionsWrapper">
-                    <p>Sortiranje</p>
-                    <thead>
-                        <th colspan="2">
+                        <p>
+                            Prosečna ocena:
+                            <input
+                                min="0"
+                                max="5"
+                                v-model="rating"
+                                type="number"
+                                name="rating"
+                                id="rating"
+                            />
+                        </p>
+
+                        <button v-on:click="Search">Pretraži</button>
+
+                        <p>Filtriranje:</p>
+                        <input
+                            v-model="facilityTypeFilter"
+                            type="text"
+                            name="facilityTypeFilter"
+                            id="facilityTypeFilter"
+                            placeholder="Tip objekta"
+                        />
+
+                        <p
+                            style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            "
+                        >
+                            <input
+                                type="checkbox"
+                                id="OtvoreniObjekti"
+                                name="OtvoreniObjekti"
+                                v-model="OpenFacilitys"
+                            />
+                            <label for="OtvoreniObjekti"
+                                >Otvoreni objekti</label
+                            >
+                        </p>
+
+                        <p>Sortiranje</p>
+                        <p>
                             <button v-on:click="NazivSortFunction">
                                 {{NazivString}}
                             </button>
                             <button v-on:click="LokacijaSortFunction">
-                                {{LokacijaString}} 
+                                {{LokacijaString}}
                             </button>
                             <button v-on:click="OcenaSortFunction">
                                 {{OcenaString}}
                             </button>
-                        </th>
-                    </thead>
-                </div>
-                  <button
-                        v-on:click="CreateNewObject"
-                        v-if="loggedInUser.role=='admin'"
-                    >
-                        Napravi objekat
-                    </button>
-            </div>
-            <div class="prostorZatabelu">
-                <table>
-                    <tbody>
-                        <tr v-for="p in searchFilterSort">
-                            <td>
-                                <img
-                                    v-bind:src="getImgUrl(p.facility.logo)"
-                                    alt="LOGO"
-                                    height="200"
-                                    width="200"
-                                />
-                            </td>
-                            <td>
-                                <ul>
-                                    <li>{{p.facility.name}}</li>
-                                    <li>{{p.facility.facilityType}}</li>
-                                    <li>{{p.location.street}} {{p.location.streetNumber}}</li>
-                                    <li>{{p.location.city}} {{p.location.postCode}} </li>
-                                    <li>({{p.location.longitude}}, {{p.location.latitude}}) </li>
-                                    <li>
-                                        Prosečna ocena: {{p.facility.rating}}/5
-                                    </li>
-                                    <li>
-                                        Radno vreme: {{p.facility.workStart}} -
-                                        {{p.facility.workEnd}} {{checkStatus(p.facility.workStart,p.facility.workEnd)}}
-                                    </li>
+                        </p>
+                        <p>
+                            <button
+                                v-on:click="CreateNewObject"
+                                v-if="loggedInUser.role=='admin'"
+                            >
+                                Napravi objekat
+                            </button>
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <div class="facilityOrActivityTableStyle">
+                        <table>
+                            <tbody>
+                                <tr v-for="p in searchFilterSort">
+                                    <td>
+                                        <img
+                                            v-bind:src="getImgUrl(p.facility.logo)"
+                                            alt="LOGO"
+                                            height="250"
+                                            width="250"
+                                        />
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>{{p.facility.name}}</li>
+                                            <li>{{p.facility.facilityType}}</li>
+                                            <li>
+                                                {{p.location.street}}
+                                                {{p.location.streetNumber}}
+                                            </li>
+                                            <li>
+                                                {{p.location.city}}
+                                                {{p.location.postCode}}
+                                            </li>
+                                            <li>
+                                                ({{p.location.longitude}},
+                                                {{p.location.latitude}})
+                                            </li>
+                                            <li>
+                                                Prosečna ocena:
+                                                {{p.facility.rating}}/5
+                                            </li>
+                                            <li>
+                                                Radno vreme:
+                                                {{p.facility.workStart}} -
+                                                {{p.facility.workEnd}}
+                                                {{checkStatus(p.facility.workStart,p.facility.workEnd)}}
+                                            </li>
 
-                                    <br />
-                                    <li>
-                                        <button
-                                            v-on:click="goToFacilityPage(p)"
-                                        >
-                                            Detaljnije
-                                        </button>
-                                        <button
-                                            v-on:click="deleteFacility(p)"
-                                            v-if="loggedInUser.role=='admin'"
-                                        >
-                                            Obriši
-                                        </button>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>`,
+                                            <br />
+                                            <li>
+                                                <button
+                                                    v-on:click="goToFacilityPage(p)"
+                                                >
+                                                    Detaljnije
+                                                </button>
+                                                <button
+                                                    v-on:click="deleteFacility(p)"
+                                                    v-if="loggedInUser.role=='admin'"
+                                                >
+                                                    Obriši
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </table>
+        </div>
+   
+                                                    
+    `,
 
     mounted() {
         //////////////   <div  v-bind:id="'map'+p.facility.id" class="map"></div>

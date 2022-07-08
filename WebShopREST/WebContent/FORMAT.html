@@ -1,49 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+        </style>
         <title>Document</title>
     </head>
-    <body>
-        <div>
-            <p>Naziv:</p>
-            <input type="text" name="name" id="name" placeholder="Naziv" />
-
-            <p>Tip aktivnosti</p>
-            <select name="workoutType" id="workoutType" v-model="workoutType">
-                <option selected="selected" value="personal">
-                    Personalni trening
-                </option>
-                <option value="group">Grupni trening</option>
-                <option value="solo">Aktivnost bez trenera</option>
-            </select>
-
-            <p>Trajanje u minutima</p>
-            <input
-                min="1"
-                max="180"
-                v-model="durationInMinutes"
-                type="number"
-                name="durationInMinutes"
-                id="durationInMinutes"
-            />
-            <p>Opis:</p>
-            <input
-                type="text"
-                name="description"
-                id="description"
-                placeholder="Opis"
-            />
-            <p>Slika aktivnosti:</p>
-            <input
-                type="file"
-                name="picture"
-                id="picture"
-                accept="image/*"
-                @change="handleFileUpload"
-            />
-        </div>
-    </body>
+    <body></body>
 </html>
