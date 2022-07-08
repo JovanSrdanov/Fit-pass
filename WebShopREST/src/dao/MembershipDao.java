@@ -111,6 +111,22 @@ public class MembershipDao {
 		return newMembership;
 	}
 	
+	public void removeById(int id) {
+		this.memberships.get(id).setDeleted(true);
+		this.memberships.remove(id);
+		writeFile();
+	}
+	
+	public Membership getForCustomerId(int id) {
+		for(Membership membership : memberships.values()) {
+			if(membership.getCustomerId() == id) {
+				return membership;
+			}
+		}
+		
+		return null;
+	}
+	
 	/*public Membership update(int id, Membership updatedMembership) {
 		Membership customerToUpdate = this.getById(id);
 		
@@ -123,11 +139,6 @@ public class MembershipDao {
 		return customerToUpdate;
 	}*/
 	
-	public void removeById(int id) {
-		this.memberships.get(id).setDeleted(true);
-		this.memberships.remove(id);
-		writeFile();
-	}
 
 	/*public Membership getByUsername(String username) {
 		for(Membership cust : memberships.values()) {

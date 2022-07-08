@@ -40,7 +40,7 @@ public class CustomerDao {
 				Role.customer, false, 1, -1, 0));
 	}*/
 	
-	private void writeFile() {
+	public void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/Customers.json");
 		
 		try {

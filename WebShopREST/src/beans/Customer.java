@@ -8,7 +8,7 @@ public class Customer extends User{
 	protected int points;
 	protected int customerTypeId;
 	protected List<Integer> visitedFacilityIds;
-	protected List<Integer> workoutHistoryIds;
+	protected List<WorkoutHistory> workoutHistory;
 	
 	public Customer(int membershipId, int points) {
 		super();
@@ -16,13 +16,13 @@ public class Customer extends User{
 		this.points = points;
 	}
 
-	public Customer(int membershipId, int points, int customerTypeId, List<Integer> visitedFacilityIds, List<Integer> workoutHistoryIds) {
+	public Customer(int membershipId, int points, int customerTypeId, List<Integer> visitedFacilityIds, List<WorkoutHistory> workoutHistory) {
 		super();
 		this.membershipId = membershipId;
 		this.points = points;
 		this.customerTypeId = customerTypeId;
 		this.visitedFacilityIds = visitedFacilityIds;
-		this.workoutHistoryIds = workoutHistoryIds;
+		this.workoutHistory = workoutHistory;
 	}
 	
 
@@ -36,13 +36,13 @@ public class Customer extends User{
 
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
 			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId,
-			List<Integer> visitedFacilityIds, List<Integer> workoutHistoryIds) {
+			List<Integer> visitedFacilityIds, List<WorkoutHistory> workoutHistory) {
 		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
 		this.membershipId = membershipId;
 		this.points = points;
 		this.customerTypeId = customerTypeId;
 		this.visitedFacilityIds = visitedFacilityIds;
-		this.workoutHistoryIds = workoutHistoryIds;
+		this.workoutHistory = workoutHistory;
 	}
 	/*
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
@@ -61,12 +61,12 @@ public class Customer extends User{
 	
 	
 
-	public List<Integer> getWorkoutHistoryIds() {
-		return workoutHistoryIds;
+	public List<WorkoutHistory> getWorkoutHistory() {
+		return workoutHistory;
 	}
 
-	public void setWorkoutHistoryIds(List<Integer> workoutHistoryIds) {
-		this.workoutHistoryIds = workoutHistoryIds;
+	public void setWorkoutHistory(List<WorkoutHistory> workoutHistory) {
+		this.workoutHistory = workoutHistory;
 	}
 
 	public Customer() {

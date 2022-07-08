@@ -153,7 +153,7 @@ public class LoginService {
                 .claim("role", role)
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
-                .setExpiration(toDate(LocalDateTime.now().plusDays(10)))
+                .setExpiration(toDate(LocalDateTime.now().plusDays(15L)))
                 .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
         return jwtToken;

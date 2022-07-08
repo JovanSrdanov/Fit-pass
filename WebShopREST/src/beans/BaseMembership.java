@@ -6,17 +6,28 @@ public class BaseMembership {
 	private String code;
 	private double priceMultiplicator;
 	private int durationDays;
-	public BaseMembership(int id, boolean isDeleted, String code, double priceMultiplicator, int durationDays) {
+	private double price;
+	
+	public BaseMembership(int id, boolean isDeleted, String code, double priceMultiplicator, int durationDays,
+			double price) {
 		super();
 		this.id = id;
 		this.isDeleted = isDeleted;
 		this.code = code;
 		this.priceMultiplicator = priceMultiplicator;
 		this.durationDays = durationDays;
+		this.price = price;
 	}
 	public BaseMembership() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	public int getId() {
 		return id;

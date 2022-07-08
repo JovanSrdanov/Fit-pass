@@ -4,13 +4,15 @@
     "isDeleted": false,
     "code": "HGH123789",
     "priceMultiplicator": 0.7,
-    "durationDays": 60
+    "durationDays": 60,
+	"price": 1000
   },
   "2": {
     "id": 2,
     "isDeleted": false,
     "code": "HJJ123789",
     "priceMultiplicator": 0.9,
-    "durationDays": 7
+    "durationDays": 7,
+	"price": 200
   }
 }

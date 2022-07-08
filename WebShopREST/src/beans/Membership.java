@@ -79,11 +79,11 @@ public class Membership {
 		this.price = price;
 	}
 
-	public int getint() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setint(int customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 
