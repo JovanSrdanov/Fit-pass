@@ -169,13 +169,55 @@ public class CustomerService {
 	@Path("/reg")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addNew(Customer customer) {
-		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
+		boolean exists = false;
 		
+		CustomerDao dao = (CustomerDao) ctx.getAttribute("CustomerDao");
 		for(Customer cust : dao.getAll()) {
 			if(cust.getUsername().equals(customer.getUsername())) {
-				return Response.status(409).build();
+				//return Response.status(409).build();
+				exists = true;
 			}
 		}
+		
+		if(exists == false) {
+			AdminDao adminDao = (AdminDao) ctx.getAttribute("AdminDao");
+			for(Admin admin : adminDao.getAll()) {
+				if(admin.getUsername().equals(customer.getUsername())) {
+					//return Response.status(409).build();
+					exists = true;
+				}
+			}
+		}
+		
+		if(exists == false) {
+			ManagerDao managerDao = (ManagerDao) ctx.getAttribute("ManagerDao");
+			for(Manager manager : managerDao.getAll()) {
+				if(manager.getUsername().equals(customer.getUsername())) {
+					//return Response.status(409).build();
+					exists = true;
+				}
+			}
+		}
+		
+		if(exists == false) {
+			TrainerDao trainerDao = (TrainerDao) ctx.getAttribute("TrainerDao");
+			for(Trainer trainer : trainerDao.getAll()) {
+				if(trainer.getUsername().equals(customer.getUsername())) {
+					//return Response.status(409).build();
+					exists = true;
+				}
+			}
+		}
+		
+		if(exists) {
+			return Response.status(409).build();
+		}
+		
+		customer.setPoints(0);
+		customer.setMembershipId(-1);
+		customer.setRole(Role.customer);
+		customer.setVisitedFacilityIds(new ArrayList<Integer>());
+		customer.setDeleted(false);
 		dao.addNew(customer);
 		return Response.ok().build();
 	}
