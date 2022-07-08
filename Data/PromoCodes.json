@@ -30,5 +30,13 @@
     "validDate": "Jun 6, 2025, 2:00:00 AM",
     "usageCount": 666,
     "discountPercentage": 42.0
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "code": "Cipiripi",
+    "validDate": "Jul 28, 2022, 2:00:00 AM",
+    "usageCount": 1,
+    "discountPercentage": 50.0
   }
 }
