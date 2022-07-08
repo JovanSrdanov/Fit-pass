@@ -79,11 +79,10 @@ public class TrainerService {
 		
 		TrainerDao dao = (TrainerDao) ctx.getAttribute("TrainerDao");
 		
-		for(Trainer train : dao.getAll()) {
-			if(train.getUsername().equals(trainer.getUsername())) {
-				return Response.status(409).build();
-			}
+		if(RegistrationService.usernameExists(trainer.getUsername())) {
+			return Response.status(409).build();
 		}
+		
 		dao.addNew(trainer);
 		return Response.ok().build();
 	}

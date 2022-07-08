@@ -72,11 +72,10 @@ public class ManagerService {
 		
 		ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
 		
-		for(Manager man : dao.getAll()) {
-			if(man.getUsername().equals(manager.getUsername())) {
-				return Response.status(409).build();
-			}
+		if(RegistrationService.usernameExists(manager.getUsername())) {
+			return Response.status(409).build();
 		}
+		
 		dao.addNew(manager);
 		return Response.ok().build();
 	}
