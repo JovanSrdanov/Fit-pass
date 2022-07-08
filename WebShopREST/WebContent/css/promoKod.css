@@ -1,14 +1,13 @@
 .TabelaKodova {
-    border-radius: 20px 0px 0px 20px;
     overflow-y: scroll;
-    background-color: lightcyan;
+    background-color: lightblue;
     width: 1000px;
     height: 250px;
-    padding: 15px !important;
     border-style: solid;
     border: 2px solid black;
     place-items: center;
     margin: auto;
+    padding: 0px 20px 20px 20px;
 }
 .TabelaKodova table {
     width: 100%;
@@ -23,6 +22,14 @@
     padding: 10px;
     width: 10%;
 }
+.TabelaKodova th {
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: lightblue;
+}
 
 .TabelaKodova td:first-child {
     border-top-left-radius: 10px;
@@ -34,10 +41,12 @@
 }
 
 .TabelaKodova tbody > tr:nth-child(even) {
-    background-color: lightblue;
+    background-color: #adffff;
+    border-radius: 20px;
 }
 .TabelaKodova tbody > tr:nth-child(odd) {
-    background-color: lightgray;
+    background-color: lightskyblue;
+    border-radius: 20px;
 }
 
 .TabelaKodova table {
@@ -48,5 +57,6 @@
 }
 
 .TabelaKodova tbody > tr:hover {
-    background-color: #43c6ac;
+    background-color: grey;
+    box-shadow: 1px 1px 8px grey;
 }

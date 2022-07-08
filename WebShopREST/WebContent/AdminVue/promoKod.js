@@ -17,9 +17,9 @@ Vue.component("promoKod", {
         <div class="centriraj">
             <h1>Kreiraj novi promo kod</h1>
 
-            <p>Oznaka:</p>
+            <p class="white">Oznaka:</p>
             <input v-model="code" type="text" name="code" id="code" placeholder="Oznaka" />
-            <p>Period važenja:</p>
+            <p  class="white">Period važenja:</p>
             <input
               v-model="validDate"
                 type="date"
@@ -27,9 +27,10 @@ Vue.component("promoKod", {
                 id="validDate"
                 placeholder="Period važenja"
             />
-            <p>Broj korišćenja:</p>
+            <p class="white">Broj korišćenja:
             <input min="1"  max="100" type="number" name="usageCount" id="usageCount"   v-model="usageCount" />
-            <p>Procenat za koji umanjuje iznos:</p>
+            </p>
+            <p class="white">Procenat za koji umanjuje iznos:
             <input
               v-model="discountPercentage"
                 min="1"
@@ -38,20 +39,21 @@ Vue.component("promoKod", {
                 name="discountPercentage"
                 id="discountPercentage"
             />
+            </p>
             <p>
                 <button v-on:click="createPromoCode">Kreiraj</button>
             </p>
 
             <p>{{enterAll}}{{codeExists}}</p>
-            <h2>Postojeći kodovi</h2>
+            <h2  class="white">Postojeći kodovi</h2>
             
              <div class="TabelaKodova">
                 <table>
-                    <td>Oznaka</td>
-                    <td>Period važenja</td>
-                    <td>Broj korišćenja:</td>
-                    <td>Procenat za koji umanjuje iznos</td>
-                    <td>Obriši</td>
+                    <th>Oznaka</th>
+                    <th>Period važenja</th>
+                    <th>Broj preostalih korišćenja:</th>
+                    <th>Procenat za koji umanjuje iznos</th>
+                    <th>Obriši</th>
                    
 
                     <tbody>
