@@ -3,6 +3,10 @@
     "membershipId": -1,
     "points": 1,
     "customerTypeId": 1,
+    "visitedFacilityIds": [
+      1,
+      2
+    ],
     "id": 1,
     "isDeleted": false,
     "username": "strale15",
@@ -11,16 +15,15 @@
     "surname": "STRALE15",
     "gender": "female",
     "birthDate": "Feb 24, 2021, 1:00:00 AM",
-    "role": "customer",
-	"visitedFacilityIds": [
-		1,
-		2
-	]
+    "role": "customer"
   },
   "2": {
     "membershipId": -1,
     "points": 110,
     "customerTypeId": 2,
+    "visitedFacilityIds": [
+      1
+    ],
     "id": 2,
     "isDeleted": false,
     "username": "stralex152",
@@ -29,15 +32,15 @@
     "surname": "Mjau",
     "gender": "male",
     "birthDate": "Jan 1, 2001, 1:00:00 AM",
-    "role": "customer",
-	"visitedFacilityIds": [
-		1
-	]
+    "role": "customer"
   },
   "3": {
     "membershipId": -1,
     "points": 20,
     "customerTypeId": 1,
+    "visitedFacilityIds": [
+      2
+    ],
     "id": 3,
     "isDeleted": false,
     "username": "joja",
@@ -46,9 +49,36 @@
     "surname": "Srdanov",
     "gender": "male",
     "birthDate": "Jan 1, 1990, 1:00:00 AM",
-    "role": "customer",
-	"visitedFacilityIds": [
-		2
-	]
+    "role": "customer"
+  },
+  "4": {
+    "membershipId": -1,
+    "points": 0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [],
+    "id": 4,
+    "isDeleted": false,
+    "username": "ValaNije",
+    "password": "da",
+    "name": "sadsadas",
+    "surname": "dasdasdas",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "customer"
+  },
+  "5": {
+    "membershipId": -1,
+    "points": 0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [],
+    "id": 5,
+    "isDeleted": false,
+    "username": "Nope",
+    "password": "a",
+    "name": "sadas",
+    "surname": "dsadas",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "customer"
   }
 }

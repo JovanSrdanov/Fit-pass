@@ -1,12 +1,10 @@
 .TabelaKorisnika {
-    height: 700px;
-    width: 910px;
     overflow-y: scroll;
     background-color: lightblue;
     margin: auto;
     border: 3px solid white;
     padding: 20px;
-    width: 1200px;
+    width: 1300px;
     height: 700px;
     padding: 0px 20px 20px 20px;
 }

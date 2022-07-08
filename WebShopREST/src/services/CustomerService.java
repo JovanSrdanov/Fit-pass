@@ -181,7 +181,7 @@ public class CustomerService {
 		customer.setRole(Role.customer);
 		customer.setVisitedFacilityIds(new ArrayList<Integer>());
 		customer.setDeleted(false);
-		customer.setCustomerTypeId(-1);
+		customer.setCustomerTypeId(1);
 		dao.addNew(customer);
 		return Response.ok().build();
 	}
