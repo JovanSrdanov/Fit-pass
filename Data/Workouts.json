@@ -8,7 +8,7 @@
     "durationInMinutes": 60,
     "trainerId": -1,
     "description": "Trening desc",
-    "picture": "slika.png"
+    "picture": "WorkoutLogo6.png"
   },
   "2": {
     "id": 2,
@@ -19,7 +19,7 @@
     "durationInMinutes": 120,
     "trainerId": 1,
     "description": "Trening desc2",
-    "picture": "slika.png"
+    "picture": "WorkoutLogo6.png"
   },
   "3": {
     "id": 3,
@@ -29,7 +29,8 @@
     "facilityId": 1,
     "durationInMinutes": 12312,
     "trainerId": 1,
-    "description": "21312312"
+    "description": "21312312",
+    "picture": "WorkoutLogo6.png"
   },
   "4": {
     "id": 4,
@@ -39,7 +40,8 @@
     "facilityId": 2,
     "durationInMinutes": 11,
     "trainerId": -1,
-    "description": "VAuTest"
+    "description": "VAuTest",
+    "picture": "WorkoutLogo6.png"
   },
   "5": {
     "id": 5,
@@ -49,7 +51,8 @@
     "facilityId": 1,
     "durationInMinutes": 12,
     "trainerId": 2,
-    "description": "dasdas"
+    "description": "dasdas",
+    "picture": "WorkoutLogo6.png"
   },
   "6": {
     "id": 6,
@@ -72,5 +75,16 @@
     "trainerId": -1,
     "description": "nema trenera nema treninga jbg",
     "picture": "WorkoutLogo7.png"
+  },
+  "8": {
+    "id": 8,
+    "isDeleted": false,
+    "name": "TestNoviNaziv",
+    "workoutType": "solo",
+    "facilityId": 1,
+    "durationInMinutes": 123,
+    "trainerId": -1,
+    "description": "1321312",
+    "picture": "WorkoutLogo8.png"
   }
 }

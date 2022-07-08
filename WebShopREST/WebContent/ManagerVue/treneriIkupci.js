@@ -76,12 +76,16 @@ Vue.component("treneriIkupci", {
                 Authorization: localStorage.getItem("token"),
             },
         };
-        axios.get("rest/customers/", yourConfig).then((result) => {
-            this.customers = result.data;
-        });
-        axios.get("rest/trainers/", yourConfig).then((result) => {
-            this.trainers = result.data;
-        });
+        axios
+            .get("rest/customer/visited/" + this.facId, yourConfig)
+            .then((result) => {
+                this.customers = result.data;
+            });
+        axios
+            .get("rest/trainer/dig/" + this.facId, yourConfig)
+            .then((result) => {
+                this.trainers = result.data;
+            });
     },
     methods: {},
 });

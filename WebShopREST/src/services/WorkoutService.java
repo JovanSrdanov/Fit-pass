@@ -127,20 +127,10 @@ public class WorkoutService {
 	
 	@GET
 	@Path("/inFacility/{id}")
-	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutDto> getVisitedFacilitysById(@PathParam("id") int id, @Context HttpHeaders headers) {
+	public Collection<WorkoutDto> getVisitedFacilitysById(@PathParam("id") int id) {
 		
-		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
-		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
-		
-		ManagerDao managerDao = new ManagerDao();
-		int managersFacilityId = managerDao.getByUsername(username).getFacilityId();
-		
-		if(!role.equals(Role.manager.toString()) || managersFacilityId != id) {
-			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
-		}
-		
+	
 		ArrayList<WorkoutDto> workoutsInFacility = new ArrayList<WorkoutDto>(); 
 		
 		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");

@@ -1,6 +1,7 @@
 Vue.component("pregledObjekta", {
     data: function () {
         return {
+            allActivitys: {},
             myFacility: false,
             facilityID: null,
             currentFacility: {
@@ -40,10 +41,28 @@ Vue.component("pregledObjekta", {
                     </div>    
                        
                     <div class="FacilityActivityTable">
-                
-                    </div>
-                    
-              
+                    <table>
+                        <tbody>
+                            <tr v-for="A in allActivitys">
+                                <td>
+                                    <img
+                                        v-bind:src="getWorkoutImgUrl(A.workout.picture)"
+                                        alt="LOGO"
+                                        height="200"
+                                        width="200"
+                                    />
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>{{A.workout.name}}</li>
+                                     
+                              
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody> 
+                    </table>    
+                    </div>           
              </div>
 
         
@@ -56,13 +75,7 @@ Vue.component("pregledObjekta", {
                     width="500px"
                 />
                 <div class="mapShow" id="mapShow"></div>
-            </div>
-
-          
-            
-
-
-           
+            </div>           
         </div>    
                 `,
 
@@ -125,6 +138,17 @@ Vue.component("pregledObjekta", {
                 }),
             });
         });
+
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
+        axios
+            .get("rest/workout/inFacility/" + this.facilityID, yourConfig)
+            .then((response) => {
+                this.allActivitys = response.data;
+            });
     },
     methods: {
         ViewCustomersAndTrainers: function () {
@@ -163,6 +187,10 @@ Vue.component("pregledObjekta", {
         getImgUrl(slika) {
             if (slika == "") return null;
             return "FacilityLogo/" + slika;
+        },
+        getWorkoutImgUrl(slika) {
+            if (slika == "") return null;
+            return "ActivityPictures/" + slika;
         },
     },
 });
