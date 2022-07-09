@@ -28,47 +28,113 @@ Vue.component("napraviObjekat", {
             allEntered: "",
             existsSP: "",
 
-            allDataEnteredManager: true,
-            managerExist: false,
+            managerExists: "",
+            managerDataEntered: "",
         };
     },
     template: `
-      <div>
-        <h1>Napravi objekat</h1>
-    
-        <div>
-            
-            <div class="ChooseLocation">
+          <div class="WholeScreen">
+            <h1>Napravi sportski objekat</h1>
+            <table class="tableForNapraviObjekat">
+                <td>
+                    <div class="ChooseLocation">
+                        <p>Odabir lokacije:</p>
+                        <div class="mapClass" id="mapShowCreate"></div>
+                        <p>Gegrafska dužina i širina:</p>
+                        <p>{{lonShow}},{{latShow}}</p>
+                        <p>Ulica i broj: {{street}} {{streetNumber}}</p>
+                        <p>Grad i poštanski broj: {{city}} {{postCode}}</p>
+                    </div>
+                </td>
+                <td>
+                    <p class="white">Naziv:</p>
 
-                   <p>Odabri lokacije:</p>
-                    <div class="mapClass" id="mapShowCreate"></div>
-                    <p>Gegrafska dužina i širina:</p>
-                    <p>{{lonShow}},{{latShow}}</p>
-                    <p>Ulica i broj: {{street}} {{streetNumber}}</p>
-                    <p>Grad i poštanski broj: {{city}} {{postCode}}</p>
-            </div>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Naziv"
+                        v-model="name"
+                    />
 
-            <div class="managerSide">
-                <div class="ChooseManager">
-                    <table>
-                         <td>ID</td>
-                        <td>Ime</td>
-                        <td>Prezime</td>
-                        <td>Korisničko ime</td>
-                        <tbody>       
-                            <tr v-for="AM in availableManagers"  v-on:click="selectM(AM)"
-                            v-bind:class="{selectedManagerClass : selectedManager.id===AM.id}">
+                    <p class="white">Tip objekta:</p>
+                    <input
+                        v-model="facilityType"
+                        type="text"
+                        name="facilityType"
+                        id="facilityType"
+                        placeholder="Tip objekta"
+                    />
+                    <p class="white">Početak i kraj radnog vremena:</p>
+                    <input
+                        type="time"
+                        name="workStart"
+                        id="workStart"
+                        v-model="workStart"
+                    />
+                    <input
+                        type="time"
+                        name="workEnd"
+                        id="workEnd"
+                        v-model="workEnd"
+                    />
 
-                                <td>{{AM.id}}</td>
-                                <td>{{AM.name}}</td>
-                                <td>{{AM.surname}}</td>
-                                <td>{{AM.username}}</td>                            
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="FastRegsitration">
-                            <p>Korisničko ime:</p>
+                    <p class="white">
+                        Izabrani menadžer: {{selectedManager.name}}
+                        {{selectedManager.surname}} -
+                        {{selectedManager.username}}
+                    </p>
+                    <p class="white">Izaberite logo:</p>
+
+                    <input
+                        type="file"
+                        name="logoFile"
+                        id="logoFile"
+                        accept="image/*"
+                        @change="handleFileUpload"
+                      class="custom-file-input"
+                      
+                    />
+
+                    <p>
+                        <button v-on:click="CreateSportFacility">
+                            Kreiraj
+                        </button>
+                    </p>
+                    <p>
+                        <img
+                            v-bind:src="logoFile"
+                            height="200px"
+                            width="200px"
+                        />
+                    </p>
+
+                    <p class="white">{{allEntered}} {{existsSP}}</p>
+                </td>
+                <td>
+                    <div class="ChooseManager">
+                        <table>
+                           
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Korisničko ime</th>
+                            <tbody>
+                                <tr
+                                    v-for="AM in availableManagers"
+                                    v-on:click="selectM(AM)"
+                                    v-bind:class="{selectedManagerClass : selectedManager.id===AM.id}"
+                                >
+                                  
+                                    <td>{{AM.name}}</td>
+                                    <td>{{AM.surname}}</td>
+                                    <td>{{AM.username}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="FastRegsitration">
+                        <p class="white">Brza registracija novog menadžera</p>
+                       
                         <input
                             required
                             v-model="usernameManager"
@@ -78,18 +144,18 @@ Vue.component("napraviObjekat", {
                             placeholder="Korisničko ime"
                         />
 
-                        <p>Lozinka:</p>
+                       <br />
+                        <br />
                         <input
-                            required
+                            
                             v-model="passwordManager"
                             type="password"
                             name="passwordManager"
-                            id="passwordManager"
+                            id="password"
                             placeholder="Lozinka"
                         />
 
-                        <br />
-                        <div
+                        <p 
                             style="
                                 display: flex;
                                 align-items: center;
@@ -100,13 +166,12 @@ Vue.component("napraviObjekat", {
                                 class="checkbox"
                                 type="checkbox"
                                 id="showPassword"
-                                onclick="myFunction() "
+                                onclick="myFunction()"
                             />
 
-                            <label for="checkbox"> Prikaz lozinke </label>
-                        </div>
+                            <label class="white" for="checkbox"> Prikaz lozinke </label>
+                        </p>
 
-                        <p>Ime:</p>
 
                         <input
                             v-model="nameManager"
@@ -116,8 +181,9 @@ Vue.component("napraviObjekat", {
                             placeholder="Ime"
                             required
                         />
-
-                        <p>Prezime:</p>
+                        <br />
+                        <br />
+                     
                         <input
                             required
                             v-model="surnameManager"
@@ -127,72 +193,40 @@ Vue.component("napraviObjekat", {
                             placeholder="Prezime"
                         />
 
-                        <p>Pol:</p>
-                        <select name="gender" id="gender" v-model="genderManager">
-                            <option selected="selected" value="male">Muški</option>
+                        <p class="white">Pol:
+                        <select
+                            name="gender"
+                            id="gender"
+                            v-model="genderManager"
+                        >
+                            <option selected="selected" value="male">
+                                Muški
+                            </option>
                             <option value="female">Ženski</option>
                         </select>
-
-                        <p>Datum rođenja:</p>
+                        </p>
+                        <p class="white">Datum rođenja:
                         <input
                             type="date"
                             value="1900-01-01"
                             v-model="dateOfBirthManager"
                             name="dateOfBirthManager"
                             id="dateOfBirthManager"
-                           
                         />
-                        <br />
-                         <br />
-                          <button v-on:click="RegisterManager">Registruj se</button>
-
-            <p v-if="!allDataEnteredManager">Niste uneli sve podatke za menadžera</p>
-            <p v-if="managerExist">
-                Već postoji menadžer sa ovim korisničkim imenom
-            </p>
-
-                </div>
-
-            </div>
-
-            <p>Naziv:</p>
+                        </p>
             
-            <input type="text" name="name" id="name" placeholder="Naziv"    v-model="name"/>
+                        <button v-on:click="RegisterManager">
+                            Registruj se
+                        </button>
 
-            <p>Tip objekta:</p>
-            <input
-              v-model="facilityType"
-                type="text"
-                name="facilityType"
-                id="facilityType"
-                placeholder="Tip objekta"
-            />
-            <p>Početak radnog vremena:</p>
-            <input type="time" name="workStart" id="workStart"    v-model="workStart"/>
-            <p>Kraj radnog vremena:</p>
-            <input type="time" name="workEnd" id="workEnd"   v-model="workEnd" />
-
-            <p>Izabrani menadžer: {{selectedManager.name}} {{selectedManager.surname}} - {{selectedManager.username}}</p>
-            <p>Izaberite logo:</p>
-        
-            <input type="file" name="logoFile" id="logoFile" accept="image/*"  @change="handleFileUpload"  title=" GAS"/>
-
-            <p>
-                <button v-on:click="CreateSportFacility">Kreiraj</button>
-           
-            </p>
-               <p>
-                    <img
-                    v-bind:src="logoFile"
-                    height="200px"
-                    width="200px"
-                    />
-                </p>
-          
-            <p>{{allEntered}}</p>
+                        <p class="white" > {{managerDataEntered}} {{managerExists}}
+                           
+                        </p>
+                        
+                    </div>
+                </td>
+            </table>
         </div>
-         
-        </div>      
   `,
     mounted() {
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
@@ -415,15 +449,16 @@ Vue.component("napraviObjekat", {
             this.selectedManager = managaer;
         },
         RegisterManager: function () {
-            this.allDataEntered = true;
-            this.managerExist = false;
+            this.managerDataEntered = "";
+            this.managerExists = "";
+
             if (
                 this.usernameManager === "" ||
                 this.passwordManager === "" ||
                 this.nameManager === "" ||
                 this.surnameManager === ""
             ) {
-                this.allDataEntered = false;
+                this.managerDataEntered = "Niste uneli sve podatke";
                 return;
             }
 
@@ -464,7 +499,8 @@ Vue.component("napraviObjekat", {
                         });
                 })
                 .catch((error) => {
-                    this.managerExist = true;
+                    this.managerExists =
+                        "Već postoji korisnik sa ovim korisničkim imenom";
                 });
         },
 

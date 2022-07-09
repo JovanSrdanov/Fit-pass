@@ -164,5 +164,44 @@
     "rating": 0,
     "workStart": "07:00",
     "workEnd": "21:00"
+  },
+  "13": {
+    "id": 13,
+    "isDeleted": false,
+    "name": "Kometa",
+    "facilityType": "Fudbalski teren",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 13,
+    "logo": "FacilityLogo13.png",
+    "rating": 0,
+    "workStart": "08:00",
+    "workEnd": "23:00"
+  },
+  "14": {
+    "id": 14,
+    "isDeleted": false,
+    "name": "PROBA",
+    "facilityType": "dsadasdas",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 14,
+    "logo": "FacilityLogo14.png",
+    "rating": 0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
+  },
+  "15": {
+    "id": 15,
+    "isDeleted": false,
+    "name": "SuperBuckanje",
+    "facilityType": "Bazeni",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 15,
+    "logo": "FacilityLogo15.png",
+    "rating": 0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
   }
 }

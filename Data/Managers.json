@@ -142,5 +142,41 @@
     "gender": "male",
     "birthDate": "Jan 1, 1900, 1:00:00 AM",
     "role": "manager"
+  },
+  "13": {
+    "facilityId": 13,
+    "id": 13,
+    "isDeleted": false,
+    "username": "dasadsa",
+    "password": "12312",
+    "name": "3123123",
+    "surname": "123123",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "manager"
+  },
+  "14": {
+    "facilityId": 14,
+    "id": 14,
+    "isDeleted": false,
+    "username": "JosJedan",
+    "password": "123",
+    "name": "123",
+    "surname": "123",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "manager"
+  },
+  "15": {
+    "facilityId": 15,
+    "id": 15,
+    "isDeleted": false,
+    "username": "vau123aaa",
+    "password": "a",
+    "name": "sds",
+    "surname": "dsds",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "manager"
   }
 }
