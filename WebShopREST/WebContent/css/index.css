@@ -50,9 +50,22 @@ input {
     outline: none;
     padding: 5px;
 }
+
+textarea {
+    font-size: large;
+    border: solid 2px #43c6ac;
+    background: white;
+    transition: all 0.25s ease;
+    outline: none;
+    padding: 5px;
+}
+textarea:hover {
+    box-shadow: 1px 1px 8px #43c6ac;
+    border: solid 2px #43c6ac;
+}
+
 input:hover {
     box-shadow: 1px 1px 8px #43c6ac;
-
     border: solid 2px #43c6ac;
 }
 

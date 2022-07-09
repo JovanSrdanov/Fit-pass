@@ -109,7 +109,7 @@ Vue.component("napraviObjekat", {
                         />
                     </p>
 
-                    <p class="white">{{allEntered}} {{existsSP}}</p>
+                    <p class="white">{{allEntered}} {{existsSP}} </p>
                 </td>
                 <td>
                     <div class="ChooseManager">
@@ -219,8 +219,7 @@ Vue.component("napraviObjekat", {
                             Registruj se
                         </button>
 
-                        <p class="white" > {{managerDataEntered}} {{managerExists}}
-                           
+                        <p class="white" >{{managerDataEntered}}{{managerExists}}                            
                         </p>
                         
                     </div>

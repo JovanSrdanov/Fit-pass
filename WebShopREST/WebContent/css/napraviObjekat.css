@@ -88,13 +88,14 @@
 
 tbody tr.selectedManagerClass {
     background: green !important;
+    box-shadow: 1px 1px 8px green !important;
 }
 
 .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
 }
 .custom-file-input::before {
-    content: "Izaberite logo";
+    content: "Izaberite sliku";
     display: inline-block;
     cursor: pointer;
 }

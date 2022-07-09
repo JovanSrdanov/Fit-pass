@@ -56,10 +56,10 @@ Vue.component("pregledObjekta", {
                                 <td  width="350">
                                 
                                         <p> <strong>{{A.workout.name}} </strong></p>
-                                        <p>{{A.workout.workoutType}}</p>
-                                        <p>{{A.workout.durationInMinutes}}</p>
+                                        <p>Tip aktivnosti:  {{TypeConvert(A.workout.workoutType)}}</p>
+                                        <p>Trajanje: {{A.workout.durationInMinutes}}</p>
                                         <p>DOPLATA ZA TRENING DODATI</p>
-                                        <p>{{IfTrainer(A.trainer)}}</p>                                          
+                                        <p>Trener: {{IfTrainer(A.trainer)}}</p>                                          
                                         <p v-if="myFacility"> <button v-on:click="editAcitivity(A.workout.id)">Izmeni</button><p>                               
                                   
 
@@ -160,6 +160,14 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        TypeConvert: function (type) {
+            if (type === "personal") return "Personalni trening";
+            if (type === "group") return "Grupni trening";
+            if (type === "solo") return "Aktivnost bez trenera";
+
+            return "Greska";
+        },
+
         editAcitivity: function (id) {
             router.push(
                 `/pregledObjekta/${this.facilityID}/izmeniAktivnost/${id}`

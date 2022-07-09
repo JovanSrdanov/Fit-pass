@@ -17,78 +17,90 @@ Vue.component("dodajAktivnost", {
         };
     },
     template: `
-      <div>
-        <h1>Dodaj aktivnost</h1>
-                <div v-if="workoutType=='personal' || workoutType=='group' " class="ChooseTrainer">
-                    <table>
-                        <td>ID</td>
-                        <td>Ime</td>
-                        <td>Prezime</td>
-                        <td>Korisničko ime</td>
-                        <tbody>       
-                            <tr v-for="T in allTrainers"  v-on:click="selectT(T)"
-                            v-bind:class="{selectedTrainerClass : selectedTrainer.id===T.id}">
+      <div class="WholeScreen">
+            <h1>Dodaj aktivnost</h1>
+            <div
+                v-if="workoutType=='personal' || workoutType=='group' "
+                class="ChooseTrainer"
+            >
+                <table>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Korisničko ime</th>
+                    <tbody>
+                        <tr
+                            v-for="T in allTrainers"
+                            v-on:click="selectT(T)"
+                            v-bind:class="{selectedTrainerClass : selectedTrainer.id===T.id}"
+                        >
+                            <td>{{T.name}}</td>
+                            <td>{{T.surname}}</td>
+                            <td>{{T.username}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                                <td>{{T.id}}</td>
-                                <td>{{T.name}}</td>
-                                <td>{{T.surname}}</td>
-                                <td>{{T.username}}</td>                            
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p class="white">Naziv:</p>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Naziv"
+                v-model="name"
+            />
 
-
-        <p>Naziv:</p>
-            <input type="text" name="name" id="name" placeholder="Naziv"    v-model="name"/>
-
-            <p>Tip aktivnosti</p>
+            <p class="white">Tip aktivnosti</p>
             <select name="workoutType" id="workoutType" v-model="workoutType">
-                <option value="personal">
-                    Personalni trening
-                </option>
+                <option value="personal">Personalni trening</option>
                 <option value="group">Grupni trening</option>
                 <option value="solo">Aktivnost bez trenera</option>
             </select>
 
-            <p>Trajanje u minutima</p>
-            <input
-                min="1"
-                max="180"
-                v-model="durationInMinutes"
-                type="number"
-                name="durationInMinutes"
-                id="durationInMinutes"
-            />
-            <p>Opis:</p>
+            <p
+                class="white"
+                v-if="workoutType=='personal' || workoutType=='group' "
+            >
+                Trener: {{selectedTrainer.name}} {{selectedTrainer.surname}}
+            </p>
+
+            <p class="white">
+                Trajanje u minutima:
+                <input
+                    min="1"
+                    max="180"
+                    v-model="durationInMinutes"
+                    type="number"
+                    name="durationInMinutes"
+                    id="durationInMinutes"
+                />
+            </p>
+            <p class="white">Opis:</p>
             <textarea
-           rows="4" cols="50"
+                rows="4"
+                cols="50"
                 name="description"
                 id="description"
-                 v-model="description"
+                v-model="description"
                 placeholder="Opis.."
             />
-            <p>Slika aktivnosti:</p>
+            <p class="white">Slika aktivnosti:</p>
             <input
                 type="file"
                 name="picture"
                 id="picture"
                 accept="image/*"
+                class="custom-file-input"
                 @change="handleFileUpload"
             />
-              <p>
-                    <img
-                    v-bind:src="showPicture"
-                    height="200px"
-                    width="200px"
-                    />
-                </p>
-            <p v-if="workoutType=='personal' || workoutType=='group' ">Trener: {{selectedTrainer.name}} {{selectedTrainer.surname}} </p>
+            <p>
+                <img v-bind:src="showPicture" height="200px" width="200px" />
+            </p>
 
-        <button v-on:click="CreateActivity">Kreiraj aktivnost</button>
-        <p>{{allEntered}}{{alreadyExists}}</p>
-         
-        </div>      
+            <button v-on:click="CreateActivity">Kreiraj aktivnost</button>
+            <p class="white">{{allEntered}}{{alreadyExists}} </p>
+        </div>
+      
   `,
     mounted() {
         this.facId = this.$route.params.id;

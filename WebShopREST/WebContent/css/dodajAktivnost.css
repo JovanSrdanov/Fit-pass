@@ -4,24 +4,20 @@ textarea {
     font-family: "Roboto", sans-serif;
 }
 
-tbody tr.selectedTrainerClass {
-    background: green !important;
-}
-
 .ChooseTrainer {
+    left: 0;
+    right: 0;
     position: absolute;
     margin-left: auto;
     margin-right: 100px;
-    left: 0;
-    right: 0;
-    border-radius: 20px 0px 0px 20px;
     overflow-y: scroll;
-    background-color: lightcyan;
-    width: 500px;
-    height: 700px;
-    padding: 15px !important;
-    border-style: solid;
-    border: 2px solid black;
+    background-color: lightblue;
+    border: 3px solid white;
+    width: 400px;
+    height: 600px;
+    padding: 0px 20px 20px 20px;
+
+    vertical-align: middle;
 }
 
 .ChooseTrainer button {
@@ -30,7 +26,14 @@ tbody tr.selectedTrainerClass {
 
 .ChooseTrainer td {
     padding: 10px;
-    width: 10%;
+}
+.ChooseTrainer th {
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: lightblue;
 }
 
 .ChooseTrainer td:first-child {
@@ -43,10 +46,12 @@ tbody tr.selectedTrainerClass {
 }
 
 .ChooseTrainer tbody > tr:nth-child(even) {
-    background-color: lightblue;
+    border-radius: 20px;
+    background-color: #adffff;
 }
 .ChooseTrainer tbody > tr:nth-child(odd) {
-    background-color: lightgray;
+    border-radius: 20px;
+    background-color: lightskyblue;
 }
 
 .ChooseTrainer table {
@@ -57,5 +62,11 @@ tbody tr.selectedTrainerClass {
 }
 
 .ChooseTrainer tbody > tr:hover {
-    background-color: #43c6ac;
+    background-color: grey;
+    box-shadow: 1px 1px 8px grey;
+}
+
+tbody tr.selectedTrainerClass {
+    background: green !important;
+    box-shadow: 1px 1px 8px green !important;
 }

@@ -86,5 +86,16 @@
     "trainerId": -1,
     "description": "1321312",
     "picture": "WorkoutLogo8.png"
+  },
+  "9": {
+    "id": 9,
+    "isDeleted": false,
+    "name": "Plivanje",
+    "workoutType": "personal",
+    "facilityId": 1,
+    "durationInMinutes": 25,
+    "trainerId": 2,
+    "description": "Ovde vas ucimo osnovama plivanja, svi stilovi plivanja ce biti prouceni, ide gas na max vau vau",
+    "picture": "WorkoutLogo9.png"
   }
 }
