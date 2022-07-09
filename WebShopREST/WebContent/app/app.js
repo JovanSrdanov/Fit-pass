@@ -17,8 +17,8 @@ const izmeniAktivnost = { template: "<izmeniAktivnost></izmeniAktivnost>" };
 const prijaviKupcaNaAktivnost = {
     template: "<prijaviKupcaNaAktivnost></prijaviKupcaNaAktivnost>",
 };
-const zakazaneAktivnostiUObjektu = {
-    template: "<zakazaneAktivnostiUObjektu></zakazaneAktivnostiUObjektu>",
+const istorijaAktivnostiUObjektu = {
+    template: "<istorijaAktivnostiUObjektu></istorijaAktivnostiUObjektu>",
 };
 
 const router = new VueRouter({
@@ -35,8 +35,8 @@ const router = new VueRouter({
         { path: "/pregledObjekta/:id", component: pregledObjekta, props: true },
         { path: "/promoKod", component: promoKod, props: true },
         {
-            path: "/pregledObjekta/:id/zakazaneAktivnostiUObjektu",
-            component: zakazaneAktivnostiUObjektu,
+            path: "/pregledObjekta/:id/istorijaAktivnostiUObjektu",
+            component: istorijaAktivnostiUObjektu,
             props: true,
         },
         {

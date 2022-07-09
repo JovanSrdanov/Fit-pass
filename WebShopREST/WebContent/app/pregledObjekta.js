@@ -57,7 +57,7 @@ Vue.component("pregledObjekta", {
                         </p>
                          <p v-if="myFacility">  
                                 <button v-on:click="ViewCustomersAndTrainers">Treneri i kupci</button> 
-                                <button v-on:click="SeeHistoryOfTrainings" >Pregled zakazanih treninga</button>     
+                                <button v-on:click="SeeHistoryOfTrainings" >Pregled istorije treninga</button>     
                                  </p> 
                           <p v-if="myFacility">  
                                 <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
@@ -251,7 +251,11 @@ Vue.component("pregledObjekta", {
                 `/pregledObjekta/${this.facilityID}/prijaviKupcaNaAktivnost`
             );
         },
-        SeeHistoryOfTrainings: function () {},
+        SeeHistoryOfTrainings: function () {
+            router.push(
+                `/pregledObjekta/${this.facilityID}/istorijaAktivnostiUObjektu`
+            );
+        },
         checkStatus(start, end) {
             var today = new Date();
 
