@@ -11,106 +11,90 @@
         <title>Document</title>
     </head>
     <body>
-        <div class="WholeScreen">
-            <h1>{{currentFacility.facility.name}}</h1>
-            <table>
-                <tr>
-                    <td>
-                        <img
-                            v-bind:src="getImgUrl(currentFacility.facility.logo)"
-                            alt="LOGO"
-                            height="500px"
-                            width="500px"
-                        />
-                    </td>
+        <div>
+            <div class="WholeScreen">
+                <h1>Izmeni aktivnost</h1>
+                <div
+                    v-if="workoutType=='personal' || workoutType=='group' "
+                    class="ChooseTrainer"
+                >
+                    <table>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th>Korisničko ime</th>
+                        <tbody>
+                            <tr
+                                v-for="T in allTrainers"
+                                v-on:click="selectT(T)"
+                                v-bind:class="{selectedTrainerClass : selectedTrainer.id===T.id}"
+                            >
+                                <td>{{T.name}}</td>
+                                <td>{{T.surname}}</td>
+                                <td>{{T.username}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                    <td>
-                        <p>{{currentFacility.facility.facilityType}}</p>
+                <p class="white">Naziv:</p>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Naziv"
+                    v-model="name"
+                />
 
-                        <p>
-                            Menadžer: {{currentFacility.managerName}}
-                            {{currentFacility.managerSurname}}
-                        </p>
-                        <p>
-                            {{currentFacility.location.street}}
-                            {{currentFacility.location.streetNumber}}
-                        </p>
-                        <p>
-                            {{currentFacility.location.city}}
-                            {{currentFacility.location.postCode}}
-                        </p>
-                        <p>
-                            ({{currentFacility.location.longitude}},
-                            {{currentFacility.location.latitude}})
-                        </p>
-                        <p>
-                            Prosečna ocena:
-                            {{currentFacility.facility.rating}}/5
-                        </p>
-                        <p>
-                            Radno vreme: {{currentFacility.facility.workStart}}
-                            - {{currentFacility.facility.workEnd}}
-                            {{checkStatus(currentFacility.facility.workStart,currentFacility.facility.workEnd)}}
-                        </p>
-                    </td>
+                <p class="white">Tip aktivnosti</p>
+                <select
+                    name="workoutType"
+                    id="workoutType"
+                    v-model="workoutType"
+                >
+                    <option value="personal">Personalni trening</option>
+                    <option value="group">Grupni trening</option>
+                    <option value="solo">Aktivnost bez trenera</option>
+                </select>
 
-                    <td>
-                        <div class="mapClass" id="mapShow">mapa</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="facilityOrActivityTableStyle">
-                            <table>
-                                <tbody>
-                                    <tr v-for="A in allActivitys">
-                                        <td>
-                                            <img
-                                                v-bind:src="getWorkoutImgUrl(A.workout.picture)"
-                                                alt="LOGO"
-                                                height="250"
-                                                width="250"
-                                            />
-                                        </td>
-                                        <td width="350">
-                                            <p>
-                                                <strong
-                                                    >{{A.workout.name}}
-                                                </strong>
-                                            </p>
-                                            <p>
-                                                Tip aktivnosti:
-                                                {{TypeConvert(A.workout.workoutType)}}
-                                            </p>
-                                            <p>
-                                                Trajanje:
-                                                {{A.workout.durationInMinutes}}
-                                            </p>
-                                            <p>DOPLATA ZA TRENING DODATI</p>
-                                            <p>
-                                                Trener: {{IfTrainer(A.trainer)}}
-                                            </p>
-                                            <p v-if="myFacility">
-                                                <button
-                                                    v-on:click="editAcitivity(A.workout.id)"
-                                                >
-                                                    Izmeni
-                                                </button>
-                                            </p>
-                                        </td>
+                <p
+                    class="white"
+                    v-if="workoutType=='personal' || workoutType=='group' "
+                >
+                    Trener: {{selectedTrainer.name}} {{selectedTrainer.surname}}
+                </p>
 
-                                        <td width="250">
-                                            {{A.workout.description}}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
+                <p class="white">
+                    Trajanje u minutima:
+                    <input
+                        min="1"
+                        max="180"
+                        v-model="durationInMinutes"
+                        type="number"
+                        name="durationInMinutes"
+                        id="durationInMinutes"
+                    />
+                </p>
+                <p class="white">Opis:</p>
+                <textarea
+                    rows="4"
+                    cols="50"
+                    name="description"
+                    id="description"
+                    v-model="description"
+                    placeholder="Opis.."
+                />
 
-                    <td>komentari</td>
-                </tr>
-            </table>
+                <p>
+                    <img
+                        v-bind:src="showPicture"
+                        height="200px"
+                        width="200px"
+                    />
+                </p>
+
+                <button v-on:click="UpdateActivity">Izmeni</button>
+                <p class="white">{{allEntered}}{{alreadyExists}}</p>
+            </div>
         </div>
     </body>
 </html>

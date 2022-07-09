@@ -231,7 +231,7 @@ Vue.component("pregledObjekta", {
         },
         IfTrainer: function (trainer) {
             if (!trainer) return "Nema trenera";
-            return trainer.name + trainer.surname;
+            return trainer.name + " " + trainer.surname;
         },
 
         ViewCustomersAndTrainers: function () {
