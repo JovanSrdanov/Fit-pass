@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -15,7 +16,7 @@ import beans.WorkoutAppointment;
 import main.Startup;
 
 public class WorkoutAppointmentDao {
-private static HashMap<Integer, WorkoutAppointment> workoutAppointments;
+	private static HashMap<Integer, WorkoutAppointment> workoutAppointments;
 	
 	private static HashMap<Integer, WorkoutAppointment> allWorkoutAppointments;
 	
@@ -79,6 +80,32 @@ private static HashMap<Integer, WorkoutAppointment> workoutAppointments;
 	
 	public WorkoutAppointment getById(int id) {
 		return workoutAppointments.containsKey(id) ? workoutAppointments.get(id) : null;
+	}
+	
+	public ArrayList<WorkoutAppointment> getAllForTrainerId(int id) {
+		ArrayList<WorkoutAppointment> appointents = new ArrayList<WorkoutAppointment>();
+		for(WorkoutAppointment app : workoutAppointments.values()) {
+			if(app.getTrainerId() == id) {
+				appointents.add(app);
+			}
+		}
+		
+		return appointents;
+	}
+	public ArrayList<WorkoutAppointment> getAllForCustomerId(int id) {
+		ArrayList<WorkoutAppointment> appointents = new ArrayList<WorkoutAppointment>();
+		for(WorkoutAppointment app : workoutAppointments.values()) {
+			if(app.getCustomerId() == id) {
+				appointents.add(app);
+			}
+		}
+		
+		return appointents;
+	}
+	
+	public void cancelById(int id) {
+		workoutAppointments.get(id).setCanceled(true);
+		writeFile();
 	}
 	
 	public WorkoutAppointment addNew(WorkoutAppointment newWorkoutAppointment) {

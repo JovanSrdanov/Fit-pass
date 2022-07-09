@@ -5,6 +5,7 @@ import java.util.Date;
 import beans.WorkoutType;
 
 public class WorkoutHistoryDto {
+	private int appointentId;
 	private String workoutName;
 	private String facilityName;
 	private Date workoutDate;
@@ -12,9 +13,11 @@ public class WorkoutHistoryDto {
 	private String customerFullName;
 	private String trainerFullName;
 	
-	public WorkoutHistoryDto(String workoutName, String facilityName, Date workoutDate, WorkoutType workoutType,
-			String customerFullName, String trainerFullName) {
+
+	public WorkoutHistoryDto(int appointentId, String workoutName, String facilityName, Date workoutDate,
+			WorkoutType workoutType, String customerFullName, String trainerFullName) {
 		super();
+		this.appointentId = appointentId;
 		this.workoutName = workoutName;
 		this.facilityName = facilityName;
 		this.workoutDate = workoutDate;
@@ -23,11 +26,21 @@ public class WorkoutHistoryDto {
 		this.trainerFullName = trainerFullName;
 	}
 
+
 	public WorkoutHistoryDto() {
 		
 	}
 	
-	
+	public int getWorkoutId() {
+		return appointentId;
+	}
+
+
+	public void setWorkoutId(int appointentId) {
+		this.appointentId = appointentId;
+	}
+
+
 	public String getCustomerFullName() {
 		return customerFullName;
 	}

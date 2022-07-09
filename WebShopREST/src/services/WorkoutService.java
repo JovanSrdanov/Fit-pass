@@ -23,6 +23,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import beans.Admin;
 import beans.Customer;
@@ -179,7 +180,7 @@ public class WorkoutService {
 	
 	
 	@GET
-	@Path("/appointments")
+	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<WorkoutAppointment> getAllAppointments() {
 		WorkoutAppointmentDao workoutAppDao = (WorkoutAppointmentDao) ctx.getAttribute("WorkoutAppointmentDao");
@@ -227,7 +228,8 @@ public class WorkoutService {
 				trainName = trainer.getName() + " " + trainer.getSurname();
 			}
 			
-			workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, workoutDate, workoutType, custName, trainName));
+			workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, 
+					workoutDate, workoutType, custName, trainName));
 		}
 		
 		return workoutHistory;
@@ -271,7 +273,8 @@ public class WorkoutService {
 			String custName = customer.getName() + " " + customer.getSurname();
 			String trainerName = trainer.getName() + " " + trainer.getSurname();
 			
-			workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, workoutDate, workoutType, custName, trainerName));
+			workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, workoutDate,
+					workoutType, custName, trainerName));
 		}
 		
 		return workoutHistory;
@@ -323,7 +326,7 @@ public class WorkoutService {
 						trainerFullName = trainer.getName() + " " + trainer.getSurname();
 					}
 					
-					workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, 
+					workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, 
 							workoutDate, workoutType, customerFullName, trainerFullName));
 				}
 			}
@@ -345,12 +348,122 @@ public class WorkoutService {
 					String customerFullName = customer.getName() + " " + customer.getSurname();
 					
 					
-					workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, workoutDate, 
+					workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, workoutDate, 
 							workoutType, customerFullName, trainerFullName));
 				}
 			}
 		}
 		
 		return workoutHistory;
+	}
+	
+	@GET
+	@Path("/schedule")
+	@JWTTokenNeeded
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response scheduleWorkout(WorkoutAppointment appointment, @Context HttpHeaders headers) {
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		CustomerDao customerDao = new CustomerDao();
+		Customer customer = customerDao.getByUsername(username);
+		if(customer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
+		Workout workout = workoutDao.getById(appointment.getWorkoutId());
+		if(workout == null) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Ne postji ovaj trening").build());
+		}
+		else if(workout.getTrainerId() == -1)
+		{
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Nema trenera na treningu").build());
+		}
+		
+		WorkoutAppointmentDao appointmetnDao = (WorkoutAppointmentDao) ctx.getAttribute("WorkoutAppointmentDao");
+		appointment.setCanceled(false);
+		appointment.setCustomerId(customer.getId());
+		appointment.setTrainerId(workout.getTrainerId());
+		
+		return null;
+	}
+	
+	@PUT
+	@Path("/cancel/{id}")
+	@JWTTokenNeeded
+	public Response cancelAppointment(@PathParam("id") int appointmentId, @Context HttpHeaders headers) {
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		TrainerDao trainerDao = new TrainerDao();
+		Trainer trainer = trainerDao.getByUsername(username);
+		if(trainer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		WorkoutAppointmentDao appointmentDao = new WorkoutAppointmentDao();
+		WorkoutAppointment workoutAppointment = appointmentDao.getById(appointmentId);
+		if(workoutAppointment == null) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Nepostoji ovaj appointent").build());
+		}
+		if(workoutAppointment.getTrainerId() != trainer.getId()) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		appointmentDao.cancelById(appointmentId);
+		
+		return Response.ok().encoding("Uspesno otkazan termin").build();
+	}
+	
+	@GET
+	@Path("/appointments")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistoryDto> getAllAppointents(@Context HttpHeaders headers) {
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		TrainerDao trainerDao = new TrainerDao();
+		Trainer trainer = trainerDao.getByUsername(username);
+		
+		CustomerDao customerDao = new CustomerDao();
+		Customer customer = customerDao.getByUsername(username);
+		if(customer == null && trainer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ArrayList<WorkoutHistoryDto> appointentsDto = new ArrayList<WorkoutHistoryDto>();
+		ArrayList<WorkoutAppointment> appointnets = new ArrayList<WorkoutAppointment>();
+		
+		WorkoutAppointmentDao appointmetnDao = (WorkoutAppointmentDao) ctx.getAttribute("WorkoutAppointmentDao");
+		if(customer != null) {
+			appointnets = appointmetnDao.getAllForCustomerId(customer.getId());
+		}
+		else {
+			appointnets = appointmetnDao.getAllForTrainerId(trainer.getId());
+		}
+		
+		
+		WorkoutDao workoutDao = new WorkoutDao();
+		FacilityDao facilityDao = new FacilityDao();
+		
+		for(WorkoutAppointment app : appointnets) {
+			Workout workout = workoutDao.getById(app.getWorkoutId());
+			Trainer train = trainerDao.getById(app.getTrainerId());
+			Customer cust = customerDao.getById(app.getCustomerId());
+			Facility facility = facilityDao.getById(workout.getFacilityId());
+			
+			
+			int appointentId = app.getId();
+			String workoutName = workout.getname();
+			String facilityName = facility.getName();
+			Date workoutDate = app.getDate();
+			WorkoutType workoutType = workout.getWorkoutType();
+			String customerFullName = cust.getName() + " " + cust.getSurname();
+			String trainerFullName = train.getName() + " " + train.getSurname();
+			
+			appointentsDto.add(new WorkoutHistoryDto(appointentId, workoutName, facilityName,
+					workoutDate, workoutType, customerFullName, trainerFullName));
+			
+		}
+		
+		return appointentsDto;
 	}
 }
