@@ -1,6 +1,8 @@
 package services;
 
 import java.security.Key;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -187,19 +189,15 @@ public class WorkoutService {
 		return workoutAppDao.getAll();
 	}
 	
-	@GET
-	@Path("/history/customer")
-	@JWTTokenNeeded
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutHistoryDto> getCustomerHistory(@Context HttpHeaders headers) {
+	public Collection<WorkoutHistoryDto> getCustomerHistoryBase(List<String> authHeader) {
 		ArrayList<WorkoutHistoryDto> workoutHistory = new ArrayList<WorkoutHistoryDto>();
 		
-		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String role = JWTParser.parseRole(authHeader);
 		if(!role.equals(Role.customer.toString())) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		
-		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String username = JWTParser.parseUsername(authHeader);
 		CustomerDao customerDao = new CustomerDao();
 		Customer customer = customerDao.getByUsername(username);
 		
@@ -236,18 +234,22 @@ public class WorkoutService {
 	}
 	
 	@GET
-	@Path("/history/trainer")
+	@Path("/history/customer")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutHistoryDto> getTrainerHistory(@Context HttpHeaders headers) {
+	public Collection<WorkoutHistoryDto> getCustomerHistory(@Context HttpHeaders headers) {
+		return getCustomerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+	}
+	
+	public Collection<WorkoutHistoryDto> getTrainerHistoryBase(List<String> authHeaders) {
 		ArrayList<WorkoutHistoryDto> workoutHistory = new ArrayList<WorkoutHistoryDto>();
 		
-		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String role = JWTParser.parseRole(authHeaders);
 		if(!role.equals(Role.trainer.toString())) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		
-		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String username = JWTParser.parseUsername(authHeaders);
 		TrainerDao trainerDao = new TrainerDao();
 		Trainer trainer = trainerDao.getByUsername(username);
 		
@@ -281,19 +283,22 @@ public class WorkoutService {
 	}
 	
 	@GET
-	@Path("/history/manager")
+	@Path("/history/trainer")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutHistoryDto> getManagerHistory(@Context HttpHeaders headers) {
-		
+	public Collection<WorkoutHistoryDto> getTrainerHistory(@Context HttpHeaders headers) {
+		return getTrainerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+	}
+	
+	public Collection<WorkoutHistoryDto> getManagerHistoryBase(List<String> authHeaders) {
 		ArrayList<WorkoutHistoryDto> workoutHistory = new ArrayList<WorkoutHistoryDto>();
 		
-		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String role = JWTParser.parseRole(authHeaders);
 		if(!role.equals(Role.manager.toString())) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		
-		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		String username = JWTParser.parseUsername(authHeaders);
 		ManagerDao managerDao = new ManagerDao();
 		Manager manager = managerDao.getByUsername(username);
 		
@@ -358,9 +363,52 @@ public class WorkoutService {
 	}
 	
 	@GET
+	@Path("/history/manager")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistoryDto> getManagerHistory(@Context HttpHeaders headers) {
+		return getManagerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+	}
+	
+	@POST
+	@Path("/history/manager/s")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistoryDto> getManagerHistoryFilter(
+			@FormParam("priceMin") double priceMin,
+			@FormParam("priceMax") double priceMax,
+			@FormParam("startDate") String startDateString,
+			@FormParam("endDate") String endDateString,
+			@Context HttpHeaders headers) 
+	{
+		ArrayList<WorkoutHistoryDto> history = new ArrayList<WorkoutHistoryDto>(getManagerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION)));
+		ArrayList<WorkoutHistoryDto> filteredHistory = new ArrayList<WorkoutHistoryDto>();
+		
+		Date startDate = null;
+		Date endDate = null;
+		
+		if(!startDateString.equals("") && !startDateString.equals("")) {
+			try {
+				startDate = new SimpleDateFormat("dd/MM/yyyy").parse(startDateString);
+				endDate = new SimpleDateFormat("dd/MM/yyyy").parse(endDateString);
+			} catch (ParseException e) {
+				e.printStackTrace();
+				throw new WebApplicationException(Response.Status.BAD_REQUEST);
+			}
+		}
+		
+		for(WorkoutHistoryDto hist : history) {
+			if(hist.getPrice() >= priceMin && hist.getPrice() <= priceMax) {
+				filteredHistory.add(hist);
+			}
+		}
+		
+		return filteredHistory;
+	}
+	
+	@GET
 	@Path("/schedule")
 	@JWTTokenNeeded
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Response scheduleWorkout(WorkoutAppointment appointment, @Context HttpHeaders headers) {
 		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		
