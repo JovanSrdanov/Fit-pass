@@ -26,6 +26,7 @@ import javax.ws.rs.core.Response;
 import beans.Admin;
 import beans.Customer;
 import beans.Workout;
+import beans.WorkoutAppointment;
 import beans.Workout;
 import beans.Manager;
 import beans.Product;
@@ -40,6 +41,7 @@ import dao.WorkoutDao;
 import dao.ManagerDao;
 import dao.ProductDAO;
 import dao.TrainerDao;
+import dao.WorkoutAppointmentDao;
 import dao.WorkoutDao;
 import dto.BigDaddy;
 import dto.WorkoutDto;
@@ -62,6 +64,10 @@ public class WorkoutService {
 	public void init() {
 		if (ctx.getAttribute("WorkoutDao") == null) {
 			ctx.setAttribute("WorkoutDao", new WorkoutDao());
+		}
+		
+		if (ctx.getAttribute("WorkoutAppointmentDao") == null) {
+			ctx.setAttribute("WorkoutAppointmentDao", new WorkoutAppointmentDao());
 		}
 	}
 	
@@ -144,5 +150,13 @@ public class WorkoutService {
 		}
 		
 		return workoutsInFacility;
+	}
+	
+	@GET
+	@Path("/appointments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutAppointment> getAllAppointments() {
+		WorkoutAppointmentDao workoutAppDao = (WorkoutAppointmentDao) ctx.getAttribute("WorkoutAppointmentDao");
+		return workoutAppDao.getAll();
 	}
 }

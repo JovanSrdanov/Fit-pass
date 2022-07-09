@@ -117,7 +117,7 @@ public class MembershipService {
 	@POST
 	@Path("/check-in")
 	@JWTTokenNeeded
-	public Response checkIn(@FormParam("customerId") int customerId,
+	public Response checkIn(@FormParam("customerUsername") String customerUsername,
 						@FormParam("workoutId") int workoutId,
 						@Context HttpHeaders headers) {
 		//Zastita*********************************************************************************************
@@ -131,7 +131,7 @@ public class MembershipService {
 		Workout workout = workoutDao.getById(workoutId);
 		
 		CustomerDao customerDao = new CustomerDao();
-		Customer customer = customerDao.getById(customerId);
+		Customer customer = customerDao.getByUsername(customerUsername);
 		
 		ManagerDao managerDao = new ManagerDao();
 		Manager manager = managerDao.getByUsername(username);
@@ -179,11 +179,11 @@ public class MembershipService {
 			throw new WebApplicationException(Response.Status.FORBIDDEN);
 		}
 		
+		//*****************************************************************************************************
 		customer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay));
 		customerDao.writeFile();
 		System.out.println("DDoso do kraja");
 		return Response.status(200).build();
-		//*****************************************************************************************************
 		
 		
 	}

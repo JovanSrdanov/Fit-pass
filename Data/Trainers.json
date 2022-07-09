@@ -1,8 +1,10 @@
 {
   "1": {
-    "workoutIds": [
-      1,
-      2
+    "workoutHistory": [
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 9, 2022, 12:16:53 AM"
+      }
     ],
     "id": 1,
     "isDeleted": false,
@@ -15,8 +17,11 @@
     "role": "trainer"
   },
   "2": {
-    "workoutIds": [
-      3
+    "workoutHistory": [
+      {
+        "workoutId": 2,
+        "checkDate": "Jul 9, 2022, 12:16:53 AM"
+      }
     ],
     "id": 2,
     "isDeleted": false,
@@ -31,6 +36,7 @@
   "3": {
     "id": 3,
     "isDeleted": false,
+	"workoutHistory": [],
     "username": "NOVIt",
     "password": "123",
     "name": "CECECE",
@@ -42,6 +48,7 @@
   "4": {
     "id": 4,
     "isDeleted": false,
+	"workoutHistory": [],
     "username": "MrziMe",
     "password": "DAKrenem",
     "name": "daRadim",
