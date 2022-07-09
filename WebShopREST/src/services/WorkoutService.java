@@ -134,7 +134,7 @@ public class WorkoutService {
 	@GET
 	@Path("/inFacility/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutDto> getVisitedFacilitysById(@PathParam("id") int id) {
+	public Collection<WorkoutDto> getWorkoutsInFacility(@PathParam("id") int id) {
 		
 	
 		ArrayList<WorkoutDto> workoutsInFacility = new ArrayList<WorkoutDto>(); 
@@ -151,6 +151,15 @@ public class WorkoutService {
 		
 		return workoutsInFacility;
 	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Workout getById(@PathParam("id") int id) {
+		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
+		return workoutDao.getById(id);
+	}
+	
 	
 	@GET
 	@Path("/appointments")
