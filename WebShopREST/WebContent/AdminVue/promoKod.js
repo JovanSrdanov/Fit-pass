@@ -19,7 +19,7 @@ Vue.component("promoKod", {
 
             <p class="white">Oznaka:</p>
             <input v-model="code" type="text" name="code" id="code" placeholder="Oznaka" />
-            <p  class="white">Period važenja:</p>
+            <p  class="white">Važi do:</p>
             <input
               v-model="validDate"
                 type="date"
@@ -50,8 +50,8 @@ Vue.component("promoKod", {
              <div class="TabelaKodova">
                 <table>
                     <th>Oznaka</th>
-                    <th>Period važenja</th>
-                    <th>Broj preostalih korišćenja:</th>
+                    <th>Važi do:</th>
+                    <th>Broj preostalih korišćenja</th>
                     <th>Procenat za koji umanjuje iznos</th>
                     <th>Obriši</th>
                    

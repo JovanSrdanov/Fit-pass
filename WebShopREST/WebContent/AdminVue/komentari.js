@@ -5,31 +5,28 @@ Vue.component("komentari", {
         };
     },
     template: `
-      <div>
+    <div>
         <h1>Komentari</h1>
+        <div class="tabelaKomentara">
+            <table>
+                <th>Kupac</th>
+                <th>Sportski objekat</th>
+                <th>Tekst</th>
+                <th>Ocena</th>
+                <th>Odobri / Odbij</th>
 
-          <div class="tabelaKomentara">
-                <table>
-                    <td>Kupac</td>
-                    <td>Sportski objekat</td>
-                    <td>Tekst</td>
-                    <td>Ocena</td>
-                  
-                    <td>Odobri/odbij</td>
-
-                    <tbody>
-                        <tr v-for="c in comments">
-                            <td>{{c.customer.name}} {{c.customer.surname}}</td>
-                            <td>{{c.facility.name}}</td>
-                            <td>{{c.text}}</td>
-                            <td>{{c.rating}}</td>            
-                            <td><button>Odobri</button><button>Odbij</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-         
-        </div>      
+                <tbody>
+                    <tr v-for="c in comments">
+                        <td>{{c.customer.name}} {{c.customer.surname}}</td>
+                        <td>{{c.facility.name}}</td>
+                        <td>{{c.text}}</td>
+                        <td>{{c.rating}}</td>            
+                        <td><button>Odobri</button><button>Odbij</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+    </div>      
   `,
     mounted() {
         yourConfig = {
