@@ -18,7 +18,7 @@ Vue.component("treneriIkupci", {
                     <th>Prezime</th>
                     <th>Korisničko ime</th>
                     <tbody>
-                        <tr v-for="T in trainers" v-on:click="selectT(T)">
+                        <tr v-for="T in trainers" >
                             <td>{{T.name}}</td>
                             <td>{{T.surname}}</td>
                             <td>{{T.username}}</td>
@@ -34,7 +34,7 @@ Vue.component("treneriIkupci", {
                     <th>Prezime</th>
                     <th>Korisničko ime</th>
                     <tbody>
-                        <tr v-for="T in customers" v-on:click="selectT(T)">
+                        <tr v-for="T in customers">
                             <td>{{T.name}}</td>
                             <td>{{T.surname}}</td>
                             <td>{{T.username}}</td>

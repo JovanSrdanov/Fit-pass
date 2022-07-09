@@ -11,20 +11,26 @@
       {
         "workoutId": 3,
         "checkDate": "Feb 24, 2021, 1:00:00 AM",
-		"customerId" : "1",
-		"trainerId" : "1"
+        "customerId": 1,
+        "trainerId": 1
       },
       {
         "workoutId": 5,
         "checkDate": "Feb 12, 2021, 1:00:00 AM",
-		"customerId" : "1",
-		"trainerId" : "2"
+        "customerId": 1,
+        "trainerId": 2
+      },
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 9, 2022, 8:06:53 PM",
+        "customerId": 1,
+        "trainerId": 4
       }
     ],
     "id": 1,
     "isDeleted": false,
-    "username": "strale15",
-    "password": "s",
+    "username": "q",
+    "password": "q",
     "name": "guza a?, da",
     "surname": "STRALE15",
     "gender": "female",
@@ -42,8 +48,8 @@
       {
         "workoutId": 1,
         "checkDate": "Jul 9, 2022, 12:16:53 AM",
-		"customerId" : "2",
-		"trainerId" : "-1"
+        "customerId": 2,
+        "trainerId": -1
       }
     ],
     "id": 2,
@@ -111,7 +117,7 @@
     "points": 0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],
-	"workoutHistory": [],
+    "workoutHistory": [],
     "id": 6,
     "isDeleted": false,
     "username": "NoviKupac",
