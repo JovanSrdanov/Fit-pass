@@ -85,7 +85,7 @@ public class WorkoutAppointmentDao {
 	public ArrayList<WorkoutAppointment> getAllForTrainerId(int id) {
 		ArrayList<WorkoutAppointment> appointents = new ArrayList<WorkoutAppointment>();
 		for(WorkoutAppointment app : workoutAppointments.values()) {
-			if(app.getTrainerId() == id) {
+			if(app.getTrainerId() == id && !app.isCanceled()) {
 				appointents.add(app);
 			}
 		}

@@ -4,6 +4,7 @@ import java.security.Key;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -456,6 +457,23 @@ public class WorkoutService {
 		if(workoutAppointment.getTrainerId() != trainer.getId()) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
+		
+		Date today = new Date();
+		
+		Date workoutDate = workoutAppointment.getDate();
+ 
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(workoutDate);
+ 
+        // add 1 days to current day
+        cal.add(Calendar.DAY_OF_MONTH, -2);
+ 
+        Date twoDaysBeforeWorkout = cal.getTime();
+		
+		if(today.after(twoDaysBeforeWorkout)) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Ne moze da se otkaze dva dana pre treninga").build());
+		}
+		
 		appointmentDao.cancelById(appointmentId);
 		
 		return Response.ok().encoding("Uspesno otkazan termin").build();
@@ -508,7 +526,7 @@ public class WorkoutService {
 			String trainerFullName = train.getName() + " " + train.getSurname();
 			
 			appointentsDto.add(new WorkoutHistoryDto(appointentId, workoutName, facilityName,
-					workoutDate, workoutType, customerFullName, trainerFullName, workout.getPrice()));
+					workoutDate, workoutType, customerFullName, trainerFullName, workout.getPrice(), app.isCanceled()));
 			
 		}
 		

@@ -13,6 +13,7 @@ public class WorkoutHistoryDto {
 	private String customerFullName;
 	private String trainerFullName;
 	private double price;
+	private boolean isCanceled;
 	
 
 
@@ -27,12 +28,38 @@ public class WorkoutHistoryDto {
 		this.customerFullName = customerFullName;
 		this.trainerFullName = trainerFullName;
 		this.price = price;
+		this.isCanceled = false;
 	}
+
+	public WorkoutHistoryDto(int appointentId, String workoutName, String facilityName, Date workoutDate,
+			WorkoutType workoutType, String customerFullName, String trainerFullName, double price,
+			boolean isCanceled) {
+		super();
+		this.appointentId = appointentId;
+		this.workoutName = workoutName;
+		this.facilityName = facilityName;
+		this.workoutDate = workoutDate;
+		this.workoutType = workoutType;
+		this.customerFullName = customerFullName;
+		this.trainerFullName = trainerFullName;
+		this.price = price;
+		this.isCanceled = isCanceled;
+	}
+
+
 
 	public WorkoutHistoryDto() {
 		
 	}
 	
+	public boolean isCanceled() {
+		return isCanceled;
+	}
+
+	public void setCanceled(boolean isCanceled) {
+		this.isCanceled = isCanceled;
+	}
+
 	public int getAppointentId() {
 		return appointentId;
 	}

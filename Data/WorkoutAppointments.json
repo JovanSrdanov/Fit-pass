@@ -15,6 +15,6 @@
     "date": "Jul 13, 2022, 1:00:00 AM",
     "customerId": 1,
     "trainerId": 2,
-    "isCanceled": true
+    "isCanceled": false
   }
 }
