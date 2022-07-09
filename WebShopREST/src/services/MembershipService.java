@@ -220,7 +220,7 @@ public class MembershipService {
 		Manager manager = managerDao.getByUsername(username);
 		
 		if(workout == null || customer == null) {
-			throw new WebApplicationException(Response.status(Status.NO_CONTENT).entity("Nepostoje trening ili kupac sa ovim id/username").build());
+			throw new WebApplicationException(Response.status(Status.NOT_FOUND).entity("Nepostoje trening ili kupac sa ovim id/username").build());
 		}
 		if(workout.getFacilityId() != manager.getFacilityId()) {
 			throw new WebApplicationException(Response.status(Status.UNAUTHORIZED).entity("Niste manager ovog objekta").build());
