@@ -98,4 +98,13 @@ public class PromoCodeService {
 		dao.addNew(promoCode);
 		return Response.ok().build();
 	}
+	
+	@GET
+	@Path("/valid/{code}")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public double getAll(@PathParam("code") String code) {	
+		PromoCodeDao dao = (PromoCodeDao) ctx.getAttribute("PromoCodeDao");
+		return dao.getDiscountValid(code);
+	}
 }

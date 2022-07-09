@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.ws.rs.WebApplicationException;
@@ -94,6 +95,16 @@ private static HashMap<Integer, PromoCode> promoCodes;
 		}
 		
 		return null;
+	}
+	
+	public double getDiscountValid(String code) {
+		PromoCode promoCode = getByCode(code);
+		
+		if(promoCode.getUsageCount() > 0 && promoCode.getValidDate().compareTo(new Date()) <= 0) {
+			return promoCode.getDiscountPercentage();
+		}
+		
+		return -1;
 	}
 	
 	public PromoCode addNew(PromoCode newPromoCode) {
