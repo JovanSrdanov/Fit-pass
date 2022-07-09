@@ -1,6 +1,8 @@
 package services;
 
 import java.security.Key;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +23,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import beans.Admin;
 import beans.BaseMembership;
@@ -29,6 +32,7 @@ import beans.Manager;
 import beans.Membership;
 import beans.Admin;
 import beans.Product;
+import beans.PromoCode;
 import beans.Role;
 import beans.Workout;
 import beans.WorkoutHistory;
@@ -39,6 +43,7 @@ import dao.ManagerDao;
 import dao.MembershipDao;
 import dao.AdminDao;
 import dao.ProductDAO;
+import dao.PromoCodeDao;
 import dao.WorkoutDao;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -111,6 +116,84 @@ public class MembershipService {
 		}
 
 		return membership;
+	}
+	
+	@POST
+	@Path("/newMembership")
+	@JWTTokenNeeded
+	public Response addNew(@FormParam("code") String code,
+						   @FormParam("perDay") int perDay,
+						   @FormParam("promoCode") String promoCode,
+						   @Context HttpHeaders headers) {
+		
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		CustomerDao customerDao = new CustomerDao();
+		Customer customer = customerDao.getByUsername(username);
+		if(customer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		BaseMembershipDao baseMembershipDao = new BaseMembershipDao();
+		BaseMembership baseMembership = baseMembershipDao.getByCode(code);
+		if(baseMembership == null) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Base clanarian ne postoji").build());
+		}
+		
+		double discount = 1;
+		PromoCodeDao promoCodeDao = new PromoCodeDao();
+		if(!promoCode.equals("")) {
+			PromoCode existingPromoCode = promoCodeDao.getByCode(promoCode);
+			if(existingPromoCode == null) {
+				throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Promo kod ne vazi").build());
+			}
+			if(existingPromoCode.getUsageCount() > 0) {
+				discount = existingPromoCode.getDiscountPercentage() / 100.0;			
+				existingPromoCode.reduceUsgeCount();
+				promoCodeDao.writeFile();
+			}
+			else
+			{
+				throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Promo kod ne moze vise da se koristi").build());
+			}
+		}
+		
+		double multiplicator = baseMembership.getPriceMultiplicator();
+		if(perDay == 1) {
+			multiplicator = 1;
+		}
+		
+		Date todayDay = new Date();
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(todayDay);
+ 
+        cal.add(Calendar.DATE, baseMembership.getDurationDays());
+ 
+        Date endDate = cal.getTime();
+		
+        Membership membership = new Membership();
+		membership.setPrice(perDay * baseMembership.getPrice() * multiplicator * discount);
+		membership.setCustomerId(customer.getId());
+		membership.setDeleted(false);
+		membership.setCode(code);
+		membership.setStartDate(todayDay);
+		membership.setEndDate(endDate);
+		membership.setActive(true);
+		membership.setNumberOfTrainings(perDay);
+		
+		MembershipDao membershipDao = new MembershipDao();
+		membershipDao.addNew(membership);
+		
+		Membership oldMembership = membershipDao.getById(customer.getMembershipId());
+		if(oldMembership != null) {
+			oldMembership.setActive(false);
+			membershipDao.writeFile();
+		}
+		
+		customer.setMembershipId(membership.getId());
+		customerDao.writeFile();
+		
+		return Response.ok().build();
 	}
 	
 	@SuppressWarnings("deprecation")

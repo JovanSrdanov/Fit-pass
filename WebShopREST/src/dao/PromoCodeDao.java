@@ -29,7 +29,7 @@ private static HashMap<Integer, PromoCode> promoCodes;
 		readFile();
 	}
 	
-	private void writeFile() {
+	public void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/PromoCodes.json");
 		
 		try {
@@ -84,6 +84,16 @@ private static HashMap<Integer, PromoCode> promoCodes;
 
 	public PromoCode getById(int id) {
 		return promoCodes.containsKey(id) ? promoCodes.get(id) : null;
+	}
+	
+	public PromoCode getByCode(String code) {
+		for(PromoCode cod : promoCodes.values()) {
+			if(cod.getCode().equals(code)) {
+				return cod;
+			}
+		}
+		
+		return null;
 	}
 	
 	public PromoCode addNew(PromoCode newPromoCode) {

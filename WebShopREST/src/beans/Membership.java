@@ -8,7 +8,7 @@ public class Membership {
 	private String code;
 	private Date startDate;
 	private Date endDate;
-	private float price;
+	private double price;
 	private int customerId;
 	private boolean isActive;
 	private int numberOfTrainings;
@@ -71,11 +71,11 @@ public class Membership {
 		this.endDate = endDate;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
