@@ -82,6 +82,16 @@ public class BaseMembershipDao {
 		return baseMemeberships.containsKey(id) ? baseMemeberships.get(id) : null;
 	}
 	
+	public BaseMembership getByCode(String code) {
+		for(BaseMembership mem : baseMemeberships.values()) {
+			if(mem.getCode().equals(code)) {
+				return mem;
+			}
+		}
+		
+		return null;
+	}
+	
 	public BaseMembership addNew(BaseMembership newBaseMembership) {
 		Integer maxId = -1;
 		for (int id : baseMemeberships.keySet()) {

@@ -5,10 +5,10 @@
     "code": "HGH123789",
     "startDate": "Feb 5, 2022, 1:00:00 AM",
     "endDate": "Sep 30, 2022, 1:00:00 AM",
-	"price": 2500,
-	"customerId": 1,
-	"isActive": true,
-	"numberOfTrainings": 2
+    "price": 2500.0,
+    "customerId": 1,
+    "isActive": false,
+    "numberOfTrainings": 2
   },
   "2": {
     "id": 2,
@@ -16,9 +16,42 @@
     "code": "HGH123789",
     "startDate": "Feb 5, 2022, 1:00:00 AM",
     "endDate": "Sep 30, 2022, 1:00:00 AM",
-	"price": 2500,
-	"customerId": 2,
-	"isActive": true,
-	"numberOfTrainings": 2
+    "price": 2500.0,
+    "customerId": 2,
+    "isActive": true,
+    "numberOfTrainings": 2
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "code": "HGH123789",
+    "startDate": "Jul 9, 2022, 7:32:07 PM",
+    "endDate": "Sep 7, 2022, 7:32:07 PM",
+    "price": 700.0,
+    "customerId": 1,
+    "isActive": true,
+    "numberOfTrainings": 2
+  },
+  "4": {
+    "id": 4,
+    "isDeleted": false,
+    "code": "HGH123789",
+    "startDate": "Jul 9, 2022, 7:33:45 PM",
+    "endDate": "Sep 7, 2022, 7:33:45 PM",
+    "price": 1400.0,
+    "customerId": 1,
+    "isActive": true,
+    "numberOfTrainings": 2
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "code": "HGH123789",
+    "startDate": "Jul 9, 2022, 7:41:32 PM",
+    "endDate": "Sep 7, 2022, 7:41:32 PM",
+    "price": 700.0,
+    "customerId": 1,
+    "isActive": true,
+    "numberOfTrainings": 2
   }
 }

@@ -81,6 +81,14 @@ public class PromoCode {
 		this.usageCount = updatedPromoCode.usageCount;
 		this.discountPercentage = updatedPromoCode.discountPercentage;
 	}
+
+	public void reduceUsgeCount() {
+		this.usageCount -= 1;
+		if(this.usageCount <= 0) {
+			this.usageCount = 0;
+		}
+		
+	}
 	
 	
 }

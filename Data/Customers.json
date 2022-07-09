@@ -1,6 +1,6 @@
 {
   "1": {
-    "membershipId": 1,
+    "membershipId": 5,
     "points": 1,
     "customerTypeId": 1,
     "visitedFacilityIds": [
@@ -11,14 +11,14 @@
       {
         "workoutId": 3,
         "checkDate": "Feb 24, 2021, 1:00:00 AM",
-		"customerId" : "1",
-		"trainerId" : "1"
+        "customerId": 1,
+        "trainerId": 1
       },
       {
         "workoutId": 5,
         "checkDate": "Feb 12, 2021, 1:00:00 AM",
-		"customerId" : "1",
-		"trainerId" : "2"
+        "customerId": 1,
+        "trainerId": 2
       }
     ],
     "id": 1,
@@ -42,8 +42,8 @@
       {
         "workoutId": 1,
         "checkDate": "Jul 9, 2022, 12:16:53 AM",
-		"customerId" : "2",
-		"trainerId" : "-1"
+        "customerId": 2,
+        "trainerId": -1
       }
     ],
     "id": 2,
@@ -111,7 +111,7 @@
     "points": 0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],
-	"workoutHistory": [],
+    "workoutHistory": [],
     "id": 6,
     "isDeleted": false,
     "username": "NoviKupac",
