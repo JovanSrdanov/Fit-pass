@@ -167,11 +167,7 @@ Vue.component("registracija", {
                             this.$root.VarToken();
                             window.location.href = "#/pocetna";
                         })
-                        .catch((error) => {
-                            if (error.response.status === 401) {
-                                console.log("unauthorised");
-                            }
-                        });
+                        .catch((error) => {});
                 })
                 .catch((error) => {
                     this.userExist = true;

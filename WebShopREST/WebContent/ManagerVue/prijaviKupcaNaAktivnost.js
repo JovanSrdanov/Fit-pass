@@ -131,11 +131,10 @@ Vue.component("prijaviKupcaNaAktivnost", {
                     window.location.href = "#/pregledObjekta/" + this.facId;
                 })
                 .catch((error) => {
-                    console.log(error);
+                    this.errorMessage = error.response.data;
                 });
         },
         selectA: function (A) {
-            console.log(A);
             this.selectedActivity = A;
         },
     },

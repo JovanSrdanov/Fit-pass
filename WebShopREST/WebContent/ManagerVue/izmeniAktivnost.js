@@ -203,10 +203,9 @@ Vue.component("izmeniAktivnost", {
                 )
                 .then((response) => {
                     //////////// ovde promeni
-                    console.log("nalazimo se u sad " + this.facId);
 
                     let id = this.facId;
-                    console.log("nalazimo se u sad " + id);
+
                     setTimeout(function () {
                         window.location.href = "#/pregledObjekta/" + id;
                     }, 100);

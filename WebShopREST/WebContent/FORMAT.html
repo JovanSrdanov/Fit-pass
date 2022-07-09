@@ -11,90 +11,64 @@
         <title>Document</title>
     </head>
     <body>
-        <div>
-            <div class="WholeScreen">
-                <h1>Izmeni aktivnost</h1>
-                <div
-                    v-if="workoutType=='personal' || workoutType=='group' "
-                    class="ChooseTrainer"
-                >
-                    <table>
-                        <th>Ime</th>
-                        <th>Prezime</th>
-                        <th>Korisničko ime</th>
-                        <tbody>
-                            <tr
-                                v-for="T in allTrainers"
-                                v-on:click="selectT(T)"
-                                v-bind:class="{selectedTrainerClass : selectedTrainer.id===T.id}"
-                            >
-                                <td>{{T.name}}</td>
-                                <td>{{T.surname}}</td>
-                                <td>{{T.username}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="WholeScreen">
+            <h1>Istorija aktivnosti u objektu</h1>
+            <table class="tableForKorisnici">
+                <td>
+                    <div class="SearchSortFilterWrapper">
+                        <p>Pretraga:</p>
+                        <p>Početni i krajnji datum</p>
+                        <input type="date" />
+                        <input type="date" />
+                        <p>Cena (od-do):</p>
+                        <input type="number" />
+                        <input type="number" />
+                        <p>
+                            <button>Pretraži</button>
+                        </p>
+                        <p>Filtriranje:</p>
+                        <label for="Uloga">Izabrati tip treninga:</label>
+                        <select name="Uloga" id="Uloga">
+                            <option value="all">Svi</option>
+                            <option value="personal">Personalni trening</option>
+                            <option value="group">Grupni trening</option>
+                            <option value="solo">Aktivnost bez trenera</option>
+                        </select>
 
-                <p class="white">Naziv:</p>
-                <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Naziv"
-                    v-model="name"
-                />
-
-                <p class="white">Tip aktivnosti</p>
-                <select
-                    name="workoutType"
-                    id="workoutType"
-                    v-model="workoutType"
-                >
-                    <option value="personal">Personalni trening</option>
-                    <option value="group">Grupni trening</option>
-                    <option value="solo">Aktivnost bez trenera</option>
-                </select>
-
-                <p
-                    class="white"
-                    v-if="workoutType=='personal' || workoutType=='group' "
-                >
-                    Trener: {{selectedTrainer.name}} {{selectedTrainer.surname}}
-                </p>
-
-                <p class="white">
-                    Trajanje u minutima:
-                    <input
-                        min="1"
-                        max="180"
-                        v-model="durationInMinutes"
-                        type="number"
-                        name="durationInMinutes"
-                        id="durationInMinutes"
-                    />
-                </p>
-                <p class="white">Opis:</p>
-                <textarea
-                    rows="4"
-                    cols="50"
-                    name="description"
-                    id="description"
-                    v-model="description"
-                    placeholder="Opis.."
-                />
-
-                <p>
-                    <img
-                        v-bind:src="showPicture"
-                        height="200px"
-                        width="200px"
-                    />
-                </p>
-
-                <button v-on:click="UpdateActivity">Izmeni</button>
-                <p class="white">{{allEntered}}{{alreadyExists}}</p>
-            </div>
+                        <p>Sortiranje:</p>
+                        <p>
+                            <button>{{sortPriceString}}</button>
+                            <button>{{sortDateString}}</button>
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <div class="TabelaKorisnika">
+                        <table>
+                            <th>Naziv treninga</th>
+                            <th>Datum</th>
+                            <th>Vreme</th>
+                            <th>Tip treninga</th>
+                            <th>Kupac</th>
+                            <th>Trener</th>
+                            <th>Cena</th>
+                            <tbody>
+                                <tr
+                                    v-for="u in searchFilterSortMenagerActivity"
+                                >
+                                    <td>{{u.workoutName}}</td>
+                                    <td>{{getDate(u.workoutDate)}}</td>
+                                    <td>{{getTime(u.workoutDate)}}</td>
+                                    <td>{{TypeConvert(u.workoutType)}}</td>
+                                    <td>{{u.customerFullName}}</td>
+                                    <td>{{u.trainerFullName}}</td>
+                                    <td>DODAJ FUNK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </table>
         </div>
     </body>
 </html>
