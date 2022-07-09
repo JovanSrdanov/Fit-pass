@@ -220,30 +220,28 @@ public class MembershipService {
 		Manager manager = managerDao.getByUsername(username);
 		
 		if(workout == null || customer == null) {
-			throw new WebApplicationException(Response.Status.NO_CONTENT);
+			throw new WebApplicationException(Response.status(Status.NO_CONTENT).entity("Nepostoje trening ili kupac sa ovim id/username").build());
 		}
 		if(workout.getFacilityId() != manager.getFacilityId()) {
-			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+			throw new WebApplicationException(Response.status(Status.UNAUTHORIZED).entity("Niste manager ovog objekta").build());
 		}
 		if(customer.getMembershipId() == -1) {
 			System.out.println("nema clanarinu uopste");
-			throw new WebApplicationException(Response.Status.FORBIDDEN);
+			throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("Kupac nema uplacenu clanarinu").build());
 		}
 		MembershipDao membershipDao = (MembershipDao) ctx.getAttribute("MembershipDao");
 		Membership membership = membershipDao.getById(customer.getMembershipId());
 		
 		if(membership == null) {
 			System.out.println("nema clanarine u bazi");
-			throw new WebApplicationException(Response.Status.FORBIDDEN);
+			throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("Kupac ima fejk clanarinu").build());
 		}
 		
 		Date todayDay = new Date();
 		
 		if(membership.getStartDate().compareTo(todayDay) > 0 || membership.getEndDate().compareTo(todayDay) < 0) {
 			System.out.println("datum ne valja");
-			System.out.println(membership.getStartDate().compareTo(todayDay));
-			System.out.println(membership.getEndDate().compareTo(todayDay));
-			throw new WebApplicationException(Response.Status.FORBIDDEN);
+			throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("Istekla clanarina").build());
 		}
 		
 		//Provera da li je ispucao broj puta u danu
@@ -259,7 +257,7 @@ public class MembershipService {
 		
 		if(todayCheckins >= membership.getNumberOfTrainings()) {
 			System.out.println("vec se cekiro");
-			throw new WebApplicationException(Response.Status.FORBIDDEN);
+			throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("Kupac se vec cekirao max broj puta").build());
 		}
 		
 		//*****************************************************************************************************
