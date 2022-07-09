@@ -44,7 +44,7 @@ Vue.component("promoKod", {
                 <button v-on:click="createPromoCode">Kreiraj</button>
             </p>
 
-            <p>{{enterAll}}{{codeExists}}</p>
+            <p class="white">{{enterAll}}{{codeExists}}</p>
             <h2  class="white">Postojeći kodovi</h2>
             
              <div class="TabelaKodova">

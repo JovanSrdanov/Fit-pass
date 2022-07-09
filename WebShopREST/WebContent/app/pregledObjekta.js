@@ -35,7 +35,8 @@ Vue.component("pregledObjekta", {
                             <tr v-if="myFacility"><td>  
                                 <button v-on:click="ViewCustomersAndTrainers">Treneri i kupci</button> 
                                 <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
-                                <button v-on:click="SeeHistoryOfTrainings" >Pregled zakazanih treninga</button>                          
+                                <button v-on:click="SeeHistoryOfTrainings" >Pregled zakazanih treninga</button>     
+                                <button >Prijavi kupca</button>                         
                             </td></tr> 
                         </table>     
                     </div>    

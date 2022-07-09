@@ -1,103 +1,64 @@
-.showTrainers {
-    position: absolute;
-    margin-left: auto;
-    margin-right: 100px;
-    left: 0;
-    right: 0;
-    border-radius: 20px 0px 0px 20px;
+.treneriIkupci {
     overflow-y: scroll;
-    background-color: lightcyan;
+    background-color: lightblue;
+    margin: auto;
+    border: 3px solid white;
     width: 500px;
-    height: 700px;
-    padding: 15px !important;
-    border-style: solid;
-    border: 2px solid black;
+    height: 600px;
+    padding: 0px 20px 20px 20px;
 }
 
-.showTrainers button {
+.treneriIkupci {
+    width: 500px;
+    height: 600px;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.treneriIkupci button {
     cursor: pointer;
 }
 
-.showTrainers td {
+.treneriIkupci td {
     padding: 10px;
     width: 10%;
 }
+.treneriIkupci th {
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: lightblue;
+}
 
-.showTrainers td:first-child {
+.treneriIkupci td:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-.showTrainers td:last-child {
+.treneriIkupci td:last-child {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.showTrainers tbody > tr:nth-child(even) {
-    background-color: lightblue;
+.treneriIkupci tbody > tr:nth-child(even) {
+    border-radius: 20px;
+    background-color: #adffff;
 }
-.showTrainers tbody > tr:nth-child(odd) {
-    background-color: lightgray;
+.treneriIkupci tbody > tr:nth-child(odd) {
+    border-radius: 20px;
+    background-color: lightskyblue;
 }
 
-.showTrainers table {
+.treneriIkupci table {
     table-layout: fixed;
     width: 100%;
     margin: auto;
     border-spacing: 0;
 }
 
-.showTrainers tbody > tr:hover {
-    background-color: #43c6ac;
-}
-
-.showCustomers {
-    position: absolute;
-    margin-right: auto;
-    margin-left: 100px;
-    left: 0;
-    right: 0;
-    border-radius: 20px 0px 0px 20px;
-    overflow-y: scroll;
-    background-color: lightcyan;
-    width: 500px;
-    height: 700px;
-    padding: 15px !important;
-    border-style: solid;
-    border: 2px solid black;
-}
-
-.showCustomers button {
-    cursor: pointer;
-}
-
-.showCustomers td {
-    padding: 10px;
-    width: 10%;
-}
-
-.showCustomers td:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-.showCustomers td:last-child {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.showCustomers tbody > tr:nth-child(even) {
-    background-color: lightblue;
-}
-.showCustomers tbody > tr:nth-child(odd) {
-    background-color: lightgray;
-}
-
-.showCustomers table {
-    table-layout: fixed;
-    width: 100%;
-    margin: auto;
-    border-spacing: 0;
-}
-
-.showCustomers tbody > tr:hover {
-    background-color: #43c6ac;
+.treneriIkupci tbody > tr:hover {
+    background-color: grey;
+    box-shadow: 1px 1px 8px grey;
 }

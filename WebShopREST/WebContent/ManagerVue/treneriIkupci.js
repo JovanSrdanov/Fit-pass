@@ -7,46 +7,43 @@ Vue.component("treneriIkupci", {
         };
     },
     template: `
-    <div>
-        <h1>Treneri i kupci</h1>
-
-        <div  class="showTrainers">
-            <p>Treneri:</p>
-            <table>
-                
-                <td>Ime</td>
-                <td>Prezime</td>
-                <td>Korisničko ime</td>
-                <tbody>       
-                    <tr v-for="T in trainers"  v-on:click="selectT(T)">                
-                        <td>{{T.name}}</td>
-                        <td>{{T.surname}}</td>
-                        <td>{{T.username}}</td>                            
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-            <div  class="showCustomers">
-                <p>Kupci:</p>
+     <div class="WholeScreen">
+            <h1>Treneri i kupci</h1>
+<table class="tableForPocetna">
+     <td>
+         <h2 class="white">Treneri koji drže treninge u mom objektu:</h2>
+            <div class="treneriIkupci">
                 <table>
-                <td>Ime</td>
-                <td>Prezime</td>
-                <td>Korisničko ime</td>
-                <tbody>       
-                    <tr v-for="T in customers"  v-on:click="selectT(T)">                       
-                        <td>{{T.name}}</td>
-                        <td>{{T.surname}}</td>
-                        <td>{{T.username}}</td>                            
-                    </tr>
-                </tbody>
-            </table>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Korisničko ime</th>
+                    <tbody>
+                        <tr v-for="T in trainers" v-on:click="selectT(T)">
+                            <td>{{T.name}}</td>
+                            <td>{{T.surname}}</td>
+                            <td>{{T.username}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+</td> <td>
+    <h2 class="white">Kupci koji su posetili moj objekat:</h2>
+            <div class="treneriIkupci">
+                <table>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Korisničko ime</th>
+                    <tbody>
+                        <tr v-for="T in customers" v-on:click="selectT(T)">
+                            <td>{{T.name}}</td>
+                            <td>{{T.surname}}</td>
+                            <td>{{T.username}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </td>
         </div>
-
-
-    
-        
-    </div>      
   `,
     mounted() {
         this.facId = this.$route.params.id;
