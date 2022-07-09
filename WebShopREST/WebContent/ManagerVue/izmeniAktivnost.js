@@ -212,7 +212,8 @@ Vue.component("izmeniAktivnost", {
                     }, 100);
                 })
                 .catch((error) => {
-                    // da se ne zove mozda kao aktivnost neka druga koja vec postoji?
+                    this.alreadyExists =
+                        "Već postoji aktivnost sa ovakvim nazivom";
                 });
         },
     },

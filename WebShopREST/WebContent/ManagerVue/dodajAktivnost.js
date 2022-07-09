@@ -188,7 +188,7 @@ Vue.component("dodajAktivnost", {
                             }, 2500);
                         })
                         .catch((error) => {
-                            this.existsSP =
+                            this.alreadyExists =
                                 "Već postoji aktivnost sa ovakvim nazivom";
                         });
                 })

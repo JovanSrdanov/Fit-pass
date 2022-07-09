@@ -2,7 +2,7 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "name": "pAZI SAD",
+    "name": "AutoprevozKikinda12",
     "workoutType": "group",
     "facilityId": 1,
     "durationInMinutes": 58,
@@ -97,5 +97,27 @@
     "trainerId": 2,
     "description": "Ovde vas ucimo osnovama plivanja, svi stilovi plivanja ce biti prouceni, ide gas na max vau vau",
     "picture": "WorkoutLogo9.png"
+  },
+  "10": {
+    "id": 10,
+    "isDeleted": false,
+    "name": "aaaaaaaa",
+    "workoutType": "group",
+    "facilityId": 1,
+    "durationInMinutes": 123,
+    "trainerId": 4,
+    "description": "adsadas",
+    "picture": "WorkoutLogo10.png"
+  },
+  "11": {
+    "id": 11,
+    "isDeleted": false,
+    "name": "AutoprevozKikinda1",
+    "workoutType": "group",
+    "facilityId": 1,
+    "durationInMinutes": 123,
+    "trainerId": 3,
+    "description": "dasdas",
+    "picture": "WorkoutLogo11.png"
   }
 }

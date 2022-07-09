@@ -55,6 +55,14 @@ Vue.component("pregledObjekta", {
                             - {{currentFacility.facility.workEnd}}
                             {{checkStatus(currentFacility.facility.workStart,currentFacility.facility.workEnd)}}
                         </p>
+                         <p v-if="myFacility">  
+                                <button v-on:click="ViewCustomersAndTrainers">Treneri i kupci</button> 
+                                <button v-on:click="SeeHistoryOfTrainings" >Pregled zakazanih treninga</button>     
+                                 </p> 
+                          <p v-if="myFacility">  
+                                <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
+                                <button >Prijavi kupca</button>                         
+                            </p> 
                     </td>
 
                     <td>
