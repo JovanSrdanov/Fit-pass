@@ -47,7 +47,7 @@ Vue.component("prijaviKupcaNaAktivnost", {
                                          v-bind:class="{SelectedActivityClass : selectedActivity.workout.id===A.workout.id}"
                                         >
                                             <td>{{A.workout.name}}</td>
-                                            <td>{{A.workout.workoutType}}</td>
+                                            <td>{{TypeConvert(A.workout.workoutType)}}</td>
                                             <td>{{A.workout.durationInMinutes}}</td>
                                         </tr>
                                     </tbody>
@@ -97,6 +97,13 @@ Vue.component("prijaviKupcaNaAktivnost", {
             });
     },
     methods: {
+        TypeConvert: function (type) {
+            if (type === "personal") return "Personalni trening";
+            if (type === "group") return "Grupni trening";
+            if (type === "solo") return "Aktivnost bez trenera";
+
+            return "Greska";
+        },
         CheckInUser: function () {
             this.enterAllData = "";
             this.errorMessage = "";
