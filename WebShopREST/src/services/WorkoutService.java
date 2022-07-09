@@ -3,6 +3,7 @@ package services;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -25,8 +26,11 @@ import javax.ws.rs.core.Response;
 
 import beans.Admin;
 import beans.Customer;
+import beans.Facility;
 import beans.Workout;
 import beans.WorkoutAppointment;
+import beans.WorkoutHistory;
+import beans.WorkoutType;
 import beans.Workout;
 import beans.Manager;
 import beans.Product;
@@ -45,6 +49,7 @@ import dao.WorkoutAppointmentDao;
 import dao.WorkoutDao;
 import dto.BigDaddy;
 import dto.WorkoutDto;
+import dto.WorkoutHistoryDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -121,14 +126,26 @@ public class WorkoutService {
 		
 		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		ManagerDao managerDao = new ManagerDao();
-		int managerId = managerDao.getByUsername(username).getId();
+		Manager manager = managerDao.getByUsername(username);
+		int managerId = manager.getId();
 		if(managerId != updatedWorkout.getFacilityId()) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		
-		WorkoutDao dao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
+		
+		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");	
+		FacilityDao facilityDao = new FacilityDao();
+		Facility facility = facilityDao.getById(manager.getFacilityId());
+		
+		for(int workoutId : facility.getWorkoutIds()) {
+			Workout workout = workoutDao.getById(workoutId);
+			if(workout.getname().equals(updatedWorkout.getname())) {
+				throw new WebApplicationException(Response.Status.CONFLICT);
+			}
+		}
+		
 		//int id = dao.getById(updatedWorkout.getId()).getId();
-		return dao.update(updatedWorkout.getId(), updatedWorkout);
+		return workoutDao.update(updatedWorkout.getId(), updatedWorkout);
 	}
 	
 	@GET
@@ -167,5 +184,173 @@ public class WorkoutService {
 	public Collection<WorkoutAppointment> getAllAppointments() {
 		WorkoutAppointmentDao workoutAppDao = (WorkoutAppointmentDao) ctx.getAttribute("WorkoutAppointmentDao");
 		return workoutAppDao.getAll();
+	}
+	
+	@GET
+	@Path("/history/customer")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistoryDto> getCustomerHistory(@Context HttpHeaders headers) {
+		ArrayList<WorkoutHistoryDto> workoutHistory = new ArrayList<WorkoutHistoryDto>();
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.customer.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		CustomerDao customerDao = new CustomerDao();
+		Customer customer = customerDao.getByUsername(username);
+		
+		if(customer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		//potrebni dao-vi
+		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
+		FacilityDao facilityDao = new FacilityDao();
+		TrainerDao trainerDAo = new TrainerDao();
+		
+		for(WorkoutHistory custWorkout : customer.getWorkoutHistory()) {
+			
+			Workout workout = workoutDao.getById(custWorkout.getWorkoutId());
+			Facility facility = facilityDao.getById(workout.getFacilityId());
+			Trainer trainer = trainerDAo.getById(custWorkout.getTrainerId());
+			
+			String workoutName = workout.getname();
+			String facilityName = facility.getName();
+			Date workoutDate = custWorkout.getCheckDate();
+			WorkoutType workoutType = workout.getWorkoutType();
+			String custName = customer.getName() + " " + customer.getSurname();
+			String trainName = "";
+			if(trainer != null) {
+				trainName = trainer.getName() + " " + trainer.getSurname();
+			}
+			
+			workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, workoutDate, workoutType, custName, trainName));
+		}
+		
+		return workoutHistory;
+	}
+	
+	@GET
+	@Path("/history/trainer")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistoryDto> getTrainerHistory(@Context HttpHeaders headers) {
+		ArrayList<WorkoutHistoryDto> workoutHistory = new ArrayList<WorkoutHistoryDto>();
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.trainer.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		TrainerDao trainerDao = new TrainerDao();
+		Trainer trainer = trainerDao.getByUsername(username);
+		
+		if(trainer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		//potrebni dao-vi
+		WorkoutDao workoutDao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
+		FacilityDao facilityDao = new FacilityDao();
+		CustomerDao customerDao = new CustomerDao();
+		
+		for(WorkoutHistory custWorkout : trainer.getWorkoutHistory()) {
+			
+			Workout workout = workoutDao.getById(custWorkout.getWorkoutId());
+			Facility facility = facilityDao.getById(workout.getFacilityId());
+			Customer customer = customerDao.getById(custWorkout.getCustomerId());
+			
+			String workoutName = workout.getname();
+			String facilityName = facility.getName();
+			Date workoutDate = custWorkout.getCheckDate();
+			WorkoutType workoutType = workout.getWorkoutType();
+			String custName = customer.getName() + " " + customer.getSurname();
+			String trainerName = trainer.getName() + " " + trainer.getSurname();
+			
+			workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, workoutDate, workoutType, custName, trainerName));
+		}
+		
+		return workoutHistory;
+	}
+	
+	@GET
+	@Path("/history/manager")
+	@JWTTokenNeeded
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<WorkoutHistoryDto> getManagerHistory(@Context HttpHeaders headers) {
+		
+		ArrayList<WorkoutHistoryDto> workoutHistory = new ArrayList<WorkoutHistoryDto>();
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.manager.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		ManagerDao managerDao = new ManagerDao();
+		Manager manager = managerDao.getByUsername(username);
+		
+		if(manager == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		int facilityId = manager.getFacilityId();
+		
+		CustomerDao customerDao = new CustomerDao();
+		WorkoutDao workoutDao = new WorkoutDao();
+		FacilityDao facilityDao = new FacilityDao();
+		TrainerDao trainerDao = new TrainerDao();
+		
+		for(Customer cust : customerDao.getAll()) {
+			for(WorkoutHistory custHist : cust.getWorkoutHistory()) {
+				Workout workout = workoutDao.getById(custHist.getWorkoutId());
+				
+				if(workout.getFacilityId() == facilityId) {
+					Facility facility = facilityDao.getById(facilityId);
+					Trainer trainer = trainerDao.getById(workout.getTrainerId());
+					
+					String workoutName = workout.getname();
+					String facilityName = facility.getName();
+					Date workoutDate = custHist.getCheckDate();
+					WorkoutType workoutType = workout.getWorkoutType();
+					String customerFullName = cust.getName() + " " + cust.getSurname();
+					String trainerFullName = "";
+					if(trainer != null) {
+						trainerFullName = trainer.getName() + " " + trainer.getSurname();
+					}
+					
+					workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, 
+							workoutDate, workoutType, customerFullName, trainerFullName));
+				}
+			}
+		}
+		
+		for(Trainer train : trainerDao.getAll()) {
+			for(WorkoutHistory trainHist : train.getWorkoutHistory()) {
+				Workout workout = workoutDao.getById(trainHist.getWorkoutId());
+				
+				if(workout.getFacilityId() == facilityId) {
+					Facility facility = facilityDao.getById(facilityId);
+					Customer customer = customerDao.getById(trainHist.getCustomerId());
+					
+					String workoutName = workout.getname();
+					String facilityName = facility.getName();
+					Date workoutDate = trainHist.getCheckDate();
+					WorkoutType workoutType = workout.getWorkoutType();
+					String trainerFullName = train.getName() + " " + train.getSurname();
+					String customerFullName = customer.getName() + " " + customer.getSurname();
+					
+					
+					workoutHistory.add(new WorkoutHistoryDto(workoutName, facilityName, workoutDate, 
+							workoutType, customerFullName, trainerFullName));
+				}
+			}
+		}
+		
+		return workoutHistory;
 	}
 }

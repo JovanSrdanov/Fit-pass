@@ -3,7 +3,9 @@
     "workoutHistory": [
       {
         "workoutId": 1,
-        "checkDate": "Jul 9, 2022, 12:16:53 AM"
+        "checkDate": "Jul 9, 2022, 12:16:53 AM",
+		"customerId" : "1",
+		"trainerId" : "1"
       }
     ],
     "id": 1,
@@ -20,7 +22,9 @@
     "workoutHistory": [
       {
         "workoutId": 2,
-        "checkDate": "Jul 9, 2022, 12:16:53 AM"
+        "checkDate": "Jul 9, 2022, 12:16:53 AM",
+		"customerId" : "6",
+		"trainerId" : "2"
       }
     ],
     "id": 2,

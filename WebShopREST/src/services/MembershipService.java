@@ -180,7 +180,7 @@ public class MembershipService {
 		}
 		
 		//*****************************************************************************************************
-		customer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay));
+		customer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay, customer.getId(), workout.getTrainerId()));
 		customerDao.writeFile();
 		System.out.println("DDoso do kraja");
 		return Response.status(200).build();

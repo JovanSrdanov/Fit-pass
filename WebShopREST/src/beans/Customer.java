@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,8 +22,16 @@ public class Customer extends User{
 		this.membershipId = membershipId;
 		this.points = points;
 		this.customerTypeId = customerTypeId;
+		
 		this.visitedFacilityIds = visitedFacilityIds;
+		if(visitedFacilityIds == null) {
+			this.visitedFacilityIds = new ArrayList<Integer>();
+		}
+		
 		this.workoutHistory = workoutHistory;
+		if(workoutHistory == null) {
+			this.workoutHistory = new ArrayList<WorkoutHistory>();
+		}
 	}
 	
 
@@ -41,8 +50,16 @@ public class Customer extends User{
 		this.membershipId = membershipId;
 		this.points = points;
 		this.customerTypeId = customerTypeId;
+		
 		this.visitedFacilityIds = visitedFacilityIds;
+		if(visitedFacilityIds == null) {
+			this.visitedFacilityIds = new ArrayList<Integer>();
+		}
+		
 		this.workoutHistory = workoutHistory;
+		if(workoutHistory == null) {
+			this.workoutHistory = new ArrayList<WorkoutHistory>();
+		}
 	}
 	/*
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
