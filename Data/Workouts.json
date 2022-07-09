@@ -2,12 +2,12 @@
   "1": {
     "id": 1,
     "isDeleted": false,
-    "name": "Lud trening",
-    "workoutType": "solo",
+    "name": "pAZI SAD",
+    "workoutType": "group",
     "facilityId": 1,
-    "durationInMinutes": 60,
-    "trainerId": -1,
-    "description": "Trening desc",
+    "durationInMinutes": 58,
+    "trainerId": 4,
+    "description": "OPA DARADIM",
     "picture": "WorkoutLogo6.png"
   },
   "2": {

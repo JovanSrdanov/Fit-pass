@@ -34,9 +34,9 @@
     "role": "trainer"
   },
   "3": {
+    "workoutHistory": [],
     "id": 3,
     "isDeleted": false,
-	"workoutHistory": [],
     "username": "NOVIt",
     "password": "123",
     "name": "CECECE",
@@ -46,15 +46,26 @@
     "role": "trainer"
   },
   "4": {
+    "workoutHistory": [],
     "id": 4,
     "isDeleted": false,
-	"workoutHistory": [],
     "username": "MrziMe",
     "password": "DAKrenem",
     "name": "daRadim",
     "surname": "ovo",
     "gender": "female",
     "birthDate": "Jan 18, 1900, 1:00:00 AM",
+    "role": "trainer"
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "username": "jocaccc",
+    "password": "12312",
+    "name": "sad",
+    "surname": "asdas",
+    "gender": "female",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
     "role": "trainer"
   }
 }
