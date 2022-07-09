@@ -99,5 +99,20 @@
     "gender": "male",
     "birthDate": "Jan 1, 1900, 1:00:00 AM",
     "role": "customer"
+  },
+  "6": {
+    "membershipId": -1,
+    "points": 0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [],
+    "id": 6,
+    "isDeleted": false,
+    "username": "NoviKupac",
+    "password": "uf",
+    "name": "NoviKupac1",
+    "surname": "NoviKupac2",
+    "gender": "female",
+    "birthDate": "Jan 27, 1900, 1:00:00 AM",
+    "role": "customer"
   }
 }
