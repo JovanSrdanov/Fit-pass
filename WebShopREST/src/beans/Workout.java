@@ -142,6 +142,7 @@ public class Workout {
 		this.durationInMinutes = newWorkout.durationInMinutes;
 		this.trainerId = newWorkout.trainerId;
 		this.description = newWorkout.description;
+		this.price = newWorkout.price;
 		//this.picture = newWorkout.picture;
 		
 	}
