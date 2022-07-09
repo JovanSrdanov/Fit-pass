@@ -4,8 +4,7 @@
     "points": 1,
     "customerTypeId": 1,
     "visitedFacilityIds": [
-      1,
-      2
+      1
     ],
     "workoutHistory": [
       {
@@ -31,6 +30,18 @@
         "checkDate": "Jul 9, 2022, 8:13:55 PM",
         "customerId": 1,
         "trainerId": 2
+      },
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 10, 2022, 12:44:29 AM",
+        "customerId": 1,
+        "trainerId": 4
+      },
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 10, 2022, 12:44:46 AM",
+        "customerId": 1,
+        "trainerId": 4
       }
     ],
     "id": 1,

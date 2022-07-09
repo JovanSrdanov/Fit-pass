@@ -247,8 +247,8 @@ public class MembershipService {
 		//Provera da li je ispucao broj puta u danu
 		int todayCheckins = 0;
 		for(WorkoutHistory workoutHistory : customer.getWorkoutHistory()) {
-			if(		workoutHistory.getCheckDate().getYear() == todayDay.getYear() ||
-					workoutHistory.getCheckDate().getDay() == todayDay.getDay() ||
+			if(		workoutHistory.getCheckDate().getYear() == todayDay.getYear() &&
+					workoutHistory.getCheckDate().getDay() == todayDay.getDay() &&
 					workoutHistory.getCheckDate().getMonth() == todayDay.getMonth()) {
 				
 				todayCheckins += 1;
@@ -262,6 +262,7 @@ public class MembershipService {
 		
 		//*****************************************************************************************************
 		customer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay, customer.getId(), workout.getTrainerId()));
+		customer.addVistedFacility(workout.getFacilityId());
 		customerDao.writeFile();
 		System.out.println("DDoso do kraja");
 		return Response.status(200).build();

@@ -133,4 +133,11 @@ public class Customer extends User{
 		//this.points = newCustomer.points;
 		//this.customerTypeId = newCustomer.customerTypeId;
 	}
+
+	public void addVistedFacility(int facilityId) {
+		if(!visitedFacilityIds.contains(facilityId)) {
+			visitedFacilityIds.add(facilityId);
+		}
+		
+	}
 }

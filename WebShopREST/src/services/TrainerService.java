@@ -23,6 +23,7 @@ import javax.ws.rs.core.Response;
 
 import beans.Trainer;
 import beans.Workout;
+import beans.WorkoutHistory;
 import beans.Trainer;
 import beans.Trainer;
 import beans.Facility;
@@ -82,6 +83,9 @@ public class TrainerService {
 		if(RegistrationService.usernameExists(trainer.getUsername())) {
 			return Response.status(409).build();
 		}
+		
+		trainer.setWorkoutHistory(new ArrayList<WorkoutHistory>());
+		trainer.setRole(Role.trainer);
 		
 		dao.addNew(trainer);
 		return Response.ok().build();

@@ -30,6 +30,7 @@ import beans.Product;
 import beans.Role;
 import beans.Trainer;
 import beans.User;
+import beans.WorkoutHistory;
 import dao.AdminDao;
 import dao.CustomerDao;
 import dao.ManagerDao;
@@ -180,6 +181,7 @@ public class CustomerService {
 		customer.setMembershipId(-1);
 		customer.setRole(Role.customer);
 		customer.setVisitedFacilityIds(new ArrayList<Integer>());
+		customer.setWorkoutHistory(new ArrayList<WorkoutHistory>());
 		customer.setDeleted(false);
 		customer.setCustomerTypeId(1);
 		dao.addNew(customer);

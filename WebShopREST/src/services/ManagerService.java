@@ -76,6 +76,9 @@ public class ManagerService {
 			return Response.status(409).build();
 		}
 		
+		manager.setFacilityId(-1);
+		manager.setRole(Role.manager);
+		
 		dao.addNew(manager);
 		return Response.ok().build();
 	}
