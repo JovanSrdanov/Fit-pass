@@ -21,7 +21,7 @@
         "trainerId": 1,
         "description": "Trening desc2",
         "picture": "WorkoutLogo6.png",
-        "price": 200.0
+        "price": -1
     },
     "3": {
         "id": 3,

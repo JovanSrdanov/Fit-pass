@@ -63,7 +63,15 @@
                             style="float: left"
                             v-if="loggedInUser.role=='customer'"
                             href="#/"
-                            >Treninzi</a
+                            >Istorija treninga</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='customer'"
+                            href="#/"
+                            >Zakazani treninzi</a
                         >
                     </li>
 
@@ -81,7 +89,15 @@
                             style="float: left"
                             v-if="loggedInUser.role=='trainer'"
                             href="#/"
-                            >Treninzi</a
+                            >Istorija treninga</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            style="float: left"
+                            v-if="loggedInUser.role=='trainer'"
+                            href="#/"
+                            >Zakazani treninzi</a
                         >
                     </li>
 
