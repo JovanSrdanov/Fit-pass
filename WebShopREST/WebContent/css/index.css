@@ -104,3 +104,7 @@ button {
     border: solid 2px black;
     background-color: white;
 }
+
+th {
+    border-bottom: 3px solid white;
+}

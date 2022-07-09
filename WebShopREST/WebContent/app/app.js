@@ -14,6 +14,9 @@ const komentari = { template: "<komentari></komentari>" };
 const dodajAktivnost = { template: "<dodajAktivnost></dodajAktivnost>" };
 const treneriIkupci = { template: "<treneriIkupci></treneriIkupci>" };
 const izmeniAktivnost = { template: "<izmeniAktivnost></izmeniAktivnost>" };
+const prijaviKupcaNaAktivnost = {
+    template: "<prijaviKupcaNaAktivnost></prijaviKupcaNaAktivnost>",
+};
 const zakazaneAktivnostiUObjektu = {
     template: "<zakazaneAktivnostiUObjektu></zakazaneAktivnostiUObjektu>",
 };
@@ -45,6 +48,12 @@ const router = new VueRouter({
         {
             path: "/pregledObjekta/:id/treneriIkupci",
             component: treneriIkupci,
+            props: true,
+        },
+
+        {
+            path: "/pregledObjekta/:id/prijaviKupcaNaAktivnost",
+            component: prijaviKupcaNaAktivnost,
             props: true,
         },
         {

@@ -1,0 +1,4 @@
+tbody tr.SelectedActivityClass {
+    background: green !important;
+    box-shadow: 1px 1px 8px green !important;
+}

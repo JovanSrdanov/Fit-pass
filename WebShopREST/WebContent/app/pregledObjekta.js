@@ -61,7 +61,7 @@ Vue.component("pregledObjekta", {
                                  </p> 
                           <p v-if="myFacility">  
                                 <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
-                                <button >Prijavi kupca</button>                         
+                                <button  v-on:click="CheckInCustomer" >Prijavi kupca</button>                         
                             </p> 
                     </td>
 
@@ -135,12 +135,10 @@ Vue.component("pregledObjekta", {
 
                                 <tbody>
                                     <tr v-for="c in commentsForFacility">
-                                        <td>{{c.customer.name}} {{c.customer.surname}}</td>
-                                        
+                                        <td>{{c.customer.name}} {{c.customer.surname}}</td>                                        
                                         <td>{{c.text}}</td>
                                         <td>{{c.rating}}</td>    
-                                         <td>{{c.status}}</td>           
-                                        <td><button>Odobri</button><button>Odbij</button></td>
+                                        <td>{{c.status}}</td>                                                 
                                     </tr>
                                 </tbody>
                             </table>
@@ -247,6 +245,11 @@ Vue.component("pregledObjekta", {
         },
         AddNewActivity: function () {
             router.push(`/pregledObjekta/${this.facilityID}/dodajAktivnost`);
+        },
+        CheckInCustomer: function () {
+            router.push(
+                `/pregledObjekta/${this.facilityID}/prijaviKupcaNaAktivnost`
+            );
         },
         SeeHistoryOfTrainings: function () {},
         checkStatus(start, end) {
