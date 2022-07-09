@@ -9,83 +9,139 @@ Vue.component("pregledObjekta", {
                 location: { address: "" },
             },
             SportFacilityList: {},
+            commentsForFacility: {},
         };
     },
-    template: `
-  <div>
-            <h1>{{currentFacility.facility.name}} </h1>
+    template: `  
+    <div class="WholeScreen">
+            <h1>{{currentFacility.facility.name}}</h1>
+            <table class="LogoInfoMap">
+                <tr>
+                    <td>
+                        <img
+                            class="LogoPicture"
+                            v-bind:src="getImgUrl(currentFacility.facility.logo)"
+                            alt="LOGO"
+                            height="500px"
+                            width="500px"
+                        />
+                    </td>
+
+                    <td>
+                        <p>{{currentFacility.facility.facilityType}}</p>
+
+                        <p>
+                            Menadžer: {{currentFacility.managerName}}
+                            {{currentFacility.managerSurname}}
+                        </p>
+                        <p>
+                            {{currentFacility.location.street}}
+                            {{currentFacility.location.streetNumber}}
+                        </p>
+                        <p>
+                            {{currentFacility.location.city}}
+                            {{currentFacility.location.postCode}}
+                        </p>
+                        <p>
+                            ({{currentFacility.location.longitude}},
+                            {{currentFacility.location.latitude}})
+                        </p>
+                        <p>
+                            Prosečna ocena:
+                            {{currentFacility.facility.rating}}/5
+                        </p>
+                        <p>
+                            Radno vreme: {{currentFacility.facility.workStart}}
+                            - {{currentFacility.facility.workEnd}}
+                            {{checkStatus(currentFacility.facility.workStart,currentFacility.facility.workEnd)}}
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="mapClass" id="mapShow"></div>
+                    </td>
+                </tr>
+              
+            </table>
+                           
+            <h2 class="white">Sadržaj koji se nudi i komentari korisnika</h2>
             
-              <div class="infoAndTranings">
-                    <div class="objectInfo">
-                        <table>               
-                            <tr><td>{{currentFacility.facility.facilityType}}</td></tr>
-                            <tr><td>
-                            Menadžer: {{currentFacility.managerName}}  {{currentFacility.managerSurname}}
-                           </td> </tr>  
-                            <tr><td>{{currentFacility.location.street}} {{currentFacility.location.streetNumber}}</td></tr>
-                              <tr><td>{{currentFacility.location.city}} {{currentFacility.location.postCode}} </td></tr>
-                                <tr><td>({{currentFacility.location.longitude}}, {{currentFacility.location.latitude}}) </td></tr>
-                            <tr><td>
-                                Prosečna ocena: {{currentFacility.facility.rating}}/5
-                           </td> </tr>
-                            <tr><td>
-                                Radno vreme: {{currentFacility.facility.workStart}} -
-                                {{currentFacility.facility.workEnd}}   {{checkStatus(currentFacility.facility.workStart,currentFacility.facility.workEnd)}}
-                            </td></tr> 
-                            <tr v-if="myFacility"><td>  
-                                <button v-on:click="ViewCustomersAndTrainers">Treneri i kupci</button> 
-                                <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
-                                <button v-on:click="SeeHistoryOfTrainings" >Pregled zakazanih treninga</button>     
-                                <button >Prijavi kupca</button>                         
-                            </td></tr> 
-                        </table>     
-                    </div>    
-                       
-                    <div class="facilityOrActivityTableStyle">
-                    <table>
-                        <tbody>
-                            <tr v-for="A in allActivitys">
-                                <td>
-                                    <img
-                                        v-bind:src="getWorkoutImgUrl(A.workout.picture)"
-                                        alt="LOGO"
-                                        height="250"
-                                        width="250"
-                                    />
-                                </td>
-                                <td  width="350">
-                                
-                                        <p> <strong>{{A.workout.name}} </strong></p>
-                                        <p>Tip aktivnosti:  {{TypeConvert(A.workout.workoutType)}}</p>
-                                        <p>Trajanje: {{A.workout.durationInMinutes}}</p>
-                                        <p>DOPLATA ZA TRENING DODATI</p>
-                                        <p>Trener: {{IfTrainer(A.trainer)}}</p>                                          
-                                        <p v-if="myFacility"> <button v-on:click="editAcitivity(A.workout.id)">Izmeni</button><p>                               
-                                  
+            <table class="activityAndComments">
+              <tr>
+                    <td>
+                        <div class="Activity">
+                            <table>
+                                <tbody>
+                                    <tr v-for="A in allActivitys">
+                                        <td>
+                                            <img
+                                                v-bind:src="getWorkoutImgUrl(A.workout.picture)"
+                                                alt="LOGO"
+                                                height="250"
+                                                width="250"
+                                            />
+                                        </td>
+                                        <td width="350">
+                                            <p>
+                                                <strong
+                                                    >{{A.workout.name}}
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                Tip aktivnosti:
+                                                {{TypeConvert(A.workout.workoutType)}}
+                                            </p>
+                                            <p>
+                                                Trajanje:
+                                                {{A.workout.durationInMinutes}}
+                                            </p>
+                                            <p>DOPLATA ZA TRENING DODATI</p>
+                                            <p>
+                                                Trener: {{IfTrainer(A.trainer)}}
+                                            </p>
+                                            <p v-if="myFacility">
+                                                <button
+                                                    v-on:click="editAcitivity(A.workout.id)"
+                                                >
+                                                    Izmeni
+                                                </button>
+                                            </p>
+                                        </td>
 
+                                        <td width="250">
+                                            {{A.workout.description}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
 
-                                </td>
-                                <td  width="250">
-                          
-                               {{A.workout.description}}</td>
-                            </tr>
-                        </tbody> 
-                    </table>    
-                    </div>           
-             </div>
+                    <td>  
+                        <div class="tabelaKomentaraZaObjekat">
+                            <table>
+                                <th>Kupac</th>
+                                <th>Tekst</th>
+                                <th>Ocena</th>
+                                <th>Odobren / odbijen</th>
 
-        
-
-            <div class="LogoLocation"> 
-                  <img
-                    v-bind:src="getImgUrl(currentFacility.facility.logo)"
-                    alt="LOGO"
-                    height="500px"
-                    width="500px"
-                />
-                <div class="mapClass" id="mapShow"></div>
-            </div>           
-        </div>    
+                                <tbody>
+                                    <tr v-for="c in commentsForFacility">
+                                        <td>{{c.customer.name}} {{c.customer.surname}}</td>
+                                        
+                                        <td>{{c.text}}</td>
+                                        <td>{{c.rating}}</td>    
+                                         <td>{{c.status}}</td>           
+                                        <td><button>Odobri</button><button>Odbij</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+                    </td>
+                </tr>
+            </table>
+        </div>
+ 
                 `,
 
     mounted() {
