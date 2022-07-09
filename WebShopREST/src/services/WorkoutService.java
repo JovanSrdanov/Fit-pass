@@ -96,7 +96,7 @@ public class WorkoutService {
 		WorkoutDao dao = (WorkoutDao) ctx.getAttribute("WorkoutDao");
 		
 		for(Workout cust : dao.getAll()) {
-			if(cust.getname().equals(workout.getname())) {
+			if(cust.getName().equals(workout.getName())) {
 				return Response.status(409).build();
 			}
 		}
@@ -140,7 +140,7 @@ public class WorkoutService {
 		
 		for(int workoutId : facility.getWorkoutIds()) {
 			Workout workout = workoutDao.getById(workoutId);
-			if(workout.getname().equals(updatedWorkout.getname())) {
+			if(workout.getName().equals(updatedWorkout.getName())) {
 				throw new WebApplicationException(Response.Status.CONFLICT);
 			}
 		}
@@ -218,7 +218,7 @@ public class WorkoutService {
 			Facility facility = facilityDao.getById(workout.getFacilityId());
 			Trainer trainer = trainerDAo.getById(custWorkout.getTrainerId());
 			
-			String workoutName = workout.getname();
+			String workoutName = workout.getName();
 			String facilityName = facility.getName();
 			Date workoutDate = custWorkout.getCheckDate();
 			WorkoutType workoutType = workout.getWorkoutType();
@@ -229,7 +229,7 @@ public class WorkoutService {
 			}
 			
 			workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, 
-					workoutDate, workoutType, custName, trainName));
+					workoutDate, workoutType, custName, trainName, workout.getPrice()));
 		}
 		
 		return workoutHistory;
@@ -266,7 +266,7 @@ public class WorkoutService {
 			Facility facility = facilityDao.getById(workout.getFacilityId());
 			Customer customer = customerDao.getById(custWorkout.getCustomerId());
 			
-			String workoutName = workout.getname();
+			String workoutName = workout.getName();
 			String facilityName = facility.getName();
 			Date workoutDate = custWorkout.getCheckDate();
 			WorkoutType workoutType = workout.getWorkoutType();
@@ -274,7 +274,7 @@ public class WorkoutService {
 			String trainerName = trainer.getName() + " " + trainer.getSurname();
 			
 			workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, workoutDate,
-					workoutType, custName, trainerName));
+					workoutType, custName, trainerName, workout.getPrice()));
 		}
 		
 		return workoutHistory;
@@ -316,7 +316,7 @@ public class WorkoutService {
 					Facility facility = facilityDao.getById(facilityId);
 					Trainer trainer = trainerDao.getById(workout.getTrainerId());
 					
-					String workoutName = workout.getname();
+					String workoutName = workout.getName();
 					String facilityName = facility.getName();
 					Date workoutDate = custHist.getCheckDate();
 					WorkoutType workoutType = workout.getWorkoutType();
@@ -327,7 +327,7 @@ public class WorkoutService {
 					}
 					
 					workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, 
-							workoutDate, workoutType, customerFullName, trainerFullName));
+							workoutDate, workoutType, customerFullName, trainerFullName, workout.getPrice()));
 				}
 			}
 		}
@@ -340,7 +340,7 @@ public class WorkoutService {
 					Facility facility = facilityDao.getById(facilityId);
 					Customer customer = customerDao.getById(trainHist.getCustomerId());
 					
-					String workoutName = workout.getname();
+					String workoutName = workout.getName();
 					String facilityName = facility.getName();
 					Date workoutDate = trainHist.getCheckDate();
 					WorkoutType workoutType = workout.getWorkoutType();
@@ -349,7 +349,7 @@ public class WorkoutService {
 					
 					
 					workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, workoutDate, 
-							workoutType, customerFullName, trainerFullName));
+							workoutType, customerFullName, trainerFullName, workout.getPrice()));
 				}
 			}
 		}
@@ -452,7 +452,7 @@ public class WorkoutService {
 			
 			
 			int appointentId = app.getId();
-			String workoutName = workout.getname();
+			String workoutName = workout.getName();
 			String facilityName = facility.getName();
 			Date workoutDate = app.getDate();
 			WorkoutType workoutType = workout.getWorkoutType();
@@ -460,7 +460,7 @@ public class WorkoutService {
 			String trainerFullName = train.getName() + " " + train.getSurname();
 			
 			appointentsDto.add(new WorkoutHistoryDto(appointentId, workoutName, facilityName,
-					workoutDate, workoutType, customerFullName, trainerFullName));
+					workoutDate, workoutType, customerFullName, trainerFullName, workout.getPrice()));
 			
 		}
 		

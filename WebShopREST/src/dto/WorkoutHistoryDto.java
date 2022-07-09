@@ -12,10 +12,12 @@ public class WorkoutHistoryDto {
 	private WorkoutType workoutType;
 	private String customerFullName;
 	private String trainerFullName;
+	private double price;
 	
 
+
 	public WorkoutHistoryDto(int appointentId, String workoutName, String facilityName, Date workoutDate,
-			WorkoutType workoutType, String customerFullName, String trainerFullName) {
+			WorkoutType workoutType, String customerFullName, String trainerFullName, double price) {
 		super();
 		this.appointentId = appointentId;
 		this.workoutName = workoutName;
@@ -24,13 +26,29 @@ public class WorkoutHistoryDto {
 		this.workoutType = workoutType;
 		this.customerFullName = customerFullName;
 		this.trainerFullName = trainerFullName;
+		this.price = price;
 	}
-
 
 	public WorkoutHistoryDto() {
 		
 	}
 	
+	public int getAppointentId() {
+		return appointentId;
+	}
+
+	public void setAppointentId(int appointentId) {
+		this.appointentId = appointentId;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public int getWorkoutId() {
 		return appointentId;
 	}
