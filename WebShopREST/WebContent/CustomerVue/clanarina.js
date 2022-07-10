@@ -240,9 +240,15 @@ Vue.component("clanarina", {
                 promoCodeVar = "";
             }
 
+            var dayAct = this.dailyActivty;
+
+            if (this.NeogranicenoCheck) {
+                dayAct = -1;
+            }
+
             console.log(promoCodeVar);
             params.append("code", this.selectedBase.code);
-            params.append("perDay", this.dailyActivty);
+            params.append("perDay", dayAct);
             params.append("promoCode", promoCodeVar);
 
             axios
@@ -253,7 +259,7 @@ Vue.component("clanarina", {
                     },
                 })
                 .then((response) => {
-                    window.location.href = "#/pocetna";
+                    this.$root.VarToken();
                 })
                 .catch((error) => {
                     alert("Greska u search metodi");

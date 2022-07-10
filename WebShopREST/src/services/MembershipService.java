@@ -106,13 +106,14 @@ public class MembershipService {
 		
 		CustomerDao customerDao = new CustomerDao();
 		int tokenCustomerId = customerDao.getByUsername(username).getId();
+		Customer customer = customerDao.getByUsername(username);
 		if(tokenCustomerId != customerId) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		
 		
 		MembershipDao dao = (MembershipDao) ctx.getAttribute("MembershipDao");
-		Membership membership = dao.getForCustomerId(customerId);
+		Membership membership = dao.getById(customer.getMembershipId());
 		if(membership == null) {
 			throw new WebApplicationException(Response.Status.NO_CONTENT);
 		}
