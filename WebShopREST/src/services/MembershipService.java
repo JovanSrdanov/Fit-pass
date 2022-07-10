@@ -172,9 +172,14 @@ public class MembershipService {
         cal.add(Calendar.DATE, baseMembership.getDurationDays());
  
         Date endDate = cal.getTime();
+        
+        int perDayForPrice = perDay;
+        if(perDay == -1) {
+        	perDayForPrice = 11;
+        }
 		
         Membership membership = new Membership();
-		membership.setPrice(perDay * baseMembership.getPrice() * multiplicator * discount);
+		membership.setPrice(perDayForPrice * baseMembership.getPrice() * multiplicator * discount);
 		membership.setCustomerId(customer.getId());
 		membership.setDeleted(false);
 		membership.setCode(code);
