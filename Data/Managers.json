@@ -190,5 +190,17 @@
     "gender": "male",
     "birthDate": "Jan 1, 1900, 1:00:00 AM",
     "role": "manager"
+  },
+  "17": {
+    "facilityId": 17,
+    "id": 17,
+    "isDeleted": false,
+    "username": "Jana",
+    "password": "a",
+    "name": "a",
+    "surname": "a",
+    "gender": "female",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "manager"
   }
 }

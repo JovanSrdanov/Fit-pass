@@ -224,5 +224,18 @@
     "rating": 0,
     "workStart": "07:00",
     "workEnd": "21:00"
+  },
+  "17": {
+    "id": 17,
+    "isDeleted": false,
+    "name": "sadasda",
+    "facilityType": "bjzbopl ",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 17,
+    "logo": "FacilityLogo17.png",
+    "rating": 0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
   }
 }

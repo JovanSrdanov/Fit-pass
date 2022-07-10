@@ -158,5 +158,15 @@
     "streetNumber": "7",
     "city": "Belgrade",
     "postCode": "11118"
+  },
+  "17": {
+    "id": 17,
+    "isDeleted": false,
+    "latitude": "44.79841585",
+    "longitude": "20.470693411078507",
+    "street": "Mutapova",
+    "streetNumber": "11",
+    "city": "Belgrade",
+    "postCode": "11000"
   }
 }
