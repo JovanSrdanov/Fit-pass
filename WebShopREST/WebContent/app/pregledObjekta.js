@@ -217,11 +217,7 @@ Vue.component("pregledObjekta", {
                     });
             } else {
                 if (USER.role == "manager") {
-                    if (
-                        USER.visitedFacilityIds.includes(
-                            parseInt(this.facilityID)
-                        )
-                    ) {
+                    if (USER.facilityId == this.facilityID) {
                         this.allComments = true;
                         axios
                             .get(
