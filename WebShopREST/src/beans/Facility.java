@@ -12,12 +12,12 @@ public class Facility {
 	private boolean status;
 	private int locationId;
 	private String logo;
-	private int rating;
+	private double rating;
 	private String workStart;
 	private String workEnd;
 	
 	public Facility(int id, boolean isDeleted, String name, String facilityType, List<Integer> workoutIds,
-			boolean status, int locationId, String logo, int rating, String workStart, String workEnd) {
+			boolean status, int locationId, String logo, double rating, String workStart, String workEnd) {
 		super();
 		this.id = id;
 		this.isDeleted = isDeleted;
@@ -77,10 +77,10 @@ public class Facility {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	public String getWorkStart() {
