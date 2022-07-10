@@ -99,8 +99,10 @@ private static HashMap<Integer, PromoCode> promoCodes;
 	
 	public double getDiscountValid(String code) {
 		PromoCode promoCode = getByCode(code);
+		if(promoCode==null) {return -1;}
 		
-		if(promoCode.getUsageCount() > 0 && promoCode.getValidDate().compareTo(new Date()) <= 0) {
+		if(promoCode.getUsageCount() > 0 && promoCode.getValidDate().compareTo(new Date()) >= 0) {
+			System.out.println(promoCode.getDiscountPercentage());
 			return promoCode.getDiscountPercentage();
 		}
 		

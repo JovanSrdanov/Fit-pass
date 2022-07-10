@@ -105,6 +105,7 @@ public class PromoCodeService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public double getAll(@PathParam("code") String code) {	
 		PromoCodeDao dao = (PromoCodeDao) ctx.getAttribute("PromoCodeDao");
+		
 		return dao.getDiscountValid(code);
 	}
 }

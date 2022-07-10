@@ -13,6 +13,7 @@ Vue.component("clanarina", {
             promoCodeMessage: "",
             promoCodeDiscount: -1,
             isVerified: false,
+            lastVerifiedPromoCode: "",
         };
     },
     template: ` 
@@ -57,7 +58,7 @@ Vue.component("clanarina", {
                                     />
 
                                     <label for="checkbox"
-                                        >Neogranic broj aktivnosti</label
+                                        >Neogranicen broj aktivnosti</label
                                     >
                                 </p>
                                 <input
@@ -67,13 +68,13 @@ Vue.component("clanarina", {
                                     v-model="promoCodeEnter"
                                     placeholder="Uneti promo kod"
                                 />
-                                <button>Verifikuj kod</button>
+                                <button v-on:click="verifyPromoCode">Verifikuj kod</button>
                                 <p>Promo kod je: {{promoCodeMessage}}</p>
-                                <p>Popust koji kod nudi: {{promoCodeDiscount}}</p>
+                                <p>Popust koji kod nudi: {{promoCodeComputed}}</p>
 
                                 <p>
                                     Konačna cena: {{priceComputed}}
-                                    <button>Potvrdi članarinu</button>
+                                    <button v-on:click="CreateClanarina">Potvrdi članarinu</button>
                                 </p>
                             </div >
                         </td>
@@ -144,9 +145,7 @@ Vue.component("clanarina", {
             },
         };
 
-        if (this.customer.mebershipId != -1) {
-            console.log("Ima clanarinu ", this.customer.mebershipId);
-
+        if (this.customer.membershipId != -1) {
             this.hasMembership = true;
 
             axios
@@ -162,6 +161,11 @@ Vue.component("clanarina", {
     },
 
     computed: {
+        promoCodeComputed() {
+            if (this.promoCodeDiscount == -1)
+                return "Niste uneli kod ili on nije validan";
+            return this.promoCodeDiscount + "%";
+        },
         priceComputed() {
             if (this.selectedBase.code === "") return 0;
 
@@ -170,11 +174,19 @@ Vue.component("clanarina", {
             let forComputePriceMulti = this.selectedBase.priceMultiplicator;
             let forStartPrice = this.selectedBase.price;
 
-            if ((forComputePromoCode = -1)) {
+            let POPUSTODTIPAKUPCA = 1; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            console.log("FCPC " + forComputePromoCode);
+            if (forComputePromoCode == -1) {
                 forComputePromoCode = 1;
+            } else {
+                forComputePromoCode = forComputePromoCode / 100;
             }
             if (this.NeogranicenoCheck) {
-                dailiactivityCompute = 11;
+                forComputeDailyActivity = 11;
             }
             if (forComputeDailyActivity == 1) {
                 forComputePriceMulti = 1;
@@ -183,13 +195,67 @@ Vue.component("clanarina", {
                 forComputePromoCode *
                     forComputeDailyActivity *
                     forComputePriceMulti *
-                    forStartPrice
+                    forStartPrice *
+                    POPUSTODTIPAKUPCA
             );
         },
     },
     methods: {
-        verifyPromoCode() {},
-        CreateClanarina: function () {},
+        verifyPromoCode() {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+
+            this.lastVerifiedPromoCode = this.promoCodeEnter;
+            axios
+                .get("rest/promoCode/valid/" + this.promoCodeEnter, yourConfig)
+                .then((response) => {
+                    this.promoCodeDiscount = response.data;
+                    if (response.data == -1) {
+                        this.isVerified = false;
+
+                        this.promoCodeMessage =
+                            " nije validan (" +
+                            this.lastVerifiedPromoCode +
+                            ")";
+                    } else {
+                        this.isVerified = true;
+
+                        this.promoCodeMessage =
+                            " validan (" + this.lastVerifiedPromoCode + ")";
+                    }
+                });
+        },
+        CreateClanarina: function () {
+            if (this.selectedBase.code == "") {
+                alert("Izaberite osnovu clanarine");
+                return;
+            }
+            const params = new URLSearchParams();
+
+            var promoCodeVar = this.lastVerifiedPromoCode;
+            if (this.isVerified) {
+                promoCodeVar = "";
+            }
+
+            params.append("code", this.selectedBase.code);
+            params.append("perDay", this.dailyActivty);
+            params.append("promoCode", promoCodeVar);
+
+            axios
+                .post("rest/customer/search", params, {
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                })
+                .then((response) => {})
+                .catch((error) => {
+                    alert("Greska u search metodi");
+                });
+        },
         convertStatus(status) {
             if (status) return "Aktivna";
             return "Nije aktivna";
