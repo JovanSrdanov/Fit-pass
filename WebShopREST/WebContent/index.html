@@ -62,15 +62,15 @@
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='customer'"
-                            href="#/"
-                            >Istorija treninga</a
+                            href="#/istorijaTreningaKupac"
+                            >Istorija aktivnosti</a
                         >
                     </li>
                     <li>
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='customer'"
-                            href="#/"
+                            href="#/zakazaniTreninziKupac"
                             >Zakazani treninzi</a
                         >
                     </li>
@@ -89,14 +89,14 @@
                             style="float: left"
                             v-if="loggedInUser.role=='trainer'"
                             href="#/istorijaTreningaTrener"
-                            >Istorija treninga</a
+                            >Istorija aktivnosti</a
                         >
                     </li>
                     <li>
                         <a
                             style="float: left"
                             v-if="loggedInUser.role=='trainer'"
-                            href="#/"
+                            href="#/zakazaniTreninziTrener"
                             >Zakazani treninzi</a
                         >
                     </li>
@@ -196,6 +196,7 @@
         <script src="app/pregledProfila.js"></script>
         <script src="app/prijava.js"></script>
         <script src="app/pocetna.js"></script>
+        <script src="app/loadCreateSP.js"></script>
 
         <script src="app/app.js"></script>
     </body>

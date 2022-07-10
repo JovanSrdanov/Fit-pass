@@ -26,7 +26,7 @@ Vue.component("istorijaTreningaTrener", {
     },
     template: `
         <div class="WholeScreen">
-            <h1>Istorija aktivnosti u objektu</h1>
+            <h1>Moja istorija aktivnosti </h1>
             <table class="tableForKorisnici">
                 <td>
                     <div class="SearchSortFilterWrapper">
@@ -66,7 +66,7 @@ Vue.component("istorijaTreningaTrener", {
                             <button v-on:click="SearchManagerActivity">Pretraži</button>
                         </p>
                         <p>Filtriranje:</p>
-                        <label for="filterWokroutType">Izabrati tip treninga:</label>
+                        <label for="filterWokroutType">Izabrati tip aktivnosti:</label>
                         <select name="filterWokroutType" id="filterWokroutType" v-model="filterWokroutType">
                             <option value="personal">Personalni trening</option>
                             <option value="group">Grupni trening</option>
@@ -125,7 +125,6 @@ Vue.component("istorijaTreningaTrener", {
   `,
 
     mounted() {
-        this.facId = this.$route.params.id;
         var today = new Date();
         var start = new Date();
         var end = new Date();

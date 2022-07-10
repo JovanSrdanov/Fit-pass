@@ -148,5 +148,15 @@
     "streetNumber": "10a",
     "city": "Belgrade",
     "postCode": "11000"
+  },
+  "16": {
+    "id": 16,
+    "isDeleted": false,
+    "latitude": "44.7956324",
+    "longitude": "20.4853968",
+    "street": "Vele Nigrinove",
+    "streetNumber": "7",
+    "city": "Belgrade",
+    "postCode": "11118"
   }
 }

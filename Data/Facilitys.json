@@ -16,7 +16,8 @@
       10,
       11,
       12,
-      13
+      13,
+      15
     ],
     "status": true,
     "locationId": 2,
@@ -45,7 +46,9 @@
     "isDeleted": false,
     "name": "Udarac u prazno",
     "facilityType": "Bejzbol teren",
-    "workoutIds": [],
+    "workoutIds": [
+      14
+    ],
     "status": true,
     "locationId": 3,
     "logo": "FacilityLogo3.png",
@@ -205,6 +208,19 @@
     "status": false,
     "locationId": 15,
     "logo": "FacilityLogo15.png",
+    "rating": 0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
+  },
+  "16": {
+    "id": 16,
+    "isDeleted": false,
+    "name": "testLoad",
+    "facilityType": "1231231231",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 16,
+    "logo": "FacilityLogo16.png",
     "rating": 0,
     "workStart": "07:00",
     "workEnd": "21:00"

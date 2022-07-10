@@ -3,6 +3,7 @@ const prijava = { template: "<prijava></prijava>" };
 const pocetna = { template: "<pocetna></pocetna>" };
 const pregledObjekta = { template: "<pregledObjekta></pregledObjekta>" };
 const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
+const loadCreateSP = { template: "<loadCreateSP></loadCreateSP>" };
 
 const korisnici = { template: "<korisnici></korisnici>" };
 const registruj = { template: "<registruj></registruj>" };
@@ -27,6 +28,13 @@ const istorijaTreningaTrener = {
     template: "<istorijaTreningaTrener></istorijaTreningaTrener>",
 };
 
+const zakazaniTreninziKupac = {
+    template: "<zakazaniTreninziKupac></zakazaniTreninziKupac>",
+};
+const istorijaTreningaKupac = {
+    template: "<istorijaTreningaKupac></istorijaTreningaKupac>",
+};
+
 const router = new VueRouter({
     mode: "hash",
 
@@ -34,6 +42,7 @@ const router = new VueRouter({
         { path: "/prijava", component: prijava, props: true },
         { path: "/", component: pocetna, props: true },
         { path: "/komentari", component: komentari, props: true },
+        { path: "/loadCreateSP", component: loadCreateSP, props: true },
 
         {
             path: "/istorijaTreningaTrener",
@@ -43,6 +52,17 @@ const router = new VueRouter({
         {
             path: "/zakazaniTreninziTrener",
             component: zakazaniTreninziTrener,
+            props: true,
+        },
+
+        {
+            path: "/zakazaniTreninziKupac",
+            component: zakazaniTreninziKupac,
+            props: true,
+        },
+        {
+            path: "/istorijaTreningaKupac",
+            component: istorijaTreningaKupac,
             props: true,
         },
 

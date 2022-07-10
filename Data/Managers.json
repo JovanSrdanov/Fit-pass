@@ -180,7 +180,7 @@
     "role": "manager"
   },
   "16": {
-    "facilityId": -1,
+    "facilityId": 16,
     "id": 16,
     "isDeleted": false,
     "username": "mika",

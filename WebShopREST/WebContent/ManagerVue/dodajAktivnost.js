@@ -197,10 +197,7 @@ Vue.component("dodajAktivnost", {
                             yourConfig
                         )
                         .then((response) => {
-                            //////////// ovde promeni
-                            setTimeout(function () {
-                                window.location.href = "#/pocetna";
-                            }, 2500);
+                            window.location.href = "#/loadCreateSP";
                         })
                         .catch((error) => {
                             this.alreadyExists =

@@ -154,5 +154,29 @@
     "description": "sadas",
     "picture": "WorkoutLogo13.png",
     "price": 123.0
+  },
+  "14": {
+    "id": 14,
+    "isDeleted": false,
+    "name": "TEST1",
+    "workoutType": "personal",
+    "facilityId": 3,
+    "durationInMinutes": 20,
+    "trainerId": 3,
+    "description": "VAVA",
+    "picture": "WorkoutLogo14.png",
+    "price": 1.0
+  },
+  "15": {
+    "id": 15,
+    "isDeleted": false,
+    "name": "PaziSad",
+    "workoutType": "group",
+    "facilityId": 1,
+    "durationInMinutes": 45,
+    "trainerId": 2,
+    "description": "Opa",
+    "picture": "WorkoutLogo15.png",
+    "price": 420.0
   }
 }

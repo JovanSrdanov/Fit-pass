@@ -92,17 +92,44 @@
     "role": "customer"
   },
   "3": {
-    "membershipId": -1,
+    "membershipId": 6,
     "points": 20,
     "customerTypeId": 1,
     "visitedFacilityIds": [
-      2
+      2,
+      1,
+      3
     ],
-    "workoutHistory": [],
+    "workoutHistory": [
+      {
+        "workoutId": 6,
+        "checkDate": "Jul 10, 2022, 11:28:16 AM",
+        "customerId": 3,
+        "trainerId": 3
+      },
+      {
+        "workoutId": 9,
+        "checkDate": "Jul 10, 2022, 11:28:23 AM",
+        "customerId": 3,
+        "trainerId": 2
+      },
+      {
+        "workoutId": 14,
+        "checkDate": "Jul 10, 2022, 11:29:19 AM",
+        "customerId": 3,
+        "trainerId": 3
+      },
+      {
+        "workoutId": 14,
+        "checkDate": "Jul 10, 2022, 11:29:23 AM",
+        "customerId": 3,
+        "trainerId": 3
+      }
+    ],
     "id": 3,
     "isDeleted": false,
-    "username": "joja",
-    "password": "123",
+    "username": "j",
+    "password": "j",
     "name": "Jovan",
     "surname": "Srdanov",
     "gender": "male",
