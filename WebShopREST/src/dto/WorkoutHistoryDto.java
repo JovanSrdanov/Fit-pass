@@ -14,11 +14,12 @@ public class WorkoutHistoryDto {
 	private String trainerFullName;
 	private double price;
 	private boolean isCanceled;
+	private String facilityType;
 	
 
 
 	public WorkoutHistoryDto(int appointentId, String workoutName, String facilityName, Date workoutDate,
-			WorkoutType workoutType, String customerFullName, String trainerFullName, double price) {
+			WorkoutType workoutType, String customerFullName, String trainerFullName, double price, String facilityType) {
 		super();
 		this.appointentId = appointentId;
 		this.workoutName = workoutName;
@@ -29,11 +30,12 @@ public class WorkoutHistoryDto {
 		this.trainerFullName = trainerFullName;
 		this.price = price;
 		this.isCanceled = false;
+		this.facilityType = facilityType;
 	}
 
 	public WorkoutHistoryDto(int appointentId, String workoutName, String facilityName, Date workoutDate,
 			WorkoutType workoutType, String customerFullName, String trainerFullName, double price,
-			boolean isCanceled) {
+			boolean isCanceled, String facilityType) {
 		super();
 		this.appointentId = appointentId;
 		this.workoutName = workoutName;
@@ -44,6 +46,7 @@ public class WorkoutHistoryDto {
 		this.trainerFullName = trainerFullName;
 		this.price = price;
 		this.isCanceled = isCanceled;
+		this.facilityType = facilityType;
 	}
 
 
@@ -52,6 +55,14 @@ public class WorkoutHistoryDto {
 		
 	}
 	
+	public String getFacilityType() {
+		return facilityType;
+	}
+
+	public void setFacilityType(String facilityType) {
+		this.facilityType = facilityType;
+	}
+
 	public boolean isCanceled() {
 		return isCanceled;
 	}

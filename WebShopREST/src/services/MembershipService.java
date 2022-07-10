@@ -34,6 +34,7 @@ import beans.Admin;
 import beans.Product;
 import beans.PromoCode;
 import beans.Role;
+import beans.Trainer;
 import beans.Workout;
 import beans.WorkoutHistory;
 import dao.AdminDao;
@@ -44,6 +45,7 @@ import dao.MembershipDao;
 import dao.AdminDao;
 import dao.ProductDAO;
 import dao.PromoCodeDao;
+import dao.TrainerDao;
 import dao.WorkoutDao;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -261,6 +263,14 @@ public class MembershipService {
 		}
 		
 		//*****************************************************************************************************
+		TrainerDao trainerDao = new TrainerDao();
+		if(workout.getTrainerId() != -1) {
+			Trainer trainer = trainerDao.getById(workout.getTrainerId());
+			trainer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay, customer.getId(), workout.getTrainerId()));
+			trainerDao.writeFile();
+		} 
+		
+		
 		customer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay, customer.getId(), workout.getTrainerId()));
 		customer.addVistedFacility(workout.getFacilityId());
 		customerDao.writeFile();

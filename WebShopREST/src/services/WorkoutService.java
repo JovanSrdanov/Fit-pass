@@ -143,6 +143,10 @@ public class WorkoutService {
 		
 		for(int workoutId : facility.getWorkoutIds()) {
 			Workout workout = workoutDao.getById(workoutId);
+			if(workoutId == updatedWorkout.getId()) {
+				continue;
+			}
+			
 			if(workout.getName().equals(updatedWorkout.getName())) {
 				throw new WebApplicationException(Response.Status.CONFLICT);
 			}
@@ -228,7 +232,7 @@ public class WorkoutService {
 			}
 			
 			workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, 
-					workoutDate, workoutType, custName, trainName, workout.getPrice()));
+					workoutDate, workoutType, custName, trainName, workout.getPrice(), facility.getFacilityType()));
 		}
 		
 		return workoutHistory;
@@ -277,7 +281,7 @@ public class WorkoutService {
 			String trainerName = trainer.getName() + " " + trainer.getSurname();
 			
 			workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, workoutDate,
-					workoutType, custName, trainerName, workout.getPrice()));
+					workoutType, custName, trainerName, workout.getPrice(), facility.getFacilityType()));
 		}
 		
 		return workoutHistory;
@@ -333,7 +337,8 @@ public class WorkoutService {
 					}
 					
 					workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, 
-							workoutDate, workoutType, customerFullName, trainerFullName, workout.getPrice()));
+							workoutDate, workoutType, customerFullName, trainerFullName,
+							workout.getPrice(), facility.getFacilityType()));
 				}
 			}
 		}
@@ -355,7 +360,8 @@ public class WorkoutService {
 					
 					
 					workoutHistory.add(new WorkoutHistoryDto(-1, workoutName, facilityName, workoutDate, 
-							workoutType, customerFullName, trainerFullName, workout.getPrice()));
+							workoutType, customerFullName, trainerFullName, 
+							workout.getPrice(), facility.getFacilityType()));
 				}
 			}
 		}
@@ -526,7 +532,8 @@ public class WorkoutService {
 			String trainerFullName = train.getName() + " " + train.getSurname();
 			
 			appointentsDto.add(new WorkoutHistoryDto(appointentId, workoutName, facilityName,
-					workoutDate, workoutType, customerFullName, trainerFullName, workout.getPrice(), app.isCanceled()));
+					workoutDate, workoutType, customerFullName, trainerFullName, 
+					workout.getPrice(), app.isCanceled(), facility.getFacilityType()));
 			
 		}
 		
