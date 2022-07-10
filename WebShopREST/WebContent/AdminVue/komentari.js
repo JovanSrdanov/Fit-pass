@@ -9,19 +9,27 @@ Vue.component("komentari", {
         <h1>Komentari</h1>
         <div class="tabelaKomentara">
             <table>
-                <th>Kupac</th>
+                <th>Kupac (URADI)</th>
                 <th>Sportski objekat</th>
                 <th>Tekst</th>
                 <th>Ocena</th>
                 <th>Odobri / Odbij</th>
+           
 
                 <tbody>
                     <tr v-for="c in comments">
-                        <td>{{c.customer.name}} {{c.customer.surname}}</td>
-                        <td>{{c.facility.name}}</td>
-                        <td>{{c.text}}</td>
+                        <td>{{c.customerId}}</td>
+                        <td>{{c.facilityId}}</td>
+                        <td>{{c.commentText}}</td>
                         <td>{{c.rating}}</td>            
-                        <td><button>Odobri</button><button>Odbij</button></td>
+                        <td >
+                        <button v-on:click="ApproveFunction(c.id)" class="Odobri" >Odobri</button>
+                        &nbsp;
+                        
+                        <button class="Odbij"  v-on:click="RejectFunction(c.id)" >Odbij</button>            
+                        </td>
+
+                       
                     </tr>
                 </tbody>
             </table>
@@ -50,5 +58,50 @@ Vue.component("komentari", {
             window.location.href = "#/pocetna";
             return;
         }
+        axios.get("rest/comment/all/", yourConfig).then((result) => {
+            this.comments = result.data;
+        });
+    },
+    methods: {
+        ApproveFunction: function (id) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .put(
+                    "rest/comment/changeStatus/" + id,
+                    { CommentStatus: "approved" },
+                    yourConfig
+                )
+                .then((result) => {
+                    axios
+                        .get("rest/comment/all/", yourConfig)
+                        .then((result) => {
+                            this.comments = result.data;
+                        });
+                });
+        },
+        RejectFunction: function (id) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .put(
+                    "rest/comment/changeStatus/" + id,
+                    { CommentStatus: "rejected" },
+                    yourConfig
+                )
+                .then((result) => {
+                    axios
+                        .get("rest/comment/all/", yourConfig)
+                        .then((result) => {
+                            this.comments = result.data;
+                        });
+                });
+        },
     },
 });

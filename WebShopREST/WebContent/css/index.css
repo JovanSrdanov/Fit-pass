@@ -111,3 +111,15 @@ button {
 th {
     border-bottom: 3px solid white;
 }
+
+.Odobri:hover {
+    box-shadow: 1px 1px 8px green;
+    color: green;
+    border: solid 2px green;
+}
+
+.Odbij:hover {
+    box-shadow: 1px 1px 8px red;
+    color: red;
+    border: solid 2px red;
+}
