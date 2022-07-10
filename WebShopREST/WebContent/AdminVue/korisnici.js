@@ -133,7 +133,7 @@ Vue.component("korisnici", {
                                     <td>{{getRole(u.role)}}</td>
                                     <td>{{getCustomerType(u)}}</td>
                                     <td>{{customPoints(u.points)}}</td>
-                                    <td><button>Obriši</button></td>
+                                    <td><button class="ObrisiDugme">Obriši</button></td>
                                 </tr>
                             </tbody>
                         </table>

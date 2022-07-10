@@ -63,7 +63,7 @@ Vue.component("promoKod", {
                             <td>{{getDate(c.validDate)}}</td>
                             <td>{{c.usageCount}}</td>
                             <td>{{c.discountPercentage}}%</td>                                       
-                            <td><button>Obriši</button></td>
+                            <td><button class="ObrisiDugme">Obriši</button></td>
                         </tr>
                     </tbody>
                 </table>

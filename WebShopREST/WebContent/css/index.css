@@ -123,3 +123,15 @@ th {
     color: red;
     border: solid 2px red;
 }
+
+.ObrisiDugme {
+    color: white;
+    background-color: rgb(177, 0, 0);
+}
+
+.ObrisiDugme:hover {
+    box-shadow: 2px 2px 9px red;
+    color: white;
+    background-color: rgb(177, 0, 0);
+    border: solid 2px red;
+}

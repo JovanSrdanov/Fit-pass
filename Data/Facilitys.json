@@ -22,7 +22,7 @@
     "status": true,
     "locationId": 2,
     "logo": "FacilityLogo1.png",
-    "rating": 0.0,
+    "rating": 1.0,
     "workStart": "06:30",
     "workEnd": "23:30"
   },

@@ -11,6 +11,7 @@ Vue.component("pregledObjekta", {
             SportFacilityList: {},
             commentsForFacility: {},
             roleCustomer: false,
+            roleAdmin: false,
             customerHasVisited: false,
             allComments: false,
         };
@@ -128,6 +129,13 @@ Vue.component("pregledObjekta", {
                                                     Zakaži personalni trening
                                                 </button>
                                             </p>
+
+                                              <p v-if="roleAdmin">
+                                                <button     class="ObrisiDugme"                                       
+                                                >
+                                                   Obriši
+                                                </button>
+                                            </p>
                                         </td>
 
                                         <td width="250">
@@ -146,13 +154,15 @@ Vue.component("pregledObjekta", {
                                 <th>Tekst</th>
                                 <th>Ocena</th>
                                 <th v-if="allComments">Odobren / odbijen</th>
+                                <th v-if="roleAdmin">Obriši</th>
 
                                 <tbody>
                                     <tr v-for="c in commentsForFacility">
                                         <td>{{c.customerId}}</td>                                         
                                         <td>{{c.commentText}}</td>
                                         <td>{{c.rating}}</td>    
-                                        <td  v-if="allComments">{{c.status}}</td>                                                 
+                                        <td v-if="allComments">{{tralnslateCommentStatus(c.status)}}</td>  
+                                        <td v-if="roleAdmin"> <button class="ObrisiDugme">Obriši</button></td>                                               
                                     </tr>
                                 </tbody>
                             </table>
@@ -206,6 +216,7 @@ Vue.component("pregledObjekta", {
 
         if (USER !== null) {
             if (USER.role == "admin") {
+                this.roleAdmin = true;
                 this.allComments = true;
                 axios
                     .get(
@@ -306,6 +317,14 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        tralnslateCommentStatus: function (status) {
+            if (status === "approved") return "Odobren";
+            if (status === "waiting") return "Čeka";
+            if (status === "rejected") return "Odbijen";
+
+            return "Greska";
+        },
+
         getPrice: function (price) {
             if (price == -1) return "Nema doplate";
             return price + " RSD";

@@ -166,7 +166,7 @@ Vue.component("pocetna", {
                                                 >
                                                     Detaljnije
                                                 </button>
-                                                <button
+                                                <button class="ObrisiDugme"
                                                     v-on:click="deleteFacility(p)"
                                                     v-if="loggedInUser.role=='admin'"
                                                 >
