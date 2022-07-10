@@ -144,12 +144,13 @@ public class MembershipService {
 		
 		double discount = 1;
 		PromoCodeDao promoCodeDao = new PromoCodeDao();
+		System.out.println("Promo kod je:" + promoCode);
 		if(!promoCode.equals("")) {
 			PromoCode existingPromoCode = promoCodeDao.getByCode(promoCode);
 			if(existingPromoCode == null) {
 				throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Promo kod ne vazi").build());
 			}
-			if(existingPromoCode.getUsageCount() > 0 && existingPromoCode.getValidDate().compareTo(new Date()) <= 0) {
+			if(existingPromoCode.getUsageCount() > 0 && existingPromoCode.getValidDate().compareTo(new Date()) >= 0) {
 				discount = existingPromoCode.getDiscountPercentage() / 100.0;			
 				existingPromoCode.reduceUsgeCount();
 				promoCodeDao.writeFile();

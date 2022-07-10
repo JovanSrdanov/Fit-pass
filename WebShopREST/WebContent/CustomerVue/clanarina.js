@@ -236,22 +236,25 @@ Vue.component("clanarina", {
             const params = new URLSearchParams();
 
             var promoCodeVar = this.lastVerifiedPromoCode;
-            if (this.isVerified) {
+            if (!this.isVerified) {
                 promoCodeVar = "";
             }
 
+            console.log(promoCodeVar);
             params.append("code", this.selectedBase.code);
             params.append("perDay", this.dailyActivty);
             params.append("promoCode", promoCodeVar);
 
             axios
-                .post("rest/customer/search", params, {
+                .post("rest/membership/newMembership", params, {
                     headers: {
                         Authorization: localStorage.getItem("token"),
                         "Content-Type": "application/x-www-form-urlencoded",
                     },
                 })
-                .then((response) => {})
+                .then((response) => {
+                    window.location.href = "#/pocetna";
+                })
                 .catch((error) => {
                     alert("Greska u search metodi");
                 });
