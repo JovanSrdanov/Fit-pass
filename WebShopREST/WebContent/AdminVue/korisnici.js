@@ -331,7 +331,7 @@ Vue.component("korisnici", {
             params.append("username", this.searchUsername);
 
             axios
-                .post("rest/customers/search", params, {
+                .post("rest/customer/search", params, {
                     headers: {
                         Authorization: localStorage.getItem("token"),
                         "Content-Type": "application/x-www-form-urlencoded",

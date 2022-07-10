@@ -50,7 +50,7 @@ Vue.component("promoKod", {
              <div class="TabelaKodova">
                 <table>
                     <th>Oznaka</th>
-                    <th>Važi do:</th>
+                    <th>Važi do</th>
                     <th>Broj preostalih korišćenja</th>
                     <th>Procenat za koji umanjuje iznos</th>
                     <th>Obriši</th>

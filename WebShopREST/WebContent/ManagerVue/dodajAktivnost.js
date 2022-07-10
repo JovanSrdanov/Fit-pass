@@ -10,10 +10,12 @@ Vue.component("dodajAktivnost", {
 
             name: "",
             workoutType: "solo",
-            durationInMinutes: null,
+            durationInMinutes: 60,
             description: "",
             picture: null,
             showPicture: null,
+
+            price: 0,
         };
     },
     template: `
@@ -49,6 +51,14 @@ Vue.component("dodajAktivnost", {
                 placeholder="Naziv"
                 v-model="name"
             />
+            <p class="white">Cena:</p>
+            <input
+                type="number"
+                min="0"
+                name="Cena"
+                id="Cena"
+                v-model="price"
+            />
 
             <p class="white">Tip aktivnosti</p>
             <select name="workoutType" id="workoutType" v-model="workoutType">
@@ -75,16 +85,15 @@ Vue.component("dodajAktivnost", {
                     id="durationInMinutes"
                 />
             </p>
-            <p class="white">Opis:</p>
             <textarea
-                rows="4"
-                cols="50"
+                rows="3"
+                cols="70"
                 name="description"
                 id="description"
                 v-model="description"
-                placeholder="Opis.."
+                placeholder="Opis aktivnosti..."
             />
-            <p class="white">Slika aktivnosti:</p>
+            <p>
             <input
                 type="file"
                 name="picture"
@@ -93,6 +102,7 @@ Vue.component("dodajAktivnost", {
                 class="custom-file-input"
                 @change="handleFileUpload"
             />
+            </p>
             <p>
                 <img v-bind:src="showPicture" height="200px" width="200px" />
             </p>
@@ -160,6 +170,10 @@ Vue.component("dodajAktivnost", {
             };
             const formData = new FormData();
             formData.append("file", this.picture);
+            var priceSend = this.price;
+            if (priceSend === 0) {
+                priceSend = -1;
+            }
             axios
                 .post("rest/files/workoutPicture", formData, {
                     headers: {
@@ -178,6 +192,7 @@ Vue.component("dodajAktivnost", {
                                 durationInMinutes: this.durationInMinutes,
                                 trainerId: this.selectedTrainer.id,
                                 description: this.description,
+                                price: priceSend,
                             },
                             yourConfig
                         )

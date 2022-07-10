@@ -14,14 +14,16 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13
     ],
     "status": true,
     "locationId": 2,
     "logo": "FacilityLogo1.png",
     "rating": 4,
-    "workStart": "14:00",
-    "workEnd": "17:00"
+    "workStart": "06:30",
+    "workEnd": "23:30"
   },
   "2": {
     "id": 2,

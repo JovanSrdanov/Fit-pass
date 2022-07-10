@@ -14,6 +14,7 @@ Vue.component("izmeniAktivnost", {
             durationInMinutes: null,
             description: "",
             showPicture: null,
+            price: 0,
         };
     },
     template: `
@@ -50,6 +51,14 @@ Vue.component("izmeniAktivnost", {
                     placeholder="Naziv"
                     v-model="name"
                 />
+                  <p class="white">Cena:</p>
+            <input
+                type="number"
+                min="0"
+                name="Cena"
+                id="Cena"
+                v-model="price"
+            />
 
                 <p class="white">Tip aktivnosti</p>
                 <select
@@ -143,6 +152,7 @@ Vue.component("izmeniAktivnost", {
                 this.workoutType = this.odlData.workoutType;
                 this.durationInMinutes = this.odlData.durationInMinutes;
                 this.description = this.odlData.description;
+                this.price = this.odlData.price;
 
                 this.showPicture = "ActivityPictures/" + this.odlData.picture;
                 this.trainerId = this.odlData.trainerId;
@@ -187,6 +197,11 @@ Vue.component("izmeniAktivnost", {
             const formData = new FormData();
             formData.append("file", this.picture);
 
+            var priceSend = this.price;
+            if (priceSend === 0) {
+                priceSend = -1;
+            }
+
             axios
                 .put(
                     "rest/workout/update",
@@ -198,6 +213,7 @@ Vue.component("izmeniAktivnost", {
                         durationInMinutes: this.durationInMinutes,
                         trainerId: this.selectedTrainer.id,
                         description: this.description,
+                        price: priceSend,
                     },
                     yourConfig
                 )

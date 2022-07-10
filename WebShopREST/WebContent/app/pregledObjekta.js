@@ -10,6 +10,8 @@ Vue.component("pregledObjekta", {
             },
             SportFacilityList: {},
             commentsForFacility: {},
+            roleCustomer: false,
+            customerHasVisited: false,
         };
     },
     template: `  
@@ -103,7 +105,7 @@ Vue.component("pregledObjekta", {
                                                 Trajanje:
                                                 {{A.workout.durationInMinutes}}
                                             </p>
-                                            <p>DOPLATA ZA TRENING DODATI</p>
+                                            <p>Doplata: {{getPrice(A.workout.price)}}</p>
                                             <p>
                                                 Trener: {{IfTrainer(A.trainer)}}
                                             </p>
@@ -112,6 +114,13 @@ Vue.component("pregledObjekta", {
                                                     v-on:click="editAcitivity(A.workout.id)"
                                                 >
                                                     Izmeni
+                                                </button>
+                                            </p>
+
+                                             <p v-if="roleCustomer && A.workout.workoutType=='personal' ">
+                                                <button    v-on:click="makeAppontiment(A.workout.id)"                                        
+                                                >
+                                                    Zakaži personalni trening
                                                 </button>
                                             </p>
                                         </td>
@@ -164,6 +173,12 @@ Vue.component("pregledObjekta", {
                 ) {
                     this.myFacility = true;
                 }
+            }
+            if (
+                JSON.parse(localStorage.getItem("loggedInUser")).role ===
+                "customer"
+            ) {
+                this.roleCustomer = true;
             }
         }
 
@@ -222,12 +237,21 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        getPrice: function (price) {
+            if (price == -1) return "Nema doplate";
+            return price + " RSD";
+        },
         TypeConvert: function (type) {
             if (type === "personal") return "Personalni trening";
             if (type === "group") return "Grupni trening";
             if (type === "solo") return "Aktivnost bez trenera";
 
             return "Greska";
+        },
+        makeAppontiment: function (id) {
+            router.push(
+                `/pregledObjekta/${this.facilityID}/zakaziTrening/${id}`
+            );
         },
 
         editAcitivity: function (id) {

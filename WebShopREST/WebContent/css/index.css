@@ -52,7 +52,9 @@ input {
 }
 
 textarea {
-    font-size: large;
+    resize: none !important;
+    font-size: large !important;
+    font-family: "Roboto", sans-serif;
     border: solid 2px #43c6ac;
     background: white;
     transition: all 0.25s ease;

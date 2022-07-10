@@ -49,7 +49,7 @@ Vue.component("istorijaAktivnostiUObjektu", {
 
 
                         <p>
-                            <button>Pretraži</button>
+                            <button v-on:click="SearchManagerActivity">Pretraži</button>
                         </p>
                         <p>Filtriranje:</p>
                         <label for="filterWokroutType">Izabrati tip treninga:</label>
@@ -181,6 +181,51 @@ Vue.component("istorijaAktivnostiUObjektu", {
         },
     },
     methods: {
+        SearchManagerActivity: function () {
+            var priceMin = this.searchPriceLow;
+            var priceMax = this.searchPriceHigh;
+
+            const params = new URLSearchParams();
+            if (this.searchPriceFree) {
+                priceMin = -1;
+                priceMax = -1;
+            }
+
+            var start = new Date(this.searchStartDate);
+            var end = new Date(this.searchEndDate);
+
+            var dateStringStart =
+                start.getDate() +
+                "/" +
+                start.getMonth() +
+                "/" +
+                start.getFullYear();
+
+            var dateStringEnd =
+                end.getDate() + "/" + end.getMonth() + "/" + end.getFullYear();
+
+            params.append("priceMin", priceMin);
+            params.append("priceMax", priceMax);
+            console.log(priceMin, priceMax);
+
+            params.append("startDate", dateStringStart);
+            params.append("endDate", dateStringEnd);
+
+            axios
+                .post("rest/workout/history/manager/s", params, {
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                })
+                .then((response) => {
+                    this.pastActivity = response.data;
+                })
+                .catch((error) => {
+                    alert("Greska u search metodi");
+                });
+        },
+
         PriceSortFunction() {
             this.sortDate = "noSort";
             this.sortDateString = "Datum ↕";
