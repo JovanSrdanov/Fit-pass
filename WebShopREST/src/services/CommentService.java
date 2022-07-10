@@ -95,6 +95,7 @@ public class CommentService {
 	@JWTTokenNeeded
 	public Response changeCommentStatus(CommentStatus status, @PathParam("id") int id,@Context HttpHeaders headers) {
 		
+		System.out.println("Status  je " + status);
 		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		if(!role.equals(Role.admin.toString())) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);

@@ -1,172 +1,182 @@
 {
-    "1": {
-        "id": 1,
-        "isDeleted": false,
-        "latitude": "45.380251",
-        "longitude": "20.373097",
-        "street": "Begoradska",
-        "streetNumber": "34",
-        "city": "Novi Sad",
-        "postCode": "21000"
-    },
-    "2": {
-        "id": 2,
-        "isDeleted": false,
-        "latitude": "22",
-        "longitude": "22",
-        "street": "Novosadska",
-        "streetNumber": "18",
-        "city": "Beograd",
-        "postCode": "12300"
-    },
-    "3": {
-        "id": 2,
-        "isDeleted": false,
-        "latitude": "12",
-        "longitude": "12",
-        "street": "Jovana Jovanovica Zmaja",
-        "streetNumber": "72",
-        "city": "Kikinda",
-        "postCode": "23300"
-    },
-    "4": {
-        "id": 2,
-        "isDeleted": false,
-        "latitude": "32",
-        "longitude": "32",
-        "street": "Markova",
-        "streetNumber": "1",
-        "city": "Subotica",
-        "postCode": "12000"
-    },
-    "5": {
-        "id": 2,
-        "isDeleted": false,
-        "latitude": "24",
-        "longitude": "24",
-        "street": "Marijina",
-        "streetNumber": "12",
-        "city": "Kraljevo",
-        "postCode": "45000"
-    },
-    "6": {
-        "id": 6,
-        "isDeleted": false,
-        "latitude": "44.77675465",
-        "longitude": "20.46682206023573",
-        "street": "Rajka Mitica",
-        "streetNumber": "30",
-        "city": "Belgrade",
-        "postCode": "11000"
-    },
-    "7": {
-        "id": 7,
-        "isDeleted": false,
-        "latitude": "45.3828799",
-        "longitude": "20.382168",
-        "street": "Brigadira Ristica",
-        "streetNumber": "10",
-        "city": "Zrenjanin ",
-        "postCode": "23101"
-    },
-    "8": {
-        "id": 8,
-        "isDeleted": false,
-        "latitude": "44.7873525",
-        "longitude": "20.4750088",
-        "street": "Прешернова",
-        "streetNumber": "10",
-        "city": "Belgrade",
-        "postCode": "11040"
-    },
-    "9": {
-        "id": 9,
-        "isDeleted": false,
-        "latitude": "44.78217955",
-        "longitude": "20.49977825",
-        "street": "Glasinacka",
-        "streetNumber": "7",
-        "city": "Belgrade",
-        "postCode": "11000"
-    },
-    "10": {
-        "id": 10,
-        "isDeleted": false,
-        "latitude": "44.78881405",
-        "longitude": "20.47919815257473",
-        "street": "Војислава Нановића",
-        "streetNumber": "2",
-        "city": "Belgrade",
-        "postCode": "11000"
-    },
-    "11": {
-        "id": 11,
-        "isDeleted": false,
-        "latitude": "44.7799288",
-        "longitude": "20.49680135",
-        "street": "Цриквеничка",
-        "streetNumber": "3",
-        "city": "Belgrade",
-        "postCode": "11040"
-    },
-    "12": {
-        "id": 12,
-        "isDeleted": false,
-        "latitude": "44.7769193",
-        "longitude": "20.507910301844788",
-        "street": "Сињска",
-        "streetNumber": "13V",
-        "city": "Belgrade",
-        "postCode": "11040"
-    },
-    "13": {
-        "id": 13,
-        "isDeleted": false,
-        "latitude": "44.7880682",
-        "longitude": "20.4882299",
-        "street": "Грчића Миленка",
-        "streetNumber": "72",
-        "city": "Belgrade",
-        "postCode": "11040"
-    },
-    "14": {
-        "id": 14,
-        "isDeleted": false,
-        "latitude": "44.7809288",
-        "longitude": "20.483742777027025",
-        "street": "Miska Jovanovica",
-        "streetNumber": "46",
-        "city": "Belgrade",
-        "postCode": "11040"
-    },
-    "15": {
-        "id": 15,
-        "isDeleted": false,
-        "latitude": "44.8081349",
-        "longitude": "20.433027918394046",
-        "street": "Vladimira Popovica",
-        "streetNumber": "10a",
-        "city": "Belgrade",
-        "postCode": "11000"
-    },
-    "16": {
-        "id": 16,
-        "isDeleted": false,
-        "latitude": "44.7956324",
-        "longitude": "20.4853968",
-        "street": "Vele Nigrinove",
-        "streetNumber": "7",
-        "city": "Belgrade",
-        "postCode": "11118"
-    },
-    "17": {
-        "id": 17,
-        "isDeleted": false,
-        "latitude": "44.79841585",
-        "longitude": "20.470693411078507",
-        "street": "Mutapova",
-        "streetNumber": "11",
-        "city": "Belgrade",
-        "postCode": "11000"
-    }
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "latitude": "45.380251",
+    "longitude": "20.373097",
+    "street": "Begoradska",
+    "streetNumber": "34",
+    "city": "Novi Sad",
+    "postCode": "21000"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "22",
+    "longitude": "22",
+    "street": "Novosadska",
+    "streetNumber": "18",
+    "city": "Beograd",
+    "postCode": "12300"
+  },
+  "3": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "12",
+    "longitude": "12",
+    "street": "Jovana Jovanovica Zmaja",
+    "streetNumber": "72",
+    "city": "Kikinda",
+    "postCode": "23300"
+  },
+  "4": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "32",
+    "longitude": "32",
+    "street": "Markova",
+    "streetNumber": "1",
+    "city": "Subotica",
+    "postCode": "12000"
+  },
+  "5": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "24",
+    "longitude": "24",
+    "street": "Marijina",
+    "streetNumber": "12",
+    "city": "Kraljevo",
+    "postCode": "45000"
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "latitude": "44.77675465",
+    "longitude": "20.46682206023573",
+    "street": "Rajka Mitica",
+    "streetNumber": "30",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "latitude": "45.3828799",
+    "longitude": "20.382168",
+    "street": "Brigadira Ristica",
+    "streetNumber": "10",
+    "city": "Zrenjanin ",
+    "postCode": "23101"
+  },
+  "8": {
+    "id": 8,
+    "isDeleted": false,
+    "latitude": "44.7873525",
+    "longitude": "20.4750088",
+    "street": "Прешернова",
+    "streetNumber": "10",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "9": {
+    "id": 9,
+    "isDeleted": false,
+    "latitude": "44.78217955",
+    "longitude": "20.49977825",
+    "street": "Glasinacka",
+    "streetNumber": "7",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "10": {
+    "id": 10,
+    "isDeleted": false,
+    "latitude": "44.78881405",
+    "longitude": "20.47919815257473",
+    "street": "Војислава Нановића",
+    "streetNumber": "2",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "11": {
+    "id": 11,
+    "isDeleted": false,
+    "latitude": "44.7799288",
+    "longitude": "20.49680135",
+    "street": "Цриквеничка",
+    "streetNumber": "3",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "12": {
+    "id": 12,
+    "isDeleted": false,
+    "latitude": "44.7769193",
+    "longitude": "20.507910301844788",
+    "street": "Сињска",
+    "streetNumber": "13V",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "13": {
+    "id": 13,
+    "isDeleted": false,
+    "latitude": "44.7880682",
+    "longitude": "20.4882299",
+    "street": "Грчића Миленка",
+    "streetNumber": "72",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "14": {
+    "id": 14,
+    "isDeleted": false,
+    "latitude": "44.7809288",
+    "longitude": "20.483742777027025",
+    "street": "Miska Jovanovica",
+    "streetNumber": "46",
+    "city": "Belgrade",
+    "postCode": "11040"
+  },
+  "15": {
+    "id": 15,
+    "isDeleted": false,
+    "latitude": "44.8081349",
+    "longitude": "20.433027918394046",
+    "street": "Vladimira Popovica",
+    "streetNumber": "10a",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "16": {
+    "id": 16,
+    "isDeleted": false,
+    "latitude": "44.7956324",
+    "longitude": "20.4853968",
+    "street": "Vele Nigrinove",
+    "streetNumber": "7",
+    "city": "Belgrade",
+    "postCode": "11118"
+  },
+  "17": {
+    "id": 17,
+    "isDeleted": false,
+    "latitude": "44.79841585",
+    "longitude": "20.470693411078507",
+    "street": "Mutapova",
+    "streetNumber": "11",
+    "city": "Belgrade",
+    "postCode": "11000"
+  },
+  "18": {
+    "id": 18,
+    "isDeleted": false,
+    "latitude": "44.811929899999996",
+    "longitude": "20.428654176895",
+    "street": "Булевар Зорана Ђинђића",
+    "streetNumber": "43",
+    "city": "Belgrade",
+    "postCode": "11000"
+  }
 }

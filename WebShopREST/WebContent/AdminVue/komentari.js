@@ -67,34 +67,25 @@ Vue.component("komentari", {
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
+                    "Content-Type": "application/json",
                 },
             };
+
             axios
-                .put(
-                    "rest/comment/changeStatus/" + id,
-                    { CommentStatus: "approved" },
-                    yourConfig
-                )
+                .put("rest/comment/changeStatus/" + id, "approved", yourConfig)
                 .then((result) => {
-                    axios
-                        .get("rest/comment/all/", yourConfig)
-                        .then((result) => {
-                            this.comments = result.data;
-                        });
+                    alert("USPEO");
                 });
         },
         RejectFunction: function (id) {
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
+                    "Content-Type": "application/json",
                 },
             };
             axios
-                .put(
-                    "rest/comment/changeStatus/" + id,
-                    { CommentStatus: "rejected" },
-                    yourConfig
-                )
+                .put("rest/comment/changeStatus/" + id, "rejected", yourConfig)
                 .then((result) => {
                     axios
                         .get("rest/comment/all/", yourConfig)
