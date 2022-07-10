@@ -246,4 +246,19 @@ public class FacilityDao {
 		maxId++;
 		return maxId;
 	}
+
+	public void recalculateRating(int facilityId, int newRating, int numberOfRating) {
+		Facility facility = getById(facilityId);
+		if(facility == null) {
+			return;
+		}
+		
+		double rating = facility.getRating();
+		
+		double recalculatedValue = (rating * (numberOfRating - 1) + newRating) / (numberOfRating);
+		facility.setRating(recalculatedValue);
+		
+		writeFile();
+		
+	}
 }

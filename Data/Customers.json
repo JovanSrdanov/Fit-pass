@@ -4,7 +4,9 @@
     "points": 1,
     "customerTypeId": 1,
     "visitedFacilityIds": [
-      1
+      1,
+	  2,
+	  3
     ],
     "workoutHistory": [
       {

@@ -22,7 +22,7 @@
     "status": true,
     "locationId": 2,
     "logo": "FacilityLogo1.png",
-    "rating": 4,
+    "rating": 0.0,
     "workStart": "06:30",
     "workEnd": "23:30"
   },
@@ -37,7 +37,7 @@
     "status": true,
     "locationId": 1,
     "logo": "FacilityLogo2.png",
-    "rating": 1,
+    "rating": 5.0,
     "workStart": "09:00",
     "workEnd": "21:00"
   },
@@ -52,7 +52,7 @@
     "status": true,
     "locationId": 3,
     "logo": "FacilityLogo3.png",
-    "rating": 2,
+    "rating": 5.0,
     "workStart": "21:00",
     "workEnd": "18:05"
   },
@@ -65,7 +65,7 @@
     "status": true,
     "locationId": 4,
     "logo": "FacilityLogo4.png",
-    "rating": 3,
+    "rating": 0.0,
     "workStart": "02:00",
     "workEnd": "14:00"
   },
@@ -78,7 +78,7 @@
     "status": true,
     "locationId": 5,
     "logo": "FacilityLogo5.png",
-    "rating": 5,
+    "rating": 0.0,
     "workStart": "02:30",
     "workEnd": "10:30"
   },
@@ -91,7 +91,7 @@
     "status": false,
     "locationId": 6,
     "logo": "slika.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:01",
     "workEnd": "21:01"
   },
@@ -104,7 +104,7 @@
     "status": false,
     "locationId": 7,
     "logo": "FacilityLogo7.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "08:00",
     "workEnd": "22:00"
   },
@@ -117,7 +117,7 @@
     "status": false,
     "locationId": 8,
     "logo": "FacilityLogo8.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:01",
     "workEnd": "21:01"
   },
@@ -130,7 +130,7 @@
     "status": false,
     "locationId": 9,
     "logo": "FacilityLogo9.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -143,7 +143,7 @@
     "status": false,
     "locationId": 10,
     "logo": "FacilityLogo10.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -156,7 +156,7 @@
     "status": false,
     "locationId": 11,
     "logo": "FacilityLogo11.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -169,7 +169,7 @@
     "status": false,
     "locationId": 12,
     "logo": "FacilityLogo12.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -182,7 +182,7 @@
     "status": false,
     "locationId": 13,
     "logo": "FacilityLogo13.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "08:00",
     "workEnd": "23:00"
   },
@@ -195,7 +195,7 @@
     "status": false,
     "locationId": 14,
     "logo": "FacilityLogo14.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -208,7 +208,7 @@
     "status": false,
     "locationId": 15,
     "logo": "FacilityLogo15.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -221,7 +221,7 @@
     "status": false,
     "locationId": 16,
     "logo": "FacilityLogo16.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },
@@ -234,7 +234,7 @@
     "status": false,
     "locationId": 17,
     "logo": "FacilityLogo17.png",
-    "rating": 0,
+    "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   }
