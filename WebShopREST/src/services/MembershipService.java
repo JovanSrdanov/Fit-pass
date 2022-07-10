@@ -194,6 +194,7 @@ public class MembershipService {
 		
 		Membership oldMembership = membershipDao.getById(customer.getMembershipId());
 		if(oldMembership != null) {
+			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
 			oldMembership.setActive(false);
 			membershipDao.writeFile();
 		}

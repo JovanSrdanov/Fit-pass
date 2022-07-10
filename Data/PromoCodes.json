@@ -1,42 +1,42 @@
 {
-    "1": {
-        "id": 1,
-        "isDeleted": false,
-        "code": "CODE",
-        "validDate": "Feb 24, 2023, 1:00:00 AM",
-        "usageCount": 68,
-        "discountPercentage": 50.0
-    },
-    "2": {
-        "id": 2,
-        "isDeleted": false,
-        "code": "Novi",
-        "validDate": "Jul 6, 2022, 2:00:00 AM",
-        "usageCount": 5,
-        "discountPercentage": 46.0
-    },
-    "3": {
-        "id": 3,
-        "isDeleted": false,
-        "code": "vayu",
-        "validDate": "Jul 6, 2022, 2:00:00 AM",
-        "usageCount": 2431,
-        "discountPercentage": 69.0
-    },
-    "4": {
-        "id": 4,
-        "isDeleted": false,
-        "code": "OvajVaziMnogo",
-        "validDate": "Jun 6, 2025, 2:00:00 AM",
-        "usageCount": 666,
-        "discountPercentage": 42.0
-    },
-    "5": {
-        "id": 5,
-        "isDeleted": false,
-        "code": "Cipiripi",
-        "validDate": "Jul 28, 2022, 2:00:00 AM",
-        "usageCount": 30,
-        "discountPercentage": 50.0
-    }
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "code": "CODE",
+    "validDate": "Feb 24, 2023, 1:00:00 AM",
+    "usageCount": 68,
+    "discountPercentage": 50.0
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "code": "Novi",
+    "validDate": "Jul 6, 2022, 2:00:00 AM",
+    "usageCount": 5,
+    "discountPercentage": 46.0
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "code": "vayu",
+    "validDate": "Jul 6, 2022, 2:00:00 AM",
+    "usageCount": 2431,
+    "discountPercentage": 69.0
+  },
+  "4": {
+    "id": 4,
+    "isDeleted": false,
+    "code": "OvajVaziMnogo",
+    "validDate": "Jun 6, 2025, 2:00:00 AM",
+    "usageCount": 666,
+    "discountPercentage": 42.0
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "code": "Cipiripi",
+    "validDate": "Jul 28, 2022, 2:00:00 AM",
+    "usageCount": 27,
+    "discountPercentage": 50.0
+  }
 }

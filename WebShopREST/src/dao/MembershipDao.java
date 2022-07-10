@@ -120,6 +120,7 @@ public class MembershipDao {
 	public Membership getForCustomerId(int id) {
 		for(Membership membership : memberships.values()) {
 			if(membership.getCustomerId() == id) {
+				
 				return membership;
 			}
 		}
