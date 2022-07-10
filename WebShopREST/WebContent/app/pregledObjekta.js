@@ -12,6 +12,7 @@ Vue.component("pregledObjekta", {
             commentsForFacility: {},
             roleCustomer: false,
             customerHasVisited: false,
+            allComments: false,
         };
     },
     template: `  
@@ -144,14 +145,14 @@ Vue.component("pregledObjekta", {
                                 <th>Kupac</th>
                                 <th>Tekst</th>
                                 <th>Ocena</th>
-                                <th>Odobren / odbijen</th>
+                                <th v-if="allComments">Odobren / odbijen</th>
 
                                 <tbody>
                                     <tr v-for="c in commentsForFacility">
-                                        <td>{{c.customer.name}} {{c.customer.surname}}</td>                                        
-                                        <td>{{c.text}}</td>
+                                        <td>{{c.customerId}}</td>                                         
+                                        <td>{{c.commentText}}</td>
                                         <td>{{c.rating}}</td>    
-                                        <td>{{c.status}}</td>                                                 
+                                        <td  v-if="allComments">{{c.status}}</td>                                                 
                                     </tr>
                                 </tbody>
                             </table>
@@ -165,6 +166,11 @@ Vue.component("pregledObjekta", {
 
     mounted() {
         this.facilityID = this.$route.params.id;
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
 
         if (JSON.parse(localStorage.getItem("loggedInUser")) !== null) {
             if (
@@ -194,6 +200,59 @@ Vue.component("pregledObjekta", {
                     );
                 }
             }
+        }
+
+        var USER = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        if (USER !== null) {
+            if (USER.role == "admin") {
+                this.allComments = true;
+                axios
+                    .get(
+                        "rest/comment/facility/all/" + this.facilityID,
+                        yourConfig
+                    )
+                    .then((result) => {
+                        this.commentsForFacility = result.data;
+                    });
+            } else {
+                if (USER.role == "manager") {
+                    if (
+                        USER.visitedFacilityIds.includes(
+                            parseInt(this.facilityID)
+                        )
+                    ) {
+                        this.allComments = true;
+                        axios
+                            .get(
+                                "rest/comment/facility/all/" + this.facilityID,
+                                yourConfig
+                            )
+                            .then((result) => {
+                                this.commentsForFacility = result.data;
+                            });
+                    } else {
+                        axios
+                            .get(
+                                "rest/comment/facility/approved/" +
+                                    this.facilityID,
+                                yourConfig
+                            )
+                            .then((result) => {
+                                this.commentsForFacility = result.data;
+                            });
+                    }
+                }
+            }
+        } else {
+            axios
+                .get(
+                    "rest/comment/facility/approved/" + this.facilityID,
+                    yourConfig
+                )
+                .then((result) => {
+                    this.commentsForFacility = result.data;
+                });
         }
 
         axios.get("rest/facilitys/" + this.facilityID).then((response) => {
