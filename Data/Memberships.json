@@ -52,7 +52,7 @@
         "price": 700.0,
         "customerId": 1,
         "isActive": true,
-        "numberOfTrainings": 2
+        "numberOfTrainings": 100
     },
     "6": {
         "id": 6,

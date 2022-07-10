@@ -35,10 +35,32 @@ const istorijaTreningaKupac = {
     template: "<istorijaTreningaKupac></istorijaTreningaKupac>",
 };
 
+const clanarina = {
+    template: "<clanarina></clanarina>",
+};
+
+const ostaviKomentar = {
+    template: "<ostaviKomentar></ostaviKomentar>",
+};
+const zakaziTrening = {
+    template: "<zakaziTrening></zakaziTrening>",
+};
+
 const router = new VueRouter({
     mode: "hash",
 
     routes: [
+        {
+            path: "/pregledObjekta/:id/zakaziTrening",
+            component: ostaviKomentar,
+            props: true,
+        },
+        {
+            path: "/pregledObjekta/:id/ostaviKomentar",
+            component: ostaviKomentar,
+            props: true,
+        },
+        { path: "/clanarina", component: clanarina, props: true },
         { path: "/prijava", component: prijava, props: true },
         { path: "/", component: pocetna, props: true },
         { path: "/komentari", component: komentari, props: true },

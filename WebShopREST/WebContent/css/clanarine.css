@@ -1,0 +1,85 @@
+.WrapTextEnterData {
+    height: fit-content;
+    width: 500px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightblue;
+    border: 3px solid white;
+    margin: auto;
+    padding: 20px;
+}
+
+.WrapTextClanarina {
+    height: fit-content;
+    width: 500px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightblue;
+    border: 3px solid white;
+    margin: 20px auto;
+}
+
+.BaseMTable {
+    overflow-y: scroll;
+    background-color: lightblue;
+    border: 3px solid white;
+    width: 800px;
+    padding: 0px 20px 20px 20px;
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    border-spacing: 0;
+}
+
+.BaseMTable button {
+    cursor: pointer;
+}
+
+.BaseMTable td {
+    padding: 10px;
+    width: 10%;
+}
+.BaseMTable th {
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: lightblue;
+}
+
+.BaseMTable td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.BaseMTable td:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.BaseMTable tbody > tr:nth-child(even) {
+    border-radius: 20px;
+    background-color: #adffff;
+}
+.BaseMTable tbody > tr:nth-child(odd) {
+    border-radius: 20px;
+    background-color: lightskyblue;
+}
+
+.BaseMTable table {
+    table-layout: fixed;
+    width: 100%;
+    margin: auto;
+}
+
+.BaseMTable tbody > tr:hover {
+    background-color: grey;
+    box-shadow: 1px 1px 8px grey;
+    cursor: pointer;
+}
+
+tbody tr.selectedBaseClass {
+    background: green !important;
+    box-shadow: 1px 1px 8px green !important;
+}

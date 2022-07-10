@@ -42,6 +42,12 @@
         "checkDate": "Jul 10, 2022, 12:44:46 AM",
         "customerId": 1,
         "trainerId": 4
+      },
+      {
+        "workoutId": 9,
+        "checkDate": "Jul 10, 2022, 2:11:36 PM",
+        "customerId": 1,
+        "trainerId": 2
       }
     ],
     "id": 1,

@@ -109,7 +109,7 @@ Vue.component("istorijaTreningaTrener", {
                                 >
                                     <td>{{u.workoutName}}</td>
                                     <td>{{u.facilityName}}</td>
-                                    <td>DODAJ</td>
+                                    <td>{{u.facilityType}}</td>
                                     <td>{{getDate(u.workoutDate)}}</td>
                                     <td>{{getTime(u.workoutDate)}}</td>
                                     <td>{{TypeConvert(u.workoutType)}}</td>
