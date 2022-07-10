@@ -1,7 +1,7 @@
 Vue.component("istorijaTreningaKupac", {
     data: function () {
         return {
-            pastActivity: {},
+            pastActivity: null,
             searchSportFacility: "",
             searchStartDate: "",
             searchEndDate: "",
@@ -79,7 +79,7 @@ Vue.component("istorijaTreningaKupac", {
                             type="text"
                             name="filterSportFacilitType"
                             id="filterSportFacilitType"
-                            placeholder="Vrsta objekta"
+                            placeholder="Tip objekta"
                         />
                         </p>
                         <p>Sortiranje:</p>
@@ -163,17 +163,7 @@ Vue.component("istorijaTreningaKupac", {
         searchFilterSortMenagerActivity() {
             if (!this.pastActivity) return null;
             let TEMP = this.pastActivity;
-            /*
-            TEMP = TEMP.filter((PA) => {
-                return (
-                    PA.facilityType
-                        .toLowerCase()
-                        .indexOf(this.filterSportFacilitType.toLowerCase()) >
-                    -1
-                );
-            });
 
-            */
             if (this.filterWokroutType != "all") {
                 TEMP = TEMP.filter((t) => {
                     return (
@@ -183,6 +173,14 @@ Vue.component("istorijaTreningaKupac", {
                     );
                 });
             }
+
+            TEMP = TEMP.filter((t) => {
+                return (
+                    t.facilityType
+                        .toLowerCase()
+                        .indexOf(this.filterSportFacilitType.toLowerCase()) > -1
+                );
+            });
 
             if (this.sortPrice === "DSC") {
                 TEMP = TEMP.sort((a, b) => {
