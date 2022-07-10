@@ -64,17 +64,22 @@ Vue.component("komentari", {
     },
     methods: {
         ApproveFunction: function (id) {
+            console.log("Usao u approve");
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
                     "Content-Type": "application/json",
                 },
             };
-
+            console.log("Id je " + id);
             axios
-                .put("rest/comment/changeStatus/" + id, "approved", yourConfig)
+                .put("rest/comment/changeStatus/" + id, 0, yourConfig)
                 .then((result) => {
                     alert("USPEO");
+                })
+                .catch((error) => {
+                    console.log("greska je:");
+                    console.log(error);
                 });
         },
         RejectFunction: function (id) {
@@ -84,8 +89,9 @@ Vue.component("komentari", {
                     "Content-Type": "application/json",
                 },
             };
+
             axios
-                .put("rest/comment/changeStatus/" + id, "rejected", yourConfig)
+                .put("rest/comment/changeStatus/" + id, 2, yourConfig)
                 .then((result) => {
                     axios
                         .get("rest/comment/all/", yourConfig)
