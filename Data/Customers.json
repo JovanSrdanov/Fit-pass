@@ -67,12 +67,24 @@
         "checkDate": "Jul 9, 2022, 12:16:53 AM",
         "customerId": 2,
         "trainerId": -1
+      },
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 10, 2022, 10:30:47 AM",
+        "customerId": 2,
+        "trainerId": 4
+      },
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 10, 2022, 10:33:37 AM",
+        "customerId": 2,
+        "trainerId": 4
       }
     ],
     "id": 2,
     "isDeleted": false,
-    "username": "stralex152",
-    "password": "cipiripi11",
+    "username": "x",
+    "password": "x",
     "name": "Strahinja",
     "surname": "Mjau",
     "gender": "male",

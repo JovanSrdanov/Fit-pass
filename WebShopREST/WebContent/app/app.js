@@ -2,7 +2,6 @@ const registracija = { template: "<registracija></registracija>" };
 const prijava = { template: "<prijava></prijava>" };
 const pocetna = { template: "<pocetna></pocetna>" };
 const pregledObjekta = { template: "<pregledObjekta></pregledObjekta>" };
-
 const pregledProfila = { template: "<pregledProfila></pregledProfila>" };
 
 const korisnici = { template: "<korisnici></korisnici>" };
@@ -21,6 +20,13 @@ const istorijaAktivnostiUObjektu = {
     template: "<istorijaAktivnostiUObjektu></istorijaAktivnostiUObjektu>",
 };
 
+const zakazaniTreninziTrener = {
+    template: "<zakazaniTreninziTrener></zakazaniTreninziTrener>",
+};
+const istorijaTreningaTrener = {
+    template: "<istorijaTreningaTrener></istorijaTreningaTrener>",
+};
+
 const router = new VueRouter({
     mode: "hash",
 
@@ -28,6 +34,18 @@ const router = new VueRouter({
         { path: "/prijava", component: prijava, props: true },
         { path: "/", component: pocetna, props: true },
         { path: "/komentari", component: komentari, props: true },
+
+        {
+            path: "/istorijaTreningaTrener",
+            component: istorijaTreningaTrener,
+            props: true,
+        },
+        {
+            path: "/zakazaniTreninziTrener",
+            component: zakazaniTreninziTrener,
+            props: true,
+        },
+
         { path: "/pocetna", component: pocetna, props: true },
         { path: "/registracija", component: registracija, props: true },
         { path: "/korisnici", component: korisnici, props: true },
