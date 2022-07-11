@@ -10,5 +10,14 @@
         </style>
         <title>Document</title>
     </head>
-    <body></body>
+    <body>
+        <div>
+            <h1>Zakaži trening</h1>
+            <p class="white">Izaberite datum i vreme:</p>
+            <input type="datetime-local" />
+
+            <p><button v-on:click="MakeApp">Zakaži</button></p>
+            <p class="white">{{errorMessage}}</p>
+        </div>
+    </body>
 </html>

@@ -51,8 +51,8 @@ const router = new VueRouter({
 
     routes: [
         {
-            path: "/pregledObjekta/:id/zakaziTrening",
-            component: ostaviKomentar,
+            path: "/pregledObjekta/:id/zakaziTrening/:trainingId",
+            component: zakaziTrening,
             props: true,
         },
         {
