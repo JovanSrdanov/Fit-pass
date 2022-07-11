@@ -176,6 +176,25 @@ Vue.component("izmeniAktivnost", {
             this.allEntered = "";
             this.alreadyExists = "";
 
+            if (isNaN(this.durationInMinutes)) {
+                alert("Unestite brojcanu vrednost trajanja");
+                return;
+            }
+            if (this.durationInMinutes < 1 || this.durationInMinutes > 180) {
+                alert(
+                    "Unestite validan broj minuta trajanja aktivnosti (1-180)"
+                );
+                return;
+            }
+            if (isNaN(this.price)) {
+                alert("Unestite brojcanu vrednost cene");
+                return;
+            }
+            if (this.price < 0) {
+                alert("Cena ne može biti negativna");
+                return;
+            }
+
             if (this.name === "") {
                 this.allEntered = "Niste uneli sve podatke";
                 return;
