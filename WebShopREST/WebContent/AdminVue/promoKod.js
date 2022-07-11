@@ -63,7 +63,7 @@ Vue.component("promoKod", {
                             <td>{{getDate(c.validDate)}}</td>
                             <td>{{c.usageCount}}</td>
                             <td>{{c.discountPercentage}}%</td>                                       
-                            <td><button class="ObrisiDugme">Obriši</button></td>
+                            <td><button class="ObrisiDugme" v-on:click="OBRISI_PROMOKOD(c.id)" >Obriši</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -104,6 +104,23 @@ Vue.component("promoKod", {
         });
     },
     methods: {
+        OBRISI_PROMOKOD: function (ID) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .delete("rest/promoCode/delete/" + ID, yourConfig)
+                .then((result) => {
+                    alert("Obrisan promo code");
+
+                    this.codes = this.codes.filter((data) => data.id != ID);
+                })
+                .catch((err) => {
+                    alert("BAS JAKA GRESKA");
+                });
+        },
         getDate: function (milliseconds) {
             const d = new Date();
             d.setTime(milliseconds);

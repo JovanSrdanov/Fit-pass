@@ -137,10 +137,7 @@ Vue.component("pregledObjekta", {
                                             </p>
 
                                               <p v-if="roleAdmin">
-                                                <button     class="ObrisiDugme"                                       
-                                                >
-                                                   Obriši
-                                                </button>
+                                                <button     class="ObrisiDugme"  v-on:click="OBRISI_AKTIVNOST(A.workout.id)" >Obriši</button>
                                             </p>
                                         </td>
 
@@ -168,7 +165,7 @@ Vue.component("pregledObjekta", {
                                         <td>{{c.comment.commentText}}</td>
                                         <td>{{c.comment.rating}}</td>    
                                         <td v-if="allComments">{{tralnslateCommentStatus(c.comment.status)}}</td>  
-                                        <td v-if="roleAdmin"> <button class="ObrisiDugme">Obriši</button></td>                                               
+                                        <td v-if="roleAdmin"> <button class="ObrisiDugme"  v-on:click="OBRISI_KOMENTAR(c.comment.id)" >Obriši</button></td>                                               
                                     </tr>
                                 </tbody>
                             </table>
@@ -329,6 +326,49 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        OBRISI_KOMENTAR: function (ID) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .delete("rest/comment/delete/" + ID, yourConfig)
+                .then((result) => {
+                    alert("Obrisan komentar");
+
+                    this.commentsForFacility = this.commentsForFacility.filter(
+                        (data) => data.comment.id != ID
+                    );
+                })
+                .catch((err) => {
+                    alert("BAS JAKA GRESKA");
+                });
+        },
+        OBRISI_AKTIVNOST: function (ID) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .delete("rest/workout/delete/" + ID, yourConfig)
+                .then((result) => {
+                    alert("Obrisana aktivnost");
+                    axios
+                        .get(
+                            "rest/workout/inFacility/" + this.facilityID,
+                            yourConfig
+                        )
+                        .then((response) => {
+                            this.allActivitys = response.data;
+                        });
+                })
+                .catch((err) => {
+                    alert("BAS JAKA GRESKA");
+                });
+        },
+
         CreateComment: function () {
             router.push(`/pregledObjekta/${this.facilityID}/ostaviKomentar/`);
         },
