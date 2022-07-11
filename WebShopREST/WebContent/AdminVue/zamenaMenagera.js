@@ -13,7 +13,7 @@ Vue.component("zamenaMenagera", {
 
             managerExists: "",
             managerDataEntered: "",
-
+            oldManId: -1,
             errorSelect: "",
         };
     },
@@ -246,6 +246,17 @@ Vue.component("zamenaMenagera", {
                     Authorization: localStorage.getItem("token"),
                 },
             };
+            axios
+                .post(
+                    "rest/manager/swap/" +
+                        this.oldManId +
+                        "/" +
+                        this.selectedManager.id,
+                    yourConfig
+                )
+                .then((result) => {
+                    window.location.href = "#/korisnici";
+                });
         },
     },
 });

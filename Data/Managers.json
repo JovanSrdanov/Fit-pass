@@ -250,5 +250,17 @@
     "gender": "male",
     "birthDate": "Jan 1, 1900, 1:00:00 AM",
     "role": "manager"
+  },
+  "22": {
+    "facilityId": -1,
+    "id": 22,
+    "isDeleted": false,
+    "username": "NEMAOBJEKAT",
+    "password": "NEMAOBJEKAT",
+    "name": "NEMAOBJEKAT",
+    "surname": "NEMAOBJEKAT",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "manager"
   }
 }

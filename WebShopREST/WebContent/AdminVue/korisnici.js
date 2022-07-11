@@ -252,9 +252,24 @@ Vue.component("korisnici", {
     },
     methods: {
         DeleteUser: function (user) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
             if (user.role == "manager") {
                 console.log("Provera za managera");
-                window.location.href = "#/zamenaMenagera/" + user.id;
+                axios
+                    .get("rest/manager/hasFacility/" + user.id, yourConfig)
+                    .then((result) => {
+                        if (result.data == true) {
+                            console.log("Zamena menagera");
+                            window.location.href =
+                                "#/zamenaMenagera/" + user.id;
+                        } else {
+                            console.log("Brisanje menagera");
+                        }
+                    });
             }
         },
 
