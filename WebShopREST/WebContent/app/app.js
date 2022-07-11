@@ -10,6 +10,7 @@ const registruj = { template: "<registruj></registruj>" };
 const napraviObjekat = { template: "<napraviObjekat></napraviObjekat>" };
 const promoKod = { template: "<promoKod></promoKod>" };
 const komentari = { template: "<komentari></komentari>" };
+const zamenaMenagera = { template: "<zamenaMenagera></zamenaMenagera>" };
 
 const dodajAktivnost = { template: "<dodajAktivnost></dodajAktivnost>" };
 const treneriIkupci = { template: "<treneriIkupci></treneriIkupci>" };
@@ -60,6 +61,7 @@ const router = new VueRouter({
             component: ostaviKomentar,
             props: true,
         },
+        { path: "/zamenaMenagera/:id", component: zamenaMenagera, props: true },
         { path: "/clanarina", component: clanarina, props: true },
         { path: "/prijava", component: prijava, props: true },
         { path: "/", component: pocetna, props: true },

@@ -211,7 +211,6 @@ Vue.component("pregledObjekta", {
                     .get("rest/comment/can/" + this.facilityID, yourConfig)
                     .then((result) => {
                         this.customerCanComment = result.data;
-                        console.log(this.customerCanComment + " aloo");
                     });
             }
         }

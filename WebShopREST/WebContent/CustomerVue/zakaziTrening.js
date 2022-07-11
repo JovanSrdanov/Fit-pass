@@ -28,10 +28,6 @@ Vue.component("zakaziTrening", {
         today.setDate(today.getDate() + 5);
         this.dateTimeSelected = today.toISOString().slice(0, 16);
 
-        this.dateTimeSelected =
-            this.dateTimeSelected.toISOString().split("T")[0] +
-            this.dateTimeSelected.toISOString().split("T")[1];
-
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert("Nemate pristup ovom sadržaju");
             window.location.href = "#/pocetna";
