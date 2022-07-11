@@ -159,4 +159,19 @@ public class ManagerService {
 			
 		return Response.ok().build();
 	}
+	
+	@DELETE
+    @Path("/delete/{id}")
+    @JWTTokenNeeded
+    public Response deleteComment(@PathParam("id") int id, @Context HttpHeaders headers) {
+        String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+        if(!role.equals(Role.admin.toString())) {
+            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+        }
+
+        ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
+        dao.removeById(id);
+        
+        return Response.ok().build();
+    }
 }

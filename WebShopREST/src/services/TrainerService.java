@@ -23,6 +23,7 @@ import javax.ws.rs.core.Response;
 
 import beans.Trainer;
 import beans.Workout;
+import beans.WorkoutAppointment;
 import beans.WorkoutHistory;
 import beans.Trainer;
 import beans.Trainer;
@@ -30,11 +31,13 @@ import beans.Facility;
 import beans.Product;
 import beans.Role;
 import dao.TrainerDao;
+import dao.WorkoutAppointmentDao;
 import dao.WorkoutDao;
 import dao.TrainerDao;
 import dao.TrainerDao;
 import dao.FacilityDao;
 import dao.ManagerDao;
+import dao.MembershipDao;
 import dao.ProductDAO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -142,6 +145,35 @@ public class TrainerService {
 			
 		return trainersInFacility;
 	}
+	
+	@DELETE
+    @Path("/delete/{id}")
+    @JWTTokenNeeded
+    public Response deleteComment(@PathParam("id") int id, @Context HttpHeaders headers) {
+        String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+        if(!role.equals(Role.admin.toString())) {
+            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+        }
+
+        TrainerDao trainerDao = (TrainerDao) ctx.getAttribute("TrainerDao");
+        
+        WorkoutAppointmentDao appointmentDao = new WorkoutAppointmentDao();
+        
+        ArrayList<Integer> appointmentForRemoval = new ArrayList<Integer>();
+        for(WorkoutAppointment appointment : appointmentDao.getAll()) {
+        	if(appointment.getTrainerId() == id) {
+        		//appointmentDao.removeById(appointment.getId());
+        		appointmentForRemoval.add(appointment.getId());
+        	}
+        }
+        
+        for(int removeId : appointmentForRemoval) {
+        	appointmentDao.removeById(removeId);
+        }
+        
+        trainerDao.removeById(id);
+        return Response.ok().build();
+    }
 
 }
 

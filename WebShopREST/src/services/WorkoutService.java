@@ -459,6 +459,12 @@ public class WorkoutService {
 			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Nema trenera na treningu").build());
 		}
 		
+		TrainerDao trainerDao = new TrainerDao();
+		Trainer trainer = trainerDao.getById(workout.getTrainerId());
+		if(trainer == null | trainer == Startup.deletedTrainer) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Obrisan trener").build());
+		}
+		
 		WorkoutAppointmentDao appointmetnDao = (WorkoutAppointmentDao) ctx.getAttribute("WorkoutAppointmentDao");
 		appointment.setCanceled(false);
 		appointment.setCustomerId(customer.getId());
@@ -575,6 +581,13 @@ public class WorkoutService {
 		if(!role.equals(Role.admin.toString())) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
+		
+		deleteWrokoutFunction(id);
+		
+		return Response.ok().build();
+	}
+	
+	public void deleteWrokoutFunction(int id) {
 		FacilityDao facilityDao = new FacilityDao();
 		WorkoutDao workoutDao = new WorkoutDao();
 		
@@ -592,7 +605,5 @@ public class WorkoutService {
 		}
 		facilityDao.writeFile();
 		workoutDao.removeById(id);
-		
-		return Response.ok().build();
 	}
 }
