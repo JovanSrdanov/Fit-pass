@@ -18,6 +18,8 @@ import main.Startup;
 public class TrainerDao {
 	private static HashMap<Integer, Trainer> trainers;
 	
+	private static HashMap<Integer, Trainer> allTrainers;
+	
 	public TrainerDao() {
 		readFile();
 	}
@@ -43,7 +45,7 @@ public class TrainerDao {
 			Gson gson = new GsonBuilder()
 					  .setPrettyPrinting()
 					  .create();
-			gson.toJson(trainers, writer);
+			gson.toJson(allTrainers, writer);
 			writer.close();
 		}
 		catch (Exception e) {
@@ -62,13 +64,26 @@ public class TrainerDao {
 					  .setPrettyPrinting()
 					  .create();
 			Type type = new TypeToken<HashMap<Integer, Trainer>>(){}.getType();
-			trainers = gson.fromJson(reader, type);
+			allTrainers = gson.fromJson(reader, type);
 			reader.close();
+			
+			filterDeleted();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("error2");
 		}
+	}
+	
+	private void filterDeleted() {
+		trainers = new HashMap<Integer, Trainer>();
+		
+		for(Trainer cust : allTrainers.values()) {
+			if(!cust.isDeleted()) {
+				trainers.put(cust.getId(), cust);
+			}
+		}
+		
 	}
 	
 	
@@ -77,12 +92,20 @@ public class TrainerDao {
 	}
 	
 	public Trainer getById(int id) {
-		return trainers.containsKey(id) ? trainers.get(id) : null;
+		if(trainers.containsKey(id)) {
+			return trainers.get(id);
+		}
+		else if(allTrainers.containsKey(id) || id == -99) {
+			return Startup.deletedTrainer;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public Trainer addNew(Trainer newTrainer) {
 		Integer maxId = -1;
-		for (int id : trainers.keySet()) {
+		for (int id : allTrainers.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;
@@ -109,8 +132,7 @@ public class TrainerDao {
 	}
 	
 	public void removeById(int id) {
-		
-		//treba logicko
+		this.trainers.get(id).setDeleted(true);
 		this.trainers.remove(id);
 		writeFile();
 	}

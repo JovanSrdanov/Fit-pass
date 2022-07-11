@@ -11,6 +11,12 @@ public class Trainer extends User{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Trainer(String username, String password, String name, String surname, Gender gender, Date birthDate,
+			Role role, boolean isDeleted, int id, List<WorkoutHistory> workoutHistory) {
+		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
+		this.workoutHistory = workoutHistory;
+	}
 
 	public Trainer(String username, String password, String name, String surname, Gender gender, Date birthDate,
 			Role role, boolean isDeleted, int id) {

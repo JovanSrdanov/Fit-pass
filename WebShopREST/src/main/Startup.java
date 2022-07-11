@@ -13,7 +13,9 @@ import javax.ws.rs.core.Context;
 import beans.Customer;
 import beans.Facility;
 import beans.Gender;
+import beans.Manager;
 import beans.Role;
+import beans.Trainer;
 import beans.Workout;
 import beans.WorkoutHistory;
 import beans.WorkoutType;
@@ -26,6 +28,8 @@ public class Startup  extends Application{
 	public static String path;
 	public static Facility deletedFacility;
 	public static Customer deletedCutomer;
+	public static Trainer deletedTrainer;
+	public static Manager deletedManager;
 	public static Workout deletedWorkout;
 	
 	public Startup() {
@@ -36,6 +40,12 @@ public class Startup  extends Application{
 		deletedCutomer = new Customer("Obrisan", "Obrisan", "Obrisan", "Obrisan", Gender.male, new Date(),
 				Role.customer , true, -99, -1, 0, -99,
 				new ArrayList<>(), new ArrayList<>());
+		
+		deletedTrainer = new Trainer("Obrisan", "Obrisan", "Obrisan", "Obrisan", Gender.male, new Date(),
+				Role.trainer , true, -99, new ArrayList<>());
+		
+		deletedManager = new Manager("Obrisan", "Obrisan", "Obrisan", "Obrisan", Gender.male, new Date(),
+				Role.trainer , true, -99, -99);
 		
 		deletedWorkout = new Workout(-99, true, "Obrisan", WorkoutType.solo, -99,
 				0, -99, "Obrisan", "deleted.png", 0);

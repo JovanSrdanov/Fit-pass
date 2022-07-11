@@ -131,7 +131,7 @@ private static HashMap<Integer, Comment> comments;
 	
 	public Comment addNew(Comment newComment) {
 		Integer maxId = -1;
-		for (int id : comments.keySet()) {
+		for (int id : allComments.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;

@@ -12,11 +12,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Customer;
 import beans.Manager;
 import main.Startup;
 
 public class ManagerDao {
-private static HashMap<Integer, Manager> managers;
+	private static HashMap<Integer, Manager> managers;
+	
+	private static HashMap<Integer, Manager> allManagers;
 	
 	public ManagerDao() {
 		readFile();
@@ -30,7 +33,7 @@ private static HashMap<Integer, Manager> managers;
 			Gson gson = new GsonBuilder()
 					  .setPrettyPrinting()
 					  .create();
-			gson.toJson(managers, writer);
+			gson.toJson(allManagers, writer);
 			writer.close();
 		}
 		catch (Exception e) {
@@ -49,8 +52,10 @@ private static HashMap<Integer, Manager> managers;
 					  .setPrettyPrinting()
 					  .create();
 			Type type = new TypeToken<HashMap<Integer, Manager>>(){}.getType();
-			managers = gson.fromJson(reader, type);
+			allManagers = gson.fromJson(reader, type);
 			reader.close();
+			
+			filterDeleted();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -58,17 +63,36 @@ private static HashMap<Integer, Manager> managers;
 		}
 	}
 	
+	private void filterDeleted() {
+		managers = new HashMap<Integer, Manager>();
+		
+		for(Manager cust : allManagers.values()) {
+			if(!cust.isDeleted()) {
+				managers.put(cust.getId(), cust);
+			}
+		}
+		
+	}
+	
 	public Collection<Manager> getAll() {
 		return managers.values();
 	}
 	
 	public Manager getById(int id) {
-		return managers.containsKey(id) ? managers.get(id) : null;
+		if(managers.containsKey(id)) {
+			return managers.get(id);
+		}
+		else if(allManagers.containsKey(id) || id == -99) {
+			return Startup.deletedManager;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public Manager addNew(Manager newManager) {
 		Integer maxId = -1;
-		for (int id : managers.keySet()) {
+		for (int id : allManagers.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;
@@ -96,8 +120,7 @@ private static HashMap<Integer, Manager> managers;
 	}
 	
 	public void removeById(int id) {
-		
-		//treba logicko
+		this.managers.get(id).setDeleted(true);
 		this.managers.remove(id);
 		writeFile();
 	}

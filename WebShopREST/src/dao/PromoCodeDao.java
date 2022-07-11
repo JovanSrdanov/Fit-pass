@@ -111,7 +111,7 @@ private static HashMap<Integer, PromoCode> promoCodes;
 	
 	public PromoCode addNew(PromoCode newPromoCode) {
 		Integer maxId = -1;
-		for (int id : promoCodes.keySet()) {
+		for (int id : allPromoCodes.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;

@@ -26,21 +26,26 @@ import javax.ws.rs.core.Response;
 import beans.Admin;
 import beans.Customer;
 import beans.Manager;
+import beans.Membership;
 import beans.Product;
 import beans.Role;
 import beans.Trainer;
 import beans.User;
+import beans.WorkoutAppointment;
 import beans.WorkoutHistory;
 import dao.AdminDao;
 import dao.CustomerDao;
 import dao.ManagerDao;
+import dao.MembershipDao;
 import dao.ProductDAO;
 import dao.TrainerDao;
+import dao.WorkoutAppointmentDao;
 import dto.BigDaddy;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import main.Startup;
 
 @Path("/customer")
 public class CustomerService {
@@ -280,5 +285,38 @@ public class CustomerService {
 		return visitedCustomers;
 	}
 	
-
+	@DELETE
+    @Path("/delete/{id}")
+    @JWTTokenNeeded
+    public Response deleteComment(@PathParam("id") int id, @Context HttpHeaders headers) {
+        String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+        if(!role.equals(Role.admin.toString())) {
+            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+        }
+        
+        CustomerDao customerDao = (CustomerDao) ctx.getAttribute("CustomerDao");
+        Customer customer = customerDao.getById(id);
+        if(customer == null || customer == Startup.deletedCutomer) {
+        	throw new WebApplicationException(Response.Status.CONFLICT);
+        }
+        
+        WorkoutAppointmentDao appointmentDao = new WorkoutAppointmentDao();
+        MembershipDao membershipDao = new MembershipDao();
+        
+        for(WorkoutAppointment appointment : appointmentDao.getAll()) {
+        	if(appointment.getCustomerId() == id) {
+        		appointmentDao.removeById(appointment.getId());
+        	}
+        }
+        
+        Membership membership = membershipDao.getById(customer.getMembershipId());
+        if(membership != null) {
+        	membership.setActive(false);
+        	membershipDao.writeFile();
+        }
+        
+        customerDao.removeById(id);
+            
+        return Response.ok().build();
+    }
 }
