@@ -45,6 +45,12 @@ Vue.component("zakaziTrening", {
 
     methods: {
         MakeApp: function () {
+            var now = new Date();
+            var checkDate = new Date(this.dateTimeSelected);
+            if (checkDate <= now) {
+                alert("Datum zakazanog treninga mora biti u budućnosti");
+                return;
+            }
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
