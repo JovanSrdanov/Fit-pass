@@ -22,6 +22,6 @@ Vue.component("loadCreateSP", {
     mounted() {
         setTimeout(function () {
             window.location.href = "#/pocetna";
-        }, 2500);
+        }, 3000);
     },
 });

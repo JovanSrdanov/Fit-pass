@@ -72,7 +72,6 @@ Vue.component("zakazaniTreninziTrener", {
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
-                    "Content-Type": "application/json",
                 },
             };
 
@@ -81,13 +80,11 @@ Vue.component("zakazaniTreninziTrener", {
                 .then((result) => {
                     alert("Otkazan trening");
 
-                    /*
                     axios
                         .get("rest/workout/appointments", yourConfig)
                         .then((result) => {
                             this.appointments = result.data;
                         });
-                        */
                 })
                 .catch((err) => {
                     console.log("Ne moze da se otkaze dva dana pre treninga");

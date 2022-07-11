@@ -133,7 +133,7 @@ Vue.component("korisnici", {
                                     <td>{{getRole(u.role)}}</td>
                                     <td>{{getCustomerType(u)}}</td>
                                     <td>{{customPoints(u.points)}}</td>
-                                    <td><button class="ObrisiDugme"  v-on:click="DeleteUser(u)">Obriši</button></td>
+                                    <td><button class="ObrisiDugme"  v-on:click="DeleteUser(u)" v-if="u.role!='admin'" >Obriši</button></td>
                                 </tr>
                             </tbody>
                         </table>

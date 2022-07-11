@@ -26,7 +26,7 @@ Vue.component("zakaziTrening", {
         let today = new Date();
         today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
         today.setDate(today.getDate() + 5);
-        this.dateTimeSelected = today.toISOString().slice(0, 16);
+        this.dateTimeSelected = today.toISOString().slice(0, 19);
 
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert("Nemate pristup ovom sadržaju");
@@ -58,7 +58,7 @@ Vue.component("zakaziTrening", {
             };
 
             axios
-                .get(
+                .post(
                     "rest/workout/schedule",
                     { date: this.dateTimeSelected, workoutId: this.trainingId },
                     yourConfig
