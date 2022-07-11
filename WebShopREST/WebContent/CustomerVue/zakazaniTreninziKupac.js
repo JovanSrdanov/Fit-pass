@@ -16,7 +16,7 @@ Vue.component("zakazaniTreninziKupac", {
                             <th>Datum</th>
                             <th>Vreme</th>
 
-                            <th>Tip treninga</th>
+                          
                             <th>Trener</th>
                             <th>Zakazan / Otkazan</th>
                       
@@ -30,7 +30,6 @@ Vue.component("zakazaniTreninziKupac", {
                                     <td>{{getDate(u.workoutDate)}}</td>
                                     <td>{{getTime(u.workoutDate)}}</td>
 
-                                    <td>{{TypeConvert(u.workoutType)}}</td>
                                     <td>{{u.trainerFullName}}</td>
                                     <td>{{ConvertZakazan(u.canceled)}}</td>
                                 
