@@ -1,10 +1,12 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,12 +23,17 @@ import beans.Facility;
 import beans.Location;
 import beans.Manager;
 import beans.Role;
+import beans.Workout;
+import beans.WorkoutAppointment;
 import dao.CustomerDao;
 import dao.FacilityDao;
 import dao.LocationDao;
 import dao.ManagerDao;
+import dao.WorkoutAppointmentDao;
+import dao.WorkoutDao;
 import dto.CreateFacilityDto;
 import dto.FacilityDto;
+import main.Startup;
 
 @Path("/facilitys")
 public class FacilityService {
@@ -118,4 +125,49 @@ public class FacilityService {
 		
 		return newFacilitDtoy;
 	}
+	
+	@DELETE
+    @Path("/delete/{id}")
+    @JWTTokenNeeded
+    public Response deleteComment(@PathParam("id") int id, @Context HttpHeaders headers) {
+        String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+        if(!role.equals(Role.admin.toString())) {
+            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+        }
+        
+        FacilityDao facilityDao = (FacilityDao) ctx.getAttribute("FacilityDao");
+        Facility facility = facilityDao.getById(id);
+        if(facility == null || facility == Startup.deletedFacility) {
+        	throw new WebApplicationException(Response.Status.CONFLICT);
+        }
+        
+        ManagerDao managerDao = new ManagerDao();
+        Manager manager = managerDao.getById(id);
+        if(manager == null) {
+        	throw new WebApplicationException(Response.Status.CONFLICT);
+        }
+        
+        manager.setFacilityId(-1);
+        
+        WorkoutAppointmentDao appointmentDao = new WorkoutAppointmentDao();
+        WorkoutDao workoutDao = new WorkoutDao();
+        
+        ArrayList<Integer> appointemntsForDelete = new ArrayList<Integer>();
+        
+        for(WorkoutAppointment app : appointmentDao.getAll()) {
+        	Workout workout = workoutDao.getById(app.getWorkoutId());
+        	
+        	if(workout.getFacilityId() == id) {
+        		appointemntsForDelete.add(app.getId());
+        	}
+        }
+        
+        for(int appId : appointemntsForDelete) {
+        	appointmentDao.removeById(appId);
+        }
+        
+        facilityDao.removeById(id);
+
+        return Response.ok().build();
+    }
 }
