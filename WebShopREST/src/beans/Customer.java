@@ -6,18 +6,18 @@ import java.util.List;
 
 public class Customer extends User{
 	protected int membershipId;
-	protected int points;
+	protected double points;
 	protected int customerTypeId;
 	protected List<Integer> visitedFacilityIds;
 	protected List<WorkoutHistory> workoutHistory;
 	
-	public Customer(int membershipId, int points) {
+	public Customer(int membershipId, double points) {
 		super();
 		this.membershipId = membershipId;
 		this.points = points;
 	}
 
-	public Customer(int membershipId, int points, int customerTypeId, List<Integer> visitedFacilityIds, List<WorkoutHistory> workoutHistory) {
+	public Customer(int membershipId, double points, int customerTypeId, List<Integer> visitedFacilityIds, List<WorkoutHistory> workoutHistory) {
 		super();
 		this.membershipId = membershipId;
 		this.points = points;
@@ -35,7 +35,7 @@ public class Customer extends User{
 	}
 	
 
-	public Customer(int membershipId, int points, int customerTypeId) {
+	public Customer(int membershipId, double points, int customerTypeId) {
 		super();
 		this.membershipId = membershipId;
 		this.points = points;
@@ -44,7 +44,7 @@ public class Customer extends User{
 	
 
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
-			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId,
+			Role role, boolean isDeleted, int id, int membershipId, double points, int customerTypeId,
 			List<Integer> visitedFacilityIds, List<WorkoutHistory> workoutHistory) {
 		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
 		this.membershipId = membershipId;
@@ -69,7 +69,7 @@ public class Customer extends User{
 	}*/
 
 	public Customer(String username, String password, String name, String surname, Gender gender, Date birthDate,
-			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId) {
+			Role role, boolean isDeleted, int id, int membershipId, double points, int customerTypeId) {
 		super(username, password, name, surname, gender, birthDate, role, isDeleted, id);
 		this.membershipId = membershipId;
 		this.points = points;
@@ -96,10 +96,10 @@ public class Customer extends User{
 	public void setMembershipId(int membershipId) {
 		this.membershipId = membershipId;
 	}
-	public int getPoints() {
+	public double getPoints() {
 		return points;
 	}
-	public void setPoints(int points) {
+	public void setPoints(double points) {
 		this.points = points;
 	}	
 	

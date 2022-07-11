@@ -12,23 +12,33 @@ public class Membership {
 	private int customerId;
 	private boolean isActive;
 	private int numberOfTrainings;
+	private int numberOfChechkins;
 	
 	public Membership() {
 		
 	}
 	
-	public Membership(String code, int id, boolean isDeleted, Date startDate, Date endDate, float price,
-			int customerId, boolean isActive, int numberOfTrainings) {
+	public Membership(int id, boolean isDeleted, String code, Date startDate, Date endDate, double price,
+			int customerId, boolean isActive, int numberOfTrainings, int numberOfChechkins) {
 		super();
-		this.code = code;
 		this.id = id;
 		this.isDeleted = isDeleted;
+		this.code = code;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.price = price;
 		this.customerId = customerId;
 		this.isActive = isActive;
 		this.numberOfTrainings = numberOfTrainings;
+		this.numberOfChechkins = numberOfChechkins;
+	}
+
+	public int getNumberOfChechkins() {
+		return numberOfChechkins;
+	}
+
+	public void setNumberOfChechkins(int numberOfChechkins) {
+		this.numberOfChechkins = numberOfChechkins;
 	}
 
 	public String getCode() {

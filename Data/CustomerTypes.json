@@ -3,14 +3,21 @@
     "id": 1,
     "isDeleted": false,
     "type": "Bronze",
-    "discount": 0.5,
-    "pointNeeded": 60
+    "discount": 1,
+    "pointsNeeded": 0
   },
   "2": {
     "id": 2,
     "isDeleted": false,
     "type": "Silver",
-    "discount": 0.7,
-    "pointNeeded": 100
+    "discount": 0.9,
+    "pointsNeeded": 250
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "type": "Gold",
+    "discount": 0.8,
+    "pointsNeeded": 500
   }
 }

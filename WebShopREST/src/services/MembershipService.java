@@ -53,6 +53,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import main.Startup;
 
 @Path("/membership")
 public class MembershipService {
@@ -198,13 +199,14 @@ public class MembershipService {
 		membership.setEndDate(endDate);
 		membership.setActive(true);
 		membership.setNumberOfTrainings(perDay);
+		membership.setNumberOfChechkins(0);
 		
 		MembershipDao membershipDao = new MembershipDao();
 		membershipDao.addNew(membership);
 		
 		Membership oldMembership = membershipDao.getById(customer.getMembershipId());
 		if(oldMembership != null) {
-			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
+			Startup.calculatePointForMembership(oldMembership);
 			oldMembership.setActive(false);
 			membershipDao.writeFile();
 		}
@@ -287,6 +289,8 @@ public class MembershipService {
 			trainerDao.writeFile();
 		} 
 		
+		membership.setNumberOfChechkins(membership.getNumberOfChechkins() + 1);
+		membershipDao.writeFile();
 		
 		customer.getWorkoutHistory().add(new WorkoutHistory(workoutId, todayDay, customer.getId(), workout.getTrainerId()));
 		customer.addVistedFacility(workout.getFacilityId());

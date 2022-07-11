@@ -1,7 +1,7 @@
 {
   "1": {
     "membershipId": 8,
-    "points": 1,
+    "points": 1.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [
       1,
@@ -90,7 +90,7 @@
   },
   "2": {
     "membershipId": -1,
-    "points": 110,
+    "points": 110.0,
     "customerTypeId": 2,
     "visitedFacilityIds": [
       1
@@ -127,7 +127,7 @@
   },
   "3": {
     "membershipId": -1,
-    "points": 20,
+    "points": 20.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [
       2,
@@ -172,7 +172,7 @@
   },
   "4": {
     "membershipId": -1,
-    "points": 0,
+    "points": 0.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],
     "workoutHistory": [],
@@ -188,7 +188,7 @@
   },
   "5": {
     "membershipId": -1,
-    "points": 0,
+    "points": 0.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],
     "workoutHistory": [],
@@ -203,11 +203,20 @@
     "role": "customer"
   },
   "6": {
-    "membershipId": -1,
-    "points": 0,
-    "customerTypeId": 1,
-    "visitedFacilityIds": [],
-    "workoutHistory": [],
+    "membershipId": 10,
+    "points": 260.0,
+    "customerTypeId": 2,
+    "visitedFacilityIds": [
+      1
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 12, 2022, 12:52:10 AM",
+        "customerId": 6,
+        "trainerId": -1
+      }
+    ],
     "id": 6,
     "isDeleted": false,
     "username": "NoviKupac",

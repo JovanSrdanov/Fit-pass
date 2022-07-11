@@ -28,18 +28,18 @@ public class BigDaddy extends Customer{
 	}
 
 
-	public BigDaddy(int membershipId, int points) {
+	public BigDaddy(int membershipId, double points) {
 		super(membershipId, points);
 		// TODO Auto-generated constructor stub
 	}
 
 	public BigDaddy(String username, String password, String name, String surname, Gender gender, Date birthDate,
-			Role role, boolean isDeleted, int id, int membershipId, int points, int customerTypeId) {
+			Role role, boolean isDeleted, int id, int membershipId, double points, int customerTypeId) {
 		super(username, password, name, surname, gender, birthDate, role, isDeleted, id, membershipId, points, customerTypeId);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BigDaddy(User user, int points, int customerTypeId) {
+	public BigDaddy(User user, double points, int customerTypeId) {
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.name = user.getName();
