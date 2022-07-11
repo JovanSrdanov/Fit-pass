@@ -103,6 +103,7 @@ public class ManagerDao {
 		newManager.setId(maxId);
 		newManager.setFacilityId(-1);
 		managers.put(newManager.getId(), newManager);
+		allManagers.put(newManager.getId(), newManager);
 		writeFile();
 		return newManager;
 	}

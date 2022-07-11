@@ -81,6 +81,7 @@ public class ManagerService {
 		manager.setRole(Role.manager);
 		
 		dao.addNew(manager);
+		System.out.println("pa nista");
 		return Response.ok().build();
 	}
 	

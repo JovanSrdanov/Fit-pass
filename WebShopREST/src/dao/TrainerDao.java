@@ -115,6 +115,7 @@ public class TrainerDao {
 		
 		newTrainer.setId(maxId);
 		trainers.put(newTrainer.getId(), newTrainer);
+		allTrainers.put(newTrainer.getId(), newTrainer);
 		writeFile();
 		return newTrainer;
 	}

@@ -115,6 +115,7 @@ public class WorkoutDao {
 		
 		newWorkout.setId(maxId);
 		workouts.put(newWorkout.getId(), newWorkout);
+		allWorkouts.put(newWorkout.getId(), newWorkout);
 		writeFile();
 		return newWorkout;
 	}

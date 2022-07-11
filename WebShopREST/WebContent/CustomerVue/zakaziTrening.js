@@ -68,7 +68,9 @@ Vue.component("zakaziTrening", {
                         "#/pregledObjekta/" + this.facilityID;
                 })
                 .catch((err) => {
-                    alert("neka greska");
+                    alert(
+                        "Trenutno nije moguće zakazati trening jer nema trenera"
+                    );
                 });
         },
     },
