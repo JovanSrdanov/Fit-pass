@@ -482,7 +482,7 @@ public class WorkoutService {
 		
 		appointmentDao.cancelById(appointmentId);
 		
-		return Response.ok().encoding("Uspesno otkazan termin").build();
+		return Response.ok().entity("Uspesno otkazan termin").build();
 	}
 	
 	@GET
