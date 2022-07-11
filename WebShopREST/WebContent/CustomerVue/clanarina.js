@@ -14,7 +14,6 @@ Vue.component("clanarina", {
             promoCodeDiscount: -1,
             isVerified: false,
             lastVerifiedPromoCode: "",
-
             statusFix: "",
         };
     },
@@ -23,7 +22,7 @@ Vue.component("clanarina", {
             <h1>Clanarine</h1>
             <p class="white">
                 Tip kupca: {{translateType(typeOfCustomer)}}(ispravi jer je
-                fixno) - Broj bodova: {{customer.points}}
+                fixno) - Broj bodova: {{customer.points}} - Popust koji se nudi:  XXX%
             </p>
 
             <div class="CreateMembership">

@@ -325,7 +325,7 @@ Vue.component("pocetna", {
             axios
                 .delete("rest/facilitys/delete/" + ID, yourConfig)
                 .then((result) => {
-                    alert("Obrisan komentar");
+                    alert("Obrisan objekat");
                     axios.get("rest/facilitys").then((response) => {
                         this.SportFacility = response.data;
                     });
