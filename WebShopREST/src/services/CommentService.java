@@ -42,6 +42,7 @@ import dao.ManagerDao;
 import dao.ProductDAO;
 import dao.TrainerDao;
 import dto.BigDaddy;
+import dto.CommentDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -76,18 +77,43 @@ public class CommentService {
 		}
 	}
 	
+	private Collection<CommentDto> createCommentDto(Collection<Comment> comments) {
+		CustomerDao customerDao = (CustomerDao) ctx.getAttribute("CustomerDao");
+		FacilityDao facilityDao = (FacilityDao) ctx.getAttribute("FacilityDao");
+		ArrayList<CommentDto> commentDto = new ArrayList<CommentDto>();
+		
+		for(Comment comm : comments) {
+			String username;
+			Customer cust = customerDao.getById(comm.getCustomerId());
+			if(cust == null) {
+				username = "[deleted user]";
+			}
+			else {
+				username = cust.getSurname();
+			}
+			
+			String facilityName = facilityDao.getById(comm.getFacilityId()).getName();
+			
+			commentDto.add(new CommentDto(comm, username, facilityName));
+		}
+		
+		return commentDto;
+		
+	}
+	
 	@GET
-	@Path("/all")
+	@Path("/allWaiting")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Comment> getById(@Context HttpHeaders headers) {
+	public Collection<CommentDto> getById(@Context HttpHeaders headers) {
 		
 		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		if(!role.equals(Role.admin.toString())) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
 		CommentDao dao = (CommentDao) ctx.getAttribute("CommentDao");
-		return dao.getAllWaiting();
+		return createCommentDto(dao.getAllWaiting());
+
 	}
 	
 	@PUT
@@ -165,22 +191,22 @@ public class CommentService {
 	@GET
 	@Path("/facility/approved/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Comment> getCommentfForFacilityApproved(@PathParam("id") int id) {
+	public Collection<CommentDto> getCommentfForFacilityApproved(@PathParam("id") int id) {
 		CommentDao commentDao = (CommentDao) ctx.getAttribute("CommentDao");
-		return commentDao.getForFacilityApproved(id);
+		return createCommentDto(commentDao.getForFacilityApproved(id));
 	}
 	
 	@GET
 	@Path("facility/all/{id}")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Comment> getCommentfForFacilityAll(@PathParam("id") int id,@Context HttpHeaders headers) {
+	public Collection<CommentDto> getCommentfForFacilityAll(@PathParam("id") int id,@Context HttpHeaders headers) {
 		
 		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		
 		if(role.equals(Role.admin.toString())) {
 			CommentDao commentDao = (CommentDao) ctx.getAttribute("CommentDao");
-			return commentDao.getForFacilityAll(id);
+			return createCommentDto(commentDao.getForFacilityAll(id));
 		}
 		if(role.equals(Role.manager.toString())) {
 			String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
@@ -194,7 +220,7 @@ public class CommentService {
 			
 			if(manager.getFacilityId() == id) {
 				CommentDao commentDao = (CommentDao) ctx.getAttribute("CommentDao");
-				return commentDao.getForFacilityAll(id);
+				return createCommentDto(commentDao.getForFacilityAll(id));
 			}
 		}
 		
