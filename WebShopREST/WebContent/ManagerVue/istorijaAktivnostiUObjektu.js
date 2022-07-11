@@ -197,22 +197,25 @@ Vue.component("istorijaAktivnostiUObjektu", {
             var dateStringStart =
                 start.getDate() +
                 "/" +
-                start.getMonth() +
+                (start.getMonth() + 1) +
                 "/" +
                 start.getFullYear();
 
             var dateStringEnd =
-                end.getDate() + "/" + end.getMonth() + "/" + end.getFullYear();
+                end.getDate() +
+                "/" +
+                (end.getMonth() + 1) +
+                "/" +
+                end.getFullYear();
 
             params.append("priceMin", priceMin);
             params.append("priceMax", priceMax);
-            console.log(priceMin, priceMax);
-
             params.append("startDate", dateStringStart);
             params.append("endDate", dateStringEnd);
+            params.append("facilityName", "");
 
             axios
-                .post("rest/workout/history/manager/s", params, {
+                .post("rest/workout/history/s", params, {
                     headers: {
                         Authorization: localStorage.getItem("token"),
                         "Content-Type": "application/x-www-form-urlencoded",
