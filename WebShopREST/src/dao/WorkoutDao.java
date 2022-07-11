@@ -105,7 +105,7 @@ public class WorkoutDao {
 	
 	public Workout addNew(Workout newWorkout) {
 		Integer maxId = -1;
-		for (int id : workouts.keySet()) {
+		for (int id : allWorkouts.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;
@@ -140,7 +140,7 @@ public class WorkoutDao {
 
 	public int getNextId() {
 		Integer maxId = -1;
-		for (int id : workouts.keySet()) {
+		for (int id : allWorkouts.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;

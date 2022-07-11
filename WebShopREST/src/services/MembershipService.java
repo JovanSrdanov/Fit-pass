@@ -28,6 +28,7 @@ import javax.ws.rs.core.Response.Status;
 import beans.Admin;
 import beans.BaseMembership;
 import beans.Customer;
+import beans.CustomerType;
 import beans.Manager;
 import beans.Membership;
 import beans.Admin;
@@ -40,6 +41,7 @@ import beans.WorkoutHistory;
 import dao.AdminDao;
 import dao.BaseMembershipDao;
 import dao.CustomerDao;
+import dao.CustomerTypeDao;
 import dao.ManagerDao;
 import dao.MembershipDao;
 import dao.AdminDao;
@@ -162,6 +164,13 @@ public class MembershipService {
 			}
 		}
 		
+		double discount2 = 1;
+		CustomerTypeDao customerTypeDao = new CustomerTypeDao();   
+		CustomerType customerType = customerTypeDao.getById(customer.getCustomerTypeId());
+		if(customerType != null) {
+			discount2 = customerType.getDiscount();			
+		}
+		
 		double multiplicator = baseMembership.getPriceMultiplicator();
 		if(perDay == 1) {
 			multiplicator = 1;
@@ -181,7 +190,7 @@ public class MembershipService {
         }
 		
         Membership membership = new Membership();
-		membership.setPrice(perDayForPrice * baseMembership.getPrice() * multiplicator * discount);
+		membership.setPrice(perDayForPrice * baseMembership.getPrice() * multiplicator * discount * discount2);
 		membership.setCustomerId(customer.getId());
 		membership.setDeleted(false);
 		membership.setCode(code);
