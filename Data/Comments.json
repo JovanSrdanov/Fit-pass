@@ -25,5 +25,14 @@
     "commentText": "Mnogo ludo aaa a a a  aaaaaaaaaaaaa a a a a aa  aa ",
     "rating": 5,
     "status": "approved"
+  },
+  "4": {
+    "id": 4,
+    "isDeleted": false,
+    "customerId": 1,
+    "facilityId": 8,
+    "commentText": "Moj komentar sad , id kupca je 1, id objekta je 8 ",
+    "rating": 4,
+    "status": "approved"
   }
 }
