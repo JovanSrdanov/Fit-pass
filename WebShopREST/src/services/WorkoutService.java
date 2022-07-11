@@ -413,7 +413,7 @@ public class WorkoutService {
 		return filteredHistory;
 	}
 	
-	@GET
+	@POST
 	@Path("/schedule")
 	@JWTTokenNeeded
 	public Response scheduleWorkout(WorkoutAppointment appointment, @Context HttpHeaders headers) {
@@ -440,7 +440,10 @@ public class WorkoutService {
 		appointment.setCustomerId(customer.getId());
 		appointment.setTrainerId(workout.getTrainerId());
 		
-		return null;
+		appointmetnDao.addNew(appointment);
+		
+		
+		return Response.ok().entity("Uspesno zakazan termin").build();
 	}
 	
 	@PUT

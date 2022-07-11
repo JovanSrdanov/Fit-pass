@@ -16,5 +16,14 @@
     "customerId": 1,
     "trainerId": 2,
     "isCanceled": false
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "workoutId": 2,
+    "date": "Jul 29, 2022, 8:36:51 PM",
+    "customerId": 1,
+    "trainerId": 1,
+    "isCanceled": false
   }
 }
