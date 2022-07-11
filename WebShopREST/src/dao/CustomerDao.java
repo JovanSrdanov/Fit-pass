@@ -95,12 +95,20 @@ public class CustomerDao {
 	}
 	
 	public Customer getById(int id) {
-		return customers.containsKey(id) ? customers.get(id) : null;
+		if(customers.containsKey(id)) {
+			return customers.get(id);
+		}
+		else if(allCustomers.containsKey(id) || id == -99) {
+			return Startup.deletedCutomer;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public Customer addNew(Customer newCustomer) {
 		Integer maxId = -1;
-		for (int id : customers.keySet()) {
+		for (int id : allCustomers.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;

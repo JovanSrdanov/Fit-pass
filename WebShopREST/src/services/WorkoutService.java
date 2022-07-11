@@ -58,6 +58,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import main.Startup;
 
 @Path("/workout")
 public class WorkoutService {
@@ -218,7 +219,7 @@ public class WorkoutService {
 		for(WorkoutHistory custWorkout : customer.getWorkoutHistory()) {
 			
 			Workout workout = workoutDao.getById(custWorkout.getWorkoutId());
-			Facility facility = facilityDao.getById(workout.getFacilityId());
+			Facility facility = facilityDao.getById(workout.getFacilityId());			
 			Trainer trainer = trainerDAo.getById(custWorkout.getTrainerId());
 			
 			String workoutName = workout.getName();
@@ -564,5 +565,35 @@ public class WorkoutService {
 		}
 		
 		return appointentsDto;
+	}
+	
+	@DELETE
+	@Path("/delete/{id}")
+	@JWTTokenNeeded
+	public Response deleteWorkout(@PathParam("id") int id ,@Context HttpHeaders headers) {
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		FacilityDao facilityDao = new FacilityDao();
+		WorkoutDao workoutDao = new WorkoutDao();
+		
+		Workout workout = workoutDao.getById(id);
+		if(workout == null || workout == Startup.deletedWorkout) {
+			throw new WebApplicationException(Response.Status.CONFLICT);
+		}
+		
+		Facility facility = facilityDao.getById(workout.getFacilityId());
+		for(int facilityWorkoutId : facility.getWorkoutIds()) {
+			if(facilityWorkoutId == id) {
+				facility.getWorkoutIds().remove((Object) id);
+				break;
+			}
+		}
+		facilityDao.writeFile();
+		workoutDao.removeById(id);
+		
+		return Response.ok().build();
+		
 	}
 }
