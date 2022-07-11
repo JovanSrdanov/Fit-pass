@@ -1,1 +1,18 @@
-{}
+{
+  "0": {
+    "membershipId": -1,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [],
+    "workoutHistory": [],
+    "id": 0,
+    "isDeleted": false,
+    "username": "q",
+    "password": "q",
+    "name": "Jovan",
+    "surname": "Srda",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  }
+}

@@ -1,1 +1,14 @@
-{}
+{
+  "0": {
+    "workoutHistory": [],
+    "id": 0,
+    "isDeleted": false,
+    "username": "t",
+    "password": "t",
+    "name": "TRENER",
+    "surname": "TRENER123",
+    "gender": "male",
+    "birthDate": "Jan 1, 1900, 1:00:00 AM",
+    "role": "trainer"
+  }
+}
