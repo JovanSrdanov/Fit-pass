@@ -19,6 +19,9 @@ import beans.Trainer;
 import beans.Workout;
 import beans.WorkoutHistory;
 import beans.WorkoutType;
+import dao.CustomerDao;
+import dao.CustomerTypeDao;
+import dao.MembershipDao;
 
 @ApplicationPath("/rest")
 public class Startup  extends Application{
@@ -49,11 +52,19 @@ public class Startup  extends Application{
 		
 		deletedWorkout = new Workout(-99, true, "Obrisan", WorkoutType.solo, -99,
 				0, -99, "Obrisan", "deleted.png", 0);
+		
+		calculatePoints();
 	}
 	
 	@PostConstruct
 	public void init() {
 	    String contextPath = ctx.getRealPath("");
 	    path = contextPath.split(".metadata")[0];
+	}
+	
+	private void calculatePoints() {
+		CustomerDao customerDao = new CustomerDao();
+		MembershipDao membershipDao = new MembershipDao();
+		CustomerTypeDao customerTypeDao = new CustomerTypeDao();
 	}
 }
