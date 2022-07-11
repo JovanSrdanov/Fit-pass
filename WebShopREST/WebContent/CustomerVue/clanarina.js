@@ -2,7 +2,7 @@ Vue.component("clanarina", {
     data: function () {
         return {
             customer: { points: "" },
-            typeOfCustomer: "bronze",
+
             staraClanarina: {},
             selectedBase: { code: "", price: 0, priceMultiplicator: 0 },
             baseMemberships: {},
@@ -15,14 +15,17 @@ Vue.component("clanarina", {
             isVerified: false,
             lastVerifiedPromoCode: "",
             statusFix: "",
+
+            typeName: "",
+
+            popust: "",
         };
     },
     template: ` 
   <div>
             <h1>Clanarine</h1>
             <p class="white">
-                Tip kupca: {{translateType(typeOfCustomer)}}(ispravi jer je
-                fixno) - Broj bodova: {{customer.points}} - Popust koji se nudi:  XXX%
+                Tip kupca: {{translateType(typeName)}} - Broj bodova: {{customer.points}} - Popust koji se nudi: {{popust}}%
             </p>
 
             <div class="CreateMembership">
@@ -125,6 +128,11 @@ Vue.component("clanarina", {
     
     `,
     mounted() {
+        yourConfig = {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        };
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert("Nemate pristup ovom sadržaju");
             window.location.href = "#/pocetna";
@@ -139,12 +147,6 @@ Vue.component("clanarina", {
         }
 
         this.customer = JSON.parse(localStorage.getItem("loggedInUser"));
-
-        yourConfig = {
-            headers: {
-                Authorization: localStorage.getItem("token"),
-            },
-        };
 
         if (this.customer.membershipId != -1) {
             this.hasMembership = true;
@@ -165,6 +167,12 @@ Vue.component("clanarina", {
         axios.get("rest/membership/base").then((result) => {
             this.baseMemberships = result.data;
         });
+
+        axios.get("rest/customer/type", yourConfig).then((result) => {
+            this.typeCustomer = result.data;
+            this.popust = (1 - this.typeCustomer.discount) * 100;
+            this.typeName = this.typeCustomer.typeName;
+        });
     },
 
     computed: {
@@ -181,10 +189,7 @@ Vue.component("clanarina", {
             let forComputePriceMulti = this.selectedBase.priceMultiplicator;
             let forStartPrice = this.selectedBase.price;
 
-            let POPUSTODTIPAKUPCA = 1; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            let POPUSTODTIPAKUPCA = this.typeCustomer.discount;
 
             console.log("FCPC " + forComputePromoCode);
             if (forComputePromoCode == -1) {
