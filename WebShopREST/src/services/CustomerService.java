@@ -25,6 +25,7 @@ import javax.ws.rs.core.Response;
 
 import beans.Admin;
 import beans.Customer;
+import beans.CustomerType;
 import beans.Manager;
 import beans.Membership;
 import beans.Product;
@@ -35,12 +36,14 @@ import beans.WorkoutAppointment;
 import beans.WorkoutHistory;
 import dao.AdminDao;
 import dao.CustomerDao;
+import dao.CustomerTypeDao;
 import dao.ManagerDao;
 import dao.MembershipDao;
 import dao.ProductDAO;
 import dao.TrainerDao;
 import dao.WorkoutAppointmentDao;
 import dto.BigDaddy;
+import dto.CustomerTypeDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -326,4 +329,22 @@ public class CustomerService {
             
         return Response.ok().build();
     }
+	
+	@GET
+	@Path("/type")
+	@JWTTokenNeeded
+	public CustomerTypeDto getTypeDto(@Context HttpHeaders headers) {
+		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		
+		CustomerDao customerDao = new CustomerDao();
+		Customer customer = customerDao.getByUsername(username);
+		if(customer == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		CustomerTypeDao customerTypeDao = new CustomerTypeDao();   
+		CustomerType type = customerTypeDao.getById(customer.getCustomerTypeId());
+		
+		return new CustomerTypeDto(type.getType(), type.getDiscount());
+	}
 }

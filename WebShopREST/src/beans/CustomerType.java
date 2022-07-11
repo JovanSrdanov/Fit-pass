@@ -4,14 +4,14 @@ public class CustomerType {
 	private int id;
 	private boolean isDeleted;
 	private String type;
-	private float discount;
+	private double discount;
 	private int pointsNeeded;
 	
 	public CustomerType() {
 		
 	}
 	
-	public CustomerType(String type, int id, boolean isDeleted, float discount, int pointsNeeded) {
+	public CustomerType(String type, int id, boolean isDeleted, double discount, int pointsNeeded) {
 		super();
 		this.type = type;
 		this.id = id;
@@ -44,11 +44,11 @@ public class CustomerType {
 		this.isDeleted = isDeleted;
 	}
 
-	public float getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(float discount) {
+	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
 

@@ -105,8 +105,8 @@ public class MembershipService {
 		String username = JWTParser.parseUsername(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		
 		CustomerDao customerDao = new CustomerDao();
-		int tokenCustomerId = customerDao.getByUsername(username).getId();
 		Customer customer = customerDao.getByUsername(username);
+		int tokenCustomerId = customer.getId();
 		if(tokenCustomerId != customerId) {
 			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
 		}
