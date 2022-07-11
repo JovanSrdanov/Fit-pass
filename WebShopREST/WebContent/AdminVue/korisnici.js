@@ -258,17 +258,62 @@ Vue.component("korisnici", {
                 },
             };
             if (user.role == "manager") {
-                console.log("Provera za managera");
                 axios
                     .get("rest/manager/hasFacility/" + user.id, yourConfig)
                     .then((result) => {
                         if (result.data == true) {
-                            console.log("Zamena menagera");
                             window.location.href =
                                 "#/zamenaMenagera/" + user.id;
                         } else {
-                            console.log("Brisanje menagera");
+                            axios
+                                .delete(
+                                    "rest/manager/delete/" + user.id,
+                                    yourConfig
+                                )
+                                .then((result) => {
+                                    alert("Obrisan menadžer");
+                                    axios
+                                        .get("rest/customer/all", yourConfig)
+                                        .then((response) => {
+                                            this.Users = response.data;
+                                        });
+                                })
+                                .catch((err) => {
+                                    alert("BAS JAKA GRESKA");
+                                });
                         }
+                    });
+            }
+            if (user.role == "customer") {
+                axios
+                    .delete("rest/customer/delete/" + user.id, yourConfig)
+                    .then((result) => {
+                        alert("Obrisan kupac");
+
+                        axios
+                            .get("rest/customer/all", yourConfig)
+                            .then((response) => {
+                                this.Users = response.data;
+                            });
+                    })
+                    .catch((err) => {
+                        alert("BAS JAKA GRESKA");
+                    });
+            }
+            if (user.role == "trainer") {
+                axios
+                    .delete("rest/trainer/delete/" + user.id, yourConfig)
+                    .then((result) => {
+                        alert("Obrisan trener");
+
+                        axios
+                            .get("rest/customer/all", yourConfig)
+                            .then((response) => {
+                                this.Users = response.data;
+                            });
+                    })
+                    .catch((err) => {
+                        alert("BAS JAKA GRESKA");
                     });
             }
         },
