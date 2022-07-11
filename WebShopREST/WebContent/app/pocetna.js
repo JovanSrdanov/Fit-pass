@@ -167,7 +167,7 @@ Vue.component("pocetna", {
                                                     Detaljnije
                                                 </button>
                                                 <button class="ObrisiDugme"
-                                                    v-on:click="deleteFacility(p)"
+                                                  v-on:click="OBRISI_Objekat(p.facility.id)"
                                                     v-if="loggedInUser.role=='admin'"
                                                 >
                                                     Obriši
@@ -316,6 +316,24 @@ Vue.component("pocetna", {
     },
 
     methods: {
+        OBRISI_Objekat: function (ID) {
+            yourConfig = {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            };
+            axios
+                .delete("rest/facilitys/delete/" + ID, yourConfig)
+                .then((result) => {
+                    alert("Obrisan komentar");
+                    axios.get("rest/facilitys").then((response) => {
+                        this.SportFacility = response.data;
+                    });
+                })
+                .catch((err) => {
+                    alert("BAS JAKA GRESKA");
+                });
+        },
         checkStatus(start, end) {
             var today = new Date();
 
