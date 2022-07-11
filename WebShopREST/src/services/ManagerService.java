@@ -19,6 +19,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import beans.Manager;
 import beans.Manager;
@@ -110,5 +111,52 @@ public class ManagerService {
 		int id = dao.getByUsername(username).getId();
 		updatedManager.setRole(Role.manager);
 		return dao.update(id, updatedManager);
+	}
+	
+	@GET
+	@Path("/hasFacility/{id}")
+	@JWTTokenNeeded
+	public boolean hasFacility(@PathParam("id") int id, @Context HttpHeaders headers) {
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
+		Manager manager = dao.getById(id);
+		if(manager == null) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Ne postoji manager sa ovim id").build());
+		}
+		
+		if(manager.getFacilityId() != -1) {
+			return true;
+		}
+		return false;
+	}
+	
+	@POST
+	@Path("/swap/{oldId}/{newId}")
+	@JWTTokenNeeded
+	public Response swapManagers(@PathParam("oldId") int firstId, 
+								@PathParam("newId") int secondId,
+								@Context HttpHeaders headers) {
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		ManagerDao dao = (ManagerDao) ctx.getAttribute("ManagerDao");
+		Manager firstManager = dao.getById(firstId);
+		Manager secondManager = dao.getById(secondId);
+		
+		if(firstManager == null || secondManager == null) {
+			throw new WebApplicationException(Response.status(Status.CONFLICT).entity("Jedan ili oba mangera ne postoje").build());
+		}
+		
+		secondManager.setFacilityId(firstManager.getFacilityId());
+		firstManager.setFacilityId(-1);
+		dao.writeFile();
+			
+		return Response.ok().build();
 	}
 }
