@@ -154,7 +154,7 @@ Vue.component("clanarina", {
                 .get("rest/membership/customer/" + this.customer.id, yourConfig)
                 .then((result) => {
                     this.staraClanarina = result.data;
-                    console.log(this.staraClanarina.active);
+
                     if (this.staraClanarina.active) {
                         this.statusFix = "Aktivna";
                     } else {

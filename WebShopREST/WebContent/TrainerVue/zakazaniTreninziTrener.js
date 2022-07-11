@@ -33,7 +33,7 @@ Vue.component("zakazaniTreninziTrener", {
                                     <td>{{u.customerFullName}}</td>
 
                                     <td v-if="u.canceled" >Otkazan</td>
-                                    <td v-if="!u.canceled">  <button v-on:click="OtkaziTrening(u.id)" class="ObrisiDugme">Otkaži</button></td>
+                                    <td v-if="!u.canceled">  <button v-on:click="OtkaziTrening(u.appointentId)" class="ObrisiDugme">Otkaži</button></td>
                                 
                                 </tr>
                             </tbody>
@@ -68,21 +68,24 @@ Vue.component("zakazaniTreninziTrener", {
         });
     },
     methods: {
-        OtkaziTrening: function (trainingID) {
+        OtkaziTrening: function (appointmentId) {
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
                 },
             };
+            console.log(yourConfig);
             axios
-                .put("rest/workout/cancel" + trainingID)
+                .put("rest/workout/cancel/" + appointmentId, "", yourConfig)
                 .then((result) => {
                     alert("Otkazan trening");
+                    /*
                     axios
                         .get("rest/workout/appointments", yourConfig)
                         .then((result) => {
                             this.appointments = result.data;
                         });
+                        */
                 })
                 .catch((err) => {
                     alert("Ne moze da se otkaze dva dana pre treninga");
