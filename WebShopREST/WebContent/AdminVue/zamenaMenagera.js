@@ -252,6 +252,7 @@ Vue.component("zamenaMenagera", {
                         this.oldManId +
                         "/" +
                         this.selectedManager.id,
+                    0,
                     yourConfig
                 )
                 .then((result) => {
