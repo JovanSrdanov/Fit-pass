@@ -9,7 +9,7 @@ Vue.component("komentari", {
         <h1>Komentari</h1>
         <div class="tabelaKomentara">
             <table>
-                <th>Kupac (URADI)</th>
+                <th>Kupac</th>
                 <th>Sportski objekat</th>
                 <th>Tekst</th>
                 <th>Ocena</th>
@@ -18,12 +18,12 @@ Vue.component("komentari", {
 
                 <tbody>
                     <tr v-for="c in comments">
-                        <td>{{c.customerId}}</td>
-                        <td>{{c.facilityId}}</td>
-                        <td>{{c.commentText}}</td>
-                        <td>{{c.rating}}</td>            
+                        <td>{{c.username}}</td>
+                        <td>{{c.facilityName}}</td>
+                        <td>{{c.comment.commentText}}</td>
+                        <td>{{c.comment.rating}}</td>            
                         <td >
-                        <button v-on:click="ApproveFunction(c.id)" class="Odobri" >Odobri</button>
+                        <button v-on:click="ApproveFunction(c.comment.id)" class="Odobri" >Odobri</button>
                         &nbsp;
                         
                         <button class="Odbij"  v-on:click="RejectFunction(c.id)" >Odbij</button>            
@@ -58,7 +58,7 @@ Vue.component("komentari", {
             window.location.href = "#/pocetna";
             return;
         }
-        axios.get("rest/comment/all/", yourConfig).then((result) => {
+        axios.get("rest/comment/allWaiting/", yourConfig).then((result) => {
             this.comments = result.data;
         });
     },
@@ -74,7 +74,7 @@ Vue.component("komentari", {
                 .put("rest/comment/changeStatus/" + id, 0, yourConfig)
                 .then((result) => {
                     axios
-                        .get("rest/comment/all/", yourConfig)
+                        .get("rest/comment/allWaiting/", yourConfig)
                         .then((result) => {
                             this.comments = result.data;
                         });
@@ -92,7 +92,7 @@ Vue.component("komentari", {
                 .put("rest/comment/changeStatus/" + id, 2, yourConfig)
                 .then((result) => {
                     axios
-                        .get("rest/comment/all/", yourConfig)
+                        .get("rest/comment/allWaiting/", yourConfig)
                         .then((result) => {
                             this.comments = result.data;
                         });

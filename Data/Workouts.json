@@ -190,5 +190,17 @@
     "description": "21saddsa",
     "picture": "WorkoutLogo16.png",
     "price": 21.0
+  },
+  "17": {
+    "id": 17,
+    "isDeleted": false,
+    "name": "SADDSADAS",
+    "workoutType": "personal",
+    "facilityId": 16,
+    "durationInMinutes": 60,
+    "trainerId": 3,
+    "description": "ASSADASDAS",
+    "picture": "WorkoutLogo17.png",
+    "price": 123.0
   }
 }

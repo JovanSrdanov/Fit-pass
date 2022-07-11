@@ -7,7 +7,8 @@
       1,
       2,
       3,
-      8
+      8,
+      16
     ],
     "workoutHistory": [
       {
@@ -69,6 +70,12 @@
         "checkDate": "Jul 11, 2022, 3:17:01 PM",
         "customerId": 1,
         "trainerId": 1
+      },
+      {
+        "workoutId": 17,
+        "checkDate": "Jul 11, 2022, 6:54:59 PM",
+        "customerId": 1,
+        "trainerId": 3
       }
     ],
     "id": 1,
