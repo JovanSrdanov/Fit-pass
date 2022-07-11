@@ -109,7 +109,7 @@
   },
   "10": {
     "id": 10,
-    "isDeleted": false,
+    "isDeleted": true,
     "name": "aaaaaaaa",
     "workoutType": "group",
     "facilityId": 1,

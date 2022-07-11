@@ -197,12 +197,21 @@ public class FacilityDao {
 	}
 	
 	public Facility getById(int id) {
-		return facilitys.containsKey(id) ? facilitys.get(id) : null;
+		if(facilitys.containsKey(id)) {
+			return facilitys.get(id);
+		}
+		else if(allFacilitys.containsKey(id) || id == -99) {
+			return Startup.deletedFacility;
+		}
+		else {
+			return null;
+		}
+		//return facilitys.containsKey(id) ? facilitys.get(id) : null;
 	}
 	
 	public Facility addNew(Facility newFacility) {
 		Integer maxId = -1;
-		for (int id : facilitys.keySet()) {
+		for (int id : allFacilitys.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;
@@ -237,7 +246,7 @@ public class FacilityDao {
 	
 	public int getNextId() {
 		Integer maxId = -1;
-		for (int id : facilitys.keySet()) {
+		for (int id : allFacilitys.keySet()) {
 			int idNum = id;
 			if (idNum > maxId) {
 				maxId = idNum;

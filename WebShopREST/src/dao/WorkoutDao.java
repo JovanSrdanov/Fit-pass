@@ -11,11 +11,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Customer;
 import beans.Workout;
 import main.Startup;
 
 public class WorkoutDao {
-private static HashMap<Integer, Workout> workouts;
+	private static HashMap<Integer, Workout> workouts;
+	
+	private static HashMap<Integer, Workout> allWorkouts;
 	
 	public WorkoutDao() {
 		readFile();
@@ -42,7 +45,7 @@ private static HashMap<Integer, Workout> workouts;
 			Gson gson = new GsonBuilder()
 					  .setPrettyPrinting()
 					  .create();
-			gson.toJson(workouts, writer);
+			gson.toJson(allWorkouts, writer);
 			writer.close();
 		}
 		catch (Exception e) {
@@ -61,13 +64,26 @@ private static HashMap<Integer, Workout> workouts;
 					  .setPrettyPrinting()
 					  .create();
 			Type type = new TypeToken<HashMap<Integer, Workout>>(){}.getType();
-			workouts = gson.fromJson(reader, type);
+			allWorkouts = gson.fromJson(reader, type);
 			reader.close();
+			
+			filterDeleted();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("error2");
 		}
+	}
+	
+	private void filterDeleted() {
+		workouts = new HashMap<Integer, Workout>();
+		
+		for(Workout work : allWorkouts.values()) {
+			if(!work.isDeleted()) {
+				workouts.put(work.getId(), work);
+			}
+		}
+		
 	}
 	
 	
@@ -76,7 +92,15 @@ private static HashMap<Integer, Workout> workouts;
 	}
 	
 	public Workout getById(int id) {
-		return workouts.containsKey(id) ? workouts.get(id) : null;
+		if(workouts.containsKey(id)) {
+			return workouts.get(id);
+		}
+		else if(allWorkouts.containsKey(id) || id == -99) {
+			return Startup.deletedWorkout;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public Workout addNew(Workout newWorkout) {
@@ -108,8 +132,7 @@ private static HashMap<Integer, Workout> workouts;
 	}
 	
 	public void removeById(int id) {
-		
-		//treba logicko
+		this.workouts.get(id).setDeleted(true);
 		this.workouts.remove(id);
 		writeFile();
 	}
