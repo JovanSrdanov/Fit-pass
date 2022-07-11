@@ -1,12 +1,13 @@
 {
   "1": {
-    "membershipId": 4,
+    "membershipId": 5,
     "points": 1,
     "customerTypeId": 1,
     "visitedFacilityIds": [
       1,
       2,
-      3
+      3,
+      8
     ],
     "workoutHistory": [
       {
@@ -50,6 +51,12 @@
         "checkDate": "Jul 10, 2022, 2:11:36 PM",
         "customerId": 1,
         "trainerId": 2
+      },
+      {
+        "workoutId": 16,
+        "checkDate": "Jul 11, 2022, 2:12:02 AM",
+        "customerId": 1,
+        "trainerId": 5
       }
     ],
     "id": 1,

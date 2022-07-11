@@ -68,7 +68,14 @@
     "role": "trainer"
   },
   "5": {
-    "workoutHistory": [],
+    "workoutHistory": [
+      {
+        "workoutId": 16,
+        "checkDate": "Jul 11, 2022, 2:12:02 AM",
+        "customerId": 1,
+        "trainerId": 5
+      }
+    ],
     "id": 5,
     "isDeleted": false,
     "username": "jocaccc",

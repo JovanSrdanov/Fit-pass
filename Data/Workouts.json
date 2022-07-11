@@ -178,5 +178,17 @@
     "description": "Opa",
     "picture": "WorkoutLogo15.png",
     "price": 420.0
+  },
+  "16": {
+    "id": 16,
+    "isDeleted": false,
+    "name": "sadasdas1",
+    "workoutType": "group",
+    "facilityId": 8,
+    "durationInMinutes": 62,
+    "trainerId": 5,
+    "description": "21saddsa",
+    "picture": "WorkoutLogo16.png",
+    "price": 21.0
   }
 }

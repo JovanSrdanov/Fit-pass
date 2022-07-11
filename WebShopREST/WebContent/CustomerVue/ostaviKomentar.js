@@ -1,8 +1,11 @@
 Vue.component("ostaviKomentar", {
     data: function () {
         return {
-            staraClanarina: {},
-            selectedBase: {},
+            facilityID: null,
+            rating: 1,
+            commentText: "",
+            fillCommentText: "",
+            Customer: null,
         };
     },
     template: `
@@ -12,6 +15,7 @@ Vue.component("ostaviKomentar", {
     </div>
     `,
     mounted() {
+        this.facilityID = this.$route.params.id;
         if (JSON.parse(localStorage.getItem("loggedInUser")) === null) {
             alert("Nemate pristup ovom sadržaju");
             window.location.href = "#/pocetna";
@@ -24,6 +28,7 @@ Vue.component("ostaviKomentar", {
             window.location.href = "#/pocetna";
             return;
         }
+        this.Customer = JSON.parse(localStorage.getItem("loggedInUser"));
 
         yourConfig = {
             headers: {
@@ -33,9 +38,6 @@ Vue.component("ostaviKomentar", {
     },
 
     methods: {
-        CreateClanarina: function () {},
-        selectClanarinabase(base) {
-            this.selectedBase = base;
-        },
+        SendComment: function () {},
     },
 });

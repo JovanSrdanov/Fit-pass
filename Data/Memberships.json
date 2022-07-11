@@ -51,7 +51,18 @@
     "endDate": "Sep 8, 2022, 6:41:31 PM",
     "price": 8800.0,
     "customerId": 1,
-    "isActive": true,
+    "isActive": false,
     "numberOfTrainings": -1
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "code": "GOD123789",
+    "startDate": "Jul 11, 2022, 1:54:09 AM",
+    "endDate": "Jul 11, 2023, 1:54:09 AM",
+    "price": 48000.0,
+    "customerId": 1,
+    "isActive": true,
+    "numberOfTrainings": 8
   }
 }

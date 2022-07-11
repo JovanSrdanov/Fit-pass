@@ -159,7 +159,7 @@ public class CommentService {
 		}
 		
 		CommentDao commentDao = (CommentDao) ctx.getAttribute("CommentDao");
-		return commentDao.exists(customerId, facilityId);
+		return !commentDao.exists(customerId, facilityId);
 	}
 	
 	@GET

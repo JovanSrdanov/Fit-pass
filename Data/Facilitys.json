@@ -113,7 +113,9 @@
     "isDeleted": false,
     "name": "Novi obj",
     "facilityType": "Gym",
-    "workoutIds": [],
+    "workoutIds": [
+      16
+    ],
     "status": false,
     "locationId": 8,
     "logo": "FacilityLogo8.png",

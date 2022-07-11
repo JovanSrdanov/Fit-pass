@@ -12,8 +12,9 @@ Vue.component("pregledObjekta", {
             commentsForFacility: {},
             roleCustomer: false,
             roleAdmin: false,
-            customerHasVisited: false,
             allComments: false,
+
+            customerCanComment: false,
         };
     },
     template: `  
@@ -67,10 +68,15 @@ Vue.component("pregledObjekta", {
                                 <button v-on:click="AddNewActivity" >Dodaj novi sadržaj</button>     
                                 <button  v-on:click="CheckInCustomer" >Prijavi kupca</button>                         
                             </p> 
-                            <p v-if="customerHasVisited">  
-                                <button>Ostavite ocenu i komentar</button>     
-                                                     
+
+                            <p><strong>Ne možete komentarisati i oceniti objekat ako ga niste posetili,</strong></p>
+                            <p><strong>ili ako ste ga već komentarisali i ocenili</strong></p>                                      
+                             <p v-if="customerCanComment">     
+                                    <button v-on:click="CreateComment">Ostavite ocenu i komentar</button>                                           
                             </p> 
+                           
+                           
+                            
                     </td>
 
                     <td>
@@ -200,15 +206,13 @@ Vue.component("pregledObjekta", {
             ) {
                 this.roleCustomer = true;
                 let c = JSON.parse(localStorage.getItem("loggedInUser"));
-                if (c.visitedFacilityIds.includes(parseInt(this.facilityID))) {
-                    this.customerHasVisited = true;
-                    console.log(
-                        JSON.parse(localStorage.getItem("loggedInUser"))
-                            .visitedFacilityIds +
-                            " aaa " +
-                            this.facilityID
-                    );
-                }
+
+                axios
+                    .get("rest/comment/can/" + this.facilityID, yourConfig)
+                    .then((result) => {
+                        this.customerCanComment = result.data;
+                        console.log(this.customerCanComment + " aloo");
+                    });
             }
         }
 
@@ -249,6 +253,15 @@ Vue.component("pregledObjekta", {
                                 this.commentsForFacility = result.data;
                             });
                     }
+                } else {
+                    axios
+                        .get(
+                            "rest/comment/facility/approved/" + this.facilityID,
+                            yourConfig
+                        )
+                        .then((result) => {
+                            this.commentsForFacility = result.data;
+                        });
                 }
             }
         } else {
@@ -317,6 +330,10 @@ Vue.component("pregledObjekta", {
             });
     },
     methods: {
+        CreateComment: function () {
+            router.push(`/pregledObjekta/${this.facilityID}/ostaviKomentar/`);
+        },
+
         tralnslateCommentStatus: function (status) {
             if (status === "approved") return "Odobren";
             if (status === "waiting") return "Čeka";

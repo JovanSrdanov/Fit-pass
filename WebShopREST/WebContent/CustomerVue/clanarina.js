@@ -14,6 +14,8 @@ Vue.component("clanarina", {
             promoCodeDiscount: -1,
             isVerified: false,
             lastVerifiedPromoCode: "",
+
+            statusFix: "",
         };
     },
     template: ` 
@@ -113,7 +115,7 @@ Vue.component("clanarina", {
                     Datum prestanka važenja: {{getDate(staraClanarina.endDate)}}
                 </p>
                 <p>Cena: {{staraClanarina.price}} RSD</p>
-                <p>Status: {{convertStatus(staraClanarina.isActive)}}</p>
+                <p>Status: {{statusFix}}</p>
                 <p>
                     Dnevni broj dozvoljenjih aktivnost :
                     {{staraClanarina.numberOfTrainings}}
@@ -152,6 +154,12 @@ Vue.component("clanarina", {
                 .get("rest/membership/customer/" + this.customer.id, yourConfig)
                 .then((result) => {
                     this.staraClanarina = result.data;
+                    console.log(this.staraClanarina.active);
+                    if (this.staraClanarina.active) {
+                        this.statusFix = "Aktivna";
+                    } else {
+                        this.statusFix = "Nije aktivna";
+                    }
                 });
         }
 
@@ -266,7 +274,8 @@ Vue.component("clanarina", {
                 });
         },
         convertStatus(status) {
-            if (status) return "Aktivna";
+            console.log("status " + status);
+            if (this.staraClanarina.status) return "Aktivna";
             return "Nije aktivna";
         },
         translateType: function (type) {
