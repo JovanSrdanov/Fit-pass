@@ -112,6 +112,30 @@ Vue.component("promoKod", {
         createPromoCode: function () {
             this.codeExists = "";
             this.enterAll = "";
+            var now = new Date();
+            var checkDate = new Date(this.validDate);
+            if (checkDate <= now) {
+                alert("Datum važenja promo koda mora biti u budučnosti");
+                return;
+            }
+
+            if (isNaN(this.usageCount)) {
+                alert("Unestite brojcanu vrednost u broj upotreba");
+                return;
+            }
+            if (isNaN(this.discountPercentage)) {
+                alert("Unestite brojcanu vrednost u procenat popusta");
+                return;
+            }
+            if (this.discountPercentage < 1 || this.discountPercentage > 99) {
+                alert("Unestite validni procenat popusta");
+                return;
+            }
+            if (this.usageCount < 1) {
+                alert("Unestite validni broj korišćenja (veći od 0)");
+                return;
+            }
+
             if (this.code === "") {
                 this.enterAll = "Niste uneli sve podatke";
                 return;
@@ -142,7 +166,7 @@ Vue.component("promoKod", {
                 )
                 .then((response) => {
                     axios.get("rest/promoCode", yourConfig2).then((r) => {
-                        this.codes = r.data;
+                        window.location.href = "#/pocetna";
                     });
                 })
                 .catch((error) => {

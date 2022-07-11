@@ -374,10 +374,11 @@ Vue.component("napraviObjekat", {
         CreateSportFacility: function () {
             this.allEntered = "";
             this.existsSP = "";
-            // uradi proveru za end i start
-            // uradi proveru za end i start
-            // uradi proveru za end i start
-            // uradi proveru za end i start
+
+            if (this.workStart >= this.workEnd) {
+                alert("Početak radnog vremena mora da je pre kraja");
+                return;
+            }
 
             if (
                 this.logoSend === null ||

@@ -237,6 +237,17 @@ Vue.component("clanarina", {
                 });
         },
         CreateClanarina: function () {
+            if (isNaN(this.dailyActivty)) {
+                alert("Unestite brojcanu vrednost broja dnevnih aktivnost");
+                return;
+            }
+            if (this.discountPercentage < 1 || this.discountPercentage > 99) {
+                alert(
+                    "Unestite validan broj dnevnih aktivnosti (1-10) ili odaberite neograničeno"
+                );
+                return;
+            }
+
             if (this.selectedBase.code == "") {
                 alert("Izaberite osnovu clanarine");
                 return;

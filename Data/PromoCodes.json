@@ -38,5 +38,29 @@
     "validDate": "Jul 28, 2022, 2:00:00 AM",
     "usageCount": 27,
     "discountPercentage": 50.0
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "code": "Vazi u buducnost",
+    "validDate": "Aug 25, 2022, 2:00:00 AM",
+    "usageCount": 24,
+    "discountPercentage": 46.0
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "code": "ValidOnce",
+    "validDate": "Jul 13, 2022, 2:00:00 AM",
+    "usageCount": 1,
+    "discountPercentage": 2.0
+  },
+  "8": {
+    "id": 8,
+    "isDeleted": false,
+    "code": "Oznakatest",
+    "validDate": "Jul 21, 2022, 2:00:00 AM",
+    "usageCount": 1,
+    "discountPercentage": 50.0
   }
 }
