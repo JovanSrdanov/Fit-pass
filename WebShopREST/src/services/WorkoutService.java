@@ -378,17 +378,34 @@ public class WorkoutService {
 	}
 	
 	@POST
-	@Path("/history/manager/s")
+	@Path("/history/s")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<WorkoutHistoryDto> getManagerHistoryFilter(
+	public Collection<WorkoutHistoryDto> getHistoryFilter(
 			@FormParam("priceMin") double priceMin,
 			@FormParam("priceMax") double priceMax,
 			@FormParam("startDate") String startDateString,
 			@FormParam("endDate") String endDateString,
+			@FormParam("facilityName") String facilityName,
 			@Context HttpHeaders headers) 
 	{
-		ArrayList<WorkoutHistoryDto> history = new ArrayList<WorkoutHistoryDto>(getManagerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION)));
+		ArrayList<WorkoutHistoryDto> history = new ArrayList<>();
+		
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+		if(role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		if(role.equals(Role.manager.toString())) {
+			history = new ArrayList<WorkoutHistoryDto>(getManagerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION)));
+		}
+		else if(role.equals(Role.trainer.toString())) {
+			history = new ArrayList<WorkoutHistoryDto>(getTrainerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION)));
+		}
+		else if(role.equals(Role.customer.toString())) {
+			history = new ArrayList<WorkoutHistoryDto>(getCustomerHistoryBase(headers.getRequestHeader(HttpHeaders.AUTHORIZATION)));
+		}
+		
+		
 		ArrayList<WorkoutHistoryDto> filteredHistory = new ArrayList<WorkoutHistoryDto>();
 		
 		Date startDate = null;
@@ -405,7 +422,11 @@ public class WorkoutService {
 		}
 		
 		for(WorkoutHistoryDto hist : history) {
-			if(hist.getPrice() >= priceMin && hist.getPrice() <= priceMax) {
+			if(		hist.getPrice() >= priceMin && 
+					hist.getPrice() <= priceMax &&
+					hist.getWorkoutDate().compareTo(startDate) >= 0 &&
+					hist.getWorkoutDate().compareTo(endDate) <= 0 &&
+					hist.getFacilityName().contains(facilityName)) {
 				filteredHistory.add(hist);
 			}
 		}
