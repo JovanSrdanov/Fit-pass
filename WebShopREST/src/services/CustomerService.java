@@ -303,13 +303,23 @@ public class CustomerService {
         WorkoutAppointmentDao appointmentDao = new WorkoutAppointmentDao();
         MembershipDao membershipDao = new MembershipDao();
         
+        ArrayList<Integer> appointmentForRemoval = new ArrayList<Integer>();
         for(WorkoutAppointment appointment : appointmentDao.getAll()) {
         	if(appointment.getCustomerId() == id) {
-        		appointmentDao.removeById(appointment.getId());
+        		//appointmentDao.removeById(appointment.getId());
+        		appointmentForRemoval.add(appointment.getId());
         	}
         }
         
+        for(int removeId : appointmentForRemoval) {
+        	appointmentDao.removeById(removeId);
+        }
+        
         Membership membership = membershipDao.getById(customer.getMembershipId());
+        if(membership == null) {
+        	throw new WebApplicationException(Response.Status.CONFLICT);
+        }
+        
         if(membership != null) {
         	membership.setActive(false);
         	membershipDao.writeFile();
