@@ -69,7 +69,7 @@ Vue.component("pregledObjekta", {
                                 <button  v-on:click="CheckInCustomer" >Prijavi kupca</button>                         
                             </p> 
 
-                            <p><strong>Ne možete komentarisati i oceniti objekat ako ga niste posetili,</strong></p>
+                            <p ><strong>Ne možete komentarisati i oceniti objekat ako ga niste posetili,</strong></p>
                             <p><strong>ili ako ste ga već komentarisali i ocenili</strong></p>                                      
                              <p v-if="customerCanComment">     
                                     <button v-on:click="CreateComment">Ostavite ocenu i komentar</button>                                           

@@ -10,5 +10,32 @@
         </style>
         <title>Document</title>
     </head>
-    <body></body>
+    <body>
+        <div>
+            <h1>Ostavi komentar</h1>
+            <textarea
+                placeholder="Vaš komentar..."
+                name="Comm"
+                id="Comm"
+                cols="70"
+                rows="10"
+                style="overflow: auto; resize: none"
+            ></textarea>
+
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+
+                <input type="radio" id="star4" name="rate" value="4" />
+
+                <input type="radio" id="star3" name="rate" value="3" />
+
+                <input type="radio" id="star2" name="rate" value="2" />
+
+                <input type="radio" id="star1" name="rate" value="1" />
+            </div>
+
+            <p><button>Pošalji komentar</button></p>
+            <p>{{fillCommentText}}</p>
+        </div>
+    </body>
 </html>
