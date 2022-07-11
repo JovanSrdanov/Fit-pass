@@ -256,7 +256,18 @@ Vue.component("zamenaMenagera", {
                     yourConfig
                 )
                 .then((result) => {
-                    window.location.href = "#/korisnici";
+                    axios
+                        .delete(
+                            "rest/manager/delete/" + this.oldManId,
+                            yourConfig
+                        )
+                        .then((result) => {
+                            alert("Obrisan menadžer");
+                            window.location.href = "#/korisnici";
+                        })
+                        .catch((err) => {
+                            alert("BAS JAKA GRESKA");
+                        });
                 });
         },
     },
