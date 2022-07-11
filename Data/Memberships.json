@@ -1,1 +1,14 @@
-{}
+{
+  "0": {
+    "id": 0,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 1:48:31 AM",
+    "endDate": "Sep 10, 2022, 1:48:31 AM",
+    "price": 4000.0,
+    "customerId": 0,
+    "isActive": true,
+    "numberOfTrainings": 10,
+    "numberOfChechkins": 3
+  }
+}

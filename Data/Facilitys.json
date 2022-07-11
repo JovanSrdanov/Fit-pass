@@ -1,1 +1,19 @@
-{}
+{
+  "0": {
+    "id": 0,
+    "isDeleted": false,
+    "name": "Nogavica",
+    "facilityType": "Fudbalski Teren",
+    "workoutIds": [
+      0,
+      1,
+      2
+    ],
+    "status": false,
+    "locationId": 0,
+    "logo": "FacilityLogo0.png",
+    "rating": 0.0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
+  }
+}

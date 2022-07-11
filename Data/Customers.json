@@ -1,10 +1,31 @@
 {
   "0": {
-    "membershipId": -1,
+    "membershipId": 0,
     "points": 0.0,
     "customerTypeId": 1,
-    "visitedFacilityIds": [],
-    "workoutHistory": [],
+    "visitedFacilityIds": [
+      0
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 0,
+        "checkDate": "Jul 12, 2022, 1:49:24 AM",
+        "customerId": 0,
+        "trainerId": -1
+      },
+      {
+        "workoutId": 1,
+        "checkDate": "Jul 12, 2022, 1:49:28 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 2,
+        "checkDate": "Jul 12, 2022, 1:49:31 AM",
+        "customerId": 0,
+        "trainerId": 0
+      }
+    ],
     "id": 0,
     "isDeleted": false,
     "username": "q",
