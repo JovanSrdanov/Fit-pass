@@ -316,9 +316,6 @@ public class CustomerService {
         }
         
         Membership membership = membershipDao.getById(customer.getMembershipId());
-        if(membership == null) {
-        	throw new WebApplicationException(Response.Status.CONFLICT);
-        }
         
         if(membership != null) {
         	membership.setActive(false);
