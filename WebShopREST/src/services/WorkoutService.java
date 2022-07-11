@@ -421,12 +421,14 @@ public class WorkoutService {
 			}
 		}
 		
+		facilityName = facilityName.toLowerCase();
+		
 		for(WorkoutHistoryDto hist : history) {
 			if(		hist.getPrice() >= priceMin && 
 					hist.getPrice() <= priceMax &&
 					hist.getWorkoutDate().compareTo(startDate) >= 0 &&
 					hist.getWorkoutDate().compareTo(endDate) <= 0 &&
-					hist.getFacilityName().contains(facilityName)) {
+					hist.getFacilityName().toLowerCase().contains(facilityName)) {
 				filteredHistory.add(hist);
 			}
 		}
