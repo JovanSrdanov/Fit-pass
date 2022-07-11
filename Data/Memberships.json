@@ -62,7 +62,40 @@
     "endDate": "Jul 11, 2023, 1:54:09 AM",
     "price": 48000.0,
     "customerId": 1,
-    "isActive": true,
+    "isActive": false,
     "numberOfTrainings": 8
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 11, 2022, 4:29:45 PM",
+    "endDate": "Sep 9, 2022, 4:29:45 PM",
+    "price": 8800.0,
+    "customerId": 1,
+    "isActive": false,
+    "numberOfTrainings": -1
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 11, 2022, 4:29:57 PM",
+    "endDate": "Sep 9, 2022, 4:29:57 PM",
+    "price": 8800.0,
+    "customerId": 1,
+    "isActive": false,
+    "numberOfTrainings": -1
+  },
+  "8": {
+    "id": 8,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 11, 2022, 4:35:04 PM",
+    "endDate": "Sep 9, 2022, 4:35:04 PM",
+    "price": 4800.0,
+    "customerId": 1,
+    "isActive": true,
+    "numberOfTrainings": 6
   }
 }

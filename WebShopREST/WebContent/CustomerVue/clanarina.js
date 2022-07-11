@@ -118,7 +118,7 @@ Vue.component("clanarina", {
                 <p>Status: {{statusFix}}</p>
                 <p>
                     Dnevni broj dozvoljenjih aktivnost :
-                    {{staraClanarina.numberOfTrainings}}
+                    {{convertDA(staraClanarina.numberOfTrainings)}}
                 </p>
             </div>
         </div>
@@ -209,6 +209,10 @@ Vue.component("clanarina", {
         },
     },
     methods: {
+        convertDA(nt) {
+            if (nt == -1) return "Neograničeno";
+            return nt;
+        },
         verifyPromoCode() {
             yourConfig = {
                 headers: {
@@ -241,7 +245,10 @@ Vue.component("clanarina", {
                 alert("Unestite brojcanu vrednost broja dnevnih aktivnost");
                 return;
             }
-            if (this.discountPercentage < 1 || this.discountPercentage > 99) {
+            if (
+                (this.dailyActivty < 1 || this.dailyActivty > 10) &&
+                !this.NeogranicenoCheck
+            ) {
                 alert(
                     "Unestite validan broj dnevnih aktivnosti (1-10) ili odaberite neograničeno"
                 );
@@ -281,7 +288,7 @@ Vue.component("clanarina", {
                     this.$root.VarToken();
                 })
                 .catch((error) => {
-                    alert("Greska u search metodi");
+                    alert("Greska ");
                 });
         },
         convertStatus(status) {
