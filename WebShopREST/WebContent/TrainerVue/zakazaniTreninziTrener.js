@@ -72,13 +72,15 @@ Vue.component("zakazaniTreninziTrener", {
             yourConfig = {
                 headers: {
                     Authorization: localStorage.getItem("token"),
+                    "Content-Type": "application/json",
                 },
             };
-            console.log(yourConfig);
+
             axios
-                .put("rest/workout/cancel/" + appointmentId, "", yourConfig)
+                .put("rest/workout/cancel/" + appointmentId, 0, yourConfig)
                 .then((result) => {
                     alert("Otkazan trening");
+
                     /*
                     axios
                         .get("rest/workout/appointments", yourConfig)
@@ -88,7 +90,8 @@ Vue.component("zakazaniTreninziTrener", {
                         */
                 })
                 .catch((err) => {
-                    alert("Ne moze da se otkaze dva dana pre treninga");
+                    console.log("Ne moze da se otkaze dva dana pre treninga");
+                    console.log(err);
                 });
         },
         ConvertZakazan: function (Z) {
