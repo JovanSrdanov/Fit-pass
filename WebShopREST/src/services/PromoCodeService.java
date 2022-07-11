@@ -108,4 +108,22 @@ public class PromoCodeService {
 		
 		return dao.getDiscountValid(code);
 	}
+	
+	@DELETE
+    @Path("/delete/{id}")
+    @JWTTokenNeeded
+    public Response deletePromoCode(@PathParam("id") int id, @Context HttpHeaders headers) {
+        String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
+        if(!role.equals(Role.admin.toString())) {
+            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+        }
+        
+        PromoCodeDao dao = (PromoCodeDao) ctx.getAttribute("PromoCodeDao");
+        if(dao.getById(id) == null) {
+        	throw new WebApplicationException(Response.Status.CONFLICT);
+        }
+        dao.removeById(id);
+        
+        return Response.ok().build();
+    }
 }

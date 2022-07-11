@@ -594,6 +594,5 @@ public class WorkoutService {
 		workoutDao.removeById(id);
 		
 		return Response.ok().build();
-		
 	}
 }

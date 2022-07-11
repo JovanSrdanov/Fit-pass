@@ -200,7 +200,7 @@ public class CommentService {
 	@Path("facility/all/{id}")
 	@JWTTokenNeeded
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<CommentDto> getCommentfForFacilityAll(@PathParam("id") int id,@Context HttpHeaders headers) {
+	public Collection<CommentDto> getCommentfForFacilityAll(@PathParam("id") int id, @Context HttpHeaders headers) {
 		
 		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));
 		
@@ -225,5 +225,24 @@ public class CommentService {
 		}
 		
 		throw new WebApplicationException(Response.Status.UNAUTHORIZED);	
+	}
+	
+	@DELETE
+	@Path("/delete/{id}")
+	@JWTTokenNeeded
+	public Response deleteComment(@PathParam("id") int id, @Context HttpHeaders headers) {
+		String role = JWTParser.parseRole(headers.getRequestHeader(HttpHeaders.AUTHORIZATION));	
+		if(!role.equals(Role.admin.toString())) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}
+		
+		CommentDao commentDao = (CommentDao) ctx.getAttribute("CommentDao");
+		if(commentDao.getById(id) == null) {
+			throw new WebApplicationException(Response.Status.CONFLICT);
+		}
+		commentDao.removeById(id);
+		
+		
+		return Response.ok().build();
 	}
 }
