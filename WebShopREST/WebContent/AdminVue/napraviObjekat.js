@@ -6,7 +6,7 @@ Vue.component("napraviObjekat", {
             nameManager: "",
             surnameManager: "",
             genderManager: "male",
-            dateOfBirthManager: "1900-01-01",
+            dateOfBirthManager: "1999-01-01",
 
             availableManagers: null,
             selectedManager: {},
@@ -446,6 +446,12 @@ Vue.component("napraviObjekat", {
             this.selectedManager = managaer;
         },
         RegisterManager: function () {
+            var now = new Date();
+            var checkDate = new Date(this.dateOfBirthManager);
+            if (checkDate >= now) {
+                alert("Datum rođenja mora biti u prošlosti");
+                return;
+            }
             this.managerDataEntered = "";
             this.managerExists = "";
 

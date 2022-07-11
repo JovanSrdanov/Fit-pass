@@ -6,43 +6,47 @@ Vue.component("treneriIkupci", {
             facId: null,
         };
     },
-    template: `
-     <div class="WholeScreen">
+    template: ` 
+        <div class="WholeScreen">
             <h1>Treneri i kupci</h1>
-<table class="tableForPocetna">
-     <td>
-         <h2 class="white">Treneri koji drže treninge u mom objektu:</h2>
-            <div class="treneriIkupci">
-                <table>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Korisničko ime</th>
-                    <tbody>
-                        <tr v-for="T in trainers" >
-                            <td>{{T.name}}</td>
-                            <td>{{T.surname}}</td>
-                            <td>{{T.username}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-</td> <td>
-    <h2 class="white">Kupci koji su posetili moj objekat:</h2>
-            <div class="treneriIkupci">
-                <table>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Korisničko ime</th>
-                    <tbody>
-                        <tr v-for="T in customers">
-                            <td>{{T.name}}</td>
-                            <td>{{T.surname}}</td>
-                            <td>{{T.username}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            </td>
+            <table class="tableForPocetna">
+                <td>
+                    <h2 class="white">
+                        Treneri koji drže treninge u mom objektu:
+                    </h2>
+                    <div class="treneriIkupci">
+                        <table>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Korisničko ime</th>
+                            <tbody>
+                                <tr v-for="T in trainers">
+                                    <td>{{T.name}}</td>
+                                    <td>{{T.surname}}</td>
+                                    <td>{{T.username}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <h2 class="white">Kupci koji su posetili moj objekat:</h2>
+                    <div class="treneriIkupci">
+                        <table>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Korisničko ime</th>
+                            <tbody>
+                                <tr v-for="T in customers">
+                                    <td>{{T.name}}</td>
+                                    <td>{{T.surname}}</td>
+                                    <td>{{T.username}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </table>
         </div>
   `,
     mounted() {

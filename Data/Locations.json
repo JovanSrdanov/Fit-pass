@@ -178,5 +178,15 @@
     "streetNumber": "43",
     "city": "Belgrade",
     "postCode": "11000"
+  },
+  "19": {
+    "id": 19,
+    "isDeleted": false,
+    "latitude": "45.3873134",
+    "longitude": "20.393419",
+    "street": "Takovska",
+    "streetNumber": "42",
+    "city": "Zrenjanin ",
+    "postCode": "23101"
   }
 }

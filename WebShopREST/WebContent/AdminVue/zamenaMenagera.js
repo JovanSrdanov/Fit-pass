@@ -9,7 +9,7 @@ Vue.component("zamenaMenagera", {
             nameManager: "",
             surnameManager: "",
             genderManager: "male",
-            dateOfBirthManager: "1900-01-01",
+            dateOfBirthManager: "1999-01-01",
 
             managerExists: "",
             managerDataEntered: "",
@@ -176,6 +176,12 @@ Vue.component("zamenaMenagera", {
         RegisterManager: function () {
             this.managerDataEntered = "";
             this.managerExists = "";
+            var now = new Date();
+            var checkDate = new Date(this.dateOfBirthManager);
+            if (checkDate >= now) {
+                alert("Datum rođenja mora biti u prošlosti");
+                return;
+            }
 
             if (
                 this.usernameManager === "" ||

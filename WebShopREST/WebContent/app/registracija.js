@@ -6,7 +6,7 @@ Vue.component("registracija", {
             name: "",
             surname: "",
             gender: "male",
-            dateOfBirth: "1900-01-01",
+            dateOfBirth: "1999-01-01",
             role: "CUSTOMER",
             loggedInUser: {},
             userNameUnique: "OK",
@@ -116,6 +116,13 @@ Vue.component("registracija", {
         RegisterCustomer: function () {
             this.allDataEntered = true;
             this.userExist = false;
+            var now = new Date();
+            var checkDate = new Date(this.dateOfBirth);
+            if (checkDate >= now) {
+                alert("Datum rođenja mora biti u prošlosti");
+                return;
+            }
+
             if (
                 this.username === "" ||
                 this.password === "" ||

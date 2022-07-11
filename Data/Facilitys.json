@@ -252,5 +252,18 @@
     "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
+  },
+  "19": {
+    "id": 19,
+    "isDeleted": false,
+    "name": "z",
+    "facilityType": "Macevanje",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 19,
+    "logo": "FacilityLogo19.png",
+    "rating": 0.0,
+    "workStart": "07:00",
+    "workEnd": "21:23"
   }
 }

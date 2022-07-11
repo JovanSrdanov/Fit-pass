@@ -129,6 +129,12 @@ Vue.component("registruj", {
         RegisterCustomer: function () {
             this.allDataEntered = true;
             this.userExist = false;
+            var now = new Date();
+            var checkDate = new Date(this.dateOfBirth);
+            if (checkDate >= now) {
+                alert("Datum rođenja mora biti u prošlosti");
+                return;
+            }
             if (
                 this.username === "" ||
                 this.password === "" ||
