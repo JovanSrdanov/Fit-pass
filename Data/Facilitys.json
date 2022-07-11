@@ -219,11 +219,13 @@
     "isDeleted": false,
     "name": "testLoad",
     "facilityType": "1231231231",
-    "workoutIds": [],
+    "workoutIds": [
+      17
+    ],
     "status": false,
     "locationId": 16,
     "logo": "FacilityLogo16.png",
-    "rating": 0.0,
+    "rating": 3.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   },

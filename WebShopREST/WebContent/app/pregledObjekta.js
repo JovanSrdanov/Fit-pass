@@ -164,10 +164,10 @@ Vue.component("pregledObjekta", {
 
                                 <tbody>
                                     <tr v-for="c in commentsForFacility">
-                                        <td>{{c.customerId}}</td>                                         
-                                        <td>{{c.commentText}}</td>
-                                        <td>{{c.rating}}</td>    
-                                        <td v-if="allComments">{{tralnslateCommentStatus(c.status)}}</td>  
+                                        <td>{{c.username}}</td>                                         
+                                        <td>{{c.comment.commentText}}</td>
+                                        <td>{{c.comment.rating}}</td>    
+                                        <td v-if="allComments">{{tralnslateCommentStatus(c.comment.status)}}</td>  
                                         <td v-if="roleAdmin"> <button class="ObrisiDugme">Obriši</button></td>                                               
                                     </tr>
                                 </tbody>

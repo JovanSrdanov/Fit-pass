@@ -50,7 +50,14 @@
     "role": "trainer"
   },
   "3": {
-    "workoutHistory": [],
+    "workoutHistory": [
+      {
+        "workoutId": 17,
+        "checkDate": "Jul 11, 2022, 6:54:59 PM",
+        "customerId": 1,
+        "trainerId": 3
+      }
+    ],
     "id": 3,
     "isDeleted": false,
     "username": "NOVIt",

@@ -6,7 +6,7 @@
     "facilityId": 1,
     "commentText": "Lose jako fuj",
     "rating": 1,
-    "status": "waiting"
+    "status": "approved"
   },
   "2": {
     "id": 2,
@@ -33,6 +33,15 @@
     "facilityId": 8,
     "commentText": "Moj komentar sad , id kupca je 1, id objekta je 8 ",
     "rating": 4,
+    "status": "approved"
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "customerId": 1,
+    "facilityId": 16,
+    "commentText": "Mnogo dobar lokal svaka cast",
+    "rating": 3,
     "status": "approved"
   }
 }
