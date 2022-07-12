@@ -1,46 +1,46 @@
 {
+  "0": {
+    "id": 0,
+    "isDeleted": false,
+    "customerId": 0,
+    "facilityId": 1,
+    "commentText": "Nije dobar  ovaj bazen bas je los",
+    "rating": 3,
+    "status": "rejected"
+  },
   "1": {
     "id": 1,
-    "isDeleted": false,
-    "customerId": 1,
-    "facilityId": 1,
-    "commentText": "Lose jako fuj",
-    "rating": 1,
+    "isDeleted": true,
+    "customerId": 0,
+    "facilityId": 3,
+    "commentText": "Mnogo dobro",
+    "rating": 5,
     "status": "approved"
   },
   "2": {
     "id": 2,
-    "isDeleted": false,
+    "isDeleted": true,
     "customerId": 1,
-    "facilityId": 2,
-    "commentText": "Dobro jako",
-    "rating": 5,
+    "facilityId": 3,
+    "commentText": "Haos lose",
+    "rating": 1,
     "status": "approved"
   },
   "3": {
     "id": 3,
-    "isDeleted": false,
-    "customerId": 1,
+    "isDeleted": true,
+    "customerId": 2,
     "facilityId": 3,
-    "commentText": "Mnogo ludo aaa a a a  aaaaaaaaaaaaa a a a a aa  aa ",
-    "rating": 5,
+    "commentText": "Ocaj znaci haos",
+    "rating": 1,
     "status": "approved"
   },
   "4": {
     "id": 4,
     "isDeleted": false,
-    "customerId": 1,
-    "facilityId": 8,
-    "commentText": "Moj komentar sad , id kupca je 1, id objekta je 8 ",
-    "rating": 4,
-    "status": "approved"
-  },
-  "5": {
-    "id": 5,
-    "isDeleted": false,
-    "customerId": 1,
-    "facilityId": 16,
-    "commentText": "Mnogo dobar lokal svaka cast",
+    "customerId": 3,
+    "facilityId": 3,
+    "commentText": "Lele",
     "rating": 3,
     "status": "approved"
   }

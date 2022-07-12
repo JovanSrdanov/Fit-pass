@@ -1,101 +1,50 @@
 {
-  "1": {
+  "0": {
     "workoutHistory": [
       {
         "workoutId": 1,
-        "checkDate": "Jul 9, 2022, 12:16:53 AM",
-        "customerId": 1,
-        "trainerId": 1
+        "checkDate": "Jul 12, 2022, 1:49:28 AM",
+        "customerId": 0,
+        "trainerId": 0
       },
       {
         "workoutId": 2,
-        "checkDate": "Jul 11, 2022, 3:17:01 PM",
+        "checkDate": "Jul 12, 2022, 1:49:31 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 3,
+        "checkDate": "Jul 12, 2022, 2:11:59 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:17:16 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:34 AM",
         "customerId": 1,
-        "trainerId": 1
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:38 AM",
+        "customerId": 2,
+        "trainerId": 0
       }
     ],
-    "id": 1,
+    "id": 0,
     "isDeleted": false,
     "username": "t",
     "password": "t",
-    "name": "noviTren",
-    "surname": "noviTren",
+    "name": "TRENER",
+    "surname": "TRENER123",
     "gender": "male",
-    "birthDate": "Jun 19, 1999, 2:00:00 AM",
-    "role": "trainer"
-  },
-  "2": {
-    "workoutHistory": [
-      {
-        "workoutId": 2,
-        "checkDate": "Jul 9, 2022, 12:16:53 AM",
-        "customerId": 6,
-        "trainerId": 2
-      },
-      {
-        "workoutId": 9,
-        "checkDate": "Jul 10, 2022, 2:11:36 PM",
-        "customerId": 1,
-        "trainerId": 2
-      }
-    ],
-    "id": 2,
-    "isDeleted": false,
-    "username": "TRAIN",
-    "password": "TRAIN",
-    "name": "Kanye",
-    "surname": "West",
-    "gender": "male",
-    "birthDate": "Jan 1, 1986, 1:00:00 AM",
-    "role": "trainer"
-  },
-  "3": {
-    "workoutHistory": [
-      {
-        "workoutId": 17,
-        "checkDate": "Jul 11, 2022, 6:54:59 PM",
-        "customerId": 1,
-        "trainerId": 3
-      }
-    ],
-    "id": 3,
-    "isDeleted": false,
-    "username": "NOVIt",
-    "password": "123",
-    "name": "CECECE",
-    "surname": "VAUUU",
-    "gender": "male",
-    "birthDate": "Jun 30, 1900, 1:00:00 AM",
-    "role": "trainer"
-  },
-  "4": {
-    "workoutHistory": [],
-    "id": 4,
-    "isDeleted": false,
-    "username": "tt",
-    "password": "tt",
-    "name": "daRadim",
-    "surname": "ovo",
-    "gender": "female",
-    "birthDate": "Jan 18, 1900, 1:00:00 AM",
-    "role": "trainer"
-  },
-  "5": {
-    "workoutHistory": [
-      {
-        "workoutId": 16,
-        "checkDate": "Jul 11, 2022, 2:12:02 AM",
-        "customerId": 1,
-        "trainerId": 5
-      }
-    ],
-    "id": 5,
-    "isDeleted": false,
-    "username": "jocaccc",
-    "password": "12312",
-    "name": "sad",
-    "surname": "asdas",
-    "gender": "female",
     "birthDate": "Jan 1, 1900, 1:00:00 AM",
     "role": "trainer"
   }

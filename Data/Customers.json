@@ -1,230 +1,128 @@
 {
-  "1": {
-    "membershipId": 8,
-    "points": 1.0,
+  "0": {
+    "membershipId": 0,
+    "points": 0.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [
-      1,
-      2,
-      3,
-      8,
-      16
-    ],
-    "workoutHistory": [
-      {
-        "workoutId": 3,
-        "checkDate": "Feb 24, 2021, 1:00:00 AM",
-        "customerId": 1,
-        "trainerId": 1
-      },
-      {
-        "workoutId": 5,
-        "checkDate": "Feb 12, 2021, 1:00:00 AM",
-        "customerId": 1,
-        "trainerId": 2
-      },
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 9, 2022, 8:11:52 PM",
-        "customerId": 1,
-        "trainerId": 4
-      },
-      {
-        "workoutId": 5,
-        "checkDate": "Jul 9, 2022, 8:13:55 PM",
-        "customerId": 1,
-        "trainerId": 2
-      },
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 10, 2022, 12:44:29 AM",
-        "customerId": 1,
-        "trainerId": 4
-      },
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 10, 2022, 12:44:46 AM",
-        "customerId": 1,
-        "trainerId": 4
-      },
-      {
-        "workoutId": 9,
-        "checkDate": "Jul 10, 2022, 2:11:36 PM",
-        "customerId": 1,
-        "trainerId": 2
-      },
-      {
-        "workoutId": 16,
-        "checkDate": "Jul 11, 2022, 2:12:02 AM",
-        "customerId": 1,
-        "trainerId": 5
-      },
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 11, 2022, 3:14:11 PM",
-        "customerId": 1,
-        "trainerId": -1
-      },
-      {
-        "workoutId": 2,
-        "checkDate": "Jul 11, 2022, 3:17:01 PM",
-        "customerId": 1,
-        "trainerId": 1
-      },
-      {
-        "workoutId": 17,
-        "checkDate": "Jul 11, 2022, 6:54:59 PM",
-        "customerId": 1,
-        "trainerId": 3
-      }
-    ],
-    "id": 1,
-    "isDeleted": false,
-    "username": "q",
-    "password": "q",
-    "name": "guza a?, da",
-    "surname": "STRALE15",
-    "gender": "female",
-    "birthDate": "Feb 24, 2021, 1:00:00 AM",
-    "role": "customer"
-  },
-  "2": {
-    "membershipId": -1,
-    "points": 110.0,
-    "customerTypeId": 2,
-    "visitedFacilityIds": [
-      1
-    ],
-    "workoutHistory": [
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 9, 2022, 12:16:53 AM",
-        "customerId": 2,
-        "trainerId": -1
-      },
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 10, 2022, 10:30:47 AM",
-        "customerId": 2,
-        "trainerId": 4
-      },
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 10, 2022, 10:33:37 AM",
-        "customerId": 2,
-        "trainerId": 4
-      }
-    ],
-    "id": 2,
-    "isDeleted": false,
-    "username": "x",
-    "password": "x",
-    "name": "Strahinja",
-    "surname": "Mjau",
-    "gender": "male",
-    "birthDate": "Jan 1, 2001, 1:00:00 AM",
-    "role": "customer"
-  },
-  "3": {
-    "membershipId": -1,
-    "points": 20.0,
-    "customerTypeId": 1,
-    "visitedFacilityIds": [
-      2,
+      0,
       1,
       3
     ],
     "workoutHistory": [
       {
-        "workoutId": 6,
-        "checkDate": "Jul 10, 2022, 11:28:16 AM",
-        "customerId": 3,
-        "trainerId": 3
+        "workoutId": 0,
+        "checkDate": "Jul 12, 2022, 1:49:24 AM",
+        "customerId": 0,
+        "trainerId": -1
       },
       {
-        "workoutId": 9,
-        "checkDate": "Jul 10, 2022, 11:28:23 AM",
-        "customerId": 3,
-        "trainerId": 2
+        "workoutId": 1,
+        "checkDate": "Jul 12, 2022, 1:49:28 AM",
+        "customerId": 0,
+        "trainerId": 0
       },
       {
-        "workoutId": 14,
-        "checkDate": "Jul 10, 2022, 11:29:19 AM",
-        "customerId": 3,
-        "trainerId": 3
+        "workoutId": 2,
+        "checkDate": "Jul 12, 2022, 1:49:31 AM",
+        "customerId": 0,
+        "trainerId": 0
       },
       {
-        "workoutId": 14,
-        "checkDate": "Jul 10, 2022, 11:29:23 AM",
+        "workoutId": 3,
+        "checkDate": "Jul 12, 2022, 2:11:59 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:17:16 AM",
+        "customerId": 0,
+        "trainerId": 0
+      }
+    ],
+    "id": 0,
+    "isDeleted": false,
+    "username": "q",
+    "password": "q",
+    "name": "Jovan",
+    "surname": "Srda",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "1": {
+    "membershipId": 1,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:34 AM",
+        "customerId": 1,
+        "trainerId": 0
+      }
+    ],
+    "id": 1,
+    "isDeleted": false,
+    "username": "qq",
+    "password": "q",
+    "name": "q",
+    "surname": "q",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "2": {
+    "membershipId": 2,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:38 AM",
+        "customerId": 2,
+        "trainerId": 0
+      }
+    ],
+    "id": 2,
+    "isDeleted": false,
+    "username": "qqq",
+    "password": "q",
+    "name": "q",
+    "surname": "q",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "3": {
+    "membershipId": 3,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 5,
+        "checkDate": "Jul 12, 2022, 2:22:13 AM",
         "customerId": 3,
-        "trainerId": 3
+        "trainerId": -1
       }
     ],
     "id": 3,
     "isDeleted": false,
-    "username": "j",
-    "password": "j",
-    "name": "Jovan",
-    "surname": "Srdanov",
+    "username": "qw",
+    "password": "q",
+    "name": "q",
+    "surname": "q",
     "gender": "male",
-    "birthDate": "Jan 1, 1990, 1:00:00 AM",
-    "role": "customer"
-  },
-  "4": {
-    "membershipId": -1,
-    "points": 0.0,
-    "customerTypeId": 1,
-    "visitedFacilityIds": [],
-    "workoutHistory": [],
-    "id": 4,
-    "isDeleted": false,
-    "username": "ValaNije",
-    "password": "da",
-    "name": "sadsadas",
-    "surname": "dasdasdas",
-    "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
-    "role": "customer"
-  },
-  "5": {
-    "membershipId": -1,
-    "points": 0.0,
-    "customerTypeId": 1,
-    "visitedFacilityIds": [],
-    "workoutHistory": [],
-    "id": 5,
-    "isDeleted": false,
-    "username": "Nope",
-    "password": "a",
-    "name": "sadas",
-    "surname": "dsadas",
-    "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
-    "role": "customer"
-  },
-  "6": {
-    "membershipId": 10,
-    "points": 260.0,
-    "customerTypeId": 2,
-    "visitedFacilityIds": [
-      1
-    ],
-    "workoutHistory": [
-      {
-        "workoutId": 1,
-        "checkDate": "Jul 12, 2022, 12:52:10 AM",
-        "customerId": 6,
-        "trainerId": -1
-      }
-    ],
-    "id": 6,
-    "isDeleted": false,
-    "username": "NoviKupac",
-    "password": "uf",
-    "name": "NoviKupac1",
-    "surname": "NoviKupac2",
-    "gender": "female",
-    "birthDate": "Jan 27, 1900, 1:00:00 AM",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
     "role": "customer"
   }
 }
