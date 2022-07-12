@@ -21,7 +21,9 @@
     "isDeleted": false,
     "name": "AquaFresh",
     "facilityType": "Bazen",
-    "workoutIds": [],
+    "workoutIds": [
+      3
+    ],
     "status": false,
     "locationId": 1,
     "logo": "FacilityLogo1.png",
@@ -47,11 +49,13 @@
     "isDeleted": false,
     "name": "Plameni podijum",
     "facilityType": "Kosarkaski teren",
-    "workoutIds": [],
+    "workoutIds": [
+      5
+    ],
     "status": false,
     "locationId": 3,
     "logo": "FacilityLogo3.png",
-    "rating": 0.0,
+    "rating": 3.0,
     "workStart": "07:00",
     "workEnd": "21:00"
   }

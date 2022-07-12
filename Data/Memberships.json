@@ -9,6 +9,42 @@
     "customerId": 0,
     "isActive": true,
     "numberOfTrainings": 10,
-    "numberOfChechkins": 3
+    "numberOfChechkins": 5
+  },
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "code": "GOD123789",
+    "startDate": "Jul 12, 2022, 2:18:09 AM",
+    "endDate": "Jul 12, 2023, 2:18:09 AM",
+    "price": 60000.0,
+    "customerId": 1,
+    "isActive": true,
+    "numberOfTrainings": 10,
+    "numberOfChechkins": 1
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "code": "GOD123789",
+    "startDate": "Jul 12, 2022, 2:18:21 AM",
+    "endDate": "Jul 12, 2023, 2:18:21 AM",
+    "price": 60000.0,
+    "customerId": 2,
+    "isActive": true,
+    "numberOfTrainings": 10,
+    "numberOfChechkins": 1
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 2:21:39 AM",
+    "endDate": "Sep 10, 2022, 2:21:39 AM",
+    "price": 8000.0,
+    "customerId": 3,
+    "isActive": true,
+    "numberOfTrainings": 10,
+    "numberOfChechkins": 1
   }
 }

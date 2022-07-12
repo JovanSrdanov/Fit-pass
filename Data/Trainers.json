@@ -12,6 +12,30 @@
         "checkDate": "Jul 12, 2022, 1:49:31 AM",
         "customerId": 0,
         "trainerId": 0
+      },
+      {
+        "workoutId": 3,
+        "checkDate": "Jul 12, 2022, 2:11:59 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:17:16 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:34 AM",
+        "customerId": 1,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:38 AM",
+        "customerId": 2,
+        "trainerId": 0
       }
     ],
     "id": 0,

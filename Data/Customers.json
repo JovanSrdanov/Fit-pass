@@ -4,7 +4,9 @@
     "points": 0.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [
-      0
+      0,
+      1,
+      3
     ],
     "workoutHistory": [
       {
@@ -24,6 +26,18 @@
         "checkDate": "Jul 12, 2022, 1:49:31 AM",
         "customerId": 0,
         "trainerId": 0
+      },
+      {
+        "workoutId": 3,
+        "checkDate": "Jul 12, 2022, 2:11:59 AM",
+        "customerId": 0,
+        "trainerId": 0
+      },
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:17:16 AM",
+        "customerId": 0,
+        "trainerId": 0
       }
     ],
     "id": 0,
@@ -32,6 +46,81 @@
     "password": "q",
     "name": "Jovan",
     "surname": "Srda",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "1": {
+    "membershipId": 1,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:34 AM",
+        "customerId": 1,
+        "trainerId": 0
+      }
+    ],
+    "id": 1,
+    "isDeleted": false,
+    "username": "qq",
+    "password": "q",
+    "name": "q",
+    "surname": "q",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "2": {
+    "membershipId": 2,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 4,
+        "checkDate": "Jul 12, 2022, 2:18:38 AM",
+        "customerId": 2,
+        "trainerId": 0
+      }
+    ],
+    "id": 2,
+    "isDeleted": false,
+    "username": "qqq",
+    "password": "q",
+    "name": "q",
+    "surname": "q",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "3": {
+    "membershipId": 3,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 5,
+        "checkDate": "Jul 12, 2022, 2:22:13 AM",
+        "customerId": 3,
+        "trainerId": -1
+      }
+    ],
+    "id": 3,
+    "isDeleted": false,
+    "username": "qw",
+    "password": "q",
+    "name": "q",
+    "surname": "q",
     "gender": "male",
     "birthDate": "Jan 1, 1999, 1:00:00 AM",
     "role": "customer"

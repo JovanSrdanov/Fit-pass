@@ -26,7 +26,7 @@ Vue.component("komentari", {
                         <button v-on:click="ApproveFunction(c.comment.id)" class="Odobri" >Odobri</button>
                         &nbsp;
                         
-                        <button class="Odbij"  v-on:click="RejectFunction(c.id)" >Odbij</button>            
+                        <button class="Odbij"  v-on:click="RejectFunction(c.comment.id)" >Odbij</button>            
                         </td>
 
                        

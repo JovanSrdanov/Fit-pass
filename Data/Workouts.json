@@ -34,5 +34,41 @@
     "description": "Ucimo vas pravilmo trcanju",
     "picture": "WorkoutLogo2.png",
     "price": -1.0
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "name": "Plivanje",
+    "workoutType": "group",
+    "facilityId": 1,
+    "durationInMinutes": 63,
+    "trainerId": 0,
+    "description": "Ovde plivate ",
+    "picture": "WorkoutLogo3.png",
+    "price": 23.0
+  },
+  "4": {
+    "id": 4,
+    "isDeleted": true,
+    "name": "Slobodan sut",
+    "workoutType": "personal",
+    "facilityId": 3,
+    "durationInMinutes": 57,
+    "trainerId": 0,
+    "description": "Ucimo vas slobodnom sutu",
+    "picture": "WorkoutLogo4.png",
+    "price": 123.0
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "name": "Slobodan sut",
+    "workoutType": "solo",
+    "facilityId": 3,
+    "durationInMinutes": 61,
+    "trainerId": -1,
+    "description": "Sut",
+    "picture": "WorkoutLogo5.png",
+    "price": 123.0
   }
 }
