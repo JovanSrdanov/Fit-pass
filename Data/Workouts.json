@@ -1,74 +1,74 @@
 {
-  "0": {
-    "id": 0,
-    "isDeleted": false,
-    "name": "Branjenje gola",
-    "workoutType": "solo",
-    "facilityId": 0,
-    "durationInMinutes": 62,
-    "trainerId": -1,
-    "description": "Branis na golu jos vise ",
-    "picture": "WorkoutLogo0.png",
-    "price": 230.0
-  },
-  "1": {
-    "id": 1,
-    "isDeleted": false,
-    "name": "Sutas loptu",
-    "workoutType": "group",
-    "facilityId": 0,
-    "durationInMinutes": 110,
-    "trainerId": 0,
-    "description": "Ovde vas ucimo da sutate loptu",
-    "picture": "WorkoutLogo1.png",
-    "price": -1.0
-  },
-  "2": {
-    "id": 2,
-    "isDeleted": false,
-    "name": "Trcanje",
-    "workoutType": "personal",
-    "facilityId": 0,
-    "durationInMinutes": 10,
-    "trainerId": 0,
-    "description": "Ucimo vas pravilmo trcanju",
-    "picture": "WorkoutLogo2.png",
-    "price": -1.0
-  },
-  "3": {
-    "id": 3,
-    "isDeleted": false,
-    "name": "Plivanje",
-    "workoutType": "group",
-    "facilityId": 1,
-    "durationInMinutes": 63,
-    "trainerId": 0,
-    "description": "Ovde plivate ",
-    "picture": "WorkoutLogo3.png",
-    "price": 23.0
-  },
-  "4": {
-    "id": 4,
-    "isDeleted": true,
-    "name": "Slobodan sut",
-    "workoutType": "personal",
-    "facilityId": 3,
-    "durationInMinutes": 57,
-    "trainerId": 0,
-    "description": "Ucimo vas slobodnom sutu",
-    "picture": "WorkoutLogo4.png",
-    "price": 123.0
-  },
-  "5": {
-    "id": 5,
-    "isDeleted": false,
-    "name": "Slobodan sut",
-    "workoutType": "solo",
-    "facilityId": 3,
-    "durationInMinutes": 61,
-    "trainerId": -1,
-    "description": "Sut",
-    "picture": "WorkoutLogo5.png",
-    "price": 123.0
-  }
+    "0": {
+        "id": 0,
+        "isDeleted": false,
+        "name": "Branjenje gola",
+        "workoutType": "solo",
+        "facilityId": 0,
+        "durationInMinutes": 62,
+        "trainerId": -1,
+        "description": "Branis na golu jos vise ",
+        "picture": "WorkoutLogo0.png",
+        "price": 230.0
+    },
+    "1": {
+        "id": 1,
+        "isDeleted": false,
+        "name": "Sutas loptu",
+        "workoutType": "group",
+        "facilityId": 0,
+        "durationInMinutes": 110,
+        "trainerId": 0,
+        "description": "Ovde vas ucimo da sutate loptu",
+        "picture": "WorkoutLogo1.png",
+        "price": -1.0
+    },
+    "2": {
+        "id": 2,
+        "isDeleted": false,
+        "name": "Trcanje",
+        "workoutType": "personal",
+        "facilityId": 0,
+        "durationInMinutes": 10,
+        "trainerId": 0,
+        "description": "Ucimo vas pravilmo trcanju",
+        "picture": "WorkoutLogo2.png",
+        "price": -1.0
+    },
+    "3": {
+        "id": 3,
+        "isDeleted": false,
+        "name": "Plivanje",
+        "workoutType": "group",
+        "facilityId": 1,
+        "durationInMinutes": 63,
+        "trainerId": 0,
+        "description": "Ovde plivate ",
+        "picture": "WorkoutLogo3.png",
+        "price": 23.0
+    },
+    "4": {
+        "id": 4,
+        "isDeleted": true,
+        "name": "Slobodan sut",
+        "workoutType": "personal",
+        "facilityId": 3,
+        "durationInMinutes": 57,
+        "trainerId": 0,
+        "description": "Ucimo vas slobodnom sutu",
+        "picture": "WorkoutLogo4.png",
+        "price": 123.0
+    },
+    "5": {
+        "id": 5,
+        "isDeleted": false,
+        "name": "Slobodan sut",
+        "workoutType": "solo",
+        "facilityId": 3,
+        "durationInMinutes": 61,
+        "trainerId": -1,
+        "description": "Sut",
+        "picture": "WorkoutLogo5.png",
+        "price": 123.0
+    }
 }

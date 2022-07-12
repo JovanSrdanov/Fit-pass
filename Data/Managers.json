@@ -1,50 +1,50 @@
 {
-  "0": {
-    "facilityId": 0,
-    "id": 0,
-    "isDeleted": false,
-    "username": "m",
-    "password": "m",
-    "name": "MENen",
-    "surname": "MEN123",
-    "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
-    "role": "manager"
-  },
-  "1": {
-    "facilityId": 1,
-    "id": 1,
-    "isDeleted": false,
-    "username": "mm",
-    "password": "m",
-    "name": "m",
-    "surname": "m",
-    "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
-    "role": "manager"
-  },
-  "2": {
-    "facilityId": 3,
-    "id": 2,
-    "isDeleted": false,
-    "username": "mmm",
-    "password": "m",
-    "name": "m",
-    "surname": "m",
-    "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
-    "role": "manager"
-  },
-  "3": {
-    "facilityId": 2,
-    "id": 3,
-    "isDeleted": false,
-    "username": "mmmm",
-    "password": "m",
-    "name": "sdasa",
-    "surname": "asdasda",
-    "gender": "male",
-    "birthDate": "Jan 1, 1900, 1:00:00 AM",
-    "role": "manager"
-  }
+    "0": {
+        "facilityId": 0,
+        "id": 0,
+        "isDeleted": false,
+        "username": "m",
+        "password": "m",
+        "name": "Vladimir",
+        "surname": "Srdanov",
+        "gender": "male",
+        "birthDate": "Jan 1, 1900, 1:00:00 AM",
+        "role": "manager"
+    },
+    "1": {
+        "facilityId": 1,
+        "id": 1,
+        "isDeleted": false,
+        "username": "mm",
+        "password": "m",
+        "name": "Aca",
+        "surname": "Tot",
+        "gender": "male",
+        "birthDate": "Jan 1, 1900, 1:00:00 AM",
+        "role": "manager"
+    },
+    "2": {
+        "facilityId": 3,
+        "id": 2,
+        "isDeleted": false,
+        "username": "mmm",
+        "password": "m",
+        "name": "Zoran",
+        "surname": "Cvetkovic",
+        "gender": "male",
+        "birthDate": "Jan 1, 1900, 1:00:00 AM",
+        "role": "manager"
+    },
+    "3": {
+        "facilityId": 2,
+        "id": 3,
+        "isDeleted": false,
+        "username": "mmmm",
+        "password": "m",
+        "name": "Mitar",
+        "surname": "Miric",
+        "gender": "male",
+        "birthDate": "Jan 1, 1900, 1:00:00 AM",
+        "role": "manager"
+    }
 }
