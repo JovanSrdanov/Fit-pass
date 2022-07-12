@@ -8,5 +8,35 @@
     "streetNumber": "54",
     "city": "Belgrade",
     "postCode": "11000"
+  },
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "latitude": "45.3846546",
+    "longitude": "20.3986107",
+    "street": "Karadjordjev Trg",
+    "streetNumber": "52",
+    "city": "Zrenjanin ",
+    "postCode": "23101"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "latitude": "43.5843041",
+    "longitude": "21.324465506809283",
+    "street": "Синђелићева",
+    "streetNumber": "1",
+    "city": " of Kruševac",
+    "postCode": "37000"
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "latitude": "44.838437150000004",
+    "longitude": "20.48591655",
+    "street": "Јовице Васиљевића",
+    "streetNumber": "58",
+    "city": "Belgrade",
+    "postCode": "11060"
   }
 }

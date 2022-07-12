@@ -15,5 +15,44 @@
     "rating": 0.0,
     "workStart": "07:00",
     "workEnd": "21:00"
+  },
+  "1": {
+    "id": 1,
+    "isDeleted": false,
+    "name": "AquaFresh",
+    "facilityType": "Bazen",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 1,
+    "logo": "FacilityLogo1.png",
+    "rating": 0.0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
+  },
+  "2": {
+    "id": 2,
+    "isDeleted": false,
+    "name": "Teretanka",
+    "facilityType": "Teretana",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 2,
+    "logo": "FacilityLogo2.png",
+    "rating": 0.0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
+  },
+  "3": {
+    "id": 3,
+    "isDeleted": false,
+    "name": "Plameni podijum",
+    "facilityType": "Kosarkaski teren",
+    "workoutIds": [],
+    "status": false,
+    "locationId": 3,
+    "logo": "FacilityLogo3.png",
+    "rating": 0.0,
+    "workStart": "07:00",
+    "workEnd": "21:00"
   }
 }

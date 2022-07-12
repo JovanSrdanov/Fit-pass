@@ -148,6 +148,7 @@ public class FacilityService {
         }
         
         manager.setFacilityId(-1);
+        managerDao.writeFile();
         
         WorkoutAppointmentDao appointmentDao = new WorkoutAppointmentDao();
         WorkoutDao workoutDao = new WorkoutDao();
