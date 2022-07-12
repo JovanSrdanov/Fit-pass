@@ -89,7 +89,7 @@ public class CommentService {
 				username = "[deleted user]";
 			}
 			else {
-				username = cust.getSurname();
+				username = cust.getUsername();
 			}
 			
 			String facilityName = facilityDao.getById(comm.getFacilityId()).getName();
