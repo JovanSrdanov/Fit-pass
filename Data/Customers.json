@@ -1,7 +1,7 @@
 {
   "0": {
     "membershipId": 0,
-    "points": 0.0,
+    "points": 2.72,
     "customerTypeId": 1,
     "visitedFacilityIds": [
       0,
@@ -163,7 +163,7 @@
     "role": "customer"
   },
   "5": {
-    "membershipId": 5,
+    "membershipId": 27,
     "points": 0.0,
     "customerTypeId": 1,
     "visitedFacilityIds": [],

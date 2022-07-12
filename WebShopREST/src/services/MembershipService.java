@@ -204,18 +204,17 @@ public class MembershipService {
 		MembershipDao membershipDao = new MembershipDao();
 		membershipDao.addNew(membership);
 		
-		Membership oldMembership = membershipDao.getById(customer.getMembershipId());
+		int oldMemId = customer.getMembershipId();
+		customer.setMembershipId(membership.getId());
+		customerDao.writeFile();
+		
+		Membership oldMembership = membershipDao.getById(oldMemId);
 		if(oldMembership != null) {
 			Startup.calculatePointForMembership(oldMembership);
 			oldMembership.setActive(false);
 			membershipDao.writeFile();
 		}
 		
-		
-		customer.setMembershipId(membership.getId());
-		System.out.println("ID clanarine: pre " + customer.getMembershipId());
-		customerDao.writeFile();
-		System.out.println("ID clanarine: posle " + customer.getMembershipId());
 		
 		return Response.ok().build();
 	}

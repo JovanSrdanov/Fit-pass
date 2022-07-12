@@ -7,7 +7,7 @@
     "endDate": "Sep 10, 2022, 1:48:31 AM",
     "price": 4000.0,
     "customerId": 0,
-    "isActive": true,
+    "isActive": false,
     "numberOfTrainings": 10,
     "numberOfChechkins": 6
   },
@@ -237,6 +237,102 @@
     "customerId": 5,
     "isActive": true,
     "numberOfTrainings": 9,
+    "numberOfChechkins": 0
+  },
+  "20": {
+    "id": 20,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 3:10:52 AM",
+    "endDate": "Sep 10, 2022, 3:10:52 AM",
+    "price": 4000.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "21": {
+    "id": 21,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 3:12:25 AM",
+    "endDate": "Sep 10, 2022, 3:12:25 AM",
+    "price": 4000.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "22": {
+    "id": 22,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 3:15:12 AM",
+    "endDate": "Sep 10, 2022, 3:15:12 AM",
+    "price": 4000.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "23": {
+    "id": 23,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 3:17:00 AM",
+    "endDate": "Sep 10, 2022, 3:17:00 AM",
+    "price": 4000.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "24": {
+    "id": 24,
+    "isDeleted": false,
+    "code": "GOD123789",
+    "startDate": "Jul 12, 2022, 3:19:02 AM",
+    "endDate": "Jul 12, 2023, 3:19:02 AM",
+    "price": 30000.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "25": {
+    "id": 25,
+    "isDeleted": false,
+    "code": "TRIJZ23789",
+    "startDate": "Jul 12, 2022, 3:21:00 AM",
+    "endDate": "Oct 10, 2022, 3:21:00 AM",
+    "price": 87500.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "26": {
+    "id": 26,
+    "isDeleted": false,
+    "code": "TRIJZ23789",
+    "startDate": "Jul 12, 2022, 3:21:55 AM",
+    "endDate": "Oct 10, 2022, 3:21:55 AM",
+    "price": 87500.0,
+    "customerId": 0,
+    "isActive": true,
+    "numberOfTrainings": 5,
+    "numberOfChechkins": 0
+  },
+  "27": {
+    "id": 27,
+    "isDeleted": false,
+    "code": "TRIJZ23789",
+    "startDate": "Jul 12, 2022, 3:23:43 AM",
+    "endDate": "Oct 10, 2022, 3:23:43 AM",
+    "price": 87500.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 5,
     "numberOfChechkins": 0
   }
 }

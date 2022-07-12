@@ -96,7 +96,11 @@ public class Startup  extends Application{
 		
 		BaseMembership baseMembership = baseMembershipDao.getByCode(membership.getCode());
 		
-		if(membership.getNumberOfChechkins() < (baseMembership.getDurationDays() * membership.getNumberOfTrainings())/3) {
+		double numberOftrainings = membership.getNumberOfTrainings();
+		if(numberOftrainings == -1) {
+			numberOftrainings = 11;
+		}
+		if(membership.getNumberOfChechkins() < (baseMembership.getDurationDays() * numberOftrainings)/3) {
 			points -= membership.getPrice()/1000.0 * 1.33 * 4;
 		}
 		
