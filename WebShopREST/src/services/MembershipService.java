@@ -278,7 +278,7 @@ public class MembershipService {
 			}
 		}
 		
-		if(membership.getNumberOfTrainings() != -1 || todayCheckins >= membership.getNumberOfTrainings()) {
+		if(membership.getNumberOfTrainings() != -1 && todayCheckins >= membership.getNumberOfTrainings()) {
 			System.out.println("vec se cekiro");
 			throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity("Kupac se vec cekirao max broj puta").build());
 		}
