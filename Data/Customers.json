@@ -163,11 +163,20 @@
     "role": "customer"
   },
   "5": {
-    "membershipId": 27,
+    "membershipId": 29,
     "points": 0.0,
     "customerTypeId": 1,
-    "visitedFacilityIds": [],
-    "workoutHistory": [],
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 5,
+        "checkDate": "Jul 12, 2022, 3:34:22 AM",
+        "customerId": 5,
+        "trainerId": -1
+      }
+    ],
     "id": 5,
     "isDeleted": false,
     "username": "ww",

@@ -61,5 +61,14 @@
     "commentText": "Dobro!",
     "rating": 4,
     "status": "approved"
+  },
+  "7": {
+    "id": 7,
+    "isDeleted": false,
+    "customerId": 5,
+    "facilityId": 3,
+    "commentText": "da",
+    "rating": 5,
+    "status": "approved"
   }
 }

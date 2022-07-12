@@ -331,8 +331,32 @@
     "endDate": "Oct 10, 2022, 3:23:43 AM",
     "price": 87500.0,
     "customerId": 5,
-    "isActive": true,
+    "isActive": false,
     "numberOfTrainings": 5,
     "numberOfChechkins": 0
+  },
+  "28": {
+    "id": 28,
+    "isDeleted": false,
+    "code": "TRIJZ23789",
+    "startDate": "Jul 12, 2022, 3:28:46 AM",
+    "endDate": "Oct 10, 2022, 3:28:46 AM",
+    "price": 122499.99999999999,
+    "customerId": 5,
+    "isActive": false,
+    "numberOfTrainings": 7,
+    "numberOfChechkins": 0
+  },
+  "29": {
+    "id": 29,
+    "isDeleted": false,
+    "code": "DVA123789",
+    "startDate": "Jul 12, 2022, 3:29:23 AM",
+    "endDate": "Sep 10, 2022, 3:29:23 AM",
+    "price": 5600.0,
+    "customerId": 5,
+    "isActive": true,
+    "numberOfTrainings": 7,
+    "numberOfChechkins": 1
   }
 }
