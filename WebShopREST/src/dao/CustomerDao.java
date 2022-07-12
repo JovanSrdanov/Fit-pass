@@ -42,7 +42,10 @@ public class CustomerDao {
 	
 	public void writeFile() {
 		File theFile = new File(Startup.path + "WebProjekat/Data/Customers.json");
+		System.out.println("neki text " + allCustomers.get(5).getMembershipId());
 		
+		System.out.println("neki text " + customers.get(5));
+		System.out.println("neki text " + allCustomers.get(5));
 		try {
 			FileWriter writer = new FileWriter(theFile);
 			Gson gson = new GsonBuilder()

@@ -211,8 +211,11 @@ public class MembershipService {
 			membershipDao.writeFile();
 		}
 		
+		
 		customer.setMembershipId(membership.getId());
+		System.out.println("ID clanarine: pre " + customer.getMembershipId());
 		customerDao.writeFile();
+		System.out.println("ID clanarine: posle " + customer.getMembershipId());
 		
 		return Response.ok().build();
 	}

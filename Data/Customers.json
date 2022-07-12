@@ -38,6 +38,12 @@
         "checkDate": "Jul 12, 2022, 2:17:16 AM",
         "customerId": 0,
         "trainerId": 0
+      },
+      {
+        "workoutId": 5,
+        "checkDate": "Jul 12, 2022, 2:35:10 AM",
+        "customerId": 0,
+        "trainerId": -1
       }
     ],
     "id": 0,
@@ -121,6 +127,53 @@
     "password": "q",
     "name": "q",
     "surname": "q",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "4": {
+    "membershipId": 4,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [
+      3
+    ],
+    "workoutHistory": [
+      {
+        "workoutId": 5,
+        "checkDate": "Jul 12, 2022, 2:39:26 AM",
+        "customerId": 4,
+        "trainerId": -1
+      },
+      {
+        "workoutId": 5,
+        "checkDate": "Jul 12, 2022, 2:41:12 AM",
+        "customerId": 4,
+        "trainerId": -1
+      }
+    ],
+    "id": 4,
+    "isDeleted": false,
+    "username": "w",
+    "password": "w",
+    "name": "w",
+    "surname": "w",
+    "gender": "male",
+    "birthDate": "Jan 1, 1999, 1:00:00 AM",
+    "role": "customer"
+  },
+  "5": {
+    "membershipId": 5,
+    "points": 0.0,
+    "customerTypeId": 1,
+    "visitedFacilityIds": [],
+    "workoutHistory": [],
+    "id": 5,
+    "isDeleted": false,
+    "username": "ww",
+    "password": "ww",
+    "name": "ww",
+    "surname": "w",
     "gender": "male",
     "birthDate": "Jan 1, 1999, 1:00:00 AM",
     "role": "customer"

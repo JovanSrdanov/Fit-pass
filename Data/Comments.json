@@ -43,5 +43,23 @@
     "commentText": "Lele",
     "rating": 3,
     "status": "approved"
+  },
+  "5": {
+    "id": 5,
+    "isDeleted": false,
+    "customerId": 0,
+    "facilityId": 3,
+    "commentText": "Ala",
+    "rating": 5,
+    "status": "approved"
+  },
+  "6": {
+    "id": 6,
+    "isDeleted": false,
+    "customerId": 4,
+    "facilityId": 3,
+    "commentText": "Dobro!",
+    "rating": 4,
+    "status": "approved"
   }
 }
