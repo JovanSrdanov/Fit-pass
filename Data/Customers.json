@@ -69,8 +69,8 @@
         "isDeleted": false,
         "username": "qq",
         "password": "q",
-        "name": "q",
-        "surname": "q",
+        "name": "Marko",
+        "surname": "Popov",
         "gender": "male",
         "birthDate": "Jan 1, 1999, 1:00:00 AM",
         "role": "customer"
@@ -92,8 +92,8 @@
         "isDeleted": false,
         "username": "qqq",
         "password": "q",
-        "name": "q",
-        "surname": "q",
+        "name": "Dejan",
+        "surname": "Markov",
         "gender": "male",
         "birthDate": "Jan 1, 1999, 1:00:00 AM",
         "role": "customer"
@@ -115,8 +115,8 @@
         "isDeleted": false,
         "username": "qw",
         "password": "q",
-        "name": "q",
-        "surname": "q",
+        "name": "Darko",
+        "surname": "Ris",
         "gender": "male",
         "birthDate": "Jan 1, 1999, 1:00:00 AM",
         "role": "customer"
