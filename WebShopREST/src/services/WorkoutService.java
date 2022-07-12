@@ -344,7 +344,7 @@ public class WorkoutService {
 			}
 		}
 		
-		for(Trainer train : trainerDao.getAll()) {
+		/*for(Trainer train : trainerDao.getAll()) {
 			for(WorkoutHistory trainHist : train.getWorkoutHistory()) {
 				Workout workout = workoutDao.getById(trainHist.getWorkoutId());
 				
@@ -365,7 +365,7 @@ public class WorkoutService {
 							workout.getPrice(), facility.getFacilityType()));
 				}
 			}
-		}
+		}*/
 		
 		return workoutHistory;
 	}

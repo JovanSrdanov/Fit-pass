@@ -237,12 +237,16 @@ public class CommentService {
 		}
 		
 		CommentDao commentDao = (CommentDao) ctx.getAttribute("CommentDao");
-		if(commentDao.getById(id) == null) {
+		Comment comm = commentDao.getById(id);
+		if(comm == null) {
 			throw new WebApplicationException(Response.Status.CONFLICT);
 		}
 		commentDao.removeById(id);
 		
-		
+		FacilityDao facilityDao = (FacilityDao) ctx.getAttribute("FacilityDao");
+		int numberOfComments = commentDao.getNumberOfApprovedForFacility(comm.getFacilityId());
+		facilityDao.recalculateRating(comm.getFacilityId(), comm.getRating(), numberOfComments);
+				
 		return Response.ok().build();
 	}
 }

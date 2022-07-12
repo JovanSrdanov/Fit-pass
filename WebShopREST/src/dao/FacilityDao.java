@@ -265,6 +265,7 @@ public class FacilityDao {
 		double rating = facility.getRating();
 		
 		double recalculatedValue = (rating * (numberOfRating - 1) + newRating) / (numberOfRating);
+		recalculatedValue = Startup.round(recalculatedValue, 2);
 		facility.setRating(recalculatedValue);
 		
 		writeFile();

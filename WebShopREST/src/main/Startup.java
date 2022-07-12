@@ -100,7 +100,14 @@ public class Startup  extends Application{
 			points -= membership.getPrice()/1000.0 * 1.33 * 4;
 		}
 		
-		customer.setPoints(customer.getPoints() + points);
+		double newPoints = customer.getPoints() + points;
+		if(newPoints < 0) {
+			newPoints = 0;
+		}
+		
+		newPoints = round(newPoints, 2);
+		
+		customer.setPoints(newPoints);
 		
 		for(CustomerType custType : customerTypeDao.getAll()) {
 			if(customer.getPoints() >= custType.getPointsNeeded()) {
@@ -109,5 +116,14 @@ public class Startup  extends Application{
 		}
 		
 		customerDao.writeFile();
+	}
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
 	}
 }
